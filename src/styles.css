@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* 侧边栏 logo 和标题样式 */
+#sidebar-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto 3rem 0.5rem;
+    gap: 0.5rem; /* 调整 logo 和文字之间的间距 */
+}
+
+#logo-image {
+    width: 40px;
+    height: 40px;
+}
+#logo-title {
+    font-size: 26px;
+    /* 调整字体大小 */
+    font-weight: bold;
+    color: #333;
+    /* 调整文字颜色 */
+}
+/* 确保原有的侧边栏内容样式不受影响 */
+#categories-list {
+    /* 保留原有的类别列表样式 */
+}
+
+/* 其他原有的样式 */
+/* ... */
+
+.folder-name {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.breadcrumb-item {
+  cursor: pointer;
+  color: #717882;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+  background-color: #f4f4f5;
+}
+
+.breadcrumb-item:hover {
+  background-color: #eeeeee;
+  color: #10b981;
+}
+
+.breadcrumb-separator {
+  margin: 0 5px;
+  color: #999;
+}
+
+.breadcrumb-item:last-child {
+  color: #717882;
+  font-weight: bold;
+  cursor: default;
+  background-color: #ffffff;
+  padding-left: 1px;
+}
+
+.breadcrumb-item:last-child:hover {
+  background-color: transparent;
+}
+
+#categories-list li {
+  user-select: none;
+}
+
+#categories-list li.sortable-ghost {
+  opacity: 0.5;
+  background-color: #f0f0f0;
+}
+
+#categories-list li.sortable-chosen {
+  background-color: #e0e0e0;
+}

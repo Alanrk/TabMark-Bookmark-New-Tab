@@ -1,0 +1,2178 @@
+/*
+! tailwindcss v3.4.4 | MIT License | https://tailwindcss.com
+*/
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  /* 1 */
+  border-width: 0;
+  /* 2 */
+  border-style: solid;
+  /* 2 */
+  border-color: #e5e7eb;
+  /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -moz-tab-size: 4;
+  /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4;
+  /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* 4 */
+  font-feature-settings: normal;
+  /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
+  -webkit-tap-highlight-color: transparent;
+  /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0;
+  /* 1 */
+  line-height: inherit;
+  /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  border-top-width: 1px;
+  /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* 1 */
+  font-feature-settings: normal;
+  /* 2 */
+  font-variation-settings: normal;
+  /* 3 */
+  font-size: 1em;
+  /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  border-collapse: collapse;
+  /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  letter-spacing: inherit;
+  /* 1 */
+  color: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  background-image: none;
+  /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934200)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden] {
+  display: none;
+}
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.w-1\/4 {
+  width: 25%;
+}
+
+.w-3\/4 {
+  width: 75%;
+}
+
+.w-64 {
+  width: 16rem;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.list-disc {
+  list-style-type: disc;
+}
+
+.list-none {
+  list-style-type: none;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.rounded-lg {
+  border-radius: 0.625rem;
+}
+
+.border-r {
+  border-right-width: 1px;
+}
+
+.border-gray-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.p-4 {
+  padding: 3rem 1.5rem 0rem 1.5rem; 
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.pl-5 {
+  padding-left: 1.25rem;
+}
+
+.pl-0 {
+  padding-left: 0px;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
+.shadow-md {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.hover\:bg-gray-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  src: url('chrome-extension://__MSG_@@extension_id__/src/fonts/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjzaqkNCeE.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+aside::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+aside {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Additional styles for sidebar toggle */
+#sidebar-container {
+  position: relative;
+  transition: margin-left 0.3s;
+  height: 100vh; /* Ensure the container height spans the full viewport height */
+}
+
+#sidebar-container.collapsed {
+  margin-left: -16rem; /* Adjust this value to match the width of your sidebar */
+}
+
+#toggle-sidebar {
+  position: fixed;
+  bottom: 2rem;
+  left: 14.75rem;
+  background-color: #ffffff;
+  border: 1px solid #f4f4f5;
+  border-radius: 50%;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: left 0.3s;
+  z-index: 1000;
+  height: 36px;
+  width: 36px;
+  color: #717882;
+  font-weight: bold;
+}
+
+#toggle-sidebar:hover {
+  background-color: #eeeeee; /* Add hover effect */
+  color: #111827;
+}
+
+#sidebar-container.collapsed #toggle-sidebar {
+  left: 2rem;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  margin: 0; /* 确保没有默认外边距 */
+  height: 100vh; /* Ensure body height spans the full viewport height */
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  height: 100vh; /* Ensure html height spans the full viewport height */
+}
+
+
+
+/* 修改现有的背景类，确保它们应用于 html 元素 */
+html.gradient-background-1 {
+  background: linear-gradient(0deg, rgba(226, 232, 240, 0) 0%, rgba(203, 213, 225, 1) 100%);
+}
+
+html.gradient-background-2 {
+  background: linear-gradient(0deg, rgba(165, 243, 252, 0) 0%, rgba(244, 251, 255, 1) 50%, rgba(191, 219, 254, 1) 100%);
+}
+
+/* 标准 CSS */
+html.gradient-background-3 {
+  background: linear-gradient(0deg, rgba(251, 206, 232, 0) 0%, rgba(242, 210, 244, 1) 50%, rgba(233, 213, 255, 1) 100%);
+}
+
+/* 标准 CSS */
+html.gradient-background-4 {
+  background: linear-gradient(0deg, rgba(242, 248, 240, 1) 0%, rgba(242, 248, 240, 1) 100%);
+}
+
+/* 标准 CSS */
+html.gradient-background-5 {
+  background: linear-gradient(0deg, rgba(252, 252, 247, 1) 0%, rgba(252, 252, 247, 1) 100%);
+}
+
+/* 标准 CSS */
+html.gradient-background-6 {
+  background: linear-gradient(0deg, rgba(244, 241, 248, 1) 0%, rgba(244, 241, 248, 1) 100%);
+}
+
+/* 标准 CSS */
+html.gradient-background-7 {
+  background: linear-gradient(0deg, rgba(248, 247, 244, 1) 0%, rgba(248, 247, 244, 1) 100%);
+}
+
+#confirm-dialog,
+#edit-dialog,
+#edit-category-dialog {
+  display: none;
+  position: fixed;
+  z-index: 1002;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 60px;
+}
+
+#confirm-dialog .modal-content,
+#edit-dialog .modal-content,
+#edit-category-dialog .modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 2rem;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 300px;
+  border-radius: 10px;
+  position: relative;
+}
+
+#confirm-dialog h2,
+#edit-dialog h2,
+#edit-category-dialog h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#confirm-dialog p,
+#edit-dialog p,
+#edit-category-dialog p {
+  margin-bottom: 20px;
+  color: #10;
+}
+
+#confirm-dialog .buttons,
+#edit-dialog .form-buttons,
+#edit-category-dialog .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 2rem;
+}
+
+#confirm-dialog button,
+#edit-dialog button,
+#edit-category-dialog button {
+  padding: 0.5rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#cancel-delete-button,
+.cancel-button,
+.cancel-category-button {
+  background-color: #f8f9fa;
+  color: #000;
+  border: 1px solid #eeeeee;
+}
+
+#confirm-delete-button,
+#edit-dialog button[type="submit"],
+#edit-category-dialog button[type="submit"] {
+  background-color: #10b981;
+  color: white;
+}
+
+#cancel-delete-button:hover,
+.cancel-button:hover,
+.cancel-category-button:hover {
+  background-color: #e2e6ea;
+}
+
+#confirm-delete-button:hover,
+#edit-dialog button[type="submit"]:hover,
+#edit-category-dialog button[type="submit"]:hover {
+  background-color: #0ba371;
+}
+
+.close-button,
+.close-category-button {
+  color: #aaa;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 24px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus,
+.close-category-button:hover,
+.close-category-button:focus {
+  color: black;
+  text-decoration: none;
+}
+
+#edit-dialog input[type="text"],
+#edit-dialog input[type="url"],
+#edit-category-dialog input[type="text"] {
+  width: calc(100%);
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+
+#edit-dialog label,
+#edit-category-dialog label {
+  display: block;
+  margin: 16px 0 6px 0;
+  font-weight: 600;
+}
+
+aside {
+  height: 100%; /* Ensure the sidebar height spans the full container height */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align content to the start for tree structure */
+  width: 16%; /* Adjusted width */
+  background-color: #ffffff; /* 设置背景颜色为与主体一致 */
+  transition: width 0.3s; /* Smooth transition for width */
+  overflow: auto; /* Allow scrolling for overflow content */
+}
+
+aside.collapsed {
+  width: 0; /* Collapse the sidebar */
+}
+
+aside ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0;
+  width: 100%; /* Ensure full width for centering items */
+}
+
+aside ul li {
+  font-size: 0.875rem; /* Use rem units for font size */
+  font-weight: 600; /* Ensure the font weight matches the right-side cards */
+  color: #334155; /* Set the default font color to match the right-side cards */
+  line-height: 1.25; /* Improve readability and reduce line height */
+  padding: 0.25rem 1rem 0.25rem 1.5rem; /* Reduce padding for less vertical spacing, add padding to the left */
+  display: flex; /* Align items in a row */
+  align-items: center; /* Vertically center items */
+  justify-content: flex-start; /* Align items to the left */
+  cursor: pointer; /* Add cursor pointer */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  position: relative;
+
+}
+
+aside ul li ul {
+  padding-left: 1.5rem; /* Indentation for sub-levels */
+  display: none; /* Initially hide sub-levels */
+}
+
+aside ul li.open > ul {
+  display: block; /* Show sub-levels when parent is open */
+}
+
+aside ul li:hover {
+  background-color: #f0f0f0; /* Add hover effect */
+}
+
+aside ul li.bg-gray-200 {
+  background-color: #e2e8f0; /* Selected state background */
+}
+
+aside ul li.bg-emerald-500 {
+  background-color: rgb(16 185 129); /* Maintain the background color when selected */
+  color: #ffffff;
+}
+
+aside ul li.bg-emerald-500 span {
+  color: #ffffff; /* Match the selected color with search bar tabs */
+  overflow: hidden;
+}
+
+.folder-item {
+
+  user-select: none;
+  /* 防止文本选择干扰拖动 */
+}
+
+span.material-icons.ml-auto {
+  position: absolute;
+  right: 0.5rem;
+  font-size: 16px;
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-size: 1.125rem; /* Match the font size of the text using rem */
+  vertical-align: middle; /* Align icons vertically in the middle */
+  margin-right: 0.5rem; /* Use rem units for margin */
+  margin-left: 0.5rem;
+  font-weight: 400;
+}
+
+/* Custom width for aside */
+.custom-width {
+  width: 16rem; /* Adjusted width */
+}
+
+/* Main content area */
+main {
+  padding: 0rem 0rem 2rem 0rem; /* Adjust the padding value as needed */
+  transition: margin-left 0.3s; /* Smooth transition for margin */
+  flex-grow: 1; /* Allow main content to grow and fill available space */
+}
+
+/* Card styles */
+.card {
+  display: flex;
+  flex-direction: row; /* Arrange items in a row */
+  align-items: center; /* Vertically center items */
+  width: 190px; /* 固定卡片宽度 */
+  border-radius: 8px;
+  padding: 0.625rem;
+  overflow: hidden;
+  transition: background-color 0.3s; /* Smooth transition for background color */
+  height: 48px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  backface-visibility: hidden;
+
+}
+
+.card:hover {
+  background-color: #E5E7EB; /* Add hover effect */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column; /* Arrange text items in a column */
+  overflow: auto; /* Allow scrolling */
+  max-height: 100px; /* Adjust as needed to ensure content fits within card */
+}
+
+.card-title {
+  font-size: 13px; /* 增大标题字体 */
+  font-weight: 600; /* Ensure the font weight matches the left-side bookmarks */
+  color: #334155; /* Match the color with the left-side bookmarks */
+  margin-bottom: 0rem;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  line-height: 1.3; /* 设置行高 */
+  max-height: 2.6em; /* Ensure title does not overflow */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.card-title:hover {
+  color: #111827; /* Match the color with the left-side bookmarks */
+}
+.card-link {
+  font-size: 0.75rem; /* 增大字体 */
+  color: #a0aec0; /* Light gray color */
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Ensure link does not overflow */
+}
+
+.card-link:hover {
+  color: #3182ce; /* Change link color on hover */
+  text-decoration: none; /* Remove underline on hover */
+}
+
+.bookmark-folder.card {
+  background: #f4f4f5;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  backface-visibility: hidden;
+}
+
+.bookmark-folder.card:hover {
+  background-color: #E5E7EB;
+  cursor: pointer;
+  transform: scale(1.03);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01);
+}
+/* Bookmark placeholder styles */
+.bookmark-placeholder {
+  width: 100%;
+  height: 40px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+
+/* Flex container for wrapping cards */
+#bookmarks-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); /* Ensure cards are evenly spaced */
+  gap: 1.0rem; /* 设置卡片间距 */
+  justify-content: space-between; /* 从左到右对齐 */
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+#welcome-message {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 3rem auto 0;
+      color: #1a202c;
+      cursor: pointer; /* 鼠标指针变为手型 */
+}
+#current-time {
+      font-size: 14px;
+      margin: 0.5rem auto;
+      color: #717882;
+}
+    
+
+    /* Search bar styles */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 640px;
+  margin: 1rem 0 2.5rem 0;
+}
+
+.search-form {
+  background-color: white;
+  border-radius: 12px;
+  padding: 14.5px 20px 14.5px 10px;
+  position: relative; /* 确保搜索按钮定位正确 */
+  width: 580px;
+  transition: box-shadow 0.3s ease, border-radius 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+}
+
+.search-form.focused-with-suggestions {
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.search-input {
+  width: 100%;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  color: #1a202c;
+  font-weight: 600;
+  margin-bottom: -4px;
+  
+}
+.search-suggestions-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: none;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  z-index: 1000;
+  overflow: hidden;
+  display: none;
+}
+
+.search-form.focused-with-suggestions + .search-suggestions-wrapper {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.search-suggestions {
+  max-height: 390px;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  font-size: 14px;
+}
+
+.search-suggestions::-webkit-scrollbar {
+  display: none;
+}
+
+.search-suggestions li {
+  padding: 10px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin: 5px 12px;
+  border-radius: 12px;
+  color: #334155;
+}
+
+.search-suggestions li:last-child {
+  margin-bottom: 50px;
+}
+.search-suggestions li:hover,
+.search-suggestions li.keyboard-selected {
+  background-color: #e8eaed;
+  color: #1a202c;
+}
+
+#tabs-container {
+  position: absolute;
+  bottom: 0px; /* 调整这个值以适应标签栏的高度 */
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+
+
+/* 确保 tab 内容不会被压缩 */
+.tab {
+  flex-shrink: 0;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 16px;
+  color: #5f6368;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 8px;
+  background-color: #f1f3f4;
+  border: 1px solid transparent;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.tab:hover {
+  background-color: #e8eaed;
+}
+
+.tab.active {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  border-color: #dadce0;
+}
+
+.tab-icon {
+  height: 16px;
+  margin-right: 6px;
+}
+
+.search-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.search-button .material-icons {
+  color: #5f6368;
+  font-size: 24px;
+}
+
+#toggle-view {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Hover effect for toggle view button */
+#toggle-view:hover {
+  background-color: #e2e8f0;
+}
+
+footer {
+
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto; /* Push footer to the bottom */
+}
+
+footer.bg-white.text-center.p-4.border-t.border-gray-200.mt-4 {
+  padding-bottom: 0;
+  color: #a0aec0;
+  padding-top: 5rem;
+}
+p.text-sm {
+    color: #717882;
+}
+.website_url:hover {
+  color: #0acf83; /* Match the color with the left-side bookmarks */
+}
+
+img.w-6.h-6.mr-2 {
+  width: 18px;
+  margin-right: 8px;
+}
+
+.rounded-lg img.w-6.h-6.mr-2 {
+  width: 14px;
+  margin-left: 0.5rem;
+}
+.custom-context-menu {
+  display: none;
+  position: absolute;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  padding: 10px;
+  border-radius: 5px;
+  width: 190px;
+
+}
+
+.custom-context-menu-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.custom-context-menu-item:hover {
+  background: #f0f0f0;
+}
+
+.custom-context-menu-divider {
+  height: 1px;
+  background: #e0e0e0;
+  margin: 4px 0;
+}
+
+.undo-notification {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.undo-notification .notification-text {
+  flex-grow: 1;
+}
+
+.undo-notification .undo-button {
+  background: none;
+  border: none;
+  color: #4CAF50;
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.undo-notification .undo-button:hover {
+  text-decoration: underline;
+}
+
+.undo-notification .countdown {
+  margin-left: 10px;
+  font-size: 12px;
+  color: #aaa;
+}
+.toast {
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  z-index: 10000;
+  text-align: center;
+  font-size: 13px;
+  max-width: 80%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.toast.show {
+  display: block;
+  animation: fadeIn 0.3s, fadeOut 0.3s 1.2s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.sortable-ghost {
+  opacity: 0.5;
+  background: #c8ebfb;
+}
+
+.sortable-chosen {
+  background: #e6f7ff;
+}
+
+.sortable-drag {
+  opacity: 0.8;
+}
+
+.drag-handle {
+  cursor: move;
+  /* 添加其他样式 */
+}
+
+@keyframes updateFlash {
+  0% {
+    background-color: rgba(0, 255, 0, 0.2);
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+.flex.justify-between.items-center.mb-4 {
+  margin: 0 auto;
+}
+
+/* 调整 welcome-message 样式 */
+#welcome-message {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a202c;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.links-icons {
+  position: fixed;
+  top: 40%;
+  right: 2rem;
+  background: #ffffff;
+  z-index: 2;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.links-icons a {
+  display: block;
+  color: #717882;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s, transform 0.3s ease;
+  /* 添加 transform 过渡效果 */
+  border-radius: 8px;
+  margin: 6px;
+}
+
+.links-icons a:hover {
+  color: #10b981;
+ 
+  background: #eeeeee;
+
+}
+
+/* 可选：添加点击效果 */
+.links-icons a:active {
+  transform: scale(1.1);
+  /* 点击时稍微缩小，但仍然比原始大小大 */
+}
+
+.welcome-search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6rem auto 1.5rem;
+}
+
+.search-icon-container {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.search-engine-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.search-input {
+  padding-left: 50px !important;
+}
+
+/* Add this to your CSS file */
+.folder-name {
+  font-size: 13px;
+  /* 调整字体大小 */
+  font-weight: 500;
+  /* 加粗字体 */
+
+  text-align: left;
+  /* 左对齐 */
+  display: flex;
+  margin: 0 auto 1rem;
+  color: #717882;
+  height: 32px;
+}
+.folder-name:empty::before {
+  content: '';
+  display: inline-block;
+  width: 140px;
+  height: 32px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+.bookmarks-container {
+  opacity: 1; /* 将初始透明度设置为 1 */
+  transform: translateY(0); /* 初始位置不变 */
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  background: #ffffff;
+  padding: 1rem 2rem 2rem 2rem;
+  width: 1096px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+}
+.bookmarks-container.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.custom-context-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 10px;
+}
+
+.custom-context-menu-item:hover {
+  background-color: #f0f0f0;
+}
+
+.custom-context-menu-item .material-icons  {
+   color: #717882;
+ }
+
+
+
+.suggestion-icon {
+  flex-shrink: 0; /* 防止图标被压缩 */
+  width: 16px; /* 设置固定宽度 */
+  height: 16px; /* 设置固定高度 */
+  margin-right: 10px; /* 与文本保持一定距离 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.suggestion-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  margin-right: 4px;
+  flex-shrink: 1; /* 允许文本收缩 */
+  display: flex;
+  align-items: center;
+}
+.material-icons.suggestion-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.suggestion-url {
+  font-size: 0.8em;
+  color: #717882;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+}
+
+/* 移除之前的 .suggestion-content::after */
+
+/* 如果需要，可以添加一个固定宽度的 dash 元素 */
+.suggestion-dash {
+  margin: 0 4px;
+  color: #717882;
+  flex-shrink: 0;
+}
+
+
+
+.suggestion-url {
+  font-size: 0.8em;
+  color: #717882;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+}
+
+
+/* 如果需要，可以添加一个固定宽度的 dash 元素 */
+.suggestion-dash {
+  margin: 0 4px;
+  color: #717882;
+  flex-shrink: 0;
+}
+
+.suggestion-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.suggestion-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  margin-right: 4px; /* Add a small space before the dash */
+}
+
+.suggestion-url {
+  font-size: 13px;
+  color: #717882;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+}
+
+/* Remove the pseudo-element that was adding the dash */
+.suggestion-text::after {
+  content: none;
+}
+
+/* Add a dash between text and URL */
+
+/* Remove any existing margins between text and URL */
+.suggestion-text, .suggestion-url {
+  margin: 0;
+}
+
+.search-suggestions li .suggestion-type {
+  font-size: 13px;
+  color: #717882;
+  margin-left: 10px;
+}
+.suggestion-icon .favicon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+.no-more-suggestions {
+  text-align: center;
+  padding: 10px;
+  color: #888;
+  font-style: italic;
+}
+
+
+#tabs-container {
+  scrollbar-width: none; /* 对于 Firefox */
+  -ms-overflow-style: none; /* 对于 Internet Explorer 和 Edge */
+}
+/* 在你的 CSS 文件中添加以下样式 */
+
+
+
+
+.search-suggestions::-webkit-scrollbar,
+#tabs-container::-webkit-scrollbar {
+  display: none; /* 对于 Chrome, Safari 和 Opera */
+}
+
+#tabs-container {
+  display: none;
+}
+
+#line-container {
+  display: none;
+  /* 默认不显示 */
+}
+.custom-hr {
+    /* 默认不显示
+  border: none;
+  /* 移除默认边框 */
+  border-top: 1px solid #eeeeee;
+  /* 线的颜色和样式 */
+  width: 95%;
+  /* 设置线的长度为容器的 50% */
+  margin: 0 auto;
+  /* 上下间距，并使其居中 */
+}
+svg.suggestion-icon {
+  margin-left: 0.5rem;
+}
+
+/* Quick links container */
+.quick-links-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  justify-content: center;
+  padding: 16px;
+  transition: opacity 0.3s ease-in-out; 
+  margin: 0 auto;
+  justify-items: center;
+  /* 确保每个项目在其网格单元格内居中 */
+  max-width: 800px;
+}
+
+/* 新增：使用 flexbox 包装 quick-links-container */
+.quick-links-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+/* Quick link item container */
+.quick-link-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+
+}
+
+/* Quick link item */
+.quick-link-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.quick-link-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Favicon icon */
+.quick-link-item img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Website name */
+.quick-link-item-container span {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #717882;
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Quick link placeholder */
+.quick-link-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+}
+
+.quick-link-placeholder::before {
+  content: '';
+  width: 60px;
+  height: 60px;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.quick-link-placeholder::after {
+  content: '';
+  width: 60px;
+  height: 12px;
+  margin-top: 8px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* 设置图标容器 */
+.settings-icon {
+  position: fixed;
+  top: calc(55% + 26px);
+  /* 调整位置，使其在 links-icons 下方 */
+  right: 2rem;
+  background: #ffffff;
+  z-index: 2;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.settings-icon a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #717882;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s, transform 0.3s ease;
+  border-radius: 8px;
+  margin: 4px 6px;
+}
+
+.settings-icon a:hover {
+  color: #10b981;
+  background: #eeeeee;
+}
+
+.settings-icon a:active {
+  transform: scale(0.95);
+}
+.settings-modal {
+  display: none;
+  position: fixed;
+  z-index: 1002;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* 为Safari浏览器添加前缀 */
+}
+
+.settings-modal-content {
+  background-color: rgba(254, 254, 254, 0.9);
+  /* 稍微透明的背景 */
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 700px;
+  height: 550px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+}
+
+.settings-modal-close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.settings-modal-close:hover,
+.settings-modal-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.settings-modal-title {
+  margin: 0 0 3rem 8px;
+  font-size: 26px;
+  font-weight: 600; 
+  color: #1a202c;
+}
+
+.settings-modal-subtitle {
+  margin: 0 0 8px 0px;
+  font-size: 16px;
+  font-weight: 500; 
+  color: #1a202c;
+}
+.settings-layout {
+  display: flex;
+  margin-top: 20px;
+}
+
+.settings-sidebar {
+  width: 180px;
+  padding-right: 20px;
+  border-right: 1px solid #eeeeee;
+}
+
+.settings-content {
+  flex: 1;
+  margin: 0px 20px;
+}
+
+.settings-tab-button {
+  display: block;
+  width: 100%;
+  padding: 10px 16px 10px 16px;
+  margin-bottom: 10px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+}
+.setting-option {
+  font-size: 14px;
+  margin: 16px 0;
+}
+
+.settings-tab-button.active {
+  background-color: #10b981;
+  color: #ffffff;
+  padding: 10px 16px 10px 16px;
+  border-radius: 8px;
+}
+
+.settings-tab-content {
+  display: none;
+}
+
+.settings-tab-content.active {
+  display: block;
+}
+
+.settings-background-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.settings-bg-option {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-size: 200% 200%;
+  background-position: center;
+}
+
+.settings-bg-option:hover,
+.settings-bg-option.active {
+  transform: scale(1.05);
+  border: 2px solid #10b981;
+}
+/* 开关样式 */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #10b981;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #10b981;
+}
+
+input:checked+.slider:before {
+  transform: translateX(16px);
+}
+
+/* 圆形滑块 */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* 调整开关和标签的布局 */
+.setting-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.switch-label {
+  margin-right: 1rem;
+}
+
+.bookmark-card.updating {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.gradient-background-1 {
+  background: linear-gradient(0deg, rgba(226, 232, 240, 1) 0%, rgba(214, 222, 235, 1) 50%, rgba(203, 213, 225, 1) 100%);
+}
+
+.gradient-background-2 {
+  background: linear-gradient(0deg, rgba(165, 243, 252, 1) 0%, rgba(178, 231, 253, 1) 50%, rgba(191, 219, 254, 1) 100%);
+}
+
+.gradient-background-3 {
+  background: linear-gradient(0deg, rgba(251, 206, 232, 1) 0%, rgba(242, 210, 244, 1) 50%, rgba(233, 213, 255, 1) 100%);
+}
+
+.gradient-background-4 {
+  background: linear-gradient(0deg, rgb(182,232,166,1) 0%, rgb(182,232,166,1) 100%);
+}
+
+.gradient-background-5 {
+  background: linear-gradient(0deg, rgba(239, 239, 66, 1) 0%, rgba(239, 239, 66, 1) 100%);
+}
+
+.gradient-background-6 {
+  background: linear-gradient(0deg, rgba(215, 200, 235, 1) 0%, rgba(215, 200, 235, 1) 100%);
+}
+
+.gradient-background-7 {
+  background: linear-gradient(0deg, rgba(251, 235, 188, 1) 0%, rgba(251, 235, 188, 1) 100%);
+}
+/* ... existing code ... */
+
+.year-progress-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.year-progress {
+  display: flex;
+  align-items: center;
+}
+
+.year-progress span {
+  margin-right: 0.5rem;
+  font-size: 12px;
+  color: #717882;
+}
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+}
+
+.progress-bar div {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  background-color: #d1d5db;
+  border-radius: 4px;
+}
+
+.progress-bar div.active {
+  background-color: #9ca3af;
+}
+
+.progress-percentage {
+  margin-left: 0.5rem;
+  font-size: 12px;
+  color: #717882;
+}
+
+/* ... existing code ... */

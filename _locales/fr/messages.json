@@ -1,0 +1,226 @@
+{
+    "extName": {
+        "message": "TabMark-Bookmark New Tab",
+        "description": "Le nom de l'extension"
+    },
+    "extDescription": {
+        "message": "TabMark est une application de page de nouvel onglet basée sur les favoris qui vous aide à organiser et à accéder efficacement à vos favoris.",
+        "description": "La description de l'extension"
+    },
+    "welcomeMessage": {
+        "message": "Bonjour",
+        "description": "Message de bienvenue affiché à l'utilisateur"
+    },
+    "searchPlaceholder": {
+        "message": "Rechercher ou entrer une adresse web",
+        "description": "Texte de l'espace réservé pour le champ de recherche"
+    },
+    "editDialogTitle": {
+        "message": "Modifier le lien rapide",
+        "description": "Titre de la boîte de dialogue de modification"
+    },
+    "editNameLabel": {
+        "message": "Nom :",
+        "description": "Étiquette pour le champ de saisie du nom dans la boîte de dialogue de modification"
+    },
+    "editUrlLabel": {
+        "message": "URL :",
+        "description": "Étiquette pour le champ de saisie de l'URL dans la boîte de dialogue de modification"
+    },
+    "saveButton": {
+        "message": "Enregistrer",
+        "description": "Texte pour le bouton d'enregistrement"
+    },
+    "cancelButton": {
+        "message": "Annuler",
+        "description": "Texte pour le bouton d'annulation"
+    },
+    "confirmDeleteMessage": {
+        "message": "Êtes-vous sûr de vouloir supprimer \"$1\" ?",
+        "description": "Message de confirmation de suppression d'un élément"
+    },
+    "confirmDeleteButton": {
+        "message": "Supprimer",
+        "description": "Texte pour le bouton de confirmation de suppression"
+    },
+    "openInNewTab": {
+        "message": "Ouvrir dans un nouvel onglet",
+        "description": "Élément de menu contextuel pour ouvrir le lien dans un nouvel onglet"
+    },
+    "openInNewWindow": {
+        "message": "Ouvrir dans une nouvelle fenêtre",
+        "description": "Élément de menu contextuel pour ouvrir le lien dans une nouvelle fenêtre"
+    },
+    "openInIncognito": {
+        "message": "Ouvrir dans une fenêtre de navigation privée",
+        "description": "Élément de menu contextuel pour ouvrir le lien dans une fenêtre de navigation privée"
+    },
+    "editQuickLink": {
+        "message": "Modifier",
+        "description": "Élément de menu contextuel pour modifier le lien rapide"
+    },
+    "deleteQuickLink": {
+        "message": "Supprimer",
+        "description": "Élément de menu contextuel pour supprimer le lien rapide"
+    },
+    "copyLink": {
+        "message": "Copier le lien",
+        "description": "Élément de menu contextuel pour copier le lien"
+    },
+    "createQRCode": {
+        "message": "Créer un code QR",
+        "description": "Élément de menu contextuel pour créer un code QR"
+    },
+    "confirmDeleteBookmark": {
+        "message": "Êtes-vous sûr de vouloir supprimer le favori \"$1\" ?",
+        "description": "Message de confirmation pour la suppression d'un favori"
+    },
+    "rename": {
+        "message": "Renommer",
+        "description": "Option pour renommer un élément"
+    },
+    "delete": {
+        "message": "Supprimer",
+        "description": "Option pour supprimer un élément"
+    },
+    "setAsHomepage": {
+        "message": "Définir comme page d'accueil",
+        "description": "Option pour définir une page comme page d'accueil"
+    },
+    "confirmDeleteFolder": {
+        "message": "Êtes-vous sûr de vouloir supprimer le dossier \"$1\" ?",
+        "description": "Message de confirmation pour la suppression d'un dossier"
+    },
+    "categoryDeleted": {
+        "message": "Catégorie supprimée",
+        "description": "Message de notification lorsque une catégorie est supprimée"
+    },
+    "searchEngineIconNotFound": {
+        "message": "Icône du moteur de recherche introuvable",
+        "description": "Message d'erreur lorsque l'icône du moteur de recherche est introuvable"
+    },
+    "folderDeleted": {
+        "message": "Dossier supprimé : ID=$1, Titre=$2",
+        "description": "Message de journal lorsque un dossier est supprimé"
+    },
+    "confirmDeleteMessage": {
+        "message": "Êtes-vous sûr de vouloir supprimer \"$1\" ?",
+        "description": "Message de confirmation pour la suppression d'un élément"
+    },
+    "morningGreeting": {
+        "message": "Bonjour👋",
+        "description": "Message de salutation du matin"
+    },
+    "afternoonGreeting": {
+        "message": "Bon après-midi👋",
+        "description": "Message de salutation de l'après-midi"
+    },
+    "eveningGreeting": {
+        "message": "Bonsoir👋",
+        "description": "Message de salutation du soir"
+    },
+    "linkCopied": {
+        "message": "Lien copié dans le presse-papiers",
+        "description": "Message toast lorsque un lien est copié avec succès"
+    },
+    "copyLinkFailed": {
+        "message": "Échec de la copie du lien",
+        "description": "Message toast lorsque la copie d'un lien échoue"
+    },
+    "invalidBookmark": {
+        "message": "Favori ou URL invalide",
+        "description": "Message toast lorsque vous essayez de copier un favori invalide"
+    },
+    "download": {
+        "message": "Télécharger",
+        "description": "Texte pour le bouton de téléchargement"
+    },
+    "copied": {
+        "message": "Copié",
+        "description": "Texte affiché après qu'un lien est copié"
+    },
+    "confirmDeleteTitle": {
+        "message": "Confirmer la suppression",
+        "description": "Titre de la boîte de dialogue de confirmation de suppression"
+    },
+    "scanQRCode": {
+        "message": "Scanner le code QR",
+        "description": "Titre pour la fenêtre modale du code QR"
+    },
+    "renameFolderTitle": {
+        "message": "Renommer le dossier",
+        "description": "Titre de la boîte de dialogue de renommage du dossier"
+    },
+    "doubaoTab": {
+        "message": "Doubao",
+        "description": "Onglet du moteur de recherche Doubao"
+    },
+    "metasoTab": {
+        "message": "Metaso",
+        "description": "Onglet du moteur de recherche Metaso"
+    },
+    "nameLabel": {
+        "message": "Nom",
+        "description": "Étiquette du nom"
+    },
+    "moreSearchSupportToast": {
+        "message": "Plus de support de recherche bientôt disponible",
+        "description": "Toast pour plus de support de recherche"
+    },
+    "settingsTitle": {
+        "message": "Paramètres",
+        "description": "Titre des paramètres"
+    },
+    "appearanceTab": {
+        "message": "Apparence",
+        "description": "Onglet des paramètres d'apparence"
+    },
+    "floatingBallTab": {
+        "message": "Boule flottante",
+        "description": "Onglet des paramètres de la boule flottante"
+    },
+    "backgroundColorTitle": {
+        "message": "Couleur de fond",
+        "description": "Titre des paramètres de la couleur de fond"
+    },
+    "floatingBallSettingsTitle": {
+        "message": "Paramètres de la boule flottante",
+        "description": "Titre des paramètres de la boule flottante"
+    },
+    "floatingBallDescription": {
+        "message": "Lorsqu'elle est activée, une icône flottante cliquable apparaîtra dans le coin supérieur droit de la page pour un accès rapide aux moteurs de recherche et aux favoris.",
+        "description": "Description de la fonctionnalité de la boule flottante"
+    },
+    "enableFloatingBall": {
+        "message": "Activer la boule flottante",
+        "description": "Option pour activer la boule flottante"
+    },
+    "historyLinkTitle": {
+        "message": "Historique",
+        "description": "Titre du lien de l'historique"
+    },
+    "downloadsLinkTitle": {
+        "message": "Téléchargements",
+        "description": "Titre du lien des téléchargements"
+    },
+    "passwordsLinkTitle": {
+        "message": "Mots de passe",
+        "description": "Titre du lien des mots de passe"
+    },
+    "extensionsLinkTitle": {
+        "message": "Extensions",
+        "description": "Titre du lien des extensions"
+    },
+    "settingsLinkTitle": {
+        "message": "Paramètres",
+        "description": "Titre du lien des paramètres"
+    },
+    "confirmDeleteQuickLinkMessage": {
+        "message": "Êtes-vous sûr de vouloir supprimer le lien rapide \"$1\" ? Ce lien ne sera plus visible dans la liste des liens rapides.",
+        "description": "Message de confirmation pour la suppression d'un lien rapide"
+    },
+    "yearProgress": {
+        "message": "Progression annuelle",
+        "description": "Progression annuelle affichée"
+    }
+}

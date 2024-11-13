@@ -1,0 +1,278 @@
+{
+    "extName": {
+        "message": "TabMark-Bookmark New Tab",
+        "description": "확장 프로그램 이름"
+    },
+    "extDescription": {
+        "message": "TabMark는 북마크 기반의 새 탭 페이지 애플리케이션으로, 북마크를 효율적으로 정리하고 액세스하는 데 도움이 됩니다.",
+        "description": "확장 프로그램 설명"
+    },
+    "welcomeMessage": {
+        "message": "좋은 아침",
+        "description": "사용자에게 표시되는 환영 메시지"
+    },
+    "searchPlaceholder": {
+        "message": "Enter 키를 눌러 검색하거나, Cmd/Ctrl + Enter 키를 눌러 모든 검색 엔진을 검색",
+        "description": "검색 입력 필드의 플레이스홀더 텍스트"
+    },
+    "editDialogTitle": {
+        "message": "바로 가기 링크 편집",
+        "description": "편집 대화 상자의 제목"
+    },
+    "editNameLabel": {
+        "message": "이름:",
+        "description": "편집 대화 상자의 이름 입력 필드 레이블"
+    },
+    "editUrlLabel": {
+        "message": "URL:",
+        "description": "편집 대화 상자의 URL 입력 필드 레이블"
+    },
+    "saveButton": {
+        "message": "저장",
+        "description": "저장 버튼 텍스트"
+    },
+    "cancelButton": {
+        "message": "취소",
+        "description": "취소 버튼 텍스트"
+    },
+    "confirmDeleteMessage": {
+        "message": "정말로 \"$1\"을(를) 삭제하시겠습니까?",
+        "description": "항목 삭제 확인 메시지"
+    },
+    "confirmDeleteButton": {
+        "message": "삭제",
+        "description": "삭제 확인 버튼 텍스트"
+    },
+    "openInNewTab": {
+        "message": "새 탭에서 열기",
+        "description": "링크를 새 탭에서 여는 컨텍스트 메뉴 항목"
+    },
+    "openInNewWindow": {
+        "message": "새 창에서 열기",
+        "description": "링크를 새 창에서 여는 컨텍스트 메뉴 항목"
+    },
+    "openInIncognito": {
+        "message": "시크릿 창에서 열기",
+        "description": "링크를 시크릿 창에서 여는 컨텍스트 메뉴 항목"
+    },
+    "editQuickLink": {
+        "message": "편집",
+        "description": "바로 가기 링크를 편집하는 컨텍스트 메뉴 항목"
+    },
+    "deleteQuickLink": {
+        "message": "삭제",
+        "description": "바로 가기 링크를 삭제하는 컨텍스트 메뉴 항목"
+    },
+    "copyLink": {
+        "message": "링크 복사",
+        "description": "링크를 복사하는 컨텍스트 메뉴 항목"
+    },
+    "createQRCode": {
+        "message": "QR 코드 생성",
+        "description": "QR 코드를 생성하는 컨텍스트 메뉴 항목"
+    },
+    "extensionsLinkTitle": {
+        "message": "확장 프로그램",
+        "description": "확장 프로그램 링크 제목"
+    },
+    "settingsLinkTitle": {
+        "message": "설정",
+        "description": "설정 링크 제목"
+    },
+    "settingsTitle": {
+        "message": "설정",
+        "description": "설정 모달 제목"
+    },
+    "appearanceTab": {
+        "message": "외관",
+        "description": "외관 설정 탭 이름"
+    },
+    "floatingBallTab": {
+        "message": "플로팅 볼 설정",
+        "description": "플로팅 볼 설정 탭 이름"
+    },
+    "languageTab": {
+        "message": "언어",
+        "description": "언어 설정 탭 이름"
+    },
+    "backgroundColorTitle": {
+        "message": "배경 색상",
+        "description": "배경 색상 설정 제목"
+    },
+    "floatingBallSettingsTitle": {
+        "message": "플로팅 볼 설정",
+        "description": "플로팅 볼 설정 제목"
+    },
+    "floatingBallDescription": {
+        "message": "플로팅 볼을 활성화하면 페이지 오른쪽 상단에 클릭 가능한 플로팅 아이콘이 표시되어 검색 엔진 및 북마크에 빠르게 액세스할 수 있습니다.",
+        "description": "플로팅 볼 기능 설명"
+    },
+    "enableFloatingBall": {
+        "message": "플로팅 볼 활성화",
+        "description": "플로팅 볼 활성화 옵션"
+    },
+    "languageSettingsTitle": {
+        "message": "언어 / Language",
+        "description": "언어 설정 제목"
+    },
+    "englishOption": {
+        "message": "English",
+        "description": "영어 언어 옵션"
+    },
+    "chineseOption": {
+        "message": "中文（简体）",
+        "description": "중국어(간체) 언어 옵션"
+    },
+    "confirmDeleteMessage": {
+        "message": "정말로 \"$1\"을(를) 삭제하시겠습니까?",
+        "description": "항목 삭제 확인 메시지"
+    },
+    "confirmDeleteBookmark": {
+        "message": "정말로 북마크 \"$1\"을(를) 삭제하시겠습니까?",
+        "description": "북마크 삭제 확인 메시지"
+    },
+    "rename": {
+        "message": "이름 변경",
+        "description": "이름 변경 옵션"
+    },
+    "delete": {
+        "message": "삭제",
+        "description": "삭제 옵션"
+    },
+    "setAsHomepage": {
+        "message": "홈페이지로 설정",
+        "description": "페이지를 홈페이지로 설정하는 옵션"
+    },
+    "confirmDeleteFolder": {
+        "message": "정말로 폴더 \"$1\"을(를) 삭제하시겠습니까?",
+        "description": "폴더 삭제 확인 메시지"
+    },
+    "categoryDeleted": {
+        "message": "카테고리가 삭제되었습니다",
+        "description": "카테고리 삭제 후 알림 메시지"
+    },
+    "searchEngineIconNotFound": {
+        "message": "검색 엔진 아이콘을 찾을 수 없습니다",
+        "description": "검색 엔진 아이콘을 찾을 수 없을 때의 오류 메시지"
+    },
+    "folderDeleted": {
+        "message": "폴더가 삭제되었습니다: ID=$1, 제목=$2",
+        "description": "폴더 삭제 시의 로그 메시지"
+    },
+    "morningGreeting": {
+        "message": "좋은 아침👋",
+        "description": "아침 인사"
+    },
+    "afternoonGreeting": {
+        "message": "안녕하세요👋",
+        "description": "오후 인사"
+    },
+    "eveningGreeting": {
+        "message": "안녕하세요👋",
+        "description": "저녁 인사"
+    },
+    "linkCopied": {
+        "message": "링크가 클립보드에 복사되었습니다",
+        "description": "링크 복사 성공 시의 토스트 알림"
+    },
+    "copyLinkFailed": {
+        "message": "링크 복사 실패",
+        "description": "링크 복사 실패 시의 토스트 알림"
+    },
+    "invalidBookmark": {
+        "message": "유효하지 않은 북마크 또는 URL",
+        "description": "유효하지 않은 북마크를 복사하려고 할 때의 토스트 알림"
+    },
+    "download": {
+        "message": "다운로드",
+        "description": "다운로드 버튼 텍스트"
+    },
+    "copied": {
+        "message": "복사됨",
+        "description": "링크가 복사된 후 표시되는 텍스트"
+    },
+    "confirmDeleteTitle": {
+        "message": "삭제 확인",
+        "description": "삭제 확인 대화 상자의 제목"
+    },
+    "scanQRCode": {
+        "message": "QR 코드 스캔",
+        "description": "QR 코드 모달 창의 제목"
+    },
+    "doubaoTab": {
+        "message": "豆包",
+        "description": "豆包 검색 엔진 탭"
+    },
+    "metasoTab": {
+        "message": "秘塔 검색",
+        "description": "秘塔 검색 탭"
+    },
+    "renameFolderTitle": {
+        "message": "폴더 이름 변경",
+        "description": "폴더 이름 변경 대화 상자의 제목"
+    },
+    "nameLabel": {
+        "message": "이름",
+        "description": "이름 레이블"
+    },
+    "moreSearchSupportToast": {
+        "message": "더 많은 검색 지원이 곧 제공됩니다",
+        "description": "더 많은 검색 지원 알림"
+    },
+    "settingsTitle": {
+        "message": "설정",
+        "description": "설정 제목"
+    },
+    "appearanceTab": {
+        "message": "외관",
+        "description": "외관 설정 탭"
+    },
+    "floatingBallTab": {
+        "message": "플로팅 볼",
+        "description": "플로팅 볼 설정 탭"
+    },
+    "backgroundColorTitle": {
+        "message": "배경 색상",
+        "description": "배경 색상 설정 제목"
+    },
+    "floatingBallSettingsTitle": {
+        "message": "플로팅 볼 설정",
+        "description": "플로팅 볼 설정 제목"
+    },
+    "floatingBallDescription": {
+        "message": "플로팅 볼을 활성화하면 페이지 오른쪽 상단에 클릭 가능한 플로팅 아이콘이 표시되어 검색 엔진 및 북마크에 빠르게 액세스할 수 있습니다.",
+        "description": "플로팅 볼 기능 설명"
+    },
+    "enableFloatingBall": {
+        "message": "플로팅 볼 활성화",
+        "description": "플로팅 볼 활성화 옵션"
+    },
+    "historyLinkTitle": {
+        "message": "기록",
+        "description": "기록 링크 제목"
+    },
+    "downloadsLinkTitle": {
+        "message": "다운로드",
+        "description": "다운로드 링크 제목"
+    },
+    "passwordsLinkTitle": {
+        "message": "비밀번호",
+        "description": "비밀번호 링크 제목"
+    },
+    "extensionsLinkTitle": {
+        "message": "확장 프로그램",
+        "description": "확장 프로그램 링크 제목"
+    },
+    "settingsLinkTitle": {
+        "message": "설정",
+        "description": "설정 링크 제목"
+    },
+    "confirmDeleteQuickLinkMessage": {
+        "message": "정말로 바로 가기 링크 \"$1\"을(를) 삭제하시겠습니까? 이 링크는 더 이상 바로 가기 링크 목록에 표시되지 않습니다.",
+        "description": "바로 가기 링크 삭제 확인 메시지"
+    },
+    "yearProgress": {
+        "message": "년 진행도",
+        "description": "년 진행도 표시"
+    }
+}

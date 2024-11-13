@@ -1,0 +1,286 @@
+{
+    "extName": {
+        "message": "TabMark-Bookmark New Tab",
+        "description": "扩展的名称"
+    },
+    "extDescription": {
+        "message": "TabMark 是一个基于书签的新标签页应用程序，帮助您高效地组织和访问您的书签。",
+        "description": "扩展的描述"
+    },
+    "welcomeMessage": {
+        "message": "早上好",
+        "description": "显示给用户的欢迎消息"
+    },
+    "searchPlaceholder": {
+        "message": "按 Enter 键搜索，或按 Cmd/Ctrl + Enter 键搜索所有搜索引擎",
+        "description": "搜索输入框的占位文本"
+    },
+    "editDialogTitle": {
+        "message": "编辑快捷链接",
+        "description": "编辑对话框的标题"
+    },
+    "editNameLabel": {
+        "message": "名称：",
+        "description": "编辑对话框中名称输入框的标签"
+    },
+    "editUrlLabel": {
+        "message": "网址：",
+        "description": "编辑对话框中URL输入框的标签"
+    },
+    "saveButton": {
+        "message": "保存",
+        "description": "保存按钮的文本"
+    },
+    "cancelButton": {
+        "message": "取消",
+        "description": "取消按钮的文本"
+    },
+    "confirmDeleteMessage": {
+        "message": "您确定要删除 \"$1\" 吗？",
+        "description": "确认删除项目的消息"
+    },
+    "confirmDeleteButton": {
+        "message": "删除",
+        "description": "确认删除按钮的文本"
+    },
+    "openInNewTab": {
+        "message": "在新标签页中打开",
+        "description": "在新标签页中打开链接的上下文菜单项"
+    },
+    "openInNewWindow": {
+        "message": "在新窗口中打开",
+        "description": "在新窗口中打开链接的上下文菜单项"
+    },
+    "openInIncognito": {
+        "message": "在无痕窗口中打开",
+        "description": "在无痕窗口中打开链接的上下文菜单项"
+    },
+    "editQuickLink": {
+        "message": "编辑",
+        "description": "编辑快捷链接的上下文菜单项"
+    },
+    "deleteQuickLink": {
+        "message": "删除",
+        "description": "删除快捷链接的上下文菜单项"
+    },
+    "copyLink": {
+        "message": "复制链接",
+        "description": "复制链接的上下文菜单项"
+    },
+    "createQRCode": {
+        "message": "创建二维码",
+        "description": "创建二维码的上下文菜单项"
+    },
+    "extensionsLinkTitle": {
+        "message": "扩展",
+        "description": "扩展链接的标题"
+    },
+    "settingsLinkTitle": {
+        "message": "设置",
+        "description": "设置链接的标题"
+    },
+    "settingsTitle": {
+        "message": "设置",
+        "description": "设置模态框的标题"
+    },
+    "appearanceTab": {
+        "message": "外观",
+        "description": "外观设置标签名"
+    },
+    "floatingBallTab": {
+        "message": "悬浮球设置",
+        "description": "悬浮球设置标签名"
+    },
+    "languageTab": {
+        "message": "语言",
+        "description": "语言设置标签名"
+    },
+    "backgroundColorTitle": {
+        "message": "背景颜色",
+        "description": "背景颜色设置标题"
+    },
+    "floatingBallSettingsTitle": {
+        "message": "悬浮球设置",
+        "description": "悬浮球设置标题"
+    },
+    "floatingBallDescription": {
+        "message": "开启悬浮球后会在页面右上角显示一个可点击的悬浮图标，用于快速访问搜索引擎和书签。",
+        "description": "悬浮球功能描述"
+    },
+    "enableFloatingBall": {
+        "message": "开启悬浮球",
+        "description": "开启悬浮球的标签"
+    },
+    "languageSettingsTitle": {
+        "message": "语言 / Language",
+        "description": "语言设置标题"
+    },
+    "englishOption": {
+        "message": "English",
+        "description": "英语语言选项"
+    },
+    "chineseOption": {
+        "message": "中文（简体）",
+        "description": "简体中文语言选项"
+    },
+    "confirmDeleteMessage": {
+        "message": "您确定要删除 \"$1\" 吗？",
+        "description": "确认删除项目的消息"
+    },
+    "confirmDeleteBookmark": {
+        "message": "您确定要删除书签 \"$1\" 吗？",
+        "description": "确认删除书签的消息"
+    },
+    "rename": {
+        "message": "重命名",
+        "description": "重命名选项"
+    },
+    "delete": {
+        "message": "删除",
+        "description": "删除选项"
+    },
+    "setAsHomepage": {
+        "message": "设为主页",
+        "description": "将页面设为主页的选项"
+    },
+    "confirmDeleteFolder": {
+        "message": "您确定要删除文件夹 \"$1\" 吗？",
+        "description": "确认删除文件夹的消息"
+    },
+    "categoryDeleted": {
+        "message": "分类已删除",
+        "description": "分类删除后的通知消息"
+    },
+    "searchEngineIconNotFound": {
+        "message": "未找到搜索引擎图标",
+        "description": "未找到搜索引擎图标时的错误消息"
+    },
+    "folderDeleted": {
+        "message": "文件夹已删除：ID=$1，标题=$2",
+        "description": "文件夹删除时的日志消息"
+    },
+    "confirmDeleteMessage": {
+        "message": "您确定要删除 \"$1\" 吗？",
+        "description": "确认删除项目的消息"
+    },
+    "morningGreeting": {
+        "message": "早上好👋",
+        "description": "早上的问候语"
+    },
+    "afternoonGreeting": {
+        "message": "下午好👋",
+        "description": "下午的问候语"
+    },
+    "eveningGreeting": {
+        "message": "晚上好👋",
+        "description": "晚上的问候语"
+    },
+    "linkCopied": {
+        "message": "链接已复制到剪贴板",
+        "description": "复制链接成功时的 toast 提示"
+    },
+    "copyLinkFailed": {
+        "message": "复制链接失败",
+        "description": "复制链接失败时的 toast 提示"
+    },
+    "invalidBookmark": {
+        "message": "无效的书签或URL",
+        "description": "尝试复制无效书签时的 toast 提示"
+    },
+    "download": {
+        "message": "下载",
+        "description": "下载按钮的文本"
+    },
+    "copied": {
+        "message": "已复制",
+        "description": "当链接被复制后显示的文本"
+    },
+    "confirmDeleteTitle": {
+        "message": "确认删除",
+        "description": "确认删除对话框的标题"
+    },
+    "confirmDeleteMessage": {
+        "message": "您确定要删除 \"$1\" 吗？",
+        "description": "确认删除项目的消息"
+    },
+    "scanQRCode": {
+        "message": "扫描二维码",
+        "description": "二维码模态窗口的标题"
+    },
+    "doubaoTab": {
+        "message": "豆包",
+        "description": "豆包搜索引擎标签"
+    },
+    "metasoTab": {
+        "message": "秘塔搜索",
+        "description": "秘塔搜索标签"
+    },
+    "renameFolderTitle": {
+        "message": "重命名文件夹",
+        "description": "重命名文件夹对话框的标题"
+    },
+    "nameLabel": {
+        "message": "名称",
+        "description": "名称标签"
+    },
+    "moreSearchSupportToast": {
+        "message": "更多搜索支持即将推出",
+        "description": "更多搜索支持提示"
+    },
+    "settingsTitle": {
+        "message": "设置",
+        "description": "设置标题"
+    },
+    "appearanceTab": {
+        "message": "外观",
+        "description": "外观设置标签"
+    },
+    "floatingBallTab": {
+        "message": "悬浮球",
+        "description": "悬浮球设置标签"
+    },
+    "backgroundColorTitle": {
+        "message": "背景颜色",
+        "description": "背景颜色设置标题"
+    },
+    "floatingBallSettingsTitle": {
+        "message": "悬浮球设置",
+        "description": "悬浮球设置标题"
+    },
+    "floatingBallDescription": {
+        "message": "开启悬浮球后会在页面右上角显示一个可点击的悬浮图标，用于快速访问搜索引擎和书签。",
+        "description": "悬浮球功能描述"
+    },
+    "enableFloatingBall": {
+        "message": "启用悬浮球",
+        "description": "启用悬浮球选项"
+    },
+    "historyLinkTitle": {
+        "message": "历史记录",
+        "description": "历史记录链接标题"
+    },
+    "downloadsLinkTitle": {
+        "message": "下载",
+        "description": "下载链接标题"
+    },
+    "passwordsLinkTitle": {
+        "message": "密码",
+        "description": "密码链接标题"
+    },
+    "extensionsLinkTitle": {
+        "message": "扩展",
+        "description": "扩展链接标题"
+    },
+    "settingsLinkTitle": {
+        "message": "设置",
+        "description": "设置链接标题"
+    },
+    "confirmDeleteQuickLinkMessage": {
+        "message": "您确定要删除快捷链接 \"$1\" 吗？，该链接将不会出现在快速链接列表中。",
+        "description": "确认删除快捷链接的消息"
+    },
+    "yearProgress": {
+        "message": "年进度",
+        "description": "年进度显示"
+    }
+}

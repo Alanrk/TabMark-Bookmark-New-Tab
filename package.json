@@ -1,0 +1,17 @@
+{
+  "name": "bookmark-extension",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@heroicons/react": "^2.1.4",
+    "@heroicons/vue": "^2.1.4",
+    "tailwindcss": "^3.4.4"
+  }
+}

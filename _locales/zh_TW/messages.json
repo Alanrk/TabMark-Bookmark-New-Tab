@@ -1,0 +1,274 @@
+{
+    "extName": {
+        "message": "TabMark-Bookmark New Tab",
+        "description": "擴充功能的名稱"
+    },
+    "extDescription": {
+        "message": "TabMark 是一個基於書籤的新分頁應用程式，幫助您高效地組織和訪問您的書籤。",
+        "description": "擴充功能的描述"
+    },
+    "welcomeMessage": {
+        "message": "早上好",
+        "description": "顯示給使用者的歡迎訊息"
+    },
+    "searchPlaceholder": {
+        "message": "按 Enter 鍵搜尋，或按 Cmd/Ctrl + Enter 鍵搜尋所有搜尋引擎",
+        "description": "搜尋輸入框的佔位文字"
+    },
+    "editDialogTitle": {
+        "message": "編輯快捷連結",
+        "description": "編輯對話框的標題"
+    },
+    "editNameLabel": {
+        "message": "名稱：",
+        "description": "編輯對話框中名稱輸入框的標籤"
+    },
+    "editUrlLabel": {
+        "message": "網址：",
+        "description": "編輯對話框中網址輸入框的標籤"
+    },
+    "saveButton": {
+        "message": "儲存",
+        "description": "儲存按鈕的文字"
+    },
+    "cancelButton": {
+        "message": "取消",
+        "description": "取消按鈕的文字"
+    },
+    "confirmDeleteMessage": {
+        "message": "您確定要刪除 \"$1\" 嗎？",
+        "description": "確認刪除項目的訊息"
+    },
+    "confirmDeleteButton": {
+        "message": "刪除",
+        "description": "確認刪除按鈕的文字"
+    },
+    "openInNewTab": {
+        "message": "在新分頁中開啟",
+        "description": "在新分頁中開啟連結的上下文選單項目"
+    },
+    "openInNewWindow": {
+        "message": "在新視窗中開啟",
+        "description": "在新視窗中開啟連結的上下文選單項目"
+    },
+    "openInIncognito": {
+        "message": "在無痕視窗中開啟",
+        "description": "在無痕視窗中開啟連結的上下文選單項目"
+    },
+    "editQuickLink": {
+        "message": "編輯",
+        "description": "編輯快捷連結的上下文選單項目"
+    },
+    "deleteQuickLink": {
+        "message": "刪除",
+        "description": "刪除快捷連結的上下文選單項目"
+    },
+    "copyLink": {
+        "message": "複製連結",
+        "description": "複製連結的上下文選單項目"
+    },
+    "createQRCode": {
+        "message": "建立 QR 碼",
+        "description": "建立 QR 碼的上下文選單項目"
+    },
+    "extensionsLinkTitle": {
+        "message": "擴充功能",
+        "description": "擴充功能連結的標題"
+    },
+    "settingsLinkTitle": {
+        "message": "設定",
+        "description": "設定連結的標題"
+    },
+    "settingsTitle": {
+        "message": "設定",
+        "description": "設定模態框的標題"
+    },
+    "appearanceTab": {
+        "message": "外觀",
+        "description": "外觀設定標籤名"
+    },
+    "floatingBallTab": {
+        "message": "懸浮球設定",
+        "description": "懸浮球設定標籤名"
+    },
+    "languageTab": {
+        "message": "語言",
+        "description": "語言設定標籤名"
+    },
+    "backgroundColorTitle": {
+        "message": "背景顏色",
+        "description": "背景顏色設定標題"
+    },
+    "floatingBallSettingsTitle": {
+        "message": "懸浮球設定",
+        "description": "懸浮球設定標題"
+    },
+    "floatingBallDescription": {
+        "message": "開啟懸浮球後會在頁面右上角顯示一個可點擊的懸浮圖示，用於快速訪問搜尋引擎和書籤。",
+        "description": "懸浮球功能描述"
+    },
+    "enableFloatingBall": {
+        "message": "開啟懸浮球",
+        "description": "開啟懸浮球的標籤"
+    },
+    "languageSettingsTitle": {
+        "message": "語言 / Language",
+        "description": "語言設定標題"
+    },
+    "englishOption": {
+        "message": "English",
+        "description": "英語語言選項"
+    },
+    "chineseOption": {
+        "message": "中文（簡體）",
+        "description": "簡體中文語言選項"
+    },
+    "confirmDeleteBookmark": {
+        "message": "您確定要刪除書籤 \"$1\" 嗎？",
+        "description": "確認刪除書籤的訊息"
+    },
+    "rename": {
+        "message": "重命名",
+        "description": "重命名選項"
+    },
+    "delete": {
+        "message": "刪除",
+        "description": "刪除選項"
+    },
+    "setAsHomepage": {
+        "message": "設為首頁",
+        "description": "將頁面設為首頁的選項"
+    },
+    "confirmDeleteFolder": {
+        "message": "您確定要刪除資料夾 \"$1\" 嗎？",
+        "description": "確認刪除資料夾的訊息"
+    },
+    "categoryDeleted": {
+        "message": "分類已刪除",
+        "description": "分類刪除後的通知訊息"
+    },
+    "searchEngineIconNotFound": {
+        "message": "未找到搜尋引擎圖示",
+        "description": "未找到搜尋引擎圖示時的錯誤訊息"
+    },
+    "folderDeleted": {
+        "message": "資料夾已刪除：ID=$1，標題=$2",
+        "description": "資料夾刪除時的日誌訊息"
+    },
+    "morningGreeting": {
+        "message": "早上好👋",
+        "description": "早上的問候語"
+    },
+    "afternoonGreeting": {
+        "message": "下午好👋",
+        "description": "下午的問候語"
+    },
+    "eveningGreeting": {
+        "message": "晚上好👋",
+        "description": "晚上的問候語"
+    },
+    "linkCopied": {
+        "message": "連結已複製到剪貼簿",
+        "description": "複製連結成功時的 toast 提示"
+    },
+    "copyLinkFailed": {
+        "message": "複製連結失敗",
+        "description": "複製連結失敗時的 toast 提示"
+    },
+    "invalidBookmark": {
+        "message": "無效的書籤或網址",
+        "description": "嘗試複製無效書籤時的 toast 提示"
+    },
+    "download": {
+        "message": "下載",
+        "description": "下載按鈕的文字"
+    },
+    "copied": {
+        "message": "已複製",
+        "description": "當連結被複製後顯示的文字"
+    },
+    "confirmDeleteTitle": {
+        "message": "確認刪除",
+        "description": "確認刪除對話框的標題"
+    },
+    "scanQRCode": {
+        "message": "掃描 QR 碼",
+        "description": "QR 碼模態窗口的標題"
+    },
+    "doubaoTab": {
+        "message": "豆包",
+        "description": "豆包搜尋引擎標籤"
+    },
+    "metasoTab": {
+        "message": "秘塔搜尋",
+        "description": "秘塔搜尋標籤"
+    },
+    "renameFolderTitle": {
+        "message": "重命名資料夾",
+        "description": "重命名資料夾對話框的標題"
+    },
+    "nameLabel": {
+        "message": "名稱",
+        "description": "名稱標籤"
+    },
+    "moreSearchSupportToast": {
+        "message": "更多搜尋支援即將推出",
+        "description": "更多搜尋支援提示"
+    },
+    "settingsTitle": {
+        "message": "設定",
+        "description": "設定標題"
+    },
+    "appearanceTab": {
+        "message": "外觀",
+        "description": "外觀設定標籤"
+    },
+    "floatingBallTab": {
+        "message": "懸浮球",
+        "description": "懸浮球設定標籤"
+    },
+    "backgroundColorTitle": {
+        "message": "背景顏色",
+        "description": "背景顏色設定標題"
+    },
+    "floatingBallSettingsTitle": {
+        "message": "懸浮球設定",
+        "description": "懸浮球設定標題"
+    },
+    "floatingBallDescription": {
+        "message": "開啟懸浮球後會在頁面右上角顯示一個可點擊的懸浮圖示，用於快速訪問搜尋引擎和書籤。",
+        "description": "懸浮球功能描述"
+    },
+    "enableFloatingBall": {
+        "message": "啟用懸浮球",
+        "description": "啟用懸浮球選項"
+    },
+    "historyLinkTitle": {
+        "message": "歷史記錄",
+        "description": "歷史記錄連結標題"
+    },
+    "downloadsLinkTitle": {
+        "message": "下載",
+        "description": "下載連結標題"
+    },
+    "passwordsLinkTitle": {
+        "message": "密碼",
+        "description": "密碼連結標題"
+    },
+    "extensionsLinkTitle": {
+        "message": "擴充功能",
+        "description": "擴充功能連結標題"
+    },
+    "settingsLinkTitle": {
+        "message": "設定",
+        "description": "設定連結標題"
+    },
+    "confirmDeleteQuickLinkMessage": {
+        "message": "您確定要刪除快捷連結 \"$1\" 嗎？該連結將不會出現在快速連結列表中。",
+        "description": "確認刪除快捷連結的消息"
+    },
+    "yearProgress": {
+        "message": "年進度",
+        "description": "年進度顯示"
+    }
+}

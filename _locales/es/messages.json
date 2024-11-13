@@ -1,0 +1,226 @@
+{
+    "extName": {
+        "message": "TabMark-Bookmark New Tab",
+        "description": "El nombre de la extensión"
+    },
+    "extDescription": {
+        "message": "TabMark es una aplicación de página de nueva pestaña basada en marcadores que te ayuda a organizar y acceder a tus marcadores de manera eficiente.",
+        "description": "La descripción de la extensión"
+    },
+    "welcomeMessage": {
+        "message": "Buenos días",
+        "description": "Mensaje de bienvenida mostrado al usuario"
+    },
+    "searchPlaceholder": {
+        "message": "Buscar o ingresar dirección web",
+        "description": "Texto de marcador de posición para el campo de búsqueda"
+    },
+    "editDialogTitle": {
+        "message": "Editar enlace rápido",
+        "description": "Título del cuadro de diálogo de edición"
+    },
+    "editNameLabel": {
+        "message": "Nombre:",
+        "description": "Etiqueta para el campo de entrada de nombre en el cuadro de diálogo de edición"
+    },
+    "editUrlLabel": {
+        "message": "URL:",
+        "description": "Etiqueta para el campo de entrada de URL en el cuadro de diálogo de edición"
+    },
+    "saveButton": {
+        "message": "Guardar",
+        "description": "Texto para el botón de guardar"
+    },
+    "cancelButton": {
+        "message": "Cancelar",
+        "description": "Texto para el botón de cancelar"
+    },
+    "confirmDeleteMessage": {
+        "message": "¿Estás seguro de que deseas eliminar \"$1\"?",
+        "description": "Mensaje para confirmar la eliminación de un elemento"
+    },
+    "confirmDeleteButton": {
+        "message": "Eliminar",
+        "description": "Texto para el botón de confirmación de eliminación"
+    },
+    "openInNewTab": {
+        "message": "Abrir en nueva pestaña",
+        "description": "Elemento del menú contextual para abrir el enlace en una nueva pestaña"
+    },
+    "openInNewWindow": {
+        "message": "Abrir en nueva ventana",
+        "description": "Elemento del menú contextual para abrir el enlace en una nueva ventana"
+    },
+    "openInIncognito": {
+        "message": "Abrir en ventana de incógnito",
+        "description": "Elemento del menú contextual para abrir el enlace en una ventana de incógnito"
+    },
+    "editQuickLink": {
+        "message": "Editar",
+        "description": "Elemento del menú contextual para editar el enlace rápido"
+    },
+    "deleteQuickLink": {
+        "message": "Eliminar",
+        "description": "Elemento del menú contextual para eliminar el enlace rápido"
+    },
+    "copyLink": {
+        "message": "Copiar enlace",
+        "description": "Elemento del menú contextual para copiar el enlace"
+    },
+    "createQRCode": {
+        "message": "Crear código QR",
+        "description": "Elemento del menú contextual para crear un código QR"
+    },
+    "confirmDeleteBookmark": {
+        "message": "¿Estás seguro de que deseas eliminar el marcador \"$1\"?",
+        "description": "Mensaje de confirmación para eliminar un marcador"
+    },
+    "rename": {
+        "message": "Renombrar",
+        "description": "Opción para renombrar un elemento"
+    },
+    "delete": {
+        "message": "Eliminar",
+        "description": "Opción para eliminar un elemento"
+    },
+    "setAsHomepage": {
+        "message": "Establecer como página de inicio",
+        "description": "Opción para establecer una página como página de inicio"
+    },
+    "confirmDeleteFolder": {
+        "message": "¿Estás seguro de que deseas eliminar la carpeta \"$1\"?",
+        "description": "Mensaje de confirmación para eliminar una carpeta"
+    },
+    "categoryDeleted": {
+        "message": "Categoría eliminada",
+        "description": "Mensaje de notificación cuando se elimina una categoría"
+    },
+    "searchEngineIconNotFound": {
+        "message": "Icono del motor de búsqueda no encontrado",
+        "description": "Mensaje de error cuando no se encuentra el icono del motor de búsqueda"
+    },
+    "folderDeleted": {
+        "message": "Carpeta eliminada: ID=$1, Título=$2",
+        "description": "Mensaje de registro cuando se elimina una carpeta"
+    },
+    "confirmDeleteMessage": {
+        "message": "¿Estás seguro de que deseas eliminar \"$1\"?",
+        "description": "Mensaje de confirmación para eliminar un elemento"
+    },
+    "morningGreeting": {
+        "message": "Buenos días👋",
+        "description": "Saludo de la mañana"
+    },
+    "afternoonGreeting": {
+        "message": "Buenas tardes👋",
+        "description": "Saludo de la tarde"
+    },
+    "eveningGreeting": {
+        "message": "Buenas noches👋",
+        "description": "Saludo de la noche"
+    },
+    "linkCopied": {
+        "message": "Enlace copiado al portapapeles",
+        "description": "Mensaje de notificación cuando un enlace se copia con éxito"
+    },
+    "copyLinkFailed": {
+        "message": "Error al copiar el enlace",
+        "description": "Mensaje de notificación cuando falla la copia de un enlace"
+    },
+    "invalidBookmark": {
+        "message": "Marcador o URL inválido",
+        "description": "Mensaje de notificación cuando se intenta copiar un marcador inválido"
+    },
+    "download": {
+        "message": "Descargar",
+        "description": "Texto para el botón de descarga"
+    },
+    "copied": {
+        "message": "Copiado",
+        "description": "Texto mostrado después de copiar un enlace"
+    },
+    "confirmDeleteTitle": {
+        "message": "Confirmar eliminación",
+        "description": "Título del cuadro de diálogo de confirmación de eliminación"
+    },
+    "scanQRCode": {
+        "message": "Escanear código QR",
+        "description": "Título para la ventana modal del código QR"
+    },
+    "renameFolderTitle": {
+        "message": "Renombrar carpeta",
+        "description": "Título del cuadro de diálogo para renombrar la carpeta"
+    },
+    "doubaoTab": {
+        "message": "Doubao",
+        "description": "Pestaña del motor de búsqueda Doubao"
+    },
+    "metasoTab": {
+        "message": "Metaso",
+        "description": "Pestaña del motor de búsqueda Metaso"
+    },
+    "nameLabel": {
+        "message": "Nombre",
+        "description": "Etiqueta de nombre"
+    },
+    "moreSearchSupportToast": {
+        "message": "Más soporte de búsqueda próximamente",
+        "description": "Notificación para más soporte de búsqueda"
+    },
+    "settingsTitle": {
+        "message": "Configuraciones",
+        "description": "Título de configuraciones"
+    },
+    "appearanceTab": {
+        "message": "Apariencia",
+        "description": "Pestaña de configuraciones de apariencia"
+    },
+    "floatingBallTab": {
+        "message": "Bola flotante",
+        "description": "Pestaña de configuraciones de la bola flotante"
+    },
+    "backgroundColorTitle": {
+        "message": "Color de fondo",
+        "description": "Título de configuraciones de color de fondo"
+    },
+    "floatingBallSettingsTitle": {
+        "message": "Configuraciones de la bola flotante",
+        "description": "Título de configuraciones de la bola flotante"
+    },
+    "floatingBallDescription": {
+        "message": "Cuando está habilitado, un icono flotante clicable aparecerá en la esquina superior derecha de la página para un acceso rápido a los motores de búsqueda y marcadores.",
+        "description": "Descripción de la función de la bola flotante"
+    },
+    "enableFloatingBall": {
+        "message": "Habilitar bola flotante",
+        "description": "Opción para habilitar la bola flotante"
+    },
+    "historyLinkTitle": {
+        "message": "Historial",
+        "description": "Título del enlace de historial"
+    },
+    "downloadsLinkTitle": {
+        "message": "Descargas",
+        "description": "Título del enlace de descargas"
+    },
+    "passwordsLinkTitle": {
+        "message": "Contraseñas",
+        "description": "Título del enlace de contraseñas"
+    },
+    "extensionsLinkTitle": {
+        "message": "Extensiones",
+        "description": "Título del enlace de extensiones"
+    },
+    "settingsLinkTitle": {
+        "message": "Configuraciones",
+        "description": "Título del enlace de configuraciones"
+    },
+    "confirmDeleteQuickLinkMessage": {
+        "message": "¿Estás seguro de que deseas eliminar el enlace rápido \"$1\"? Este enlace no aparecerá en la lista de enlaces rápidos.",
+        "description": "Mensaje de confirmación para eliminar un enlace rápido"
+    },
+    "yearProgress": {
+        "message": "Progreso anual",
+        "description": "Progreso anual mostrado"
+    }
+}

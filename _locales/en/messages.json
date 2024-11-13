@@ -1,0 +1,226 @@
+{
+    "extName": {
+        "message": "TabMark-Bookmark New Tab",
+        "description": "The name of the extension"
+    },
+    "extDescription": {
+        "message": "TabMark is a bookmark-based new tab page application that helps you efficiently organize and access your bookmarks.",
+        "description": "The description of the extension"
+    },
+    "welcomeMessage": {
+        "message": "Good morning",
+        "description": "Welcome message displayed to the user"
+    },
+    "searchPlaceholder": {
+        "message": "Press Enter to search, or Cmd/Ctrl + Enter to search all search engines",
+        "description": "Placeholder text for the search input"
+    },
+    "editDialogTitle": {
+        "message": "Edit Quick Link",
+        "description": "Title for the edit dialog"
+    },
+    "editNameLabel": {
+        "message": "Name:",
+        "description": "Label for the name input in the edit dialog"
+    },
+    "editUrlLabel": {
+        "message": "URL:",
+        "description": "Label for the URL input in the edit dialog"
+    },
+    "saveButton": {
+        "message": "Save",
+        "description": "Text for the save button"
+    },
+    "cancelButton": {
+        "message": "Cancel",
+        "description": "Text for the cancel button"
+    },
+    "confirmDeleteMessage": {
+        "message": "Are you sure you want to delete \"$1\"?",
+        "description": "Message to confirm deletion of an item"
+    },
+    "confirmDeleteButton": {
+        "message": "Delete",
+        "description": "Text for the confirm delete button"
+    },
+    "openInNewTab": {
+        "message": "Open in new tab",
+        "description": "Context menu item to open link in new tab"
+    },
+    "openInNewWindow": {
+        "message": "Open in new window",
+        "description": "Context menu item to open link in new window"
+    },
+    "openInIncognito": {
+        "message": "Open in incognito window",
+        "description": "Context menu item to open link in incognito window"
+    },
+    "editQuickLink": {
+        "message": "Edit",
+        "description": "Context menu item to edit quick link"
+    },
+    "deleteQuickLink": {
+        "message": "Delete",
+        "description": "Context menu item to delete quick link"
+    },
+    "copyLink": {
+        "message": "Copy link",
+        "description": "Context menu item to copy link"
+    },
+    "createQRCode": {
+        "message": "Create QR code",
+        "description": "Context menu item to create QR code"
+    },
+    "confirmDeleteBookmark": {
+        "message": "Are you sure you want to delete the bookmark \"$1\"?",
+        "description": "Confirmation message for deleting a bookmark"
+    },
+    "rename": {
+        "message": "Rename",
+        "description": "Option to rename an item"
+    },
+    "delete": {
+        "message": "Delete",
+        "description": "Option to delete an item"
+    },
+    "setAsHomepage": {
+        "message": "Set as homepage",
+        "description": "Option to set a page as homepage"
+    },
+    "confirmDeleteFolder": {
+        "message": "Are you sure you want to delete the folder \"$1\"?",
+        "description": "Confirmation message for deleting a folder"
+    },
+    "categoryDeleted": {
+        "message": "Category deleted",
+        "description": "Notification message when a category is deleted"
+    },
+    "searchEngineIconNotFound": {
+        "message": "Search engine icon not found",
+        "description": "Error message when search engine icon is not found"
+    },
+    "folderDeleted": {
+        "message": "Folder deleted: ID=$1, Title=$2",
+        "description": "Log message when a folder is deleted"
+    },
+    "confirmDeleteMessage": {
+        "message": "Are you sure you want to delete \"$1\"?",
+        "description": "Confirmation message for deleting an item"
+    },
+    "morningGreeting": {
+        "message": "Good morning👋",
+        "description": "早上的问候语"
+    },
+    "afternoonGreeting": {
+        "message": "Good afternoon👋",
+        "description": "下午的问候语"
+    },
+    "eveningGreeting": {
+        "message": "Good evening👋",
+        "description": "晚上的问候语"
+    },
+    "linkCopied": {
+        "message": "Link copied to clipboard",
+        "description": "Toast message when a link is successfully copied"
+    },
+    "copyLinkFailed": {
+        "message": "Failed to copy link",
+        "description": "Toast message when copying a link fails"
+    },
+    "invalidBookmark": {
+        "message": "Invalid bookmark or URL",
+        "description": "Toast message when trying to copy an invalid bookmark"
+    },
+    "download": {
+        "message": "Download",
+        "description": "Text for the download button"
+    },
+    "copied": {
+        "message": "Copied",
+        "description": "Text shown after a link is copied"
+    },
+    "confirmDeleteTitle": {
+        "message": "Confirm Delete",
+        "description": "Title for the confirm delete dialog"
+    },
+    "scanQRCode": {
+        "message": "Scan QR Code",
+        "description": "Title for the QR code modal"
+    },
+    "renameFolderTitle": {
+        "message": "Rename Folder",
+        "description": "Title for the rename folder dialog"
+    },
+    "doubaoTab": {
+        "message": "Doubao",
+        "description": "Doubao search engine tab"
+    },
+    "metasoTab": {
+        "message": "Metaso",
+        "description": "Metaso search engine tab"
+    },
+    "nameLabel": {
+        "message": "Name",
+        "description": "Name label"
+    },
+    "moreSearchSupportToast": {
+        "message": "More search support coming soon",
+        "description": "Toast for more search support"
+    },
+    "settingsTitle": {
+        "message": "Settings",
+        "description": "Settings title"
+    },
+    "appearanceTab": {
+        "message": "Appearance",
+        "description": "Appearance settings tab"
+    },
+    "floatingBallTab": {
+        "message": "Floating Ball",
+        "description": "Floating ball settings tab"
+    },
+    "backgroundColorTitle": {
+        "message": "Background Color",
+        "description": "Background color settings title"
+    },
+    "floatingBallSettingsTitle": {
+        "message": "Floating Ball Settings",
+        "description": "Floating ball settings title"
+    },
+    "floatingBallDescription": {
+        "message": "When enabled, a clickable floating icon will appear in the upper right corner of the page for quick access to search engines and bookmarks.",
+        "description": "Floating ball feature description"
+    },
+    "enableFloatingBall": {
+        "message": "Enable Floating Ball",
+        "description": "Enable floating ball option"
+    },
+    "historyLinkTitle": {
+        "message": "History",
+        "description": "History link title"
+    },
+    "downloadsLinkTitle": {
+        "message": "Downloads",
+        "description": "Downloads link title"
+    },
+    "passwordsLinkTitle": {
+        "message": "Passwords",
+        "description": "Passwords link title"
+    },
+    "extensionsLinkTitle": {
+        "message": "Extensions",
+        "description": "Extensions link title"
+    },
+    "settingsLinkTitle": {
+        "message": "Settings",
+        "description": "Settings link title"
+    },
+    "confirmDeleteQuickLinkMessage": {
+            "message": "Are you sure you want to delete the quick link \"$1\"? This link will no longer appear in the quick links list.",
+        "description": "Confirmation message for deleting a quick link"
+    },
+    "yearProgress": {
+        "message": "Year Progress",
+        "description": "Year progress display"
+    }
+}

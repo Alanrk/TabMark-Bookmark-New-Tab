@@ -1,0 +1,278 @@
+{
+    "extName": {
+        "message": "TabMark-Bookmark New Tab",
+        "description": "拡張機能の名前"
+    },
+    "extDescription": {
+        "message": "TabMark はブックマークに基づいた新しいタブページアプリケーションで、ブックマークを効率的に整理し、アクセスするのに役立ちます。",
+        "description": "拡張機能の説明"
+    },
+    "welcomeMessage": {
+        "message": "おはようございます",
+        "description": "ユーザーに表示されるウェルカムメッセージ"
+    },
+    "searchPlaceholder": {
+        "message": "Enter キーを押して検索、または Cmd/Ctrl + Enter キーを押してすべての検索エンジンを検索",
+        "description": "検索入力フィールドのプレースホルダーテキスト"
+    },
+    "editDialogTitle": {
+        "message": "ショートカットリンクを編集",
+        "description": "編集ダイアログのタイトル"
+    },
+    "editNameLabel": {
+        "message": "名前：",
+        "description": "編集ダイアログの名前入力フィールドのラベル"
+    },
+    "editUrlLabel": {
+        "message": "URL：",
+        "description": "編集ダイアログのURL入力フィールドのラベル"
+    },
+    "saveButton": {
+        "message": "保存",
+        "description": "保存ボタンのテキスト"
+    },
+    "cancelButton": {
+        "message": "キャンセル",
+        "description": "キャンセルボタンのテキスト"
+    },
+    "confirmDeleteMessage": {
+        "message": "本当に \"$1\" を削除しますか？",
+        "description": "アイテムを削除する確認メッセージ"
+    },
+    "confirmDeleteButton": {
+        "message": "削除",
+        "description": "削除確認ボタンのテキスト"
+    },
+    "openInNewTab": {
+        "message": "新しいタブで開く",
+        "description": "リンクを新しいタブで開くコンテキストメニュー項目"
+    },
+    "openInNewWindow": {
+        "message": "新しいウィンドウで開く",
+        "description": "リンクを新しいウィンドウで開くコンテキストメニュー項目"
+    },
+    "openInIncognito": {
+        "message": "シークレットウィンドウで開く",
+        "description": "リンクをシークレットウィンドウで開くコンテキストメニュー項目"
+    },
+    "editQuickLink": {
+        "message": "編集",
+        "description": "ショートカットリンクを編集するコンテキストメニュー項目"
+    },
+    "deleteQuickLink": {
+        "message": "削除",
+        "description": "ショートカットリンクを削除するコンテキストメニュー項目"
+    },
+    "copyLink": {
+        "message": "リンクをコピー",
+        "description": "リンクをコピーするコンテキストメニュー項目"
+    },
+    "createQRCode": {
+        "message": "QRコードを作成",
+        "description": "QRコードを作成するコンテキストメニュー項目"
+    },
+    "extensionsLinkTitle": {
+        "message": "拡張機能",
+        "description": "拡張機能リンクのタイトル"
+    },
+    "settingsLinkTitle": {
+        "message": "設定",
+        "description": "設定リンクのタイトル"
+    },
+    "settingsTitle": {
+        "message": "設定",
+        "description": "設定モーダルのタイトル"
+    },
+    "appearanceTab": {
+        "message": "外観",
+        "description": "外観設定タブ名"
+    },
+    "floatingBallTab": {
+        "message": "フローティングボール設定",
+        "description": "フローティングボール設定タブ名"
+    },
+    "languageTab": {
+        "message": "言語",
+        "description": "言語設定タブ名"
+    },
+    "backgroundColorTitle": {
+        "message": "背景色",
+        "description": "背景色設定のタイトル"
+    },
+    "floatingBallSettingsTitle": {
+        "message": "フローティングボール設定",
+        "description": "フローティングボール設定のタイトル"
+    },
+    "floatingBallDescription": {
+        "message": "フローティングボールを有効にすると、ページの右上にクリック可能なフローティングアイコンが表示され、検索エンジンやブックマークに素早くアクセスできます。",
+        "description": "フローティングボール機能の説明"
+    },
+    "enableFloatingBall": {
+        "message": "フローティングボールを有効にする",
+        "description": "フローティングボールを有効にするオプション"
+    },
+    "languageSettingsTitle": {
+        "message": "言語 / Language",
+        "description": "言語設定のタイトル"
+    },
+    "englishOption": {
+        "message": "English",
+        "description": "英語の言語オプション"
+    },
+    "chineseOption": {
+        "message": "中文（简体）",
+        "description": "簡体字中国語の言語オプション"
+    },
+    "confirmDeleteMessage": {
+        "message": "本当に \"$1\" を削除しますか？",
+        "description": "アイテムを削除する確認メッセージ"
+    },
+    "confirmDeleteBookmark": {
+        "message": "本当にブックマーク \"$1\" を削除しますか？",
+        "description": "ブックマークを削除する確認メッセージ"
+    },
+    "rename": {
+        "message": "名前を変更",
+        "description": "名前を変更するオプション"
+    },
+    "delete": {
+        "message": "削除",
+        "description": "削除オプション"
+    },
+    "setAsHomepage": {
+        "message": "ホームページに設定",
+        "description": "ページをホームページに設定するオプション"
+    },
+    "confirmDeleteFolder": {
+        "message": "本当にフォルダ \"$1\" を削除しますか？",
+        "description": "フォルダを削除する確認メッセージ"
+    },
+    "categoryDeleted": {
+        "message": "カテゴリが削除されました",
+        "description": "カテゴリ削除後の通知メッセージ"
+    },
+    "searchEngineIconNotFound": {
+        "message": "検索エンジンのアイコンが見つかりません",
+        "description": "検索エンジンのアイコンが見つからない場合のエラーメッセージ"
+    },
+    "folderDeleted": {
+        "message": "フォルダが削除されました：ID=$1、タイトル=$2",
+        "description": "フォルダ削除時のログメッセージ"
+    },
+    "morningGreeting": {
+        "message": "おはようございます👋",
+        "description": "朝の挨拶"
+    },
+    "afternoonGreeting": {
+        "message": "こんにちは👋",
+        "description": "午後の挨拶"
+    },
+    "eveningGreeting": {
+        "message": "こんばんは👋",
+        "description": "夜の挨拶"
+    },
+    "linkCopied": {
+        "message": "リンクがクリップボードにコピーされました",
+        "description": "リンクが正常にコピーされたときのトースト通知"
+    },
+    "copyLinkFailed": {
+        "message": "リンクのコピーに失敗しました",
+        "description": "リンクのコピーに失敗したときのトースト通知"
+    },
+    "invalidBookmark": {
+        "message": "無効なブックマークまたはURL",
+        "description": "無効なブックマークをコピーしようとしたときのトースト通知"
+    },
+    "download": {
+        "message": "ダウンロード",
+        "description": "ダウンロードボタンのテキスト"
+    },
+    "copied": {
+        "message": "コピーされました",
+        "description": "リンクがコピーされた後に表示されるテキスト"
+    },
+    "confirmDeleteTitle": {
+        "message": "削除の確認",
+        "description": "削除確認ダイアログのタイトル"
+    },
+    "scanQRCode": {
+        "message": "QRコードをスキャン",
+        "description": "QRコードモーダルウィンドウのタイトル"
+    },
+    "doubaoTab": {
+        "message": "豆包",
+        "description": "豆包検索エンジンタブ"
+    },
+    "metasoTab": {
+        "message": "秘塔検索",
+        "description": "秘塔検索タブ"
+    },
+    "renameFolderTitle": {
+        "message": "フォルダの名前を変更",
+        "description": "フォルダの名前を変更するダイアログのタイトル"
+    },
+    "nameLabel": {
+        "message": "名前",
+        "description": "名前ラベル"
+    },
+    "moreSearchSupportToast": {
+        "message": "さらに多くの検索サポートが近日公開予定",
+        "description": "さらに多くの検索サポートのトースト通知"
+    },
+    "settingsTitle": {
+        "message": "設定",
+        "description": "設定のタイトル"
+    },
+    "appearanceTab": {
+        "message": "外観",
+        "description": "外観設定タブ"
+    },
+    "floatingBallTab": {
+        "message": "フローティングボール",
+        "description": "フローティングボール設定タブ"
+    },
+    "backgroundColorTitle": {
+        "message": "背景色",
+        "description": "背景色設定のタイトル"
+    },
+    "floatingBallSettingsTitle": {
+        "message": "フローティングボール設定",
+        "description": "フローティングボール設定のタイトル"
+    },
+    "floatingBallDescription": {
+        "message": "フローティングボールを有効にすると、ページの右上にクリック可能なフローティングアイコンが表示され、検索エンジンやブックマークに素早くアクセスできます。",
+        "description": "フローティングボール機能の説明"
+    },
+    "enableFloatingBall": {
+        "message": "フローティングボールを有効にする",
+        "description": "フローティングボールを有効にするオプション"
+    },
+    "historyLinkTitle": {
+        "message": "履歴",
+        "description": "履歴リンクのタイトル"
+    },
+    "downloadsLinkTitle": {
+        "message": "ダウンロード",
+        "description": "ダウンロードリンクのタイトル"
+    },
+    "passwordsLinkTitle": {
+        "message": "パスワード",
+        "description": "パスワードリンクのタイトル"
+    },
+    "extensionsLinkTitle": {
+        "message": "拡張機能",
+        "description": "拡張機能リンクのタイトル"
+    },
+    "settingsLinkTitle": {
+        "message": "設定",
+        "description": "設定リンクのタイトル"
+    },
+    "confirmDeleteQuickLinkMessage": {
+        "message": "本当に \"$1\" を削除しますか？",
+        "description": "アイテムを削除する確認メッセージ"
+    },
+    "yearProgress": {
+        "message": "年进度",
+        "description": "年进度の表示"
+    }
+}

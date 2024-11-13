@@ -1,0 +1,226 @@
+{
+    "extName": {
+        "message": "TabMark-Bookmark New Tab",
+        "description": "Der Name der Erweiterung"
+    },
+    "extDescription": {
+        "message": "TabMark ist eine auf Lesezeichen basierende neue Tab-Seitenanwendung, die Ihnen hilft, Ihre Lesezeichen effizient zu organisieren und darauf zuzugreifen.",
+        "description": "Die Beschreibung der Erweiterung"
+    },
+    "welcomeMessage": {
+        "message": "Guten Morgen",
+        "description": "Willkommensnachricht, die dem Benutzer angezeigt wird"
+    },
+    "searchPlaceholder": {
+        "message": "Drücken Sie Enter, um zu suchen, oder Cmd/Ctrl + Enter, um alle Suchmaschinen zu durchsuchen",
+        "description": "Platzhaltertext für das Suchfeld"
+    },
+    "editDialogTitle": {
+        "message": "Schnelllink bearbeiten",
+        "description": "Titel für das Bearbeitungsdialogfeld"
+    },
+    "editNameLabel": {
+        "message": "Name:",
+        "description": "Beschriftung für das Namenseingabefeld im Bearbeitungsdialogfeld"
+    },
+    "editUrlLabel": {
+        "message": "URL:",
+        "description": "Beschriftung für das URL-Eingabefeld im Bearbeitungsdialogfeld"
+    },
+    "saveButton": {
+        "message": "Speichern",
+        "description": "Text für die Schaltfläche zum Speichern"
+    },
+    "cancelButton": {
+        "message": "Abbrechen",
+        "description": "Text für die Schaltfläche zum Abbrechen"
+    },
+    "confirmDeleteMessage": {
+        "message": "Sind Sie sicher, dass Sie \"$1\" löschen möchten?",
+        "description": "Nachricht zur Bestätigung der Löschung eines Elements"
+    },
+    "confirmDeleteButton": {
+        "message": "Löschen",
+        "description": "Text für die Schaltfläche zur Bestätigung der Löschung"
+    },
+    "openInNewTab": {
+        "message": "In neuem Tab öffnen",
+        "description": "Kontextmenüelement zum Öffnen des Links in einem neuen Tab"
+    },
+    "openInNewWindow": {
+        "message": "In neuem Fenster öffnen",
+        "description": "Kontextmenüelement zum Öffnen des Links in einem neuen Fenster"
+    },
+    "openInIncognito": {
+        "message": "In Inkognito-Fenster öffnen",
+        "description": "Kontextmenüelement zum Öffnen des Links in einem Inkognito-Fenster"
+    },
+    "editQuickLink": {
+        "message": "Bearbeiten",
+        "description": "Kontextmenüelement zum Bearbeiten des Schnelllinks"
+    },
+    "deleteQuickLink": {
+        "message": "Löschen",
+        "description": "Kontextmenüelement zum Löschen des Schnelllinks"
+    },
+    "copyLink": {
+        "message": "Link kopieren",
+        "description": "Kontextmenüelement zum Kopieren des Links"
+    },
+    "createQRCode": {
+        "message": "QR-Code erstellen",
+        "description": "Kontextmenüelement zum Erstellen eines QR-Codes"
+    },
+    "confirmDeleteBookmark": {
+        "message": "Sind Sie sicher, dass Sie das Lesezeichen \"$1\" löschen möchten?",
+        "description": "Bestätigungsnachricht zum Löschen eines Lesezeichens"
+    },
+    "rename": {
+        "message": "Umbenennen",
+        "description": "Option zum Umbenennen eines Elements"
+    },
+    "delete": {
+        "message": "Löschen",
+        "description": "Option zum Löschen eines Elements"
+    },
+    "setAsHomepage": {
+        "message": "Als Startseite festlegen",
+        "description": "Option zum Festlegen einer Seite als Startseite"
+    },
+    "confirmDeleteFolder": {
+        "message": "Sind Sie sicher, dass Sie den Ordner \"$1\" löschen möchten?",
+        "description": "Bestätigungsnachricht zum Löschen eines Ordners"
+    },
+    "categoryDeleted": {
+        "message": "Kategorie gelöscht",
+        "description": "Benachrichtigungsnachricht, wenn eine Kategorie gelöscht wird"
+    },
+    "searchEngineIconNotFound": {
+        "message": "Suchmaschinen-Symbol nicht gefunden",
+        "description": "Fehlermeldung, wenn das Suchmaschinen-Symbol nicht gefunden wird"
+    },
+    "folderDeleted": {
+        "message": "Ordner gelöscht: ID=$1, Titel=$2",
+        "description": "Protokollnachricht, wenn ein Ordner gelöscht wird"
+    },
+    "confirmDeleteMessage": {
+        "message": "Sind Sie sicher, dass Sie \"$1\" löschen möchten?",
+        "description": "Bestätigungsnachricht zum Löschen eines Elements"
+    },
+    "morningGreeting": {
+        "message": "Guten Morgen👋",
+        "description": "Morgengruß"
+    },
+    "afternoonGreeting": {
+        "message": "Guten Nachmittag👋",
+        "description": "Nachmittagsgruß"
+    },
+    "eveningGreeting": {
+        "message": "Guten Abend👋",
+        "description": "Abendgruß"
+    },
+    "linkCopied": {
+        "message": "Link in die Zwischenablage kopiert",
+        "description": "Toast-Nachricht, wenn ein Link erfolgreich kopiert wird"
+    },
+    "copyLinkFailed": {
+        "message": "Link konnte nicht kopiert werden",
+        "description": "Toast-Nachricht, wenn das Kopieren eines Links fehlschlägt"
+    },
+    "invalidBookmark": {
+        "message": "Ungültiges Lesezeichen oder URL",
+        "description": "Toast-Nachricht, wenn versucht wird, ein ungültiges Lesezeichen zu kopieren"
+    },
+    "download": {
+        "message": "Herunterladen",
+        "description": "Text für die Schaltfläche zum Herunterladen"
+    },
+    "copied": {
+        "message": "Kopiert",
+        "description": "Text, der nach dem Kopieren eines Links angezeigt wird"
+    },
+    "confirmDeleteTitle": {
+        "message": "Löschen bestätigen",
+        "description": "Titel für das Bestätigungsdialogfeld zum Löschen"
+    },
+    "scanQRCode": {
+        "message": "QR-Code scannen",
+        "description": "Titel für das QR-Code-Modalfenster"
+    },
+    "renameFolderTitle": {
+        "message": "Ordner umbenennen",
+        "description": "Titel für das Dialogfeld zum Umbenennen des Ordners"
+    },
+    "doubaoTab": {
+        "message": "Doubao",
+        "description": "Doubao-Suchmaschinen-Tab"
+    },
+    "metasoTab": {
+        "message": "Metaso",
+        "description": "Metaso-Suchmaschinen-Tab"
+    },
+    "nameLabel": {
+        "message": "Name",
+        "description": "Namensbeschriftung"
+    },
+    "moreSearchSupportToast": {
+        "message": "Mehr Suchunterstützung kommt bald",
+        "description": "Toast-Nachricht für mehr Suchunterstützung"
+    },
+    "settingsTitle": {
+        "message": "Einstellungen",
+        "description": "Titel der Einstellungen"
+    },
+    "appearanceTab": {
+        "message": "Aussehen",
+        "description": "Tab für die Erscheinungseinstellungen"
+    },
+    "floatingBallTab": {
+        "message": "Schwebender Ball",
+        "description": "Tab für die Einstellungen des schwebenden Balls"
+    },
+    "backgroundColorTitle": {
+        "message": "Hintergrundfarbe",
+        "description": "Titel für die Einstellungen der Hintergrundfarbe"
+    },
+    "floatingBallSettingsTitle": {
+        "message": "Einstellungen des schwebenden Balls",
+        "description": "Titel für die Einstellungen des schwebenden Balls"
+    },
+    "floatingBallDescription": {
+        "message": "Wenn aktiviert, erscheint ein anklickbares schwebendes Symbol in der oberen rechten Ecke der Seite für den schnellen Zugriff auf Suchmaschinen und Lesezeichen.",
+        "description": "Beschreibung der Funktion des schwebenden Balls"
+    },
+    "enableFloatingBall": {
+        "message": "Schwebenden Ball aktivieren",
+        "description": "Option zum Aktivieren des schwebenden Balls"
+    },
+    "historyLinkTitle": {
+        "message": "Verlauf",
+        "description": "Titel des Verlaufslinks"
+    },
+    "downloadsLinkTitle": {
+        "message": "Downloads",
+        "description": "Titel des Download-Links"
+    },
+    "passwordsLinkTitle": {
+        "message": "Passwörter",
+        "description": "Titel des Passwort-Links"
+    },
+    "extensionsLinkTitle": {
+        "message": "Erweiterungen",
+        "description": "Titel des Erweiterungs-Links"
+    },
+    "settingsLinkTitle": {
+        "message": "Einstellungen",
+        "description": "Titel des Einstellungs-Links"
+    },
+    "confirmDeleteQuickLinkMessage": {
+        "message": "Sind Sie sicher, dass Sie den Schnelllink \"$1\" löschen möchten? Dieser Link wird nicht mehr in der Liste der Schnelllinks angezeigt.",
+        "description": "Bestätigungsnachricht zum Löschen eines Schnelllinks"
+    },
+    "yearProgress": {
+        "message": "Jahresfortschritt",
+        "description": "Jahresfortschritt Anzeige"
+    }
+}

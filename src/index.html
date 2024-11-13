@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="extName">__MSG_extName__</title>
+  <link href="output.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <style id="dynamic-background"></style>
+  <script src="localization.js"></script>
+</head>
+<body class="h-screen flex flex-col">
+  <div id="sidebar-container" class="flex collapsed">
+    <aside class="custom-width p-4 overflow-auto border-r border-gray-200 relative">
+      <div id="sidebar-logo" class="mb-4">
+        <img src="../images/logo.svg" alt="Logo" id="logo-image">
+        <h1 id="logo-title">TabMark</h1>
+      </div>
+      <ul id="categories-list" class="space-y-2"></ul>
+    </aside>
+    <main class="flex-1 bg-gray-50 p-8 overflow-auto flex flex-col">
+      <div class="welcome-search-container">
+        <div id="welcome-message" data-i18n="welcomeMessage"></div>
+      </div>
+      <div class="flex justify-between items-center mb-4">
+        <div class="search-container">
+          <form class="search-form" id="search-form">
+            <div style="position: relative;height: auto;">
+              <div class="search-icon-container">
+                <img id="search-engine-icon" src="../images/placeholder-icon.svg" alt="search-engine-icon"
+                  class="search-engine-icon">
+              </div>
+              <textarea class="search-input" data-i18n-placeholder="searchPlaceholder" rows="1" style="width: 100%; resize: none; padding-left: 40px;"></textarea>
+            </div>
+            <div class="search-suggestions-wrapper">
+              <div class="line-container" id="line-container">
+                <hr class="custom-hr">
+              </div>
+              <ul id="search-suggestions" class="search-suggestions"></ul>
+              <div id="tabs-container" class="tabs">
+                <div class="tab" data-engine="bing">
+                  <img src="../images/bing-logo.png" alt="Bing" class="tab-icon"> Bing
+                </div>
+                <div class="tab active" data-engine="google">
+                  <img src="../images/google-logo.svg" alt="Google" class="tab-icon"> Google
+                </div>
+                <div class="tab" data-engine="doubao">
+                  <img src="../images/doubao-logo.png" alt="Doubao" class="tab-icon"> <span data-i18n="doubaoTab">豆包</span>
+                </div>
+                <div class="tab" data-engine="kimi">
+                  <img src="../images/kimi-logo.svg" alt="Kimi" class="tab-icon"> Kimi
+                </div>
+                <div class="tab" data-engine="metaso">
+                  <img src="../images/metaso-logo.png" alt="metaso" class="tab-icon"> <span data-i18n="metasoTab">秘塔</span>
+                </div>
+                <div class="tab" data-engine="felo">
+                  <img src="../images/felo-logo.svg" alt="Felo Search" class="tab-icon"> Felo
+                </div>
+                <div class="tab" data-engine="chatgpt">
+                  <img src="../images/chatgpt-logo.svg" alt="ChatGPT" class="tab-icon"> ChatGPT
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="quick-links-wrapper">
+        <div id="quick-links" class="quick-links-container">
+          <!-- 添加占位元素 -->
+          <div class="quick-link-placeholder"></div>
+          <div class="quick-link-placeholder"></div>
+          <div class="quick-link-placeholder"></div>
+          <div class="quick-link-placeholder"></div>
+          <div class="quick-link-placeholder"></div>
+          <div class="quick-link-placeholder"></div>
+          <div class="quick-link-placeholder"></div>
+          <div class="quick-link-placeholder"></div>
+          <div class="quick-link-placeholder"></div>
+          <!-- 可以根据需要添加更多占位元素 -->
+        </div>
+      </div>
+      <div class="bookmarks-container">
+        <div id="folder-name" class="folder-name">
+        </div>
+        <div class="flex flex-wrap gap-4 justify-center flex-grow" id="bookmarks-list">
+          <!-- 添加占位符 -->
+          <div class="bookmark-placeholder"></div>
+          <div class="bookmark-placeholder"></div>
+          <div class="bookmark-placeholder"></div>
+          <div class="bookmark-placeholder"></div>
+          <div class="bookmark-placeholder"></div>
+          <div class="bookmark-placeholder"></div>
+          <div class="bookmark-placeholder"></div>
+          <div class="bookmark-placeholder"></div>
+          <div class="bookmark-placeholder"></div>
+          <div class="bookmark-placeholder"></div>
+          <div class="bookmark-placeholder"></div>
+          <div class="bookmark-placeholder"></div>
+          <div class="bookmark-placeholder"></div>
+          <div class="bookmark-placeholder"></div>
+
+          <!-- 可以根据需要添加更多占位符 -->
+        </div>
+      </div>
+      <!-- Edit Bookmark Dialog -->
+      <div id="edit-dialog" class="modal">
+        <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <h2 data-i18n="editDialogTitle"></h2>
+          <form id="edit-form">
+            <label for="edit-name" data-i18n="editNameLabel"></label>
+            <input type="text" id="edit-name" name="name" required>
+            <label for="edit-url" data-i18n="editUrlLabel"></label>
+            <input type="url" id="edit-url" name="url" required>
+            <div class="form-buttons">
+              <button type="button" class="cancel-button" data-i18n="cancelButton"></button>
+              <button type="submit" data-i18n="saveButton"></button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Edit Category Dialog -->
+      <div id="edit-category-dialog" class="modal">
+        <div class="modal-content">
+          <span class="close-category-button">&times;</span>
+          <h2 data-i18n="renameFolderTitle"></h2>
+          <form id="edit-category-form">
+            <label for="edit-category-name" data-i18n="nameLabel">名称</label>
+            <input type="text" id="edit-category-name" name="name" required>
+            <div class="form-buttons">
+              <button type="button" class="cancel-category-button" data-i18n="cancelButton">取消</button>
+              <button type="submit" data-i18n="saveButton">保存</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <footer class="bg-gray-50 text-center p-4 border-t border-gray-200 mt-4">
+      <!-- 新增的进度条容器 -->
+      <div id="year-progress" class="year-progress-container"></div>
+      </footer>
+    </main>
+  </div>
+  <div id="more-button-toast" class="toast">
+    <p data-i18n="moreSearchSupportToast">更多搜索支持正在开发中...</p>
+  </div>
+  <script src="localization.js"></script>
+  <script src="Sortable.min.js"></script>
+  <script type="module" src="script.js"></script>
+  <script type="module" src="welcome.js"></script>
+  <script src="background.js"></script>
+  <script src="qrcode.min.js"></script>
+  <script src="quick-links.js"></script>
+  <script src="progress.js"></script> <!-- 新增的脚本 -->
+<div class="links-icons">
+  <a href="#history" id="history-link" data-i18n-title="historyLinkTitle">
+    <span class="material-icons">history</span>
+  </a>
+  <a href="#downloads" id="downloads-link" data-i18n-title="downloadsLinkTitle">
+    <span class="material-icons">download</span>
+  </a>
+  <a href="#passwords" id="passwords-link" data-i18n-title="passwordsLinkTitle">
+    <span class="material-icons">vpn_key</span>
+  </a>
+  <a href="#extensions" id="extensions-link" data-i18n-title="extensionsLinkTitle">
+    <span class="material-icons">extension</span>
+  </a>
+</div>
+<div class="settings-icon">
+  <a href="#settings" id="settings-link" data-i18n-title="settingsLinkTitle">
+    <span class="material-icons">settings</span>
+  </a>
+</div>
+<!-- 在 body 标签结束前添加 -->
+<div id="settings-modal" class="settings-modal">
+  <div class="settings-modal-content">
+    <span class="settings-modal-close">&times;</span>
+    <h2 class="settings-modal-title" data-i18n="settingsTitle">设置</h2>
+    <div class="settings-layout">
+      <div class="settings-sidebar">
+        <button class="settings-tab-button active" data-tab="appearance" data-i18n="appearanceTab">外观</button>
+        <button class="settings-tab-button" data-tab="floating-ball" data-i18n="floatingBallTab">悬浮球设置</button>
+      </div>
+      <div class="settings-content">
+        <div id="appearance-settings" class="settings-tab-content active">
+          <h3 class="settings-modal-subtitle" data-i18n="backgroundColorTitle">背景颜色</h3>
+          <div class="settings-background-options">
+            <div class="settings-bg-option gradient-background-1" data-bg="gradient-background-1"></div>
+            <div class="settings-bg-option gradient-background-2" data-bg="gradient-background-2"></div>
+            <div class="settings-bg-option gradient-background-3" data-bg="gradient-background-3"></div>
+            <div class="settings-bg-option gradient-background-4" data-bg="gradient-background-4"></div>
+            <div class="settings-bg-option gradient-background-5" data-bg="gradient-background-5"></div>
+            <div class="settings-bg-option gradient-background-6" data-bg="gradient-background-6"></div>
+            <div class="settings-bg-option gradient-background-7" data-bg="gradient-background-7"></div>
+          </div>
+        </div>
+        <div id="floating-ball-settings" class="settings-tab-content">
+           <h3 class="settings-modal-subtitle" data-i18n="floatingBallSettingsTitle">悬浮球设置</h3>
+           <p data-i18n="floatingBallDescription">开启悬浮球后会在页面右上角显示一个可点击的悬浮图标，用于快速访问搜索引擎和书签。</p>
+           <div class="setting-option">
+             <label for="enable-floating-ball" class="switch-label" data-i18n="enableFloatingBall">��启悬浮球</label>
+             <label class="switch">
+               <input type="checkbox" id="enable-floating-ball">
+               <span class="slider round"></span>
+             </label>
+           </div>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <button id="toggle-sidebar" class="bg-gray-300 p-1 rounded-r-md">
+    &gt;
+  </button>
+  <div id="confirm-dialog" class="modal">
+    <div class="modal-content">
+      <h2 id="confirm-dialog-title" data-i18n="confirmDeleteTitle">确认删除</h2>
+      <p id="confirm-dialog-message"></p>
+      <p id="confirm-delete-quick-link-message"></p> <!-- 新增的元素 -->
+      <div class="buttons">
+        <button id="cancel-delete-button" class="cancel-button" data-i18n="cancelButton">取消</button>
+        <button id="confirm-delete-button" class="delete-button" data-i18n="confirmDeleteButton">删除</button>
+      </div>
+    </div>
+  </div>
+  <div id="toast" class="toast" style="display: none;"></div>
+</body>
+</html>
