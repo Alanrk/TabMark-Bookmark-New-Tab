@@ -1,4 +1,4 @@
-# TabMark-Bookmark-New-Tab
+# TabMark-Bookmark New Tab
 
 TabMark is a bookmark-based new tab page application that helps you efficiently organize and access your bookmarks.
 
