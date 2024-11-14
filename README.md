@@ -1,4 +1,4 @@
-# TabMark-Bookmark-New-Tab
+# TabMark-Bookmark New Tab
 TabMark is a bookmark-based new tab page application that helps you efficiently organize and access your bookmarks.
 
 TabMark - Bookmark New Tab is a browser extension that sets your most frequently used bookmarks as the new tab homepage with just one click. No more complicated operations—simply set your favorite bookmarks as your homepage and enjoy an efficient experience powered by intelligent search.
