@@ -1,8 +1,8 @@
-# TabMark-让你的书签重新被看见
+# TabMark-你的书签,值得被重新看见
 
 ## 项目网站: www.ainewtab.app
 
-TabMark是一款基于书签的新标签页插件，让你的书签不再沉睡在收藏夹里，搭配多款 AI 搜索引擎，让每次浏览都充满效率与惊喜。支持 Chrome 和 Edge。
+TabMark 将收藏夹变成新标签页，让你收藏的书签一目了然、整洁高效，快速直达你最需要的网站和资源。搭配智能 AI 搜索，更快找到你想要的答案。支持 Chrome 和 Edge。
 
 ![MacBook Air 13_ - 5@1x](https://github.com/user-attachments/assets/bb4f9996-902c-4b69-8a7f-4c2b2e219ffc)
 
