@@ -1,10 +1,10 @@
 {
     "extName": {
-        "message": "TabMark-Bookmark New Tab",
+        "message": "TabMark",
         "description": "Le nom de l'extension"
     },
     "extDescription": {
-        "message": "TabMark est une application de page de nouvel onglet basée sur les favoris qui vous aide à organiser et à accéder efficacement à vos favoris.",
+        "message": "Une page de nouvel onglet pour organiser et accéder facilement à vos favoris.",
         "description": "La description de l'extension"
     },
     "welcomeMessage": {
@@ -222,5 +222,135 @@
     "yearProgress": {
         "message": "Progression annuelle",
         "description": "Progression annuelle affichée"
+    },
+    "searchTips": {
+        "message": "Utiliser cette fois:",
+        "description": "Texte des conseils de recherche"
+    },
+    "baiduTab": {
+        "message": "Baidu",
+        "description": "Onglet du moteur de recherche Baidu"
+    },
+    "searchEngineUpdateTip": {
+        "message": "La fonction de changement de moteur de recherche a été mise à jour"
+    },
+    "searchEngineUpdateDetail": {
+        "message": "Cliquez maintenant sur l'icône de recherche pour définir le moteur de recherche par défaut, utilisez la barre d'onglets pour un changement temporaire"
+    },
+    "googleLabel": {
+        "message": "Google",
+        "description": "Label du moteur de recherche Google"
+    },
+    "bingLabel": {
+        "message": "Bing",
+        "description": "Label du moteur de recherche Bing"
+    },
+    "baiduLabel": {
+        "message": "Baidu",
+        "description": "Label du moteur de recherche Baidu"
+    },
+    "kimiLabel": {
+        "message": "Kimi",
+        "description": "Label du moteur de recherche Kimi"
+    },
+    "doubaoLabel": {
+        "message": "Doubao",
+        "description": "Label du moteur de recherche Doubao"
+    },
+    "chatgptLabel": {
+        "message": "ChatGPT",
+        "description": "Label du moteur de recherche ChatGPT"
+    },
+    "feloLabel": {
+        "message": "Felo",
+        "description": "Label du moteur de recherche Felo"
+    },
+    "metasoLabel": {
+        "message": "Metaso",
+        "description": "Label du moteur de recherche Metaso"
+    },
+    "backgroundTitle": {
+        "message": "Paramètres de fond",
+        "description": "Titre des paramètres de fond"
+    },
+    "resetWallpaper": {
+        "message": "Réinitialiser le fond",
+        "description": "Texte du bouton de réinitialisation du fond d'écran"
+    },
+    "uploadWallpaper": {
+        "message": "Télécharger un fond",
+        "description": "Texte du bouton de téléchargement du fond d'écran"
+    },
+    "wallpaperResetSuccess": {
+        "message": "Fond réinitialisé par défaut",
+        "description": "Message de succès de réinitialisation du fond d'écran"
+    },
+    "solidBackgroundTitle": {
+        "message": "Couleur unie",
+        "description": "Titre des paramètres de couleur unie"
+    },
+    "wallpaperTitle": {
+        "message": "Fond d'écran",
+        "description": "Titre des paramètres de fond d'écran"
+    },
+    "uploadedWallpaperBadge": {
+        "message": "Local",
+        "description": "Texte du badge pour le fond d'écran téléchargé par l'utilisateur"
+    },
+    "aboutTab": {
+        "message": "À propos",
+        "description": "Onglet À propos"
+    },
+    "aboutTitle": {
+        "message": "À propos de TabMark",
+        "description": "Titre de la page À propos"
+    },
+    "contactUs": {
+        "message": "Contactez-nous",
+        "description": "Lien de contact"
+    },
+    "version": {
+        "message": "Version $1",
+        "description": "Le numéro de version de l'application"
+    },
+    "officialWebsite": {
+        "message": "Site Officiel",
+        "description": "Texte du lien du site officiel"
+    },
+    "feedback": {
+        "message": "Retour",
+        "description": "Texte du lien de retour"
+    },
+    "settingsUpdateTip": {
+        "message": "Vous pouvez configurer ici la couleur d'arrière-plan, le fond d'écran, la fonction boule flottante...",
+        "description": "Conseil de mise à jour des paramètres"
+    },
+    "deleteSuccess": {
+        "message": "Suppression réussie",
+        "description": "Message toast lors de la suppression réussie d'un élément"
+    },
+    "quickLinksTab": {
+        "message": "Sites Recommandés",
+        "description": "Onglet des sites recommandés"
+    },
+    "quickLinksSettings": {
+        "message": "Paramètres des Sites Recommandés",
+        "description": "Paramètres des sites recommandés"
+    },
+    "quickLinksDescription": {
+        "message": "Lorsqu'activé, vos sites les plus visités seront affichés sous la barre de recherche pour un accès rapide. La liste des recommandations se met à jour automatiquement lorsque vous visitez de nouveaux sites.",
+        "description": "Description des sites recommandés"
+    },
+    "enableQuickLinks": {
+        "message": "Activer les Sites Recommandés",
+        "description": "Option pour activer les sites recommandés"
+    },
+    "namePrompt": {
+        "message": "Comment souhaitez-vous être appelé ?",
+        "description": "Message demandant le nom de l'utilisateur"
+    },
+    "openAllBookmarks": {
+        "message": "Ouvrir tous les favoris",
+        "description": "Ouvre tous les favoris dans le dossier"
     }
 }

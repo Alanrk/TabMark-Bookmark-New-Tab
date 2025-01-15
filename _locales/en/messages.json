@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "TabMark-Bookmark New Tab",
+        "message": "TabMark",
         "description": "The name of the extension"
     },
     "extDescription": {
@@ -216,11 +216,175 @@
         "description": "Settings link title"
     },
     "confirmDeleteQuickLinkMessage": {
-            "message": "Are you sure you want to delete the quick link \"$1\"? This link will no longer appear in the quick links list.",
+        "message": "Are you sure you want to delete the quick link \"$1\"? This link will no longer appear in the quick links list.",
         "description": "Confirmation message for deleting a quick link"
     },
     "yearProgress": {
         "message": "Year Progress",
         "description": "Year progress display"
+    },
+    "searchTips": {
+        "message": "This time used:",
+        "description": "Search tips text"
+    },
+    "baiduTab": {
+        "message": "Baidu",
+        "description": "Baidu search engine tab"
+    },
+    "searchEngineUpdateTip": {
+        "message": "Search engine switching feature has been updated"
+    },
+    "searchEngineUpdateDetail": {
+        "message": "Now click the search icon to set the default search engine, use the tab bar for temporary switching"
+    },
+    "googleLabel": {
+        "message": "Google",
+        "description": "Google search engine label"
+    },
+    "bingLabel": {
+        "message": "Bing",
+        "description": "Bing search engine label"
+    },
+    "baiduLabel": {
+        "message": "Baidu",
+        "description": "Baidu search engine label"
+    },
+    "kimiLabel": {
+        "message": "Kimi",
+        "description": "Kimi search engine label"
+    },
+    "doubaoLabel": {
+        "message": "Doubao",
+        "description": "Doubao search engine label"
+    },
+    "chatgptLabel": {
+        "message": "ChatGPT",
+        "description": "ChatGPT search engine label"
+    },
+    "feloLabel": {
+        "message": "Felo",
+        "description": "Felo search engine label"
+    },
+    "metasoLabel": {
+        "message": "Metaso",
+        "description": "Metaso search engine label"
+    },
+    "backgroundTitle": {
+        "message": "Background Settings",
+        "description": "Title for background settings"
+    },
+    "resetWallpaper": {
+        "message": "Reset to Default",
+        "description": "Text for reset wallpaper button"
+    },
+    "uploadWallpaper": {
+        "message": "Upload Wallpaper",
+        "description": "Text for upload wallpaper button"
+    },
+    "wallpaperResetSuccess": {
+        "message": "Background reset to default",
+        "description": "Success message for wallpaper reset"
+    },
+    "solidBackgroundTitle": {
+        "message": "Solid Background",
+        "description": "Title for solid background settings"
+    },
+    "wallpaperTitle": {
+        "message": "Wallpaper",
+        "description": "Title for wallpaper settings"
+    },
+    "uploadedWallpaperBadge": {
+        "message": "Local",
+        "description": "Badge text for user uploaded wallpaper"
+    },
+    "pleaseUploadImage": {
+        "message": "Please upload an image file",
+        "description": "Prompt for uploading image file"
+    },
+    "imageSizeExceeded": {
+        "message": "Image size exceeds limit (max 10MB), please choose a smaller image",
+        "description": "Image size exceeded warning"
+    },
+    "fileReadError": {
+        "message": "Failed to read file, please try again",
+        "description": "File read error message"
+    },
+    "lowResolutionWarning": {
+        "message": "Image resolution is too low, recommend using at least $1 x $2 for best results",
+        "description": "Low resolution warning"
+    },
+    "imageLoadError": {
+        "message": "Failed to load image, please try another one",
+        "description": "Image load error message"
+    },
+    "storageError": {
+        "message": "Storage space insufficient, please clear some space and try again",
+        "description": "Storage error message"
+    },
+    "wallpaperSetError": {
+        "message": "Failed to set wallpaper, please try again",
+        "description": "Wallpaper set error message"
+    },
+    "aboutTab": {
+        "message": "About",
+        "description": "About tab"
+    },
+    "aboutTitle": {
+        "message": "About TabMark",
+        "description": "Title for About TabMark"
+    },
+    "aboutDescription": {
+        "message": "TabMark is a clean and efficient bookmark management extension that helps you better organize and access your web collections.",
+        "description": "Description for About TabMark"
+    },
+    "sourceCode": {
+        "message": "Source Code",
+        "description": "Source code link"
+    },
+    "contactUs": {
+        "message": "Contact Us",
+        "description": "Contact us link"
+    },
+    "version": {
+        "message": "Version $1",
+        "description": "The version number of the application"
+    },
+    "officialWebsite": {
+        "message": "Official Website",
+        "description": "Official website link text"
+    },
+    "feedback": {
+        "message": "Feedback",
+        "description": "Feedback link text"
+    },
+    "settingsUpdateTip": {
+        "message": "You can set background color, wallpaper, floating ball feature here...",
+        "description": "Settings update tip"
+    },
+    "deleteSuccess": {
+        "message": "Successfully deleted",
+        "description": "Toast message when an item is successfully deleted"
+    },
+    "quickLinksTab": {
+        "message": "Site Recommendations"
+    },
+    "quickLinksSettings": {
+        "message": "Site Recommendations Settings"
+    },
+    "quickLinksDescription": {
+        "message": "When enabled, your most frequently visited websites will be displayed below the search box for easy access. The recommendation list will automatically update as you visit new sites.",
+        "description": "Quick links description"
+    },
+    "enableQuickLinks": {
+        "message": "Enable Site Recommendations",
+        "description": "Enable quick links option"
+    },
+    "namePrompt": {
+        "message": "What should I call you:",
+        "description": "Prompt message when asking for user's name"
+    },
+    "openAllBookmarks": {
+        "message": "Open All Bookmarks",
+        "description": "Context menu option to open all bookmarks in a folder"
     }
 }

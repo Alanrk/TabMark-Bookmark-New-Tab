@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "TabMark-Bookmark New Tab",
+        "message": "TabMark",
         "description": "拡張機能の名前"
     },
     "extDescription": {
@@ -274,5 +274,163 @@
     "yearProgress": {
         "message": "年进度",
         "description": "年进度の表示"
+    },
+    "searchTips": {
+        "message": "今回使用:",
+        "description": "検索のヒントテキスト"
+    },
+    "baiduTab": {
+        "message": "百度",
+        "description": "百度検索エンジンタブ"
+    },
+    "searchEngineUpdateTip": {
+        "message": "検索エンジン切り替え機能が更新されました"
+    },
+    "searchEngineUpdateDetail": {
+        "message": "検索アイコンをクリックしてデフォルトの検索エンジンを設定し、タブバーで一時的な切り替えを行います"
+    },
+    "googleLabel": {
+        "message": "Google",
+        "description": "Google検索エンジンのラベル"
+    },
+    "bingLabel": {
+        "message": "Bing",
+        "description": "Bing検索エンジンのラベル"
+    },
+    "baiduLabel": {
+        "message": "百度",
+        "description": "百度検索エンジンのラベル"
+    },
+    "kimiLabel": {
+        "message": "Kimi",
+        "description": "Kimi検索エンジンのラベル"
+    },
+    "doubaoLabel": {
+        "message": "豆包",
+        "description": "豆包検索エンジンのラベル"
+    },
+    "chatgptLabel": {
+        "message": "ChatGPT",
+        "description": "ChatGPT検索エンジンのラベル"
+    },
+    "feloLabel": {
+        "message": "Felo",
+        "description": "Felo検索エンジンのラベル"
+    },
+    "metasoLabel": {
+        "message": "秘塔",
+        "description": "秘塔検索エンジンのラベル"
+    },
+    "backgroundTitle": {
+        "message": "背景設定",
+        "description": "背景設定のタイトル"
+    },
+    "resetWallpaper": {
+        "message": "デフォルトの背景に戻す",
+        "description": "壁紙リセットボタンのテキスト"
+    },
+    "uploadWallpaper": {
+        "message": "壁紙をアップロード",
+        "description": "壁紙アップロードボタンのテキスト"
+    },
+    "wallpaperResetSuccess": {
+        "message": "背景がデフォルトにリセットされました",
+        "description": "壁紙リセット成功メッセージ"
+    },
+    "solidBackgroundTitle": {
+        "message": "単色背景",
+        "description": "単色背景設定のタイトル"
+    },
+    "wallpaperTitle": {
+        "message": "壁紙",
+        "description": "壁紙設定のタイトル"
+    },
+    "uploadedWallpaperBadge": {
+        "message": "ローカル",
+        "description": "ユーザーがアップロードした壁紙のバッジテキスト"
+    },
+    "pleaseUploadImage": {
+        "message": "画像ファイルをアップロードしてください",
+        "description": "画像ファイルのアップロード要求"
+    },
+    "imageSizeExceeded": {
+        "message": "画像サイズが制限を超えています（最大10MB）、より小さい画像を選択してください",
+        "description": "画像サイズ超過警告"
+    },
+    "fileReadError": {
+        "message": "ファイルの読み込みに失敗しました。もう一度お試しください",
+        "description": "ファイル読み込みエラー"
+    },
+    "lowResolutionWarning": {
+        "message": "画像解像度が低すぎます。最適な結果を得るには $1 x $2 以上を推奨します",
+        "description": "低解像度警告"
+    },
+    "imageLoadError": {
+        "message": "画像の読み込みに失敗しました。他の画像をお試しください",
+        "description": "画像読み込みエラー"
+    },
+    "storageError": {
+        "message": "ストレージ容量が不足��てます。空き容量を確保して再試行してください",
+        "description": "ストレージエラー"
+    },
+    "wallpaperSetError": {
+        "message": "壁紙の設定に失敗しました。もう一度お試しください",
+        "description": "壁紙設定エラー"
+    },
+    "aboutTab": {
+        "message": "概要",
+        "description": "概要タブ"
+    },
+    "aboutTitle": {
+        "message": "TabMark について",
+        "description": "概要ページのタイトル"
+    },
+    "contactUs": {
+        "message": "お問い合わせ",
+        "description": "連絡先リンク"
+    },
+    "version": {
+        "message": "バージョン $1",
+        "description": "アプリケーションのバージョン番号"
+    },
+    "officialWebsite": {
+        "message": "公式サイト",
+        "description": "公式サイトのリンクテキスト"
+    },
+    "feedback": {
+        "message": "フィードバック",
+        "description": "フィードバックリンクのテキスト"
+    },
+    "settingsUpdateTip": {
+        "message": "背景色、壁紙、フローティングボール機能などの設定ができます...",
+        "description": "設定更新のヒント"
+    },
+    "deleteSuccess": {
+        "message": "削除しました",
+        "description": "アイテムが正常に削除された時のトーストメッセージ"
+    },
+    "quickLinksTab": {
+        "message": "おすすめサイト",
+        "description": "おすすめサイトタブ"
+    },
+    "quickLinksSettings": {
+        "message": "おすすめサイト設定",
+        "description": "おすすめサイト設定"
+    },
+    "quickLinksDescription": {
+        "message": "有効にすると、よく訪れるウェブサイトが検索バーの下に表示され、素早くアクセスできます。新しいサイトを訪れると、おすすめリストは自動的に更新されます。",
+        "description": "おすすめサイトの説明"
+    },
+    "enableQuickLinks": {
+        "message": "おすすめサイトを有効にする",
+        "description": "おすすめサイトを有効にするオプション"
+    },
+    "namePrompt": {
+        "message": "お名前を教えてください",
+        "description": "ユーザー名を尋ねる際のプロンプトメッセージ"
+    },
+    "openAllBookmarks": {
+        "message": "すべてのブックマークを開く",
+        "description": "フォルダ内のすべてのブックマークを開く"
     }
 }

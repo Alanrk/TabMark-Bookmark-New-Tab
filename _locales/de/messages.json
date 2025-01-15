@@ -1,10 +1,10 @@
 {
     "extName": {
-        "message": "TabMark-Bookmark New Tab",
+        "message": "TabMark",
         "description": "Der Name der Erweiterung"
     },
     "extDescription": {
-        "message": "TabMark ist eine auf Lesezeichen basierende neue Tab-Seitenanwendung, die Ihnen hilft, Ihre Lesezeichen effizient zu organisieren und darauf zuzugreifen.",
+        "message": "Eine Neue-Tab-Seite zum einfachen Organisieren und Zugreifen auf Ihre Lesezeichen.",
         "description": "Die Beschreibung der Erweiterung"
     },
     "welcomeMessage": {
@@ -222,5 +222,163 @@
     "yearProgress": {
         "message": "Jahresfortschritt",
         "description": "Jahresfortschritt Anzeige"
+    },
+    "searchTips": {
+        "message": "Diesmal verwenden:",
+        "description": "Suchtipps Text"
+    },
+    "baiduTab": {
+        "message": "Baidu",
+        "description": "Baidu-Suchmaschinen-Tab"
+    },
+    "searchEngineUpdateTip": {
+        "message": "Die Suchmaschinen-Umschaltfunktion wurde aktualisiert"
+    },
+    "searchEngineUpdateDetail": {
+        "message": "Klicken Sie jetzt auf das Suchsymbol, um die Standardsuchmaschine festzulegen. Verwenden Sie die Registerkartenleiste für temporäres Umschalten"
+    },
+    "googleLabel": {
+        "message": "Google",
+        "description": "Google Suchmaschinen-Label"
+    },
+    "bingLabel": {
+        "message": "Bing",
+        "description": "Bing Suchmaschinen-Label"
+    },
+    "baiduLabel": {
+        "message": "Baidu",
+        "description": "Baidu Suchmaschinen-Label"
+    },
+    "kimiLabel": {
+        "message": "Kimi",
+        "description": "Kimi Suchmaschinen-Label"
+    },
+    "doubaoLabel": {
+        "message": "Doubao",
+        "description": "Doubao Suchmaschinen-Label"
+    },
+    "chatgptLabel": {
+        "message": "ChatGPT",
+        "description": "ChatGPT Suchmaschinen-Label"
+    },
+    "feloLabel": {
+        "message": "Felo",
+        "description": "Felo Suchmaschinen-Label"
+    },
+    "metasoLabel": {
+        "message": "Metaso",
+        "description": "Metaso Suchmaschinen-Label"
+    },
+    "backgroundTitle": {
+        "message": "Hintergrundeinstellungen",
+        "description": "Titel der Hintergrundeinstellungen"
+    },
+    "resetWallpaper": {
+        "message": "Hintergrund zurücksetzen",
+        "description": "Text für die Schaltfläche zum Zurücksetzen des Hintergrunds"
+    },
+    "uploadWallpaper": {
+        "message": "Hintergrund hochladen",
+        "description": "Text für die Schaltfläche zum Hochladen des Hintergrunds"
+    },
+    "wallpaperResetSuccess": {
+        "message": "Hintergrund auf Standard zurückgesetzt",
+        "description": "Erfolgsmeldung beim Zurücksetzen des Hintergrunds"
+    },
+    "solidBackgroundTitle": {
+        "message": "Einfarbiger Hintergrund",
+        "description": "Titel für die Einstellungen des einfarbigen Hintergrunds"
+    },
+    "wallpaperTitle": {
+        "message": "Hintergrundbild",
+        "description": "Titel für die Einstellungen des Hintergrundbilds"
+    },
+    "uploadedWallpaperBadge": {
+        "message": "Lokal",
+        "description": "Kennzeichentext für vom Benutzer hochgeladene Hintergrundbilder"
+    },
+    "pleaseUploadImage": {
+        "message": "Bitte laden Sie eine Bilddatei hoch",
+        "description": "Aufforderung zum Hochladen einer Bilddatei"
+    },
+    "imageSizeExceeded": {
+        "message": "Bildgröße überschreitet das Limit (max. 10MB), bitte wählen Sie ein kleineres Bild",
+        "description": "Warnung bei überschrittener Bildgröße"
+    },
+    "fileReadError": {
+        "message": "Datei konnte nicht gelesen werden, bitte versuchen Sie es erneut",
+        "description": "Dateilesefehlermeldung"
+    },
+    "lowResolutionWarning": {
+        "message": "Bildauflösung ist zu niedrig, empfohlen wird mindestens $1 x $2 für beste Ergebnisse",
+        "description": "Warnung bei niedriger Auflösung"
+    },
+    "imageLoadError": {
+        "message": "Bild konnte nicht geladen werden, bitte versuchen Sie es mit einem anderen",
+        "description": "Bildladefehler"
+    },
+    "storageError": {
+        "message": "Speicherplatz nicht ausreichend, bitte Speicher freigeben und erneut versuchen",
+        "description": "Speicherfehlermeldung"
+    },
+    "wallpaperSetError": {
+        "message": "Hintergrundbild konnte nicht gesetzt werden, bitte erneut versuchen",
+        "description": "Fehler beim Setzen des Hintergrundbilds"
+    },
+    "aboutTab": {
+        "message": "Über",
+        "description": "Über-Tab"
+    },
+    "aboutTitle": {
+        "message": "Über TabMark",
+        "description": "Titel der Über-Seite"
+    },
+    "contactUs": {
+        "message": "Kontaktieren Sie uns",
+        "description": "Kontakt-Link"
+    },
+    "version": {
+        "message": "Version $1",
+        "description": "Die Versionsnummer der Anwendung"
+    },
+    "officialWebsite": {
+        "message": "Offizielle Website",
+        "description": "Offizieller Website-Link-Text"
+    },
+    "feedback": {
+        "message": "Feedback",
+        "description": "Feedback-Link-Text"
+    },
+    "settingsUpdateTip": {
+        "message": "Hier können Sie Hintergrundfarbe, Hintergrundbild und Floating-Ball-Funktion einstellen...",
+        "description": "Einstellungen Update-Tipp"
+    },
+    "deleteSuccess": {
+        "message": "Erfolgreich gelöscht",
+        "description": "Toast-Nachricht bei erfolgreicher Löschung eines Elements"
+    },
+    "quickLinksTab": {
+        "message": "Website-Empfehlungen",
+        "description": "Website-Empfehlungen Tab"
+    },
+    "quickLinksSettings": {
+        "message": "Website-Empfehlungen Einstellungen",
+        "description": "Website-Empfehlungen Einstellungen"
+    },
+    "quickLinksDescription": {
+        "message": "Wenn aktiviert, werden Ihre am häufigsten besuchten Websites unter der Suchleiste für einen schnellen Zugriff angezeigt. Die Empfehlungsliste wird automatisch aktualisiert, wenn Sie neue Seiten besuchen.",
+        "description": "Beschreibung der Website-Empfehlungen"
+    },
+    "enableQuickLinks": {
+        "message": "Website-Empfehlungen aktivieren",
+        "description": "Option zum Aktivieren der Website-Empfehlungen"
+    },
+    "namePrompt": {
+        "message": "Wie möchten Sie genannt werden?",
+        "description": "Aufforderung zur Eingabe des Benutzernamens"
+    },
+    "openAllBookmarks": {
+        "message": "Alle Lesezeichen öffnen",
+        "description": "Öffnet alle Lesezeichen im Ordner"
     }
 }

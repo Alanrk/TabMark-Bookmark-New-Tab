@@ -1,0 +1,11 @@
+{
+  "quickLinksSettings": {
+    "message": "快捷链接设置"
+  },
+  "quickLinksDescription": {
+    "message": "开启快捷链接后，将在搜索框下方显示您最常访问的网站，方便快速访问。访问新的网站时会自动更新快捷链接列表。"
+  },
+  "enableQuickLinks": {
+    "message": "启用快捷链接"
+  }
+}

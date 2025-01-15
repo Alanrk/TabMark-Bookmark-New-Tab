@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "TabMark-Bookmark New Tab",
+        "message": "TabMark",
         "description": "扩展的名称"
     },
     "extDescription": {
@@ -282,5 +282,178 @@
     "yearProgress": {
         "message": "年进度",
         "description": "年进度显示"
+    },
+    "searchTips": {
+        "message": "本次使用:",
+        "description": "搜索提示文字"
+    },
+    "baiduTab": {
+        "message": "百度",
+        "description": "百度搜索引擎标签"
+        },
+    "searchEngineUpdateTip": {
+        "message": "搜索引擎切换功能已更新",
+        "description": "搜索引擎切换功能提示"
+    },
+    "searchEngineUpdateDetail": {
+        "message": "现在点击搜索图标可以设置默认搜索引擎，标签栏用于临时切换当次搜索",
+        "description": "搜索引擎切换功能详细说明"
+    },
+    "googleLabel": {
+        "message": "谷歌",
+        "description": "Google 搜索引擎标签"
+    },
+    "bingLabel": {
+        "message": "必应",
+        "description": "Bing 搜索引擎标签"
+    },
+    "baiduLabel": {
+        "message": "百度",
+        "description": "百度搜索引擎标签"
+    },
+    "kimiLabel": {
+        "message": "Kimi",
+        "description": "Kimi 搜索引擎标签"
+    },
+    "doubaoLabel": {
+        "message": "豆包",
+        "description": "豆包搜索引擎标签"
+    },
+    "chatgptLabel": {
+        "message": "ChatGPT",
+        "description": "ChatGPT 搜索引擎标签"
+    },
+    "feloLabel": {
+        "message": "Felo",
+        "description": "Felo 搜索引擎标签"
+    },
+    "metasoLabel": {
+        "message": "秘塔",
+        "description": "秘塔搜索引擎标签"
+    },
+    "backgroundTitle": {
+        "message": "背景设置",
+        "description": "背景设置标题"
+    },
+    "resetWallpaper": {
+        "message": "恢复默认背景",
+        "description": "重置壁纸按钮文本"
+    },
+    "uploadWallpaper": {
+        "message": "上传壁纸",
+        "description": "上传壁纸按钮文本"
+    },
+    "wallpaperResetSuccess": {
+        "message": "背景已重置为默认",
+        "description": "重置壁纸成功提示"
+    },
+    "solidBackgroundTitle": {
+        "message": "纯色背景",
+        "description": "纯色背景设置标题"
+    },
+    "wallpaperTitle": {
+        "message": "壁纸",
+        "description": "壁纸设置标题"
+    },
+    "pleaseUploadImage": {
+        "message": "请上传图片文件",
+        "description": "提示用户上传图片文件"
+    },
+    "imageSizeExceeded": {
+        "message": "图片大小超过限制（最大10MB），请选择较小的图片",
+        "description": "图片大小超限提示"
+    },
+    "fileReadError": {
+        "message": "读取文件失败，请重试",
+        "description": "文件读取失败提示"
+    },
+    "lowResolutionWarning": {
+        "message": "图片分辨率过低，建议使用至少 $1 x $2 的图片以获得最佳效果",
+        "description": "图片分辨率过低警告"
+    },
+    "imageLoadError": {
+        "message": "图片加载失败，请尝试其他图片",
+        "description": "图片加载失败提示"
+    },
+    "storageError": {
+        "message": "存储空间不足，请清理后重试",
+        "description": "存储空间不足提示"
+    },
+    "wallpaperSetError": {
+        "message": "设置壁纸失败，请重试",
+        "description": "设置壁纸失败提示"
+    },
+    "wallpaperUploadError": {
+        "message": "上传壁纸失败，请重试"
+    },
+    "wallpapersUploadSuccess": {
+        "message": "壁纸上传成功"
+    },
+    "noValidImagesFound": {
+        "message": "未找到有效的图片文件"
+    },
+    "uploadedWallpaperBadge": {
+        "message": "本地图片",
+        "description": "用户上传的壁纸标识"
+    },
+    "aboutTab": {
+        "message": "关于",
+        "description": "关于选项卡"
+    },
+    "aboutTitle": {
+        "message": "关于 TabMark",
+        "description": "关于 TabMark 的标题"
+    },
+    "aboutDescription": {
+        "message": "TabMark 是一个简洁、高效的书签管理扩展，帮助您更好地组织和访问您的网络收藏。",
+        "description": "关于 TabMark 的描述"
+    },
+    "sourceCode": {
+        "message": "源代码",
+        "description": "源代码链接"
+    },
+    "contactUs": {
+        "message": "联系我们",
+        "description": "联系我们链接"
+    },
+    "version": {
+        "message": "版本 $1",
+        "description": "应用程序的版本号"
+    },
+    "officialWebsite": {
+        "message": "官方网站",
+        "description": "官方网站链接文本"
+    },
+    "feedback": {
+        "message": "反馈",
+        "description": "反馈链接文本"
+    },
+    "settingsUpdateTip": {
+        "message": "你可以在这里设置背景颜色、壁纸、悬浮球功能...",
+        "description": "设置更新提示"
+    },
+    "deleteSuccess": {
+        "message": "删除成功",
+        "description": "删除成功时的提示消息"
+    },
+    "quickLinksTab": {
+        "message": "网站推荐"
+    },
+    "quickLinksSettings": {
+        "message": "网站推荐设置"
+    },
+    "quickLinksDescription": {
+        "message": "开启网站推荐后，将在搜索框下方显示您最常访问的网站，方便快速访问。访问新的网站时会自动更新推荐列表。"
+    },
+    "enableQuickLinks": {
+        "message": "启用网站推荐"
+    },
+    "namePrompt": {
+        "message": "我该怎么称呼你：",
+        "description": "询问用户名字时的提示消息"
+    },
+    "openAllBookmarks": {
+        "message": "打开所有书签",
+        "description": "打开文件夹中的所有书签"
     }
 }

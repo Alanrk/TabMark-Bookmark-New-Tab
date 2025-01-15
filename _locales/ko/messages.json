@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "TabMark-Bookmark New Tab",
+        "message": "TabMark",
         "description": "확장 프로그램 이름"
     },
     "extDescription": {
@@ -274,5 +274,163 @@
     "yearProgress": {
         "message": "년 진행도",
         "description": "년 진행도 표시"
+    },
+    "searchTips": {
+        "message": "이번에 사용:",
+        "description": "검색 팁 텍스트"
+    },
+    "baiduTab": {
+        "message": "바이두",
+        "description": "바이두 검색 엔진 탭"
+    },
+    "searchEngineUpdateTip": {
+        "message": "검색 엔진 전환 기능이 업데이트되었습니다"
+    },
+    "searchEngineUpdateDetail": {
+        "message": "이제 검색 아이콘을 클릭하여 기본 검색 엔진을 설정하고, 탭 바를 사용하여 임시로 전환하세요"
+    },
+    "googleLabel": {
+        "message": "구글",
+        "description": "Google 검색 엔진 레이블"
+    },
+    "bingLabel": {
+        "message": "빙",
+        "description": "Bing 검색 엔진 레이블"
+    },
+    "baiduLabel": {
+        "message": "바이두",
+        "description": "Baidu 검색 엔진 레이블"
+    },
+    "kimiLabel": {
+        "message": "Kimi",
+        "description": "Kimi 검색 엔진 레이블"
+    },
+    "doubaoLabel": {
+        "message": "豆包",
+        "description": "豆包 검색 엔진 레이블"
+    },
+    "chatgptLabel": {
+        "message": "ChatGPT",
+        "description": "ChatGPT 검색 엔진 레이블"
+    },
+    "feloLabel": {
+        "message": "Felo",
+        "description": "Felo 검색 엔진 레이블"
+    },
+    "metasoLabel": {
+        "message": "秘塔",
+        "description": "秘塔 검색 엔진 레이블"
+    },
+    "backgroundTitle": {
+        "message": "배경 설정",
+        "description": "배경 설정 제목"
+    },
+    "resetWallpaper": {
+        "message": "기본 배경으로 복원",
+        "description": "배경화면 초기화 버튼 텍스트"
+    },
+    "uploadWallpaper": {
+        "message": "배경화면 업로드",
+        "description": "배경화면 업로드 버튼 텍스트"
+    },
+    "wallpaperResetSuccess": {
+        "message": "배경이 기본값으로 초기화되었습니다",
+        "description": "배경화면 초기화 성공 메시지"
+    },
+    "solidBackgroundTitle": {
+        "message": "단색 배경",
+        "description": "단색 배경 설정 제목"
+    },
+    "wallpaperTitle": {
+        "message": "배경화면",
+        "description": "배경화면 설정 제목"
+    },
+    "uploadedWallpaperBadge": {
+        "message": "로컬",
+        "description": "사용자가 업로드한 배경화면의 배지 텍스트"
+    },
+    "pleaseUploadImage": {
+        "message": "이미지 파일을 업로드해 주세요",
+        "description": "이미지 파일 업로드 요청"
+    },
+    "imageSizeExceeded": {
+        "message": "이미지 크기가 제한을 초과했습니다(최대 10MB), 더 작은 이미지를 선택해 주세요",
+        "description": "이미지 크기 초과 경고"
+    },
+    "fileReadError": {
+        "message": "파일 읽기에 실패했습니다. 다시 시도해 주세요",
+        "description": "파일 읽기 오류"
+    },
+    "lowResolutionWarning": {
+        "message": "이미지 해상도가 너무 낮습니다. 최상의 결과를 위해 $1 x $2 이상을 권장합니다",
+        "description": "낮은 해상도 경고"
+    },
+    "imageLoadError": {
+        "message": "이미지 로드에 실패했습니다. 다른 이미지를 시도해 주세요",
+        "description": "이미지 로드 오류"
+    },
+    "storageError": {
+        "message": "저장 공간이 부족합니다. 공간을 확보하고 다시 시도해 주세요",
+        "description": "저장소 오류"
+    },
+    "wallpaperSetError": {
+        "message": "배경화면 설정에 실패했습니다. 다시 시도해 주세요",
+        "description": "배경화면 설정 오류"
+    },
+    "aboutTab": {
+        "message": "정보",
+        "description": "정보 탭"
+    },
+    "aboutTitle": {
+        "message": "TabMark 정보",
+        "description": "정보 페이지 제목"
+    },
+    "contactUs": {
+        "message": "문의하기",
+        "description": "연락처 링크"
+    },
+    "version": {
+        "message": "버전 $1",
+        "description": "애플리케이션의 버전 번호"
+    },
+    "officialWebsite": {
+        "message": "공식 웹사이트",
+        "description": "공식 웹사이트 링크 텍스트"
+    },
+    "feedback": {
+        "message": "피드백",
+        "description": "피드백 링크 텍스트"
+    },
+    "settingsUpdateTip": {
+        "message": "배경색, 배경화면, 플로팅 볼 기능을 기서 설정할 수 있습니다...",
+        "description": "설정 업데이트 팁"
+    },
+    "deleteSuccess": {
+        "message": "삭제되었습니다",
+        "description": "항목 삭제 성공 시 토스트 메시지"
+    },
+    "quickLinksTab": {
+        "message": "추천 웹사이트",
+        "description": "추천 웹사이트 탭"
+    },
+    "quickLinksSettings": {
+        "message": "추천 웹사이트 설정",
+        "description": "추천 웹사이트 설정"
+    },
+    "quickLinksDescription": {
+        "message": "활성화하면 자주 방문하는 웹사이트가 검색창 아래에 표시되어 빠르게 접근할 수 있습니다. 새로운 사이트를 방문하면 추천 목록이 자동으로 업데이트됩니다.",
+        "description": "추천 웹사이트 설명"
+    },
+    "enableQuickLinks": {
+        "message": "추천 웹사이트 활성화",
+        "description": "추천 웹사이트 활성화 옵션"
+    },
+    "namePrompt": {
+        "message": "어떻게 불러드릴까요?",
+        "description": "사용자의 이름을 묻는 프롬프트 메시지"
+    },
+    "openAllBookmarks": {
+        "message": "모든 북마크 열기",
+        "description": "폴더의 모든 북마크 열기"
     }
 }

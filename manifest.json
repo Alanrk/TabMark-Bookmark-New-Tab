@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "__MSG_extName__",
-  "version": "1.227",
+  "name": "TabMark-Bookmark New Tab",
+  "version": "1.236",
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "chrome_url_overrides": {
@@ -44,6 +44,7 @@
     {
       "resources": [
         "_favicon/*",
+        "src/fonts/MaterialIcons-Regular.woff2",
         "src/fonts/*",
         "images/sider-icon/*",
         "images/*"

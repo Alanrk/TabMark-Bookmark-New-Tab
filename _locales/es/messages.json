@@ -1,10 +1,10 @@
 {
     "extName": {
-        "message": "TabMark-Bookmark New Tab",
+        "message": "TabMark",
         "description": "El nombre de la extensión"
     },
     "extDescription": {
-        "message": "TabMark es una aplicación de página de nueva pestaña basada en marcadores que te ayuda a organizar y acceder a tus marcadores de manera eficiente.",
+        "message": "Una página de nueva pestaña para organizar y acceder a tus marcadores fácilmente.",
         "description": "La descripción de la extensión"
     },
     "welcomeMessage": {
@@ -222,5 +222,135 @@
     "yearProgress": {
         "message": "Progreso anual",
         "description": "Progreso anual mostrado"
+    },
+    "searchTips": {
+        "message": "Usar esta vez:",
+        "description": "Texto de consejos de búsqueda"
+    },
+    "baiduTab": {
+        "message": "Baidu",
+        "description": "Pestaña del motor de búsqueda Baidu"
+    },
+    "searchEngineUpdateTip": {
+        "message": "La función de cambio de motor de búsqueda se ha actualizado"
+    },
+    "searchEngineUpdateDetail": {
+        "message": "Ahora haga clic en el icono de búsqueda para establecer el motor de búsqueda predeterminado, use la barra de pestañas para cambiar temporalmente"
+    },
+    "googleLabel": {
+        "message": "Google",
+        "description": "Etiqueta del motor de búsqueda Google"
+    },
+    "bingLabel": {
+        "message": "Bing",
+        "description": "Etiqueta del motor de búsqueda Bing"
+    },
+    "baiduLabel": {
+        "message": "Baidu",
+        "description": "Etiqueta del motor de búsqueda Baidu"
+    },
+    "kimiLabel": {
+        "message": "Kimi",
+        "description": "Etiqueta del motor de búsqueda Kimi"
+    },
+    "doubaoLabel": {
+        "message": "Doubao",
+        "description": "Etiqueta del motor de búsqueda Doubao"
+    },
+    "chatgptLabel": {
+        "message": "ChatGPT",
+        "description": "Etiqueta del motor de búsqueda ChatGPT"
+    },
+    "feloLabel": {
+        "message": "Felo",
+        "description": "Etiqueta del motor de búsqueda Felo"
+    },
+    "metasoLabel": {
+        "message": "Metaso",
+        "description": "Etiqueta del motor de búsqueda Metaso"
+    },
+    "backgroundTitle": {
+        "message": "Configuración de fondo",
+        "description": "Título de configuración de fondo"
+    },
+    "resetWallpaper": {
+        "message": "Restablecer fondo",
+        "description": "Texto del botón para restablecer el fondo de pantalla"
+    },
+    "uploadWallpaper": {
+        "message": "Subir fondo",
+        "description": "Texto del botón para subir fondo de pantalla"
+    },
+    "wallpaperResetSuccess": {
+        "message": "Fondo restablecido por defecto",
+        "description": "Mensaje de éxito al restablecer el fondo de pantalla"
+    },
+    "solidBackgroundTitle": {
+        "message": "Color sólido",
+        "description": "Título de configuración de color sólido"
+    },
+    "wallpaperTitle": {
+        "message": "Fondo de pantalla",
+        "description": "Título de configuración de fondo de pantalla"
+    },
+    "uploadedWallpaperBadge": {
+        "message": "Local",
+        "description": "Texto de insignia para fondos de pantalla subidos por el usuario"
+    },
+    "aboutTab": {
+        "message": "Acerca de",
+        "description": "Pestaña Acerca de"
+    },
+    "aboutTitle": {
+        "message": "Acerca de TabMark",
+        "description": "Título de la página Acerca de"
+    },
+    "contactUs": {
+        "message": "Contáctenos",
+        "description": "Enlace de contacto"
+    },
+    "version": {
+        "message": "Versión $1",
+        "description": "El número de versión de la aplicación"
+    },
+    "officialWebsite": {
+        "message": "Sitio Web Oficial",
+        "description": "Texto del enlace del sitio web oficial"
+    },
+    "feedback": {
+        "message": "Comentarios",
+        "description": "Texto del enlace de comentarios"
+    },
+    "settingsUpdateTip": {
+        "message": "Aquí puede configurar el color de fondo, el fondo de pantalla, la función de bola flotante...",
+        "description": "Consejo de actualización de configuración"
+    },
+    "deleteSuccess": {
+        "message": "Eliminado con éxito",
+        "description": "Mensaje toast cuando un elemento se elimina con éxito"
+    },
+    "quickLinksTab": {
+        "message": "Sitios Recomendados",
+        "description": "Pestaña de sitios recomendados"
+    },
+    "quickLinksSettings": {
+        "message": "Configuración de Sitios Recomendados",
+        "description": "Configuración de sitios recomendados"
+    },
+    "quickLinksDescription": {
+        "message": "Cuando está habilitado, sus sitios web más visitados se mostrarán debajo de la barra de búsqueda para un acceso rápido. La lista de recomendaciones se actualizará automáticamente cuando visite nuevos sitios.",
+        "description": "Descripción de los sitios recomendados"
+    },
+    "enableQuickLinks": {
+        "message": "Habilitar Sitios Recomendados",
+        "description": "Opción para habilitar sitios recomendados"
+    },
+    "namePrompt": {
+        "message": "¿Cómo te gustaría que te llamemos?",
+        "description": "Mensaje de solicitud al preguntar el nombre del usuario"
+    },
+    "openAllBookmarks": {
+        "message": "Abrir todos los marcadores",
+        "description": "Abre todos los marcadores en la carpeta"
     }
 }

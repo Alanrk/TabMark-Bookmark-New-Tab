@@ -2,15 +2,7 @@
 chrome.runtime.onInstalled.addListener(function (details) {
   if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
     chrome.tabs.create({ url: "chrome://newtab" });
-
-    // 初始化 defaultBookmarkId
-    chrome.storage.local.set({ defaultBookmarkId: null }, function () {
-      if (chrome.runtime.lastError) {
-        console.error('Error initializing defaultBookmarkId:', chrome.runtime.lastError);
-      } else {
-        console.log('Initialized defaultBookmarkId to null');
-      }
-    });
+    chrome.storage.local.set({ defaultBookmarkId: null });
   }
 });
 
@@ -20,12 +12,7 @@ let defaultBookmarkId = null;
 // 从存储中获取 defaultBookmarkId
 function loadDefaultBookmarkId() {
   chrome.storage.local.get(['defaultBookmarkId'], function (result) {
-    if (chrome.runtime.lastError) {
-      console.error('Error loading defaultBookmarkId from storage:', chrome.runtime.lastError);
-    } else {
-      defaultBookmarkId = result.defaultBookmarkId || null;
-      console.log('Loaded defaultBookmarkId from storage:', defaultBookmarkId);
-    }
+    defaultBookmarkId = result.defaultBookmarkId || null;
   });
 }
 
@@ -36,28 +23,53 @@ loadDefaultBookmarkId();
 chrome.storage.onChanged.addListener(function (changes, area) {
   if (area === 'local' && changes.defaultBookmarkId) {
     defaultBookmarkId = changes.defaultBookmarkId.newValue;
-    console.log('Updated defaultBookmarkId from storage change:', defaultBookmarkId);
   }
 });
 
 // 保留这个新的消息监听器，并添加其他操作
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  console.log("Background script received a message:", request);
   switch (request.action) {
     case 'fetchBookmarks':
-      chrome.bookmarks.getTree((bookmarkTreeNodes) => {
+      chrome.bookmarks.getTree(async (bookmarkTreeNodes) => {
         if (chrome.runtime.lastError) {
-          console.error(chrome.runtime.lastError);
           sendResponse({ error: chrome.runtime.lastError.message });
         } else {
-          sendResponse({ bookmarks: bookmarkTreeNodes });
+          try {
+            const folders = await new Promise((resolve) => {
+              chrome.bookmarks.getTree((tree) => {
+                resolve(tree);
+              });
+            });
+            
+            const processedBookmarks = [];
+            
+            function processBookmarkNode(node) {
+              if (node.url) {
+                processedBookmarks.push(node);
+              }
+              if (node.children) {
+                node.children.forEach(processBookmarkNode);
+              }
+            }
+            
+            folders.forEach(folder => {
+              processBookmarkNode(folder);
+            });
+            
+            sendResponse({ 
+              bookmarks: bookmarkTreeNodes,
+              processedBookmarks: processedBookmarks,
+              success: true 
+            });
+          } catch (error) {
+            sendResponse({ error: error.message });
+          }
         }
       });
-      return true;  // Indicate that the response will be sent asynchronously
+      return true;
 
     case 'getDefaultBookmarkId':
-      console.log('Sending defaultBookmarkId:', defaultBookmarkId);
       sendResponse({ defaultBookmarkId });
       break;
 
@@ -65,14 +77,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       defaultBookmarkId = request.defaultBookmarkId;
       chrome.storage.local.set({ defaultBookmarkId: defaultBookmarkId }, function () {
         if (chrome.runtime.lastError) {
-          console.error('Error setting defaultBookmarkId:', chrome.runtime.lastError);
           sendResponse({ success: false, error: chrome.runtime.lastError.message });
         } else {
-          console.log('Updated defaultBookmarkId to:', defaultBookmarkId);
           sendResponse({ success: true });
         }
       });
-      return true;  // Indicate that the response will be sent asynchronously
+      return true;
 
     case 'openInternalPage':
       handleOpenInternalPage(request, sendResponse);
@@ -88,10 +98,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           chrome.tabs.sendMessage(tab.id, {action: 'updateFloatingBall', enabled: request.enabled});
         });
       });
-      // 保存设置到 storage
-      chrome.storage.sync.set({enableFloatingBall: request.enabled}, function() {
-        console.log('Floating ball setting saved:', request.enabled);
-      });
+      chrome.storage.sync.set({enableFloatingBall: request.enabled});
       sendResponse({success: true});
       return true;
 
@@ -112,13 +119,10 @@ function handleOpenMultipleTabsAndGroup(request, sendResponse) {
   const createTabPromises = urls.map(url => {
     return new Promise((resolve) => {
       chrome.tabs.create({ url: url, active: false }, function (tab) {
-        if (chrome.runtime.lastError) {
-          console.error(`创建标签页失败: ${chrome.runtime.lastError.message}`);
-          resolve(); // 继续处理其他标签页
-        } else {
+        if (!chrome.runtime.lastError) {
           tabIds.push(tab.id);
-          resolve();
         }
+        resolve();
       });
     });
   });
@@ -127,7 +131,6 @@ function handleOpenMultipleTabsAndGroup(request, sendResponse) {
     if (tabIds.length > 1) {
       chrome.tabs.group({ tabIds: tabIds }, function (groupId) {
         if (chrome.runtime.lastError) {
-          console.error(`创建标签组失败: ${chrome.runtime.lastError.message}`);
           sendResponse({ success: false, error: chrome.runtime.lastError.message });
           return;
         }
@@ -137,20 +140,16 @@ function handleOpenMultipleTabsAndGroup(request, sendResponse) {
             color: 'cyan'
           }, function () {
             if (chrome.runtime.lastError) {
-              console.error(`更新标签组名称和颜色失败: ${chrome.runtime.lastError.message}`);
               sendResponse({ success: true, warning: chrome.runtime.lastError.message });
             } else {
-              console.log(`标签组名称设置为: ${groupName}，颜色设置为青色`);
               sendResponse({ success: true });
             }
           });
         } else {
-          console.error('tabGroups API 不可用');
           sendResponse({ success: true, warning: 'tabGroups API 不可用，无法设置组名和颜色' });
         }
       });
     } else {
-      console.log('URL 数量不大于 1，直接打开标签页，不创建标签组');
       sendResponse({ success: true, message: 'URL 数量不大于 1，直接打开标签页，不创建标签组' });
     }
   });
@@ -161,15 +160,12 @@ function handleOpenInternalPage(request, sendResponse) {
     if (tabs[0]) {
       chrome.tabs.update(tabs[0].id, {url: request.url}, function(tab) {
         if (chrome.runtime.lastError) {
-          console.error('Error updating tab:', chrome.runtime.lastError);
           sendResponse({success: false, error: 'Error updating tab: ' + chrome.runtime.lastError.message});
         } else {
-          console.log('Successfully opened internal page:', request.url);
           sendResponse({success: true, message: 'Current tab updated'});
         }
       });
     } else {
-      console.error('No active tab found');
       sendResponse({success: false, error: 'No active tab found'});
     }
   });

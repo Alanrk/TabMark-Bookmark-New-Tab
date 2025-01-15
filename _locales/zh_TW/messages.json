@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "TabMark-Bookmark New Tab",
+        "message": "TabMark",
         "description": "擴充功能的名稱"
     },
     "extDescription": {
@@ -270,5 +270,161 @@
     "yearProgress": {
         "message": "年進度",
         "description": "年進度顯示"
+    },
+    "searchTips": {
+        "message": "本次使用:",
+        "description": "搜尋提示文字"
+    },
+    "baiduTab": {
+        "message": "百度",
+        "description": "百度搜尋引擎標籤"
+    },
+    "searchEngineUpdateTip": {
+        "message": "搜尋引擎切換功能已更新",
+        "description": "搜尋引擎切換功能提示"
+    },
+    "searchEngineUpdateDetail": {
+        "message": "現在點擊搜尋圖示可以設置預設搜尋引擎，標籤列用於臨時切換當次搜尋",
+        "description": "搜尋引擎切換功能詳細說明"
+    },
+    "googleLabel": {
+        "message": "谷歌",
+        "description": "Google 搜尋引擎標籤"
+    },
+    "bingLabel": {
+        "message": "必應",
+        "description": "Bing 搜尋引擎標籤"
+    },
+    "baiduLabel": {
+        "message": "百度",
+        "description": "百度搜尋引擎標籤"
+    },
+    "kimiLabel": {
+        "message": "Kimi",
+        "description": "Kimi 搜尋引擎標籤"
+    },
+    "doubaoLabel": {
+        "message": "豆包",
+        "description": "豆包搜尋引擎標籤"
+    },
+    "chatgptLabel": {
+        "message": "ChatGPT",
+        "description": "ChatGPT 搜尋引擎標籤"
+    },
+    "feloLabel": {
+        "message": "Felo",
+        "description": "Felo 搜尋引擎標籤"
+    },
+    "metasoLabel": {
+        "message": "秘塔",
+        "description": "秘塔搜尋引擎標籤"
+    },
+    "backgroundTitle": {
+        "message": "背景設定",
+        "description": "背景設定標題"
+    },
+    "resetWallpaper": {
+        "message": "恢復預設背景",
+        "description": "重置桌布按鈕文字"
+    },
+    "uploadWallpaper": {
+        "message": "上傳桌布",
+        "description": "上傳桌布按鈕文字"
+    },
+    "wallpaperResetSuccess": {
+        "message": "背景已重置為預設",
+        "description": "重置桌布成功提示"
+    },
+    "solidBackgroundTitle": {
+        "message": "純色背景",
+        "description": "純色背景設定標題"
+    },
+    "wallpaperTitle": {
+        "message": "桌布",
+        "description": "桌布設定標題"
+    },
+    "uploadedWallpaperBadge": {
+        "message": "本機圖片",
+        "description": "使用者上傳的桌布標識"
+    },
+    "pleaseUploadImage": {
+        "message": "請上傳圖片檔案",
+        "description": "提示使用者上傳圖片檔案"
+    },
+    "imageSizeExceeded": {
+        "message": "圖片大小超過限制（最大10MB），請選擇較小的圖片",
+        "description": "圖片大小超限提示"
+    },
+    "fileReadError": {
+        "message": "讀取檔案失敗，請重試",
+        "description": "檔案讀取失敗提示"
+    },
+    "lowResolutionWarning": {
+        "message": "圖片解析度過低，建議使用至少 $1 x $2 的圖片以獲得最佳效果",
+        "description": "圖片解析度過低警告"
+    },
+    "imageLoadError": {
+        "message": "圖片載入失敗，請嘗試其他圖片",
+        "description": "圖片載入失敗提示"
+    },
+    "storageError": {
+        "message": "儲存空間不足，請清理後重試",
+        "description": "儲存空間不足提示"
+    },
+    "wallpaperSetError": {
+        "message": "設定桌布失敗，請重試",
+        "description": "設定桌布失敗提示"
+    },
+    "aboutTab": {
+        "message": "關於",
+        "description": "關於分頁"
+    },
+    "aboutTitle": {
+        "message": "關於 TabMark",
+        "description": "關於頁面標題"
+    },
+    "contactUs": {
+        "message": "聯絡我們",
+        "description": "聯絡連結"
+    },
+    "version": {
+        "message": "版本 $1",
+        "description": "應用程式的版本號"
+    },
+    "officialWebsite": {
+        "message": "官方網站",
+        "description": "官方網站連結文字"
+    },
+    "feedback": {
+        "message": "反饋",
+        "description": "反饋連結文字"
+    },
+    "settingsUpdateTip": {
+        "message": "你可以在這裡設置背景顏色、壁紙、懸浮球功能...",
+        "description": "設置更新提示"
+    },
+    "deleteSuccess": {
+        "message": "刪除成功",
+        "description": "刪除成功時的提示訊息"
+    },
+    "quickLinksTab": {
+        "message": "網站推薦",
+        "description": "網站推薦標籤"
+    },
+    "quickLinksSettings": {
+        "message": "網站推薦設定",
+        "description": "網站推薦設定"
+    },
+    "quickLinksDescription": {
+        "message": "開啟網站推薦後，將在搜尋框下方顯示您最常訪問的網站，方便快速訪問。訪問新的網站時會自動更新推薦列表。",
+        "description": "網站推薦描述"
+    },
+    "enableQuickLinks": {
+        "message": "啟用網站推薦",
+        "description": "啟用網站推薦選項"
+    },
+    "namePrompt": {
+        "message": "您想我們怎麼稱呼您？",
+        "description": "詢問使用者名字時的提示訊息"
     }
 }
