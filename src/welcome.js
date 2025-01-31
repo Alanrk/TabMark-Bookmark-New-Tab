@@ -62,7 +62,16 @@ const WelcomeManager = {
 
     // 调整文字颜色
     adjustTextColor(element) {
-        const computedStyle = window.getComputedStyle(document.documentElement);
+        // 检查是否处于暗黑模式
+        const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+        
+        if (isDarkMode) {
+            element.style.color = 'rgba(255, 255, 255, 0.9)';
+            return;
+        }
+
+        // 如果不是暗黑模式，则根据背景亮度调整
+        const computedStyle = window.getComputedStyle(document.body);
         const backgroundColor = computedStyle.backgroundColor;
         const backgroundImage = document.body.style.backgroundImage;
         
@@ -236,4 +245,22 @@ document.addEventListener('DOMContentLoaded', () => {
     WelcomeManager.initialize();
     // 每分钟更新一次欢迎消息
     setInterval(() => WelcomeManager.updateWelcomeMessage(), 60000);
+});
+
+// 监听主题变化
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'data-theme') {
+            const welcomeElement = document.getElementById('welcome-message');
+            if (welcomeElement) {
+                WelcomeManager.adjustTextColor(welcomeElement);
+            }
+        }
+    });
+});
+
+// 开始观察 html 元素的 data-theme 属性变化
+observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme']
 });
