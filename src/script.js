@@ -15,8 +15,18 @@ import { ICONS } from './icons.js';
 function updateThemeIcon(isDark) {
   const themeToggleBtn = document.getElementById('theme-toggle-btn');
   if (!themeToggleBtn) return;
-
-  themeToggleBtn.innerHTML = isDark ? ICONS.dark_mode : ICONS.light_mode;
+  
+  // 使用不同的图标来表示是否跟随系统
+  if (followSystem) {
+    themeToggleBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+      <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+    </svg>`;
+  } else {
+    themeToggleBtn.innerHTML = isDark ? ICONS.dark_mode : ICONS.light_mode;
+  }
+  
+  // 添加提示文本
+  themeToggleBtn.title = followSystem ? '当前跟随系统主题' : (isDark ? '暗色模式' : '亮色模式');
 }
 import { replaceIconsWithSvg, getIconHtml } from './icons.js';
 
@@ -688,33 +698,75 @@ document.addEventListener('DOMContentLoaded', function () {
   const themeToggleBtn = document.getElementById('theme-toggle-btn');
   const themeIcon = themeToggleBtn.querySelector('.material-icons');
 
+  // 检测系统主题
+  const systemThemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
   // 从 localStorage 获取主题设置
+  let followSystem = localStorage.getItem('followSystemTheme') !== 'false'; // 默认为true
   const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme === 'dark');
+
+  // 根据系统主题和用户设置更新主题
+  function updateThemeBasedOnSystem() {
+    if (followSystem) {
+      const newTheme = systemThemeMediaQuery.matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      updateThemeIcon(newTheme === 'dark');
+      localStorage.setItem('theme', newTheme);
+      // 隐藏主题切换按钮
+      themeToggleBtn.style.display = 'none';
+    } else {
+      // 显示主题切换按钮
+      themeToggleBtn.style.display = 'flex';
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme === 'dark');
+      }
+    }
+  }
+
+  // 初始化主题
+  updateThemeBasedOnSystem();
+
+  // 监听系统主题变化
+  systemThemeMediaQuery.addListener(updateThemeBasedOnSystem);
+
+  // 获取跟随系统主题的开关元素
+  const followSystemThemeCheckbox = document.getElementById('follow-system-theme');
+
+  // 加载设置
+  if (followSystemThemeCheckbox) {
+    followSystemThemeCheckbox.checked = followSystem;
+
+    // 保存设置
+    followSystemThemeCheckbox.addEventListener('change', function() {
+      followSystem = this.checked;
+      localStorage.setItem('followSystemTheme', followSystem);
+      
+      // 立即应用新的主题设置
+      updateThemeBasedOnSystem();
+    });
   }
 
   themeToggleBtn.addEventListener('click', () => {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const newTheme = isDark ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // 更新背景样式
-    const activeBackground = document.documentElement.className;
-    if (activeBackground && activeBackground.includes('gradient-background')) {
-      // 如果有活动的背景，重新应用以触发暗黑模式样式
-      requestAnimationFrame(() => {
-        document.documentElement.className = '';
+    if (!followSystem) {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme === 'dark');
+      
+      // 更新背景样式
+      const activeBackground = document.documentElement.className;
+      if (activeBackground && activeBackground.includes('gradient-background')) {
+        // 如果有活动的背景，重新应用以触发暗黑模式样式
         requestAnimationFrame(() => {
-          document.documentElement.className = activeBackground;
+          document.documentElement.className = '';
+          requestAnimationFrame(() => {
+            document.documentElement.className = activeBackground;
+          });
         });
-      });
+      }
     }
-    
-    updateThemeIcon(!isDark);
   });
 
   function updateThemeIcon(isDark) {
@@ -5665,6 +5717,29 @@ document.addEventListener('DOMContentLoaded', showSearchEngineUpdateTip);
 
   // 在适当时机调用此函数
   document.addEventListener('DOMContentLoaded', setVersionNumber);
+
+  // 获取跟随系统主题的开关元素
+  const followSystemThemeCheckbox = document.getElementById('follow-system-theme');
+
+  // 加载设置
+  followSystemThemeCheckbox.checked = followSystem;
+
+  // 保存设置
+  followSystemThemeCheckbox.addEventListener('change', function() {
+    followSystem = this.checked;
+    localStorage.setItem('followSystemTheme', followSystem);
+    
+    // 立即应用新的主题设置
+    if (followSystem) {
+      updateThemeBasedOnSystem();
+    } else {
+      // 如果关闭跟随系统，保持当前主题
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      localStorage.setItem('theme', currentTheme);
+      updateThemeIcon(currentTheme === 'dark');
+    }
+  });
 
 
 
