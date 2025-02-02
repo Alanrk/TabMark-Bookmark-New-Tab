@@ -398,7 +398,7 @@
         "description": "反饋連結文字"
     },
     "settingsUpdateTip": {
-        "message": "你可以在這裡設置背景顏色、壁紙、懸浮球功能...",
+        "message": "你可以在這裡設置背景顏色、桌布、懸浮球、推薦網站、清理失效書籤...",
         "description": "設置更新提示"
     },
     "deleteSuccess": {
@@ -428,5 +428,37 @@
     "openAllBookmarks": {
         "message": "打開所有書籤",
         "description": "打開資料夾中的所有書籤"
+    },
+    "bookmarkCleanupTitle": {
+        "message": "書籤清理",
+        "description": "書籤清理連結的標題"
+    },
+    "bookmarkCleanupNotInstalled": {
+        "message": "您尚未安裝書籤清理擴充功能。是否前往 Chrome 商店安裝？",
+        "description": "提示用戶安裝書籤清理擴充功能"
+    },
+    "newFeatureTitle": {
+        "message": "新功能提示",
+        "description": "新功能提示的標題"
+    },
+    "bookmarkCleanupFeature": {
+        "message": "新增書籤清理功能：點擊側邊欄的設定圖示，安裝書籤清理擴充功能，輕鬆清理重複和失效的書籤。而且可以看到你的書籤統計情況",
+        "description": "書籤清理功能的提示信息"
+    },
+    "bookmarkManagementTab": {
+        "message": "書籤管理",
+        "description": "書籤管理設定標籤"
+    },
+    "bookmarkCleanupSettingsTitle": {
+        "message": "書籤清理與統計",
+        "description": "書籤清理設定標題"
+    },
+    "bookmarkCleanupSettingsDescription": {
+        "message": "清理重複和失效的書籤，查看書籤使用統計數據，幫助您更好地管理書籤。",
+        "description": "書籤清理功能描述"
+    },
+    "openBookmarkCleanup": {
+        "message": "開啟書籤清理工具",
+        "description": "開啟書籤清理工具按鈕文字"
     }
 }

@@ -429,7 +429,7 @@
         "description": "反馈链接文本"
     },
     "settingsUpdateTip": {
-        "message": "你可以在这里设置背景颜色、壁纸、悬浮球功能...",
+        "message": "你可以在这里设置背景颜色、壁纸、悬浮球、推荐网站、清理失效书签...",
         "description": "设置更新提示"
     },
     "deleteSuccess": {
@@ -455,5 +455,37 @@
     "openAllBookmarks": {
         "message": "打开所有书签",
         "description": "打开文件夹中的所有书签"
+    },
+    "bookmarkCleanupTitle": {
+        "message": "书签清理",
+        "description": "书签清理链接的标题"
+    },
+    "bookmarkCleanupNotInstalled": {
+        "message": "您尚未安装书签清理插件。是否前往 Chrome 商店安装？",
+        "description": "提示用户安装书签清理插件"
+    },
+    "newFeatureTitle": {
+        "message": "新功能提示",
+        "description": "新功能提示的标题"
+    },
+    "bookmarkCleanupFeature": {
+        "message": "新增书签清理功能：点击侧边栏的设置图标，安装书签清理拓展，轻松清理重复和失效的书签。而且可以看到你的书签统计情况",
+        "description": "书签清理功能的提示信息"
+    },
+    "bookmarkManagementTab": {
+        "message": "书签整理",
+        "description": "书签管理设置标签"
+    },
+    "bookmarkCleanupSettingsTitle": {
+        "message": "书签清理与统计",
+        "description": "书签清理设置标题"
+    },
+    "bookmarkCleanupSettingsDescription": {
+        "message": "清理重复和失效的书签，查看书签使用统计数据，帮助您更好地管理书签。",
+        "description": "书签清理功能描述"
+    },
+    "openBookmarkCleanup": {
+        "message": "打开书签清理工具",
+        "description": "打开书签清理工具按钮文本"
     }
 }

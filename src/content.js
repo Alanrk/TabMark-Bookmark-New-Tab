@@ -1,6 +1,21 @@
 (function () {
   function getSelectedText() {
-    return window.getSelection().toString().trim();
+    const selection = window.getSelection();
+    const selectedText = selection.toString().trim();
+    
+    // 检查选区是否包含扩展的 Shadow DOM
+    if (selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0);
+      const container = range.commonAncestorContainer;
+      
+      // 如果选区在扩展的 Shadow DOM 内，返回空字符串
+      if (extensionContainer.contains(container) || 
+          (shadow && shadow.contains(container))) {
+        return '';
+      }
+    }
+    
+    return selectedText;
   }
 
   function getSearchQuery() {
@@ -677,26 +692,62 @@
 
   log('Content script initialized');
 
-  // 替换现有的 updateFloatingBallVisibility 函数
+  // 在文件顶部声明变量
+  let isFloatingBallEnabled = true;
+
+  // 更新悬浮球显示状态的函数
   function updateFloatingBallVisibility(enabled) {
     isFloatingBallEnabled = enabled;
     if (floatingButton) {
-      floatingButton.style.display = isFloatingBallEnabled ? 'flex' : 'none';
+      floatingButton.style.display = enabled ? 'flex' : 'none';
+    }
+    if (sidebarContainer) {
+      if (!enabled) {
+        sidebarContainer.classList.add('collapsed');
+      }
     }
   }
 
-  // 替换现有的 chrome.storage.sync.get 调用
-  chrome.storage.sync.get(['enableFloatingBall'], function(result) {
+  // 初始化时获取设置
+  chrome.storage.sync.get(['enableFloatingBall'], (result) => {
     updateFloatingBallVisibility(result.enableFloatingBall !== false);
   });
 
-  // 替换现有的消息监听器
+  // 监听来自 background 的消息
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === 'updateFloatingBall') {
       updateFloatingBallVisibility(request.enabled);
-      sendResponse({success: true});
+      sendResponse({ success: true });
     }
-    return true; // 保持消息通道开放
+    return true;
   });
+
+  // 确保在创建悬浮球时应用当前设置
+  floatingButton.style.display = isFloatingBallEnabled ? 'flex' : 'none';
+
+  const style = document.createElement('style');
+  style.textContent = `
+    #sidebar-container, #floating-button {
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    
+    #bookmark-list {
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    
+    .bookmark-link, .bookmark-title {
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    
+    #search-switcher {
+      user-select: none;
+      -webkit-user-select: none;
+    }
+  `;
+
+  shadow.appendChild(style);
 
 })();

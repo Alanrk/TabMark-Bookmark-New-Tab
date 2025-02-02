@@ -1191,13 +1191,7 @@ main {
   }
 }
 
-#welcome-message {
-      font-size: 32px;
-      font-weight: bold;
-      margin: 3rem auto 0;
-      color: #1a202c;
-      cursor: pointer; /* 鼠标指针变为手型 */
-}
+
 #current-time {
       font-size: 14px;
       margin: 0.5rem auto;
@@ -1557,7 +1551,6 @@ img.w-6.h-6.mr-2 {
 #welcome-message {
   font-size: 24px;
   font-weight: 600;
-  color: #1a202c;
   cursor: pointer;
   margin: 0;
   display: flex;
@@ -2695,7 +2688,7 @@ input:checked+.slider:before {
   }
   
   .settings-icon {
-    top: calc(20% + 180px);
+    top: calc(20% + 230px);
   }
 }
 
@@ -2712,7 +2705,7 @@ input:checked+.slider:before {
   }
   
   .settings-icon {
-    top: calc(10% + 160px);
+    top: calc(10% + 210px);
   }
 }
 
@@ -2755,7 +2748,7 @@ input:checked+.slider:before {
 /* 修改 settings-icon 的位置 */
 .settings-icon {
   position: fixed;
-  top: calc(30% + 210px);  /* links-icons 下方 */
+  top: calc(30% + 250px);  /* links-icons 下方 */
   right: 2rem;
   /* ... 其他样式保持不变 ... */
 }
@@ -2771,7 +2764,7 @@ input:checked+.slider:before {
   }
   
   .settings-icon {
-    top: calc(15% + 210px);
+    top: calc(15% + 230px);
   }
 }
 
@@ -2785,7 +2778,7 @@ input:checked+.slider:before {
   }
   
   .settings-icon {
-    top: calc(10% + 210px);
+    top: calc(10% + 230px);
   }
 }
 
@@ -2799,7 +2792,7 @@ input:checked+.slider:before {
   }
   
   .settings-icon {
-    top: calc(5% + 210px);
+    top: calc(5% + 230px);
   }
 }
 .settings-update-tip {
@@ -3183,4 +3176,114 @@ input:checked+.slider:before {
   }
 }
 
+/* 新功能提示样式 */
+.feature-tips {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  max-width: 480px;
+  z-index: 1000;
+  animation: tipFadeIn 0.3s ease-out;
+}
 
+.feature-tips .tip-content {
+  display: flex;
+  padding: 12px;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.feature-tips .tip-text {
+  flex: 1;
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.feature-tips .feature-tips-title {
+  font-weight: bold;
+  color: #10b981;
+  margin-bottom: 4px;
+}
+
+.feature-tips .tip-close {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-tips .tip-close:hover {
+  color: #374151;
+}
+.feature-tips .tip-content svg {
+  width: 20px;
+  height: 20px;
+  color: #10b981;
+  /* info 图标颜色 */
+}
+
+.feature-tips .tip-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* 暗色模式下的图标颜色 */
+[data-theme="dark"] .feature-tips .tip-content svg {
+  color: #10b981;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .feature-tips {
+  background: #1f2937;
+}
+
+[data-theme="dark"] .feature-tips .tip-text {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .feature-tips .tip-close {
+  color: #6b7280;
+}
+
+[data-theme="dark"] .feature-tips .tip-close:hover {
+  color: #e5e7eb;
+}
+
+/* 系统主题自动切换相关样式 */
+@media (prefers-color-scheme: dark) {
+    html[data-theme="auto"] .bg-gray-50 {
+        background-color: #1c1c1c;
+    }
+
+    html[data-theme="auto"] .border-gray-200 {
+        border-color: #404040;
+    }
+
+    html[data-theme="auto"] .text-gray-600 {
+        color: #e0e0e0;
+    }
+
+    /* ... 其他需要适配的样式 ... */
+}
+
+@media (prefers-color-scheme: light) {
+    html[data-theme="auto"] .bg-gray-50 {
+        background-color: #f9fafb;
+    }
+
+    html[data-theme="auto"] .border-gray-200 {
+        border-color: #e5e7eb;
+    }
+
+    html[data-theme="auto"] .text-gray-600 {
+        color: #4b5563;
+    }
+}

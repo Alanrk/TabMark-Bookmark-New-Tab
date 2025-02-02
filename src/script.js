@@ -1,3 +1,5 @@
+import { featureTips } from './feature-tips.js';
+
 let bookmarkTreeNodes = [];
 let defaultSearchEngine = 'google';
 let contextMenu = null;
@@ -439,8 +441,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // 显示搜索引擎更新提示
-  showSearchEngineUpdateTip();
+  // 初始化功能提示
+  featureTips.initAllTips();
 
   // 加载保存的背景颜色
   const savedBg = localStorage.getItem('selectedBackground');
@@ -559,6 +561,14 @@ document.addEventListener('DOMContentLoaded', function() {
   observer.observe(document.documentElement, {
     attributes: true,
     attributeFilter: ['class']
+  });
+
+  // 初始化快捷链接显示状态
+  chrome.storage.sync.get(['enableQuickLinks'], function(result) {
+    const quickLinksWrapper = document.querySelector('.quick-links-wrapper');
+    if (quickLinksWrapper) {
+      quickLinksWrapper.style.display = result.enableQuickLinks !== false ? 'flex' : 'none';
+    }
   });
 });
 
@@ -1328,6 +1338,23 @@ function createBookmarkCard(bookmark, index) {
     this.style.transform = 'scale(1)';
     this.style.boxShadow = '';
     this.style.backgroundColor = '';
+  });
+
+  card.addEventListener('click', async (e) => {
+    e.preventDefault();
+    
+    // 只对 chrome:// URL 做特殊处理
+    if (bookmark.url.startsWith('chrome://')) {
+      chrome.tabs.create({ url: bookmark.url }, (tab) => {
+        if (chrome.runtime.lastError) {
+          showToast(chrome.i18n.getMessage('cannotOpenChromeUrl') || '无法打开此类型的链接');
+        }
+      });
+      return; // 提前返回,不执行后续代码
+    }
+    
+    // 保持原有的在当前页面打开链接的方式
+    window.location.href = bookmark.url;
   });
 
   return card;
@@ -2487,85 +2514,6 @@ function createMenuItems(menu) {
   });
 }
 
-// 修改文件夹上下文菜单事件监听
-document.addEventListener('contextmenu', function (event) {
-  const targetFolder = event.target.closest('.bookmark-folder');
-  const targetCard = event.target.closest('.bookmark-card');
-  
-  if (targetFolder) {
-    event.preventDefault();
-    
-    // 确保文件夹上下文菜单存在
-    if (!bookmarkFolderContextMenu) {
-      bookmarkFolderContextMenu = createBookmarkFolderContextMenu();
-    }
-
-    if (!bookmarkFolderContextMenu) {
-      console.error('Failed to create bookmark folder context menu');
-      return;
-    }
-
-    currentBookmarkFolder = targetFolder;
-    
-    // 设置菜单位置
-    bookmarkFolderContextMenu.style.display = 'block';
-    bookmarkFolderContextMenu.style.top = `${event.clientY}px`;
-    bookmarkFolderContextMenu.style.left = `${event.clientX}px`;
-
-    // 确保菜单不会超出视窗
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    const menuRect = bookmarkFolderContextMenu.getBoundingClientRect();
-
-    if (event.clientX + menuRect.width > viewportWidth) {
-      bookmarkFolderContextMenu.style.left = `${viewportWidth - menuRect.width - 5}px`;
-    }
-
-    if (event.clientY + menuRect.height > viewportHeight) {
-      bookmarkFolderContextMenu.style.top = `${viewportHeight - menuRect.height - 5}px`;
-    }
-
-    // 隐藏书签卡片的上下文菜单
-    if (contextMenu) {
-      contextMenu.style.display = 'none';
-    }
-  } else if (targetCard) {
-    event.preventDefault();
-    // 确保在显示菜单前重置当前书签信息
-    currentBookmark = {
-      id: targetCard.dataset.id,
-      url: targetCard.href,
-      title: targetCard.querySelector('.card-title').textContent
-    };
-    
-    // 隐藏文件夹的上下文菜单
-    if (bookmarkFolderContextMenu) {
-      bookmarkFolderContextMenu.style.display = 'none';
-    }
-    
-    // 显示书签卡片的上下文菜单
-    contextMenu.style.top = `${event.clientY}px`;
-    contextMenu.style.left = `${event.clientX}px`;
-    contextMenu.style.display = 'block';
-  } else {
-    // 点击在其他地方，隐藏所有上下文菜单
-    if (contextMenu) {
-      contextMenu.style.display = 'none';
-      currentBookmark = null;
-    }
-    if (bookmarkFolderContextMenu) {
-      bookmarkFolderContextMenu.style.display = 'none';
-      currentBookmarkFolder = null;
-    }
-  }
-});
-
-// 在点击其他地方时隐藏菜单
-document.addEventListener('click', function (event) {
-  if (bookmarkFolderContextMenu && !event.target.closest('.bookmark-folder')) {
-    bookmarkFolderContextMenu.style.display = 'none';
-  }
-});
 
 // 添加文件夹相关的全局变量
 // Add event listeners or logic that uses these variables
@@ -2791,8 +2739,8 @@ function setupSpecialLinks() {
           break;
         case '#settings':
           openSettingsModal();
-          isProcessingClick = false; // 立即重置标志，因为不需要等待异步操作
-          return; // 直接返回，不需要执行后面的代码
+          isProcessingClick = false;
+          return;
         default:
           console.error('Unknown special link:', href);
           isProcessingClick = false;
@@ -2800,20 +2748,18 @@ function setupSpecialLinks() {
       }
 
       try {
-        const response = await chrome.runtime.sendMessage({ action: 'openInternalPage', url: chromeUrl });
-        if (response && response.success) {
-          console.log('Successfully opened internal page:', response.message);
-        } else if (response) {
-          console.error('Failed to open internal page:', response.error);
-        } else {
-          console.error('No response received');
-        }
+        // 直接使用 chrome.tabs.create 打开新标签页
+        chrome.tabs.create({ url: chromeUrl }, (tab) => {
+          if (chrome.runtime.lastError) {
+            console.error('Failed to open tab:', chrome.runtime.lastError);
+          }
+        });
       } catch (error) {
         console.error('Error opening internal page:', error);
       } finally {
         setTimeout(() => {
           isProcessingClick = false;
-        }, 1000); // 添加一个短暂的延迟，防止快速重复点击
+        }, 1000);
       }
     });
   });
@@ -2862,143 +2808,7 @@ function openSettingsModal() {
 document.addEventListener('DOMContentLoaded', function () {
   // ... 其他初始化代码 ...
   createBookmarkFolderContextMenu();
-  // 获取模态对话框元素
-  const settingsIcon = document.querySelector('.settings-icon a');
-  const settingsModal = document.getElementById('settings-modal');
-  const closeButton = document.querySelector('.settings-modal-close');
-  const tabButtons = document.querySelectorAll('.settings-tab-button');
-  const tabContents = document.querySelectorAll('.settings-tab-content');
-  const bgOptions = document.querySelectorAll('.settings-bg-option');
-
-  // 打开设置模态框
-  settingsIcon.addEventListener('click', function (e) {
-    e.preventDefault();
-    settingsModal.style.display = 'block';
-  });
-
-  // 关闭设置模态框
-  closeButton.addEventListener('click', function () {
-    settingsModal.style.display = 'none';
-  });
-
-  // 点击模态框外部关闭
-  window.addEventListener('click', function (e) {
-    if (e.target === settingsModal) {
-      settingsModal.style.display = 'none';
-    }
-  });
-
-  // 标签切换
-  tabButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      const tabName = this.getAttribute('data-tab');
-
-      tabButtons.forEach(btn => btn.classList.remove('active'));
-      tabContents.forEach(content => content.classList.remove('active'));
-
-      this.classList.add('active');
-      document.getElementById(`${tabName}-settings`).classList.add('active');
-    });
-  });
-
-  // 背景颜色选择
-  bgOptions.forEach(option => {
-    option.addEventListener('click', function () {
-      const bgClass = this.getAttribute('data-bg');
-      console.log('[Background] Color option clicked:', {
-        bgClass,
-        previousBackground: document.documentElement.className,
-        previousWallpaper: localStorage.getItem('originalWallpaper')
-      });
-
-      // 移除所有背景选项的 active 状态
-      bgOptions.forEach(opt => {
-        opt.classList.remove('active');
-        console.log('[Background] Removing active state from:', opt.getAttribute('data-bg'));
-      });
-      
-      // 添加当前选项的 active 状态
-      this.classList.add('active');
-      console.log('[Background] Setting active state for:', bgClass);
-      
-      document.documentElement.className = bgClass;
-      localStorage.setItem('selectedBackground', bgClass);
-      localStorage.setItem('useDefaultBackground', 'true');
-      
-      // 清除壁纸相关的状态
-      document.querySelectorAll('.wallpaper-option').forEach(opt => {
-        opt.classList.remove('active');
-      });
-
-      // 清除壁纸
-      const mainElement = document.querySelector('main');
-      if (mainElement) {
-        mainElement.style.backgroundImage = 'none';
-        document.body.style.backgroundImage = 'none';
-        console.log('[Background] Cleared wallpaper');
-      }
-      localStorage.removeItem('originalWallpaper');
-
-      // 使用 WelcomeManager 更新欢迎消息颜色
-      const welcomeElement = document.getElementById('welcome-message');
-      if (welcomeElement && window.WelcomeManager) {
-        window.WelcomeManager.adjustTextColor(welcomeElement);
-      }
-    });
-  });
-
-  const enableFloatingBallCheckbox = document.getElementById('enable-floating-ball');
-
-  // 加载设置
-  chrome.storage.sync.get(['enableFloatingBall'], function (result) {
-    enableFloatingBallCheckbox.checked = result.enableFloatingBall !== false;
-  });
-
-  // 保存设置
-  enableFloatingBallCheckbox.addEventListener('change', function() {
-    const isEnabled = this.checked;
-    chrome.runtime.sendMessage({action: 'updateFloatingBallSetting', enabled: isEnabled}, function(response) {
-      if (response && response.success) {
-        console.log('Floating ball setting updated successfully');
-      } else {
-        console.error('Failed to update floating ball setting');
-      }
-    });
-  });
 });
-
-  // 获取 Quick Links 开关元素
-  const enableQuickLinksCheckbox = document.getElementById('enable-quick-links');
-
-  // 加载设置
-  chrome.storage.sync.get(['enableQuickLinks'], function (result) {
-    // 默认为开启状态
-    enableQuickLinksCheckbox.checked = result.enableQuickLinks !== false;
-    
-    // 根据设置显示或隐藏 Quick Links
-    toggleQuickLinksVisibility(enableQuickLinksCheckbox.checked);
-  });
-
-  // 保存设置
-  enableQuickLinksCheckbox.addEventListener('change', function() {
-    const isEnabled = this.checked;
-    
-    // 保存设置到 Chrome 存储
-    chrome.storage.sync.set({ enableQuickLinks: isEnabled }, function() {
-      console.log('Quick Links setting saved:', isEnabled);
-    });
-
-    // 显示或隐藏 Quick Links
-    toggleQuickLinksVisibility(isEnabled);
-  });
-
-  // 控制 Quick Links 显示/隐藏的函数
-  function toggleQuickLinksVisibility(show) {
-    const quickLinksWrapper = document.querySelector('.quick-links-wrapper');
-    if (quickLinksWrapper) {
-      quickLinksWrapper.style.display = show ? 'flex' : 'none';
-    }
-  }
 
 
 
@@ -3959,9 +3769,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const searchInput = document.querySelector('.search-input');
         const searchQuery = searchInput.value.trim();
         
-        // 移除临时切换图标的代码
-        // 只保留标签激活状态的切换
+        // 移除所有标签的激活状态
         tabs.forEach(t => t.classList.remove('active'));
+        // 为当前点击的标签添加激活状态
         this.classList.add('active');
 
         // 如果搜索框有内容，立即执行搜索
@@ -3969,6 +3779,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const searchUrl = getSearchUrl(selectedEngine, searchQuery);
             window.open(searchUrl, '_blank');
             hideSuggestions();
+            
+            // 使用 setTimeout 延迟恢复默认搜索引擎状态
+            setTimeout(restoreDefaultSearchEngine, 300);
         }
     });
   });
@@ -5587,71 +5400,9 @@ function logSearchEngineState() {
   console.log('[State] Default engine:', defaultEngine);
   console.log('[State] Current active engine:', currentEngine);
 }
-// 显示搜索引擎更新提示
-function showSearchEngineUpdateTip() {
-  // 初始化时隐藏设置提示
-  const settingsTip = document.querySelector('.settings-update-tip');
-  if (settingsTip) {
-    settingsTip.style.display = 'none';
-  }
 
-  const searchTipShown = localStorage.getItem('searchEngineUpdateTipShown') === 'true';
-  if (searchTipShown) {
-    // 如果搜索提示已关闭，则显示设置提示
-    showSettingsUpdateTip();
-    // 隐藏搜索提示
-    const searchTip = document.querySelector('.search-engine-update-tip');
-    if (searchTip) {
-      searchTip.style.display = 'none';
-    }
-    return;
-  }
 
-  const tipContainer = document.querySelector('.search-engine-update-tip');
-  if (tipContainer) {
-    tipContainer.style.display = 'block';
 
-    const closeButton = tipContainer.querySelector('.tip-close');
-    closeButton.addEventListener('click', function () {
-      tipContainer.classList.add('tip-fade-out');
-      setTimeout(() => {
-        tipContainer.style.display = 'none';
-        // 搜索提示关闭后，显示设置提示
-        showSettingsUpdateTip();
-      }, 300);
-      localStorage.setItem('searchEngineUpdateTipShown', 'true');
-    });
-  }
-}
-
-// 显示设置功能更新提示
-function showSettingsUpdateTip() {
-  const settingsTipShown = localStorage.getItem('settingsUpdateTipShown') === 'true';
-  if (settingsTipShown) {
-    const tip = document.querySelector('.settings-update-tip');
-    if (tip) {
-      tip.style.display = 'none';
-    }
-    return;
-  }
-
-  const tipContainer = document.querySelector('.settings-update-tip');
-  if (tipContainer) {
-    tipContainer.style.display = 'block';
-
-    const closeButton = tipContainer.querySelector('.tip-close');
-    closeButton.addEventListener('click', function () {
-      tipContainer.classList.add('tip-fade-out');
-      setTimeout(() => {
-        tipContainer.style.display = 'none';
-      }, 300);
-      localStorage.setItem('settingsUpdateTipShown', 'true');
-    });
-  }
-}
-
-// 初始化时只调用搜索引擎更新提示
-document.addEventListener('DOMContentLoaded', showSearchEngineUpdateTip);
 
   // 获取版本号并设置
   function setVersionNumber() {
@@ -5665,6 +5416,51 @@ document.addEventListener('DOMContentLoaded', showSearchEngineUpdateTip);
 
   // 在适当时机调用此函数
   document.addEventListener('DOMContentLoaded', setVersionNumber);
+
+  // 修改文档点击事件监听器，同时处理书签和文件夹的上下文菜单
+  document.addEventListener('click', function (event) {
+    // 关闭书签上下文菜单
+    if (contextMenu) {
+      contextMenu.style.display = 'none';
+      currentBookmark = null;
+    }
+    
+    // 关闭文件夹上下文菜单
+    if (bookmarkFolderContextMenu) {
+      bookmarkFolderContextMenu.style.display = 'none';
+      currentBookmarkFolder = null;
+    }
+  });
+
+  // 为上下文菜单添加阻止冒泡，防止点击菜单本身时关闭
+  if (contextMenu) {
+    contextMenu.addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+  }
+
+  if (bookmarkFolderContextMenu) {
+    bookmarkFolderContextMenu.addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+  }
+
+  // 添加一个全局函数用于更新快捷链接显示状态
+  function updateQuickLinksVisibility() {
+    chrome.storage.sync.get(['enableQuickLinks'], function(result) {
+      const quickLinksWrapper = document.querySelector('.quick-links-wrapper');
+      if (quickLinksWrapper) {
+        quickLinksWrapper.style.display = result.enableQuickLinks !== false ? 'flex' : 'none';
+      }
+    });
+  }
+
+  // 监听存储变化
+  chrome.storage.onChanged.addListener(function(changes, namespace) {
+    if (namespace === 'sync' && changes.enableQuickLinks) {
+      updateQuickLinksVisibility();
+    }
+  });
 
 
 

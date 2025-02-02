@@ -12,6 +12,7 @@ const WelcomeManager = {
         this.updateWelcomeMessage();
         this.initializeColorCache();
         this.setupEventListeners();
+        this.setupThemeChangeListener();
     },
 
     // 更新欢迎消息
@@ -65,7 +66,34 @@ const WelcomeManager = {
         const computedStyle = window.getComputedStyle(document.documentElement);
         const backgroundColor = computedStyle.backgroundColor;
         const backgroundImage = document.body.style.backgroundImage;
+        const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
         
+        // 处理纯色背景的情况
+        if (!backgroundImage || backgroundImage === 'none') {
+            // 如果是暗色模式，直接使用亮色文本
+            if (isDarkMode) {
+                element.style.color = 'rgba(255, 255, 255, 0.9)';
+                this.colorCache.lastTextColor = 'rgba(255, 255, 255, 0.9)';
+                return;
+            }
+            
+            // 亮色模式下，根据背景色计算文字颜色
+            let textColor = 'rgba(51, 51, 51, 0.9)'; // 默认深色文本
+            
+            if (backgroundColor && backgroundColor !== 'rgba(0, 0, 0, 0)' && backgroundColor !== 'transparent') {
+                const rgb = backgroundColor.match(/\d+/g);
+                if (rgb && rgb.length >= 3) {
+                    const brightness = (parseInt(rgb[0]) * 0.299 + parseInt(rgb[1]) * 0.587 + parseInt(rgb[2]) * 0.114);
+                    textColor = brightness > 128 ? 'rgba(51, 51, 51, 0.9)' : 'rgba(255, 255, 255, 0.9)';
+                }
+            }
+            
+            this.colorCache.lastTextColor = textColor;
+            element.style.color = textColor;
+            return;
+        }
+
+        // 处理壁纸背景的情况
         if (backgroundImage && backgroundImage !== 'none') {
             // 先检查缓存
             if (this.colorCache.lastBackground === backgroundImage && this.colorCache.lastTextColor) {
@@ -181,37 +209,6 @@ const WelcomeManager = {
             element.style.color = 'rgba(255, 255, 255, 0.9)';
             return;
         }
-
-        // 处理纯色背景
-        let textColor;
-        if (backgroundColor === 'rgba(0, 0, 0, 0)' || backgroundColor === 'transparent') {
-            textColor = 'rgba(51, 51, 51, 0.9)';
-        } else {
-            const rgb = backgroundColor.match(/\d+/g);
-            if (!rgb || rgb.length < 3) {
-                textColor = 'rgba(51, 51, 51, 0.9)';
-            } else {
-                // 确保正确解析 RGB 值
-                const r = parseInt(rgb[0]);
-                const g = parseInt(rgb[1]);
-                const b = parseInt(rgb[2]);
-                
-                // 计算亮度
-                const brightness = (r * 0.299 + g * 0.587 + b * 0.114);
-                console.log('[WelcomeManager] Background color:', {r, g, b, brightness});
-                
-                // 根据亮度选择文字颜色
-                textColor = brightness > 128 ? 
-                    'rgba(51, 51, 51, 0.9)' : // 深色文本用于亮色背景
-                    'rgba(255, 255, 255, 0.9)'; // 亮色文本用于深色背景
-            }
-        }
-
-        // 更新缓存和应用颜色
-        this.colorCache.lastBackground = backgroundColor;
-        this.colorCache.lastTextColor = textColor;
-        element.style.color = textColor;
-        element.style.transition = 'color 0.3s ease';
     },
 
     // 设置事件监听器
@@ -224,6 +221,25 @@ const WelcomeManager = {
                 localStorage.setItem('userName', userName);
                 this.updateWelcomeMessage();
             }
+        });
+    },
+
+    // 添加主题变化监听方法
+    setupThemeChangeListener() {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'data-theme') {
+                    const welcomeElement = document.getElementById('welcome-message');
+                    if (welcomeElement) {
+                        this.adjustTextColor(welcomeElement);
+                    }
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
         });
     }
 };

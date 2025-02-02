@@ -322,7 +322,7 @@
         "description": "Texto del enlace de comentarios"
     },
     "settingsUpdateTip": {
-        "message": "Aquí puede configurar el color de fondo, el fondo de pantalla, la función de bola flotante...",
+        "message": "Aquí puede configurar el color de fondo, el fondo de pantalla, la función de bola flotante, sitios recomendados, limpiar marcadores inválidos...",
         "description": "Consejo de actualización de configuración"
     },
     "deleteSuccess": {
@@ -352,5 +352,37 @@
     "openAllBookmarks": {
         "message": "Abrir todos los marcadores",
         "description": "Abre todos los marcadores en la carpeta"
+    },
+    "bookmarkCleanupTitle": {
+        "message": "Limpieza de marcadores",
+        "description": "Título del enlace de limpieza de marcadores"
+    },
+    "bookmarkCleanupNotInstalled": {
+        "message": "No has instalado la extensión de limpieza de marcadores. ¿Te gustaría instalarla desde la Chrome Web Store?",
+        "description": "Mensaje para instalar la extensión de limpieza de marcadores"
+    },
+    "newFeatureTitle": {
+        "message": "Consejos de nuevas funciones",
+        "description": "Título de consejos de nuevas funciones"
+    },
+    "bookmarkCleanupFeature": {
+        "message": "Nueva función de limpieza de marcadores: Haga clic en el icono de configuración en la barra lateral, instale la extensión de limpieza de marcadores para limpiar fácilmente los marcadores duplicados e inválidos. También puede ver sus estadísticas de marcadores.",
+        "description": "Información sobre la función de limpieza de marcadores"
+    },
+    "bookmarkManagementTab": {
+        "message": "Organización de Marcadores",
+        "description": "Pestaña de organización de marcadores"
+    },
+    "bookmarkCleanupSettingsTitle": {
+        "message": "Limpieza y Estadísticas de Marcadores",
+        "description": "Título de configuración de limpieza de marcadores"
+    },
+    "bookmarkCleanupSettingsDescription": {
+        "message": "Limpie marcadores duplicados e inválidos, vea estadísticas de uso de marcadores para ayudarle a administrar mejor sus marcadores.",
+        "description": "Descripción de la función de limpieza de marcadores"
+    },
+    "openBookmarkCleanup": {
+        "message": "Abrir Herramienta de Limpieza de Marcadores",
+        "description": "Texto del botón para abrir la herramienta de limpieza de marcadores"
     }
 }

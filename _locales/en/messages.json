@@ -358,7 +358,7 @@
         "description": "Feedback link text"
     },
     "settingsUpdateTip": {
-        "message": "You can set background color, wallpaper, floating ball feature here...",
+        "message": "You can set background color, wallpaper, floating ball, site recommendations, and bookmark cleanup here...",
         "description": "Settings update tip"
     },
     "deleteSuccess": {
@@ -386,5 +386,37 @@
     "openAllBookmarks": {
         "message": "Open All Bookmarks",
         "description": "Context menu option to open all bookmarks in a folder"
+    },
+    "bookmarkCleanupTitle": {
+        "message": "Bookmark Cleanup",
+        "description": "Title of the bookmark cleanup link"
+    },
+    "bookmarkCleanupNotInstalled": {
+        "message": "You haven't installed the Bookmark Cleanup extension. Would you like to install it from the Chrome Web Store?",
+        "description": "Prompt to install the bookmark cleanup extension"
+    },
+    "newFeatureTitle": {
+        "message": "New Feature Tips",
+        "description": "Title for new feature tips"
+    },
+    "bookmarkCleanupFeature": {
+        "message": "New bookmark cleanup feature: Click the settings icon in the sidebar, install the bookmark cleanup extension to easily clean up duplicate and invalid bookmarks. You can also see your bookmark statistics.",
+        "description": "Bookmark cleanup feature tip information"
+    },
+    "bookmarkManagementTab": {
+        "message": "Bookmark Organization",
+        "description": "Bookmark organization tab"
+    },
+    "bookmarkCleanupSettingsTitle": {
+        "message": "Bookmark Cleanup & Statistics",
+        "description": "Title of bookmark cleanup settings"
+    },
+    "bookmarkCleanupSettingsDescription": {
+        "message": "Clean up duplicate and invalid bookmarks, view bookmark usage statistics to help you better manage your bookmarks.",
+        "description": "Description of bookmark cleanup feature"
+    },
+    "openBookmarkCleanup": {
+        "message": "Open Bookmark Cleanup Tool",
+        "description": "Button text to open bookmark cleanup tool"
     }
 }

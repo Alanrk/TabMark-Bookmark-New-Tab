@@ -350,7 +350,7 @@
         "description": "Feedback-Link-Text"
     },
     "settingsUpdateTip": {
-        "message": "Hier können Sie Hintergrundfarbe, Hintergrundbild und Floating-Ball-Funktion einstellen...",
+        "message": "Hier können Sie Hintergrundfarbe, Hintergrundbild, Floating-Ball-Funktion, Website-Empfehlungen und Lesezeichen-Aufräumen einstellen...",
         "description": "Einstellungen Update-Tipp"
     },
     "deleteSuccess": {
@@ -380,5 +380,37 @@
     "openAllBookmarks": {
         "message": "Alle Lesezeichen öffnen",
         "description": "Öffnet alle Lesezeichen im Ordner"
+    },
+    "bookmarkCleanupTitle": {
+        "message": "Lesezeichen aufräumen",
+        "description": "Titel des Links zum Aufräumen der Lesezeichen"
+    },
+    "bookmarkCleanupNotInstalled": {
+        "message": "Die Lesezeichen-Aufräumen-Erweiterung ist nicht installiert. Möchten Sie sie aus dem Chrome Web Store installieren?",
+        "description": "Aufforderung zur Installation der Lesezeichen-Aufräumen-Erweiterung"
+    },
+    "newFeatureTitle": {
+        "message": "Neue Funktionen",
+        "description": "Titel der neuen Funktionen"
+    },
+    "bookmarkCleanupFeature": {
+        "message": "Neue Lesezeichen-Aufräumen-Funktion: Klicken Sie auf das Einstellungssymbol in der Seitenleiste, installieren Sie die Lesezeichen-Aufräumen-Erweiterung, um doppelte und ungültige Lesezeichen einfach zu bereinigen. Sie können auch Ihre Lesezeichen-Statistiken sehen.",
+        "description": "Information über die Lesezeichen-Aufräumen-Funktion"
+    },
+    "bookmarkManagementTab": {
+        "message": "Lesezeichen-Organisation",
+        "description": "Tab für Lesezeichen-Organisation"
+    },
+    "bookmarkCleanupSettingsTitle": {
+        "message": "Lesezeichen aufräumen & Statistiken",
+        "description": "Titel der Lesezeichen-Aufräumen-Einstellungen"
+    },
+    "bookmarkCleanupSettingsDescription": {
+        "message": "Bereinigen Sie doppelte und ungültige Lesezeichen, sehen Sie Lesezeichen-Nutzungsstatistiken, um Ihre Lesezeichen besser zu verwalten.",
+        "description": "Beschreibung der Lesezeichen-Aufräumen-Funktion"
+    },
+    "openBookmarkCleanup": {
+        "message": "Lesezeichen-Aufräumen-Tool öffnen",
+        "description": "Button-Text zum Öffnen des Lesezeichen-Aufräumen-Tools"
     }
 }

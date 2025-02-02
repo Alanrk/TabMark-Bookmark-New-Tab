@@ -14,6 +14,9 @@
   <script type="module" src="script.js"></script>
   <script src="wallpaper.js" defer></script>
   <script type="module" src="icons.js"></script>
+  <script type="module" src="bookmark-cleanup.js"></script>
+  <script type="module" src="feature-tips.js"></script>
+  <script type="module" src="settings.js"></script>
 
 </head>
 <body class="h-screen flex flex-col">
@@ -205,6 +208,7 @@
           <button class="settings-tab-button active" data-tab="appearance" data-i18n="appearanceTab">外观设置</button>
           <button class="settings-tab-button" data-tab="floating-ball" data-i18n="floatingBallTab">悬浮球设置</button>
           <button class="settings-tab-button" data-tab="quick-links" data-i18n="quickLinksTab">网站推荐</button>
+          <button class="settings-tab-button" data-tab="bookmark-management" data-i18n="bookmarkManagementTab">书签管理</button>
           <button class="settings-tab-button" data-tab="about" data-i18n="aboutTab">关于</button>
         </div>
         <div class="settings-content">
@@ -264,6 +268,17 @@
               </label>
             </div>
           </div>
+           <div id="bookmark-management-settings" class="settings-tab-content">
+             <h3 class="settings-modal-subtitle" data-i18n="bookmarkCleanupSettingsTitle">书签清理与统计</h3>
+             <p data-i18n="bookmarkCleanupSettingsDescription">清理重复和失效的书签，查看书签使用统计数据，帮助您更好地管理书签。</p>
+             
+             <div class="bookmark-cleanup-actions">
+               <button id="open-bookmark-cleanup" class="primary-button">
+                 <span class="material-icons">cleaning_services</span>
+                 <span data-i18n="openBookmarkCleanup">打开书签清理工具</span>
+               </button>
+             </div>
+           </div>
            <div id="about-settings" class="settings-tab-content">
              <h3 class="settings-modal-subtitle" data-i18n="aboutTitle">关于 TabMark</h3>
              <div class="about-content">
@@ -318,7 +333,7 @@
   </div>
   <div id="toast" class="toast" style="display: none;"></div>
   <div class="theme-toggle">
-    <button id="theme-toggle-btn" title="Toggle dark mode">
+    <button id="theme-toggle-btn" title="Toggle theme mode">
       <span class="material-icons">light_mode</span>
     </button>
   </div>

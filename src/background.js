@@ -84,22 +84,27 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       });
       return true;
 
-    case 'openInternalPage':
-      handleOpenInternalPage(request, sendResponse);
-      return true;
-
     case 'openMultipleTabsAndGroup':
       handleOpenMultipleTabsAndGroup(request, sendResponse);
       return true;
 
     case 'updateFloatingBallSetting':
-      chrome.tabs.query({}, function(tabs) {
-        tabs.forEach(function(tab) {
-          chrome.tabs.sendMessage(tab.id, {action: 'updateFloatingBall', enabled: request.enabled});
+      // 向所有标签页发送更新消息
+      chrome.tabs.query({}, (tabs) => {
+        tabs.forEach((tab) => {
+          try {
+            chrome.tabs.sendMessage(tab.id, {
+              action: 'updateFloatingBall',
+              enabled: request.enabled
+            });
+          } catch (error) {
+            console.error('Error sending message to tab:', error);
+          }
         });
       });
-      chrome.storage.sync.set({enableFloatingBall: request.enabled});
-      sendResponse({success: true});
+      // 保存设置
+      chrome.storage.sync.set({ enableFloatingBall: request.enabled });
+      sendResponse({ success: true });
       return true;
 
     case 'reloadExtension':
@@ -153,23 +158,6 @@ function handleOpenMultipleTabsAndGroup(request, sendResponse) {
       sendResponse({ success: true, message: 'URL 数量不大于 1，直接打开标签页，不创建标签组' });
     }
   });
-}
-
-function handleOpenInternalPage(request, sendResponse) {
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    if (tabs[0]) {
-      chrome.tabs.update(tabs[0].id, {url: request.url}, function(tab) {
-        if (chrome.runtime.lastError) {
-          sendResponse({success: false, error: 'Error updating tab: ' + chrome.runtime.lastError.message});
-        } else {
-          sendResponse({success: true, message: 'Current tab updated'});
-        }
-      });
-    } else {
-      sendResponse({success: false, error: 'No active tab found'});
-    }
-  });
-  return true; // 保持消息通道开放
 }
 
 

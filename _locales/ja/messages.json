@@ -370,7 +370,7 @@
         "description": "画像読み込みエラー"
     },
     "storageError": {
-        "message": "ストレージ容量が不足��てます。空き容量を確保して再試行してください",
+        "message": "ストレージ容量が不足してます。空き容量を確保して再試行してください",
         "description": "ストレージエラー"
     },
     "wallpaperSetError": {
@@ -402,7 +402,7 @@
         "description": "フィードバックリンクのテキスト"
     },
     "settingsUpdateTip": {
-        "message": "背景色、壁紙、フローティングボール機能などの設定ができます...",
+        "message": "背景色、壁紙、フローティングボール機能、おすすめサイト、無効なブックマークのクリーンアップなどを設定できます...",
         "description": "設定更新のヒント"
     },
     "deleteSuccess": {
@@ -432,5 +432,37 @@
     "openAllBookmarks": {
         "message": "すべてのブックマークを開く",
         "description": "フォルダ内のすべてのブックマークを開く"
+    },
+    "bookmarkCleanupTitle": {
+        "message": "ブックマーククリーンアップ",
+        "description": "ブックマーククリーンアップリンクのタイトル"
+    },
+    "bookmarkCleanupNotInstalled": {
+        "message": "ブックマーククリーンアップ拡張機能がインストールされていません。Chrome ウェブストアからインストールしますか？",
+        "description": "ブックマーククリーンアップ拡張機能のインストールを促すメッセージ"
+    },
+    "newFeatureTitle": {
+        "message": "新機能のヒント",
+        "description": "新機能のヒントのタイトル"
+    },
+    "bookmarkCleanupFeature": {
+        "message": "新しいブックマーククリーンアップ機能：サイドバーの設定アイコンをクリックし、ブックマーククリーンアップ拡張機能をインストールすると、重複や無効なブックマークを簡単に整理できます。また、ブックマークの統計情報も確認できます。",
+        "description": "ブックマーククリーンアップ機能の説明"
+    },
+    "bookmarkManagementTab": {
+        "message": "ブックマーク整理",
+        "description": "ブックマーク管理タブ"
+    },
+    "bookmarkCleanupSettingsTitle": {
+        "message": "ブックマーククリーンアップと統計",
+        "description": "ブックマーククリーンアップ設定のタイトル"
+    },
+    "bookmarkCleanupSettingsDescription": {
+        "message": "重複や無効なブックマークを整理し、ブックマークの使用統計を確認して、より良いブックマーク管理を支援します。",
+        "description": "ブックマーククリーンアップ機能の説明"
+    },
+    "openBookmarkCleanup": {
+        "message": "ブックマーククリーンアップツールを開く",
+        "description": "ブックマーククリーンアップツールを開くボタンのテキスト"
     }
 }

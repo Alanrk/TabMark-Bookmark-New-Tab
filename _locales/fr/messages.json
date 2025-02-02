@@ -322,7 +322,7 @@
         "description": "Texte du lien de retour"
     },
     "settingsUpdateTip": {
-        "message": "Vous pouvez configurer ici la couleur d'arrière-plan, le fond d'écran, la fonction boule flottante...",
+        "message": "Vous pouvez configurer ici la couleur d'arrière-plan, le fond d'écran, la fonction boule flottante, les sites recommandés, nettoyer les favoris invalides...",
         "description": "Conseil de mise à jour des paramètres"
     },
     "deleteSuccess": {
@@ -352,5 +352,37 @@
     "openAllBookmarks": {
         "message": "Ouvrir tous les favoris",
         "description": "Ouvre tous les favoris dans le dossier"
+    },
+    "bookmarkCleanupTitle": {
+        "message": "Nettoyage des favoris",
+        "description": "Titre du lien de nettoyage des favoris"
+    },
+    "bookmarkCleanupNotInstalled": {
+        "message": "L'extension de nettoyage des favoris n'est pas installée. Voulez-vous l'installer depuis le Chrome Web Store ?",
+        "description": "Invite à installer l'extension de nettoyage des favoris"
+    },
+    "newFeatureTitle": {
+        "message": "Conseils sur les nouvelles fonctionnalités",
+        "description": "Titre des conseils sur les nouvelles fonctionnalités"
+    },
+    "bookmarkCleanupFeature": {
+        "message": "Nouvelle fonction de nettoyage des favoris : Cliquez sur l'icône des paramètres dans la barre latérale, installez l'extension de nettoyage des favoris pour nettoyer facilement les favoris en double et invalides. Vous pouvez également voir vos statistiques de favoris.",
+        "description": "Information sur la fonction de nettoyage des favoris"
+    },
+    "bookmarkManagementTab": {
+        "message": "Organisation des Favoris",
+        "description": "Onglet d'organisation des favoris"
+    },
+    "bookmarkCleanupSettingsTitle": {
+        "message": "Nettoyage et Statistiques des Favoris",
+        "description": "Titre des paramètres de nettoyage des favoris"
+    },
+    "bookmarkCleanupSettingsDescription": {
+        "message": "Nettoyez les favoris en double et invalides, consultez les statistiques d'utilisation des favoris pour mieux gérer vos favoris.",
+        "description": "Description de la fonction de nettoyage des favoris"
+    },
+    "openBookmarkCleanup": {
+        "message": "Ouvrir l'Outil de Nettoyage des Favoris",
+        "description": "Texte du bouton pour ouvrir l'outil de nettoyage des favoris"
     }
 }

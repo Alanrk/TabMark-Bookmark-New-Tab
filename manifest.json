@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TabMark-Bookmark New Tab",
-  "version": "1.236",
+  "version": "1.239",
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "chrome_url_overrides": {
@@ -13,7 +13,8 @@
     "storage",
     "history",
     "alarms",
-    "tabGroups"
+    "tabGroups",
+    "management"
   ],
   "host_permissions": [
     "https://*/*",
@@ -43,8 +44,7 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "_favicon/*",
-        "src/fonts/MaterialIcons-Regular.woff2",
+        "_favicon/*", 
         "src/fonts/*",
         "images/sider-icon/*",
         "images/*"

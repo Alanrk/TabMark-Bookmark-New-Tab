@@ -784,3 +784,78 @@ main {
   fill: #1c1c1c;
   /* 暗色模式下 hover 时的颜色 */
 }
+.bookmark-cleanup-actions {
+  margin-top: 20px;
+}
+
+.primary-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.primary-button:hover {
+  background-color: #10b981;
+}
+
+.primary-button .material-icons {
+  font-size: 20px;
+}
+
+/* 系统主题自动切换相关样式 */
+@media (prefers-color-scheme: dark) {
+  html[data-theme="auto"] {
+    background-color: #1c1c1c;
+  }
+
+  html[data-theme="auto"] body {
+    background-color: #1c1c1c;
+    color: #ffffff;
+  }
+
+  html[data-theme="auto"] .custom-width {
+    background-color: #1c1c1c;
+    border-color: #404040;
+  }
+
+  /* 继承现有的暗色模式样式 */
+  html[data-theme="auto"] .search-input,
+  html[data-theme="auto"] .search-form,
+  html[data-theme="auto"] .search-suggestions {
+    background-color: #404040;
+    color: #ffffff;
+  }
+
+  html[data-theme="auto"] .bookmarks-container {
+    background-color: #242424;
+    color: #e0e0e0;
+  }
+
+  /* 继承其他暗色模式样式 */
+  html[data-theme="auto"] [class*="dark-mode-style"] {
+    /* 应用对应的暗色模式样式 */
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html[data-theme="auto"] {
+    background-color: #ffffff;
+  }
+
+  html[data-theme="auto"] body {
+    background-color: #ffffff;
+    color: #333333;
+  }
+
+  /* 继承其他亮色模式样式 */
+  html[data-theme="auto"] [class*="light-mode-style"] {
+    /* 应用对应的亮色模式样式 */
+  }
+}
