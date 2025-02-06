@@ -45,7 +45,7 @@
     },
     "openInNewTab": {
         "message": "Ouvrir dans un nouvel onglet",
-        "description": "Élément de menu contextuel pour ouvrir le lien dans un nouvel onglet"
+        "description": "Option pour ouvrir les liens dans un nouvel onglet"
     },
     "openInNewWindow": {
         "message": "Ouvrir dans une nouvelle fenêtre",
@@ -322,7 +322,7 @@
         "description": "Texte du lien de retour"
     },
     "settingsUpdateTip": {
-        "message": "Vous pouvez configurer ici la couleur d'arrière-plan, le fond d'écran, la fonction boule flottante, les sites recommandés, nettoyer les favoris invalides...",
+        "message": "Vous pouvez configurer ici la couleur d'arrière-plan, le fond d'écran, la boule flottante, les sites recommandés, la méthode d'ouverture des liens, nettoyer les favoris invalides...",
         "description": "Conseil de mise à jour des paramètres"
     },
     "deleteSuccess": {
@@ -366,7 +366,7 @@
         "description": "Titre des conseils sur les nouvelles fonctionnalités"
     },
     "bookmarkCleanupFeature": {
-        "message": "Nouvelle fonction de nettoyage des favoris : Cliquez sur l'icône des paramètres dans la barre latérale, installez l'extension de nettoyage des favoris pour nettoyer facilement les favoris en double et invalides. Vous pouvez également voir vos statistiques de favoris.",
+        "message": "Nouvelle fonction de nettoyage des favoris : Cliquez sur l'icône des paramètres dans la barre latérale, installez l'extension de nettoyage des favoris pour nettoyer facilement les favoris en double et invalides, et voir vos statistiques de favoris.",
         "description": "Information sur la fonction de nettoyage des favoris"
     },
     "bookmarkManagementTab": {
@@ -384,5 +384,49 @@
     "openBookmarkCleanup": {
         "message": "Ouvrir l'Outil de Nettoyage des Favoris",
         "description": "Texte du bouton pour ouvrir l'outil de nettoyage des favoris"
+    },
+    "floatingBallClickTip": {
+        "message": "Clic",
+        "description": "Conseil de clic sur la boule flottante"
+    },
+    "floatingBallClickDesc": {
+        "message": "Ouvrir la recherche rapide",
+        "description": "Description de la fonction de clic sur la boule flottante"
+    },
+    "floatingBallAltClickTip": {
+        "message": "Alt + Clic",
+        "description": "Conseil d'Alt+clic sur la boule flottante"
+    },
+    "floatingBallAltClickDesc": {
+        "message": "Ouvrir le panneau latéral",
+        "description": "Description de la fonction Alt+clic sur la boule flottante"
+    },
+    "floatingBallShortcutTip": {
+        "message": "Alt/Command + B",
+        "description": "Conseil de raccourci de la boule flottante"
+    },
+    "floatingBallShortcutDesc": {
+        "message": "Raccourci pour ouvrir le panneau latéral",
+        "description": "Description de la fonction de raccourci de la boule flottante"
+    },
+    "doNotShowAgain": {
+        "message": "Ne plus afficher",
+        "description": "Texte du bouton pour fermer l'infobulle"
+    },
+    "linkOpeningTab": {
+        "message": "Ouverture des Liens",
+        "description": "Onglet des paramètres d'ouverture des liens"
+    },
+    "linkOpeningSettingsTitle": {
+        "message": "Paramètres d'Ouverture des Liens",
+        "description": "Titre des paramètres d'ouverture des liens"
+    },
+    "linkOpeningDescription": {
+        "message": "Définissez comment les favoris et les liens rapides s'ouvrent lorsqu'ils sont cliqués sur la page principale.",
+        "description": "Description des paramètres d'ouverture des liens"
+    },
+    "sidebarFeaturesFeature": {
+        "message": "Deux nouvelles fonctionnalités ajoutées :\n1. Barre latérale rapide :\nAppuyez sur Alt/Command + B sur n'importe quelle page web pour ouvrir la barre latérale et accéder rapidement aux favoris et aux fonctions de recherche.\n\n2. Paramètres d'ouverture des liens :\nPersonnalisez la façon dont les favoris et les liens rapides s'ouvrent dans les paramètres, avec l'option de les ouvrir dans de nouveaux onglets.",
+        "description": "Conseil unifié pour la recherche dans la barre latérale et les fonctions d'ouverture des liens"
     }
 }

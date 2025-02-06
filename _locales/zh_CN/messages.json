@@ -429,7 +429,7 @@
         "description": "反馈链接文本"
     },
     "settingsUpdateTip": {
-        "message": "你可以在这里设置背景颜色、壁纸、悬浮球、推荐网站、清理失效书签...",
+        "message": "你可以在这里设置背景颜色、壁纸、悬浮球、推荐网站、链接打开方式、清理失效书签...",
         "description": "设置更新提示"
     },
     "deleteSuccess": {
@@ -469,7 +469,7 @@
         "description": "新功能提示的标题"
     },
     "bookmarkCleanupFeature": {
-        "message": "新增书签清理功能：点击侧边栏的设置图标，安装书签清理拓展，轻松清理重复和失效的书签。而且可以看到你的书签统计情况",
+        "message": "新增书签清理功能：点击侧边栏的设置图标，安装书签清理拓展，轻松清理重复和失效的书签，查看你的书签统计画像",
         "description": "书签清理功能的提示信息"
     },
     "bookmarkManagementTab": {
@@ -487,5 +487,53 @@
     "openBookmarkCleanup": {
         "message": "打开书签清理工具",
         "description": "打开书签清理工具按钮文本"
+    },
+    "floatingBallClickTip": {
+        "message": "点击",
+        "description": "悬浮球点击提示"
+    },
+    "floatingBallClickDesc": {
+        "message": "打开快速搜索",
+        "description": "悬浮球点击功能描述"
+    },
+    "floatingBallAltClickTip": {
+        "message": "Alt + 点击",
+        "description": "悬浮球 Alt+点击提示"
+    },
+    "floatingBallAltClickDesc": {
+        "message": "打开侧边栏",
+        "description": "悬浮球 Alt+点击功能描述"
+    },
+    "floatingBallShortcutTip": {
+        "message": "Alt/Command + B",
+        "description": "悬浮球快捷键提示"
+    },
+    "floatingBallShortcutDesc": {
+        "message": "快捷键打开侧边栏",
+        "description": "悬浮球快捷键功能描述"
+    },
+    "doNotShowAgain": {
+        "message": "不再显示此提示",
+        "description": "不再显示提示的按钮文本"
+    },
+    "linkOpeningTab": {
+        "message": "链接打开方式",
+        "description": "链接打开方式设置标签"
+    },
+    "linkOpeningSettingsTitle": {
+        "message": "链接打开方式设置",
+        "description": "链接打开方式设置标题"
+    },
+    "linkOpeningDescription": {
+        "message": "设置在主页面中点击书签和快捷链接时的打开方式。",
+        "description": "链接打开方式设置说明"
+    },
+    "openInNewTab": {
+        "message": "在新标签页中打开",
+        "description": "在新标签页中打开链接的选项"
+    },
+    "sidebarFeaturesFeature": {
+        "message": "新增两项功能：\n1. 快捷侧边栏：\n在任意网页按下 Alt/Command + B，即可打开侧边栏，快速访问书签和搜索功能。\n\n2. 链接打开方式：\n在设置中可自定义书签和快捷链接的打开方式，选择是否在新标签页中打开。",
+        "description": "侧边栏搜索和链接打开方式的统一提示信息"
     }
 }

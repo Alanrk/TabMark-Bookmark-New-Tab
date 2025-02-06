@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function () {
       'www.sogou.com',
       'www.so.com',
       'www.360.cn',
-      
+      'chrome-extension://amkgcblhdallfcijnbmjahooalabjaao'  // 添加扩展自身的URL
     ];
 
     // 将搜索引擎域名添加到黑名单
@@ -365,6 +365,49 @@ document.addEventListener('DOMContentLoaded', function () {
       const link = document.createElement('a');
       link.href = site.url;
       link.className = 'quick-link-item';
+      
+      // 修改点击事件处理
+      link.addEventListener('click', async function(event) {
+        event.preventDefault();
+        
+        try {
+          // 通过页面文件名判断环境
+          const isSidePanel = window.location.pathname.endsWith('sidepanel.html');
+
+          console.log('[Quick Link Click] Starting...', {
+            url: site.url,
+            currentUrl: window.location.href,
+            isSidePanel: isSidePanel
+          });
+
+          if (isSidePanel) {
+            console.log('[Quick Link Click] Opening in Side Panel mode');
+            chrome.tabs.create({
+              url: site.url,
+              active: true
+            }).then(tab => {
+              console.log('[Quick Link Click] Tab created successfully:', tab);
+            }).catch(error => {
+              console.error('[Quick Link Click] Failed to create tab:', error);
+            });
+          } else {
+            console.log('[Quick Link Click] Opening in Main Window mode');
+            // 在主页面中根据设置决定打开方式
+            chrome.storage.sync.get(['openInNewTab'], (result) => {
+              console.log('[Quick Link Click] Settings check:', {
+                openInNewTab: result.openInNewTab
+              });
+              if (result.openInNewTab !== false) {
+                window.open(site.url, '_blank');
+              } else {
+                window.location.href = site.url;
+              }
+            });
+          }
+        } catch (error) {
+          console.error('[Quick Link Click] Error:', error);
+        }
+      });
 
       const img = document.createElement('img');
       img.src = site.favicon;
@@ -848,17 +891,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // 初始化
   generateQuickLinks();
 
-
-
-  function showToast(message) {
-    const toast = document.getElementById('toast');
-    toast.textContent = message;
-    toast.style.display = 'block';
-    setTimeout(() => {
-      toast.style.display = 'none';
-    }, 3000); // 显示3秒钟
-  }
-
   // 加载缓存
   quickLinksCache.load();
 
@@ -934,5 +966,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     return domainInfo;
+  }
+
+  // 添加返回按钮相关函数
+  function showBackButton() {
+    let backButton = document.querySelector('.back-to-links');
+    if (!backButton) {
+      backButton = document.createElement('button');
+      backButton.className = 'back-to-links';
+      backButton.innerHTML = '<span class="material-icons">arrow_back</span>';
+      backButton.title = '返回快捷链接';
+      document.querySelector('main').appendChild(backButton);
+      
+      backButton.addEventListener('click', () => {
+        const iframe = document.querySelector('.quick-link-iframe');
+        if (iframe) {
+          iframe.style.display = 'none';
+        }
+        document.querySelector('.quick-links-wrapper').style.display = 'flex';
+        backButton.style.display = 'none';
+      });
+    }
+    backButton.style.display = 'block';
   }
 });

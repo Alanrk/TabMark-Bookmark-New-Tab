@@ -12,7 +12,7 @@ class SettingsManager {
     this.bgOptions = document.querySelectorAll('.settings-bg-option');
     this.enableFloatingBallCheckbox = document.getElementById('enable-floating-ball');
     this.enableQuickLinksCheckbox = document.getElementById('enable-quick-links');
-    
+    this.openInNewTabCheckbox = document.getElementById('open-in-new-tab');
     this.init();
   }
 
@@ -26,6 +26,7 @@ class SettingsManager {
     this.initQuickLinksSettings();
     this.initFloatingBallSettings();
     this.initBookmarkManagementTab();
+    this.initLinkOpeningSettings();
   }
 
   initEventListeners() {
@@ -190,6 +191,20 @@ class SettingsManager {
       });
     });
   }
+
+  initLinkOpeningSettings() {
+    // 加载链接打开方式设置
+    chrome.storage.sync.get(['openInNewTab'], (result) => {
+      this.openInNewTabCheckbox.checked = result.openInNewTab !== false;
+    });
+
+    // 监听设置变化
+    this.openInNewTabCheckbox.addEventListener('change', () => {
+      const isEnabled = this.openInNewTabCheckbox.checked;
+      chrome.storage.sync.set({ openInNewTab: isEnabled });
+    });
+  }
+
 
   initBookmarkManagementTab() {
     const tabButton = document.querySelector('[data-tab="bookmark-management"]');

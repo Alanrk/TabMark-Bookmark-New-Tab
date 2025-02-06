@@ -358,7 +358,7 @@
         "description": "Feedback link text"
     },
     "settingsUpdateTip": {
-        "message": "You can set background color, wallpaper, floating ball, site recommendations, and bookmark cleanup here...",
+        "message": "You can set background color, wallpaper, floating ball, site recommendations, link opening method, clean up invalid bookmarks...",
         "description": "Settings update tip"
     },
     "deleteSuccess": {
@@ -400,8 +400,8 @@
         "description": "Title for new feature tips"
     },
     "bookmarkCleanupFeature": {
-        "message": "New bookmark cleanup feature: Click the settings icon in the sidebar, install the bookmark cleanup extension to easily clean up duplicate and invalid bookmarks. You can also see your bookmark statistics.",
-        "description": "Bookmark cleanup feature tip information"
+        "message": "New bookmark cleanup feature: Click the settings icon in the sidebar, install the bookmark cleanup extension to easily clean up duplicate and invalid bookmarks, and view your bookmark statistics.",
+        "description": "Information about the bookmark cleanup feature"
     },
     "bookmarkManagementTab": {
         "message": "Bookmark Organization",
@@ -418,5 +418,53 @@
     "openBookmarkCleanup": {
         "message": "Open Bookmark Cleanup Tool",
         "description": "Button text to open bookmark cleanup tool"
+    },
+    "floatingBallClickTip": {
+        "message": "Click",
+        "description": "Floating ball click tip"
+    },
+    "floatingBallClickDesc": {
+        "message": "Open quick search",
+        "description": "Floating ball click function description"
+    },
+    "floatingBallAltClickTip": {
+        "message": "Alt + Click",
+        "description": "Floating ball Alt+click tip"
+    },
+    "floatingBallAltClickDesc": {
+        "message": "Open side panel",
+        "description": "Floating ball Alt+click function description"
+    },
+    "floatingBallShortcutTip": {
+        "message": "Alt/Command + B",
+        "description": "Floating ball shortcut tip"
+    },
+    "floatingBallShortcutDesc": {
+        "message": "Shortcut to open side panel",
+        "description": "Floating ball shortcut function description"
+    },
+    "doNotShowAgain": {
+        "message": "Don't show this again",
+        "description": "Button text for dismissing the tooltip"
+    },
+    "linkOpeningTab": {
+        "message": "Link Opening",
+        "description": "Link opening settings tab"
+    },
+    "linkOpeningSettingsTitle": {
+        "message": "Link Opening Settings",
+        "description": "Title for link opening settings"
+    },
+    "linkOpeningDescription": {
+        "message": "Set how bookmarks and quick links are opened when clicked on the main page.",
+        "description": "Description of link opening settings"
+    },
+    "openInNewTab": {
+        "message": "Open in new tab",
+        "description": "Option to open links in new tab"
+    },
+    "sidebarFeaturesFeature": {
+        "message": "Two new features added:\n1. Quick Sidebar:\nPress Alt/Command + B on any webpage to open the sidebar for quick access to bookmarks and search features.\n\n2. Link Opening Settings:\nCustomize how bookmarks and quick links are opened in settings, with the option to open in new tabs.",
+        "description": "Unified tip for sidebar search and link opening features"
     }
 }

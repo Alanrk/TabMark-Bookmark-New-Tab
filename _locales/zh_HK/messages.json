@@ -44,8 +44,8 @@
         "description": "確認刪除按鈕的文本"
     },
     "openInNewTab": {
-        "message": "在新標籤頁中打開",
-        "description": "在新標籤頁中打開鏈接的上下文菜單項"
+        "message": "在新分頁開啟",
+        "description": "在新分頁開啟連結的選項"
     },
     "openInNewWindow": {
         "message": "在新窗口中打開",
@@ -398,8 +398,8 @@
         "description": "反饋連結文字"
     },
     "settingsUpdateTip": {
-        "message": "你可以在這裡設置背景顏色、桌布、懸浮球、推薦網站、清理失效書籤...",
-        "description": "設置更新提示"
+        "message": "你可以在這裡設置背景顏色、桌布、懸浮球、推薦網站、連結開啟方式、清理失效書籤...",
+        "description": "設定更新提示"
     },
     "deleteSuccess": {
         "message": "刪除成功",
@@ -442,7 +442,7 @@
         "description": "新功能提示的標題"
     },
     "bookmarkCleanupFeature": {
-        "message": "新增書籤清理功能：點擊側邊欄的設定圖示，安裝書籤清理擴充功能，輕鬆清理重複和失效的書籤。而且可以看到你的書籤統計情況",
+        "message": "新增書籤清理功能：點擊側邊欄的設定圖標，安裝書籤清理擴展，輕鬆清理重複和失效的書籤，查看你的書籤統計畫像",
         "description": "書籤清理功能的提示信息"
     },
     "bookmarkManagementTab": {
@@ -460,5 +460,49 @@
     "openBookmarkCleanup": {
         "message": "開啟書籤清理工具",
         "description": "開啟書籤清理工具按鈕文字"
+    },
+    "floatingBallClickTip": {
+        "message": "點擊",
+        "description": "浮動球點擊提示"
+    },
+    "floatingBallClickDesc": {
+        "message": "開啟快速搜尋",
+        "description": "浮動球點擊功能描述"
+    },
+    "floatingBallAltClickTip": {
+        "message": "Alt + 點擊",
+        "description": "浮動球Alt+點擊提示"     
+    },
+    "floatingBallAltClickDesc": {
+        "message": "開啟側邊欄",
+        "description": "浮動球Alt+點擊功能描述"
+    },
+    "floatingBallShortcutTip": {
+        "message": "Alt/Command + B",
+        "description": "浮動球快捷鍵提示"
+    },
+    "floatingBallShortcutDesc": {
+        "message": "開啟側邊欄的快捷鍵",
+        "description": "浮動球快捷鍵功能描述"
+    },
+    "doNotShowAgain": {
+        "message": "不再顯示",
+        "description": "關閉提示框的按鈕文字"
+    },
+    "linkOpeningTab": {
+        "message": "連結開啟",
+        "description": "連結開啟設定分頁"
+    },
+    "linkOpeningSettingsTitle": {
+        "message": "連結開啟設定",
+        "description": "連結開啟設定標題"
+    },
+    "linkOpeningDescription": {
+        "message": "設定在主頁面點擊書籤和快速連結時的開啟方式。",
+        "description": "連結開啟設定描述"
+    },
+    "sidebarFeaturesFeature": {
+        "message": "新增兩個功能：\n1. 快速側邊欄：\n在任何網頁按 Alt/Command + B 可開啟側邊欄，快速存取書籤和搜尋功能。\n\n2. 連結開啟設定：\n在設定中自訂書籤和快速連結的開啟方式，可選擇在新分頁中開啟。",
+        "description": "側邊欄搜尋和連結開啟功能的統一提示"
     }
 }

@@ -1,0 +1,151 @@
+/* 针对 Side Panel 的特定样式 */
+@media (max-width: 480px) {
+  /* 调整侧边栏宽度 */
+  #sidebar-container {
+    width: 100%;
+  }
+
+  /* 调整搜索框布局 */
+  .search-container {
+    width: 100%;
+  }
+
+
+
+  /* 调整 placeholder 样式，防止影响高度 */
+  .search-input::placeholder {
+    line-height: 21px; /* 确保 placeholder 文本不会导致额外高度 */
+    white-space: nowrap; /* 防止 placeholder 换行 */
+    text-overflow: ellipsis; /* 超出部分显示省略号 */
+    overflow: hidden;
+  }
+
+  /* 调整书签卡片布局 */
+  .bookmarks-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* 隐藏一些次要元素 */
+  .theme-toggle,
+  #toggle-sidebar {
+    display: none !important;
+  }
+}
+
+/* Side Panel 特定的样式类 */
+.is-sidepanel {
+  width: 100%;
+  max-width: 100%;
+}
+
+.side-panel-content {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: white;
+    z-index: 1000;
+}
+
+.side-panel-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* 当在侧边栏模式时显示内容 */
+.is-sidepanel .side-panel-content {
+    display: block;
+}
+
+/* 针对 Side Panel 中的 iframe 样式 */
+.quick-link-iframe {
+  display: none;
+  width: 100%;
+  height: 100%;
+  border: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: white;
+}
+
+/* 返回按钮样式 */
+.back-to-links {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1002;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.back-to-links:hover {
+  background: #f5f5f5;
+}
+
+.back-to-links .material-icons {
+  font-size: 24px;
+  color: #666;
+}
+
+/* 调整 Side Panel 中的主容器样式 */
+.is-sidepanel main {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.side-panel-iframe-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: white;
+  display: none;
+}
+
+/* 加载指示器样式 */
+.loading-indicator {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  display: none;
+}
+
+/* 返回按钮样式 */
+.back-to-links {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1002;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.back-to-links:hover {
+  background: #f5f5f5;
+} 

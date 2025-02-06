@@ -45,7 +45,7 @@
     },
     "openInNewTab": {
         "message": "新しいタブで開く",
-        "description": "リンクを新しいタブで開くコンテキストメニュー項目"
+        "description": "リンクを新しいタブで開くオプション"
     },
     "openInNewWindow": {
         "message": "新しいウィンドウで開く",
@@ -402,7 +402,7 @@
         "description": "フィードバックリンクのテキスト"
     },
     "settingsUpdateTip": {
-        "message": "背景色、壁紙、フローティングボール機能、おすすめサイト、無効なブックマークのクリーンアップなどを設定できます...",
+        "message": "背景色、壁紙、フローティングボール、おすすめサイト、リンクの開き方、無効なブックマークの整理などを設定できます...",
         "description": "設定更新のヒント"
     },
     "deleteSuccess": {
@@ -464,5 +464,49 @@
     "openBookmarkCleanup": {
         "message": "ブックマーククリーンアップツールを開く",
         "description": "ブックマーククリーンアップツールを開くボタンのテキスト"
+    },
+    "floatingBallClickTip": {
+        "message": "クリック",
+        "description": "フローティングボールのクリックヒント"
+    },
+    "floatingBallClickDesc": {
+        "message": "クイック検索を開く",
+        "description": "フローティングボールのクリック機能説明"
+    },
+    "floatingBallAltClickTip": {
+        "message": "Alt + クリック",
+        "description": "フローティングボールのAlt+クリックヒント"
+    },
+    "floatingBallAltClickDesc": {
+        "message": "サイドパネルを開く",
+        "description": "フローティングボールのAlt+クリック機能説明"
+    },
+    "floatingBallShortcutTip": {
+        "message": "Alt/Command + B",
+        "description": "フローティングボールのショートカットヒント"
+    },
+    "floatingBallShortcutDesc": {
+        "message": "サイドパネルを開くショートカット",
+        "description": "フローティングボールのショートカット機能説明"
+    },
+    "doNotShowAgain": {
+        "message": "今後表示しない",
+        "description": "ツールチップを閉じるボタンのテキスト"
+    },
+    "linkOpeningTab": {
+        "message": "リンクの開き方",
+        "description": "リンクを開く設定タブ"
+    },
+    "linkOpeningSettingsTitle": {
+        "message": "リンクを開く設定",
+        "description": "リンクを開く設定のタイトル"
+    },
+    "linkOpeningDescription": {
+        "message": "メインページでブックマークとクイックリンクをクリックしたときの開き方を設定します。",
+        "description": "リンクを開く設定の説明"
+    },
+    "sidebarFeaturesFeature": {
+        "message": "2つの新機能が追加されました：\n1. クイックサイドバー：\nどのWebページでもAlt/Command + Bを押すと、ブックマークと検索機能にすばやくアクセスできるサイドバーが開きます。\n\n2. リンクを開く設定：\n設定でブックマークとクイックリンクの開き方をカスタマイズでき、新しいタブで開くオプションもあります。",
+        "description": "サイドバー検索とリンクを開く機能の統合ヒント"
     }
 }

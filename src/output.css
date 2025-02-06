@@ -1225,7 +1225,7 @@ main {
   max-width: 100%;
   
   @media (max-width: 640px) {
-    padding: 12px 16px;
+    padding: 14.5px 20px 14.5px 10px;
   }
 }
 
@@ -3046,43 +3046,42 @@ input:checked+.slider:before {
     transition: none !important;
   }
 
-    /* 调整内容区域的padding，包括 loaded 状态 */
-    .bookmarks-container,
-    .bookmarks-container.loaded {
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
-  }
 }
 
   /* 调整主内容区域的响应式布局 */
   @media (min-width: 769px) {
     main.flex-1 {
       margin-left: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
-/* 在更小的屏幕上适当减小边距 */
-@media (max-width: 640px) {
-
-  .bookmarks-container,
-  .bookmarks-container.loaded {
-    margin-left: 1.5rem !important;
-    margin-right: 1.5rem !important;
+  /* 调整主内容区域的响应式布局 */
+  @media (min-width: 640px) {
+    main.flex-1 {
+      margin-left: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
   }
-}
-  /* 在更小的屏幕上适当减小边距 */
-@media (max-width: 640px) {
-  .bookmarks-container,
-  .bookmarks-container.loaded {
-    margin-left: 1.5rem !important;
-    margin-right: 1.5rem !important;
+  @media (min-width: 480px) {
+    main.flex-1 {
+      margin-left: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
   }
-}
-
+  @media (min-width: 320px) {
+    main.flex-1 {
+      margin-left: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
 
 /* Quick links 响应式处理 */
 @media (max-width: 840px) {
   .quick-links-container {
-    width: 95%;
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
@@ -3116,6 +3115,29 @@ input:checked+.slider:before {
     font-size: 11px;
   }
 }
+@media (max-width: 368px) {
+  .quick-links-container {
+    gap: 4px;
+  }
+
+  .quick-link-item-container {
+    /* 在更小的屏幕上稍微缩小尺寸 */
+    width: 50px;
+    min-width: 50px;
+    margin: 2px;
+  }
+
+  .quick-link-item {
+    width: 50px;
+    height: 50px;
+  }
+
+}
+    @media (max-width: 368px) {
+      #welcome-message {
+        font-size: 20px;
+      }
+    }
 
 /* Search form 响应式处理 */
 @media (max-width: 768px) {
@@ -3144,7 +3166,7 @@ input:checked+.slider:before {
     width: 100%;
     height: auto;
     min-height: 50px;
-    padding: 14.5px 20px 14.5px 20px;
+    padding: 14.5px 20px 14.5px 10px;
   }
 
   .search-input {
@@ -3168,7 +3190,7 @@ input:checked+.slider:before {
 /* 更小屏幕的额外优化 */
 @media (max-width: 480px) {
   .search-form {
-    padding: 6px 12px; /* 进一步减小内边距 */
+    padding: 14.5px 20px 14.5px 10px;
   }
   
   .search-input {
@@ -3179,7 +3201,7 @@ input:checked+.slider:before {
 /* 新功能提示样式 */
 .feature-tips {
   position: fixed;
-  bottom: 24px;
+  top: 24px;  /* 改为顶部定位 */
   right: 24px;
   background: white;
   border-radius: 8px;
@@ -3207,6 +3229,16 @@ input:checked+.slider:before {
   font-weight: bold;
   color: #10b981;
   margin-bottom: 4px;
+}
+.feature-description {
+  white-space: normal;
+  line-height: 1.5;
+  padding: 1rem 0;
+}
+
+.feature-description br {
+  display: block;
+  margin: 8px 0;
 }
 
 .feature-tips .tip-close {
@@ -3257,33 +3289,36 @@ input:checked+.slider:before {
   color: #e5e7eb;
 }
 
-/* 系统主题自动切换相关样式 */
-@media (prefers-color-scheme: dark) {
-    html[data-theme="auto"] .bg-gray-50 {
-        background-color: #1c1c1c;
-    }
-
-    html[data-theme="auto"] .border-gray-200 {
-        border-color: #404040;
-    }
-
-    html[data-theme="auto"] .text-gray-600 {
-        color: #e0e0e0;
-    }
-
-    /* ... 其他需要适配的样式 ... */
+/* 修改动画效果 */
+@keyframes tipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);  /* 改为向下滑入 */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@media (prefers-color-scheme: light) {
-    html[data-theme="auto"] .bg-gray-50 {
-        background-color: #f9fafb;
-    }
-
-    html[data-theme="auto"] .border-gray-200 {
-        border-color: #e5e7eb;
-    }
-
-    html[data-theme="auto"] .text-gray-600 {
-        color: #4b5563;
-    }
+@keyframes tipFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);  /* 改为向上滑出 */
+  }
 }
+
+/* 调整移动端响应式布局 */
+@media (max-width: 768px) {
+  .feature-tips {
+    top: 16px;
+    right: 16px;
+    left: 16px;  /* 在移动端左右留边距 */
+    max-width: none;  /* 移动端占满宽度减去边距 */
+  }
+}
+

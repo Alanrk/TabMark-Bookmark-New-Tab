@@ -45,7 +45,7 @@
     },
     "openInNewTab": {
         "message": "새 탭에서 열기",
-        "description": "링크를 새 탭에서 여는 컨텍스트 메뉴 항목"
+        "description": "링크를 새 탭에서 여는 옵션"
     },
     "openInNewWindow": {
         "message": "새 창에서 열기",
@@ -402,7 +402,7 @@
         "description": "피드백 링크 텍스트"
     },
     "settingsUpdateTip": {
-        "message": "여기에서 배경색, 배경화면, 플로팅 볼 기능, 추천 사이트, 유효하지 않은 북마크 정리 등을 설정할 수 있습니다...",
+        "message": "배경색, 배경화면, 플로팅 볼, 추천 사이트, 링크 열기 방식, 유효하지 않은 북마크 정리 등을 설정할 수 있습니다...",
         "description": "설정 업데이트 팁"
     },
     "deleteSuccess": {
@@ -464,5 +464,49 @@
     "openBookmarkCleanup": {
         "message": "북마크 정리 도구 열기",
         "description": "북마크 정리 도구를 여는 버튼 텍스트"
+    },
+    "floatingBallClickTip": {
+        "message": "클릭",
+        "description": "플로팅 볼 클릭 팁"
+    },
+    "floatingBallClickDesc": {
+        "message": "빠른 검색 열기",
+        "description": "플로팅 볼 클릭 기능 설명"
+    },
+    "floatingBallAltClickTip": {
+        "message": "Alt + 클릭",
+        "description": "플로팅 볼 Alt+클릭 팁"
+    },
+    "floatingBallAltClickDesc": {
+        "message": "사이드 패널 열기",
+        "description": "플로팅 볼 Alt+클릭 기능 설명"
+    },
+    "floatingBallShortcutTip": {
+        "message": "Alt/Command + B",
+        "description": "플로팅 볼 단축키 팁"
+    },
+    "floatingBallShortcutDesc": {
+        "message": "사이드 패널을 여는 단축키",
+        "description": "플로팅 볼 단축키 기능 설명"
+    },
+    "doNotShowAgain": {
+        "message": "다시 표시하지 않기",
+        "description": "툴팁을 닫는 버튼 텍스트"
+    },
+    "linkOpeningTab": {
+        "message": "링크 열기",
+        "description": "링크 열기 설정 탭"
+    },
+    "linkOpeningSettingsTitle": {
+        "message": "링크 열기 설정",
+        "description": "링크 열기 설정 제목"
+    },
+    "linkOpeningDescription": {
+        "message": "메인 페이지에서 북마크와 빠른 링크를 클릭할 때 열리는 방식을 설정합니다.",
+        "description": "링크 열기 설정 설명"
+    },
+    "sidebarFeaturesFeature": {
+        "message": "두 가지 새로운 기능이 추가되었습니다:\n1. 빠른 사이드바:\n어느 웹 페이지에서나 Alt/Command + B를 눌러 북마크와 검색 기능에 빠르게 접근할 수 있는 사이드바를 엽니다.\n\n2. 링크 열기 설정:\n설정에서 북마크와 빠른 링크를 여는 방식을 사용자 지정하고, 새 탭에서 열기 옵션을 선택할 수 있습니다.",
+        "description": "사이드바 검색과 링크 열기 기능에 대한 통합 팁"
     }
 }

@@ -400,7 +400,7 @@
         "description": "反饋連結文字"
     },
     "settingsUpdateTip": {
-        "message": "你可以在這裡設定背景顏色、桌布、懸浮球、推薦網站、清理失效書籤...",
+        "message": "你可以在這裡設定背景顏色、桌布、懸浮球、推薦網站、連結開啟方式、清理失效書籤...",
         "description": "設定更新提示"
     },
     "deleteSuccess": {
@@ -458,5 +458,49 @@
     "openBookmarkCleanup": {
         "message": "開啟書籤清理工具",
         "description": "開啟書籤清理工具按鈕文字"
+    },
+    "floatingBallClickTip": {
+        "message": "點擊",
+        "description": "浮動球點擊提示"
+    },
+    "floatingBallClickDesc": {
+        "message": "開啟快速搜尋",
+        "description": "浮動球點擊功能描述"
+    },
+    "floatingBallAltClickTip": {
+        "message": "Alt + 點擊",
+        "description": "浮動球Alt+點擊提示"
+    },
+    "floatingBallAltClickDesc": {
+        "message": "開啟側邊欄",
+        "description": "浮動球Alt+點擊功能描述"
+    },
+    "floatingBallShortcutTip": {
+        "message": "Alt/Command + B",
+        "description": "浮動球快捷鍵提示"
+    },
+    "floatingBallShortcutDesc": {
+        "message": "開啟側邊欄的快捷鍵",
+        "description": "浮動球快捷鍵功能描述"
+    },
+    "doNotShowAgain": {
+        "message": "不再顯示",
+        "description": "關閉提示框的按鈕文字"
+    },
+    "linkOpeningTab": {
+        "message": "連結開啟",
+        "description": "連結開啟設定分頁"
+    },
+    "linkOpeningSettingsTitle": {
+        "message": "連結開啟設定",
+        "description": "連結開啟設定標題"
+    },
+    "linkOpeningDescription": {
+        "message": "設定在主頁面點擊書籤和快速連結時的開啟方式。",
+        "description": "連結開啟設定描述"
+    },
+    "sidebarFeaturesFeature": {
+        "message": "新增兩項功能：\n1. 快捷側邊欄：\n在任意網頁按下 Alt/Command + B，即可打開側邊欄，快速訪問書籤和搜尋功能。\n\n2. 連結開啟設定：\n在設定中可自訂書籤和快速連結的開啟方式，選擇是否在新分頁中開啟。",
+        "description": "側邊欄搜尋和連結開啟功能的統一提示"
     }
 }

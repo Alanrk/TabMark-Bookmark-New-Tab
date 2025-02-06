@@ -45,7 +45,7 @@
     },
     "openInNewTab": {
         "message": "In neuem Tab öffnen",
-        "description": "Kontextmenüelement zum Öffnen des Links in einem neuen Tab"
+        "description": "Option zum Öffnen von Links in neuem Tab"
     },
     "openInNewWindow": {
         "message": "In neuem Fenster öffnen",
@@ -350,8 +350,8 @@
         "description": "Feedback-Link-Text"
     },
     "settingsUpdateTip": {
-        "message": "Hier können Sie Hintergrundfarbe, Hintergrundbild, Floating-Ball-Funktion, Website-Empfehlungen und Lesezeichen-Aufräumen einstellen...",
-        "description": "Einstellungen Update-Tipp"
+        "message": "Hier können Sie Hintergrundfarbe, Hintergrundbild, schwebenden Ball, empfohlene Websites, Link-Öffnungsweise, ungültige Lesezeichen bereinigen...",
+        "description": "Einstellungen-Update-Tipp"
     },
     "deleteSuccess": {
         "message": "Erfolgreich gelöscht",
@@ -412,5 +412,49 @@
     "openBookmarkCleanup": {
         "message": "Lesezeichen-Aufräumen-Tool öffnen",
         "description": "Button-Text zum Öffnen des Lesezeichen-Aufräumen-Tools"
+    },
+    "floatingBallClickTip": {
+        "message": "Klicken",
+        "description": "Schwebender Ball Klick-Tipp"
+    },
+    "floatingBallClickDesc": {
+        "message": "Schnellsuche öffnen",
+        "description": "Schwebender Ball Klick-Funktionsbeschreibung"
+    },
+    "floatingBallAltClickTip": {
+        "message": "Alt + Klick",
+        "description": "Schwebender Ball Alt+Klick-Tipp"
+    },
+    "floatingBallAltClickDesc": {
+        "message": "Seitenleiste öffnen",
+        "description": "Schwebender Ball Alt+Klick-Funktionsbeschreibung"
+    },
+    "floatingBallShortcutTip": {
+        "message": "Alt/Command + B",
+        "description": "Schwebender Ball Tastenkombination-Tipp"
+    },
+    "floatingBallShortcutDesc": {
+        "message": "Tastenkombination zum Öffnen der Seitenleiste",
+        "description": "Schwebender Ball Tastenkombination-Funktionsbeschreibung"
+    },
+    "doNotShowAgain": {
+        "message": "Nicht mehr anzeigen",
+        "description": "Button-Text zum Ausblenden des Tooltips"
+    },
+    "linkOpeningTab": {
+        "message": "Link-Öffnung",
+        "description": "Tab für Link-Öffnungseinstellungen"
+    },
+    "linkOpeningSettingsTitle": {
+        "message": "Link-Öffnungseinstellungen",
+        "description": "Titel für Link-Öffnungseinstellungen"
+    },
+    "linkOpeningDescription": {
+        "message": "Legen Sie fest, wie Lesezeichen und Schnelllinks beim Klicken auf der Hauptseite geöffnet werden.",
+        "description": "Beschreibung der Link-Öffnungseinstellungen"
+    },
+    "sidebarFeaturesFeature": {
+        "message": "Zwei neue Funktionen hinzugefügt:\n1. Schnelle Seitenleiste:\nDrücken Sie Alt/Command + B auf einer beliebigen Webseite, um die Seitenleiste für schnellen Zugriff auf Lesezeichen und Suchfunktionen zu öffnen.\n\n2. Link-Öffnungseinstellungen:\nPassen Sie in den Einstellungen an, wie Lesezeichen und Schnelllinks geöffnet werden, mit der Option, sie in neuen Tabs zu öffnen.",
+        "description": "Einheitlicher Tipp für Seitenleistensuche und Link-Öffnungsfunktionen"
     }
 }

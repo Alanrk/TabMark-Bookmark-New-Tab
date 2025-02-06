@@ -570,6 +570,53 @@ document.addEventListener('DOMContentLoaded', function() {
       quickLinksWrapper.style.display = result.enableQuickLinks !== false ? 'flex' : 'none';
     }
   });
+
+  // 检测是否在 Side Panel 中运行
+  const isSidePanel = window.location.search.includes('context=side_panel') || 
+                     window.location.hash.includes('context=side_panel');
+  
+  if (isSidePanel) {
+    document.body.classList.add('is-sidepanel');
+    
+    // 隐藏一些在 Side Panel 中不需要的元素
+    const elementsToHide = [
+      '.theme-toggle',
+      '#toggle-sidebar',
+      '.links-icons',
+      '.settings-icon'
+    ];
+    
+    elementsToHide.forEach(selector => {
+      const element = document.querySelector(selector);
+      if (element) {
+        element.style.display = 'none';
+      }
+    });
+    
+    // 调整布局和尺寸
+    const sidebarContainer = document.getElementById('sidebar-container');
+    if (sidebarContainer) {
+      sidebarContainer.classList.add('is-sidepanel');
+      // 在 Side Panel 中默认展开侧边栏
+      sidebarContainer.classList.remove('collapsed');
+    }
+
+    // 调整主容器样式
+    const mainContainer = document.querySelector('main');
+    if (mainContainer) {
+      mainContainer.style.padding = '1rem';
+    }
+
+    // 确保搜索框的动态高度调整功能正常工作
+    const searchInput = document.querySelector('.search-input');
+    if (searchInput) {
+      // 重新初始化搜索框高度
+      adjustTextareaHeight();
+      
+      // 确保输入事件监听器正常工作
+      searchInput.addEventListener('input', adjustTextareaHeight);
+    }
+  }
 });
 
 const bookmarksCache = {
@@ -1340,21 +1387,59 @@ function createBookmarkCard(bookmark, index) {
     this.style.backgroundColor = '';
   });
 
+  // 在文件顶部添加防重复点击控制
+  let isProcessingClick = false;
+  const CLICK_COOLDOWN = 500; // 点击冷却时间
+
+  // 只使用一个事件处理器
   card.addEventListener('click', async (e) => {
     e.preventDefault();
-    
-    // 只对 chrome:// URL 做特殊处理
-    if (bookmark.url.startsWith('chrome://')) {
-      chrome.tabs.create({ url: bookmark.url }, (tab) => {
-        if (chrome.runtime.lastError) {
-          showToast(chrome.i18n.getMessage('cannotOpenChromeUrl') || '无法打开此类型的链接');
-        }
+    e.stopPropagation();
+
+    if (isProcessingClick) return;
+    isProcessingClick = true;
+
+    try {
+      // 通过页面文件名判断环境
+      const isSidePanel = window.location.pathname.endsWith('sidepanel.html');
+
+      console.log('[Bookmark Click] Starting...', {
+        url: bookmark.url,
+        currentUrl: window.location.href,
+        isSidePanel: isSidePanel
       });
-      return; // 提前返回,不执行后续代码
+
+      if (isSidePanel) {
+        console.log('[Bookmark Click] Opening in Side Panel mode');
+        chrome.tabs.create({
+          url: bookmark.url,
+          active: true
+        }).then(tab => {
+          console.log('[Bookmark Click] Tab created successfully:', tab);
+        }).catch(error => {
+          console.error('[Bookmark Click] Failed to create tab:', error);
+        });
+      } else {
+        console.log('[Bookmark Click] Opening in Main Window mode');
+        // 在主页面中根据设置决定打开方式
+        chrome.storage.sync.get(['openInNewTab'], (result) => {
+          console.log('[Bookmark Click] Settings check:', {
+            openInNewTab: result.openInNewTab
+          });
+          if (result.openInNewTab !== false) {
+            window.open(bookmark.url, '_blank');
+          } else {
+            window.location.href = bookmark.url;
+          }
+        });
+      }
+    } catch (error) {
+      console.error('[Bookmark Click] Error:', error);
+    } finally {
+      setTimeout(() => {
+        isProcessingClick = false;
+      }, CLICK_COOLDOWN);
     }
-    
-    // 保持原有的在当前页面打开链接的方式
-    window.location.href = bookmark.url;
   });
 
   return card;
@@ -3982,9 +4067,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 动态调整 textarea 度的函数
   function adjustTextareaHeight() {
+    const searchInput = document.querySelector('.search-input');
+    if (!searchInput) return;
+
     searchInput.style.height = 'auto'; // 重置高度
-    const maxHeight = 3 * 21; // 假设每行高度为 24px，最多显示 3 行
-    searchInput.style.height = Math.min(searchInput.scrollHeight, maxHeight) + 'px';
+    const lineHeight = parseInt(getComputedStyle(searchInput).lineHeight) || 21;
+    const maxHeight = 3 * lineHeight; // 最多显示 3 行
+    const newHeight = Math.min(searchInput.scrollHeight, maxHeight);
+    searchInput.style.height = `${newHeight}px`;
   }
 
   // 在输入事件中调用调整高度的函数
@@ -3992,6 +4082,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 初始化时调整高度
   adjustTextareaHeight();
+  
 
   const searchSuggestions = document.getElementById('search-suggestions');
 
@@ -4444,18 +4535,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // 动态调整 textarea 度的函数
-  function adjustTextareaHeight() {
-    searchInput.style.height = 'auto'; // 重置高度
-    const maxHeight = 3 * 32; // 假设每行高度为 24px，最多显示 3 行
-    searchInput.style.height = Math.min(searchInput.scrollHeight, maxHeight) + 'px';
-  }
 
-  // 在输入事件中调用调整高度的函数
-  searchInput.addEventListener('input', adjustTextareaHeight);
-
-  // 初始化时调整高度
-  adjustTextareaHeight();
 
 
   // 防抖函
@@ -5461,6 +5541,8 @@ function logSearchEngineState() {
       updateQuickLinksVisibility();
     }
   });
+
+
 
 
 

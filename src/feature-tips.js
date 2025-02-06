@@ -57,8 +57,8 @@ class FeatureTips {
     getVersionFeatures(lastVersion, currentVersion) {
         // 版本功能映射表
         const versionFeatures = {
-            '1.238': ['bookmarkCleanup'], // 书签清理功能
-            // 可以继续添加更多版本的功能
+            '1.238': ['bookmarkCleanup'], 
+            '1.239': ['sidebarFeatures']  // 合并为一个功能提示
         };
 
         const features = [];
@@ -95,17 +95,21 @@ class FeatureTips {
 
     // 显示新功能提示
     showTips(featureKey) {
-        console.log('Showing tips for:', featureKey); // 调试日志
+        console.log('Showing tips for:', featureKey);
 
         const tipsElement = document.createElement('div');
         tipsElement.className = 'feature-tips';
+        
+        // 获取消息文本并将 \n 转换为 <br>
+        const messageText = chrome.i18n.getMessage(featureKey + 'Feature').replace(/\n/g, '<br>');
+        
         tipsElement.innerHTML = `
       <div class="feature-tips-content">
         <div class="tip-content">
           ${ICONS.info}
           <div class="tip-text">
             <div class="feature-tips-title">${chrome.i18n.getMessage('newFeatureTitle')}</div>
-            ${chrome.i18n.getMessage(featureKey + 'Feature')}
+            <div class="feature-description">${messageText}</div>
           </div>
           <button class="tip-close" aria-label="关闭提示">
             ${ICONS.close}

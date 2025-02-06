@@ -162,7 +162,30 @@
 
   const floatingButton = document.createElement('div');
   floatingButton.id = 'floating-button';
-  floatingButton.innerHTML = '<img src="' + chrome.runtime.getURL('../images/icon-48.png') + '" alt="icon" class="floating-button-icon">';
+  floatingButton.innerHTML = `
+    <img src="${chrome.runtime.getURL('../images/icon-48.png')}" alt="icon" class="floating-button-icon">
+    <div class="floating-tooltip">
+      <div class="tooltip-content">
+        <div class="tooltip-row">
+          <span class="tooltip-action">${chrome.i18n.getMessage('floatingBallClickTip')}</span>
+          <span class="tooltip-desc">${chrome.i18n.getMessage('floatingBallClickDesc')}</span>
+        </div>
+        <div class="tooltip-row">
+          <span class="tooltip-action">${chrome.i18n.getMessage('floatingBallAltClickTip')}</span>
+          <span class="tooltip-desc">${chrome.i18n.getMessage('floatingBallAltClickDesc')}</span>
+        </div>
+        <div class="tooltip-row">
+          <span class="tooltip-action">${chrome.i18n.getMessage('floatingBallShortcutTip')}</span>
+          <span class="tooltip-desc">${chrome.i18n.getMessage('floatingBallShortcutDesc')}</span>
+        </div>
+      </div>
+      <button class="tooltip-close" title="${chrome.i18n.getMessage('doNotShowAgain')}">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16" fill="currentColor">
+          <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+        </svg>
+      </button>
+    </div>
+  `;
 
   const sidebarContainer = document.createElement('div');
   sidebarContainer.id = 'sidebar-container';
@@ -170,6 +193,28 @@
 
   shadow.appendChild(floatingButton);
   shadow.appendChild(sidebarContainer);
+
+  // 添加关闭按钮的点击事件处理
+  const closeButton = floatingButton.querySelector('.tooltip-close');
+  closeButton?.addEventListener('click', (e) => {
+    e.stopPropagation(); // 阻止事件冒泡
+    chrome.storage.local.set({ 'hideFloatingTooltip': true }, () => {
+      const tooltip = floatingButton.querySelector('.floating-tooltip');
+      if (tooltip) {
+        tooltip.style.display = 'none';
+      }
+    });
+  });
+
+  // 检查是否需要显示提示
+  chrome.storage.local.get(['hideFloatingTooltip'], (result) => {
+    if (result.hideFloatingTooltip) {
+      const tooltip = floatingButton.querySelector('.floating-tooltip');
+      if (tooltip) {
+        tooltip.style.display = 'none';
+      }
+    }
+  });
 
   function getCurrentSearchEngine() {
     const hostname = window.location.hostname;
@@ -236,9 +281,22 @@
 
   sidebarContainer.appendChild(searchSwitcher);
 
-  floatingButton.addEventListener('mouseenter', () => {
-    sidebarContainer.classList.remove('collapsed');
-    displayBookmarks();
+  floatingButton.addEventListener('click', (event) => {
+    if (event.altKey) {
+      // Alt + 点击打开侧边栏
+      chrome.runtime.sendMessage({ 
+        action: 'openSidePanel'
+      }, (response) => {
+        if (chrome.runtime.lastError) {
+          console.error('Failed to open side panel:', chrome.runtime.lastError.message);
+        }
+      });
+    } else {
+      // 普通点击打开搜索面板
+      if (sidebarContainer) {
+        sidebarContainer.classList.remove('collapsed');
+      }
+    }
   });
 
   sidebarContainer.addEventListener('mouseleave', () => {
@@ -313,6 +371,11 @@
           break;
       }
     }
+
+    if (event.altKey && event.key === 'b') {
+      event.preventDefault();
+      openSidePanel();
+    }
   });
 
   const styleSheet = document.createElement("style");
@@ -322,7 +385,7 @@
       position: fixed;
       top: 0;
       right: 0;
-      width: 240px;
+      width: 280px;
       height: 100vh;
       background-color: #ffffff;
       box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
@@ -494,6 +557,129 @@
 
     .hidden {
       display: none !important;
+    }
+
+    .floating-tooltip {
+      position: absolute;
+      right: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      width: 280px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s;
+      z-index: 2147483647;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !important;
+    }
+
+    #floating-button:hover .floating-tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .tooltip-content {
+      font-size: 13px;
+      color: #333;
+      font-family: inherit;
+      padding-right: 24px;
+    }
+
+    .tooltip-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+      align-items: center;
+      margin: 8px 0px;
+      font-family: inherit;
+    }
+
+    .tooltip-action {
+      font-weight: 600;
+      color: #666;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .tooltip-desc {
+      color: #666;
+      font-family: inherit;
+      line-height: 1.4;
+    }
+
+    /* 箭头样式优化 */
+    .floating-tooltip:after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      width: 12px;
+      height: 12px;
+      background: white;
+      box-shadow: 3px -3px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    /* 暗色模式适配 */
+    [data-theme="dark"] .floating-tooltip {
+      background: #1f2937;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    [data-theme="dark"] .tooltip-action {
+      color: #e5e7eb;
+    }
+
+    [data-theme="dark"] .tooltip-desc {
+      color: #9ca3af;
+    }
+
+    [data-theme="dark"] .floating-tooltip:after {
+      background: #1f2937;
+    }
+
+    .tooltip-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 24px;
+      height: 24px;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      border-radius: 4px;
+      color: #888;
+      transition: all 0.2s;
+    }
+
+    .tooltip-close:hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: #666;
+    }
+
+    .tooltip-close svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .tooltip-close:hover::after {
+      content: "${chrome.i18n.getMessage('doNotShowAgain')}";
+      position: absolute;
+      top: -30px;
+      right: 0;
+      background: rgba(0, 0, 0, 0.75);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      white-space: nowrap;
     }
   `;
   shadow.appendChild(styleSheet);
@@ -681,14 +867,9 @@
   const autoInput = new AutoInputManager(siteConfigs);
   autoInput.start();
 
- 
-
   function log(message) {
     console.log(`[Content Script] ${message}`);
   }
-
-
-
 
   log('Content script initialized');
 
@@ -749,5 +930,35 @@
   `;
 
   shadow.appendChild(style);
+
+  function openSidePanel() {
+    chrome.runtime.sendMessage({ 
+      action: 'openSidePanel'
+    }, (response) => {
+      if (chrome.runtime.lastError || !response?.success) {
+        console.error('Failed to open side panel:', 
+          chrome.runtime.lastError?.message || response?.error || 'Unknown error');
+          
+        // 如果失败，尝试延迟重试一次
+        setTimeout(() => {
+          chrome.runtime.sendMessage({ 
+            action: 'openSidePanel',
+            retry: true
+          });
+        }, 500);
+      }
+    });
+  }
+
+  // 修改快捷键监听，同时支持 Windows/Linux (Alt+B) 和 Mac (Command+B)
+  document.addEventListener('keydown', (e) => {
+    const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+    
+    if ((isMac && e.metaKey && e.key.toLowerCase() === 'b') || 
+        (!isMac && e.altKey && e.key.toLowerCase() === 'b')) {
+      e.preventDefault(); // 阻止默认行为
+      openSidePanel();
+    }
+  });
 
 })();
