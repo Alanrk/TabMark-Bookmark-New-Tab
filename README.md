@@ -8,7 +8,7 @@ TabMark 将收藏夹变成新标签页，让你收藏的书签一目了然、整
 
 ## 主要功能
 
-**将书签设置为新标签页**：安装拓展后，可以选择常用的书签文件夹。右键点击，选择“将书签设为主页”，即可在新标签页中快速打开选中路径书签文件夹。支持书签拖拽排序，侧边栏树状文件夹视图让你直观管理书签文件夹，快速找到所需内容；
+**将书签设置为新标签页**：安装拓展后，可以选择常用的书签文件夹。右键点击，选择"将书签设为主页"，即可在新标签页中快速打开选中路径书签文件夹。支持书签拖拽排序，侧边栏树状文件夹视图让你直观管理书签文件夹，快速找到所需内容；
 
 **丰富的书签上下文菜单**：支持复制书签url、生成二维码、一键打开书签文件夹内所有书签；
 
@@ -32,12 +32,12 @@ https://cooing-loganberry-b74.notion.site/TabMark-Bookmark-New-Tab-7a083a74f84e4
 
 **微信交流群**
 
-![](https://raw.githubusercontent.com/Alanrk/blogimg/main/IMG_4251.JPG)
+<img src="https://raw.githubusercontent.com/Alanrk/blogimg/main/IMG_4251.JPG" width="200" />
 
 **赞赏码**
 如果你觉得这个项目对你有帮助，可以请我喝杯咖啡~
 
-![](https://raw.githubusercontent.com/Alanrk/blogimg/main/IMG_4250.JPG)
+<img src="https://raw.githubusercontent.com/Alanrk/blogimg/main/IMG_4250.JPG" width="200" />
 
 
 邮箱：hello@ainewtab.app
