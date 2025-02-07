@@ -29,7 +29,15 @@ TabMark 将收藏夹变成新标签页，让你收藏的书签一目了然、整
 https://cooing-loganberry-b74.notion.site/TabMark-Bookmark-New-Tab-7a083a74f84e4bb48345e389c1e53717
 
 ### 反馈建议
-https://cooing-loganberry-b74.notion.site/TabMark-Bookmark-New-Tab-59054bd6e444458986d1fc61a383e095
+
+**微信交流群**
+
+![](https://raw.githubusercontent.com/Alanrk/blogimg/main/IMG_4251.JPG)
+
+**赞赏码**
+如果你觉得这个项目对你有帮助，可以请我喝杯咖啡~
+
+![](https://raw.githubusercontent.com/Alanrk/blogimg/main/IMG_4250.JPG)
 
 
 邮箱：hello@ainewtab.app
