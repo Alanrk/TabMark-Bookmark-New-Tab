@@ -859,3 +859,169 @@ main {
     /* 应用对应的亮色模式样式 */
   }
 }
+
+/* 布局设置页面样式 */
+.layout-settings-container {
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.layout-settings-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 1rem;
+}
+
+.layout-settings-description {
+  font-size: 0.875rem;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.bookmark-width-settings {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.width-slider-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.width-value-display {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4a5568;
+  padding: 0.25rem 0.75rem;
+  background: #e2e8f0;
+  border-radius: 4px;
+  min-width: 60px;
+  text-align: right;
+}
+
+input[type="range"] {
+  flex: 1;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #10b981;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.1);
+}
+
+.width-preview {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+#width-preview-count {
+  font-weight: 600;
+  color: #10b981;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .layout-settings-container {
+  background: #1f2937;
+}
+
+[data-theme="dark"] .layout-settings-title {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .layout-settings-description {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .bookmark-width-settings {
+  background: #374151;
+}
+
+[data-theme="dark"] .width-slider {
+  background: #374151;
+}
+
+[data-theme="dark"] .width-value-display {
+  color: #e5e7eb;
+  background: #4b5563;
+}
+
+[data-theme="dark"] input[type="range"] {
+  background: #4b5563;
+}
+
+[data-theme="dark"] .width-preview {
+  color: #9ca3af;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .floating-width-settings {
+  background: #1f2937;
+  color: #e5e7eb;
+}
+
+/* 当显示浮动卡片时移除模糊效果 */
+.settings-modal-content.no-blur {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* 设置模态框的基础样式 */
+.settings-modal {
+  display: none;
+  position: fixed;
+  z-index: 1002;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+}
+
+/* 当滑块被拖动时，移除模糊效果 */
+.settings-modal.no-blur {
+  backdrop-filter: none;
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-backdrop-filter: none;
+}
+
+/* 当显示浮动卡片时的样式 */
+.settings-modal-content.no-blur {
+  background-color: rgba(254, 254, 254, 0.9);
+}
+
+/* 当显示浮动卡片时，其他内容的样式 */
+.settings-modal-content.no-blur > *:not(#floating-width-settings) {
+  opacity: 0.5;
+  pointer-events: none;
+}

@@ -617,6 +617,15 @@ document.addEventListener('DOMContentLoaded', function() {
       searchInput.addEventListener('input', adjustTextareaHeight);
     }
   }
+
+  // 应用保存的书签宽度设置
+  chrome.storage.sync.get(['bookmarkWidth'], (result) => {
+    const savedWidth = result.bookmarkWidth || 190;
+    const bookmarksList = document.getElementById('bookmarks-list');
+    if (bookmarksList) {
+      bookmarksList.style.gridTemplateColumns = `repeat(auto-fill, minmax(${savedWidth}px, 1fr))`;
+    }
+  });
 });
 
 const bookmarksCache = {
