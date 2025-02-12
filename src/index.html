@@ -18,7 +18,7 @@
   <script type="module" src="bookmark-cleanup.js"></script>
   <script type="module" src="feature-tips.js"></script>
   <script type="module" src="settings.js"></script>
-
+  <script type="module" src="search-engine-dropdown.js"></script>
 </head>
 <body class="h-screen flex flex-col">
   <div id="sidebar-container" class="flex collapsed">
@@ -36,19 +36,6 @@
       <div class="flex justify-between items-center mb-4">
         <div class="search-container">
           <form class="search-form" id="search-form">
-              <div class="search-engine-update-tip">
-                <div class="tip-content">
-                  <span class="material-icons">info</span>
-                  <div class="tip-text">
-                    <p data-i18n="searchEngineUpdateTip">You can update your search engine settings here...</p>
-                    <p class="tip-detail" data-i18n="searchEngineUpdateDetail">Details about the update...</p>
-                  </div>
-                  <button class="tip-close">
-                    <span class="material-icons">close</span>
-                  </button>
-                </div>
-                <div class="tip-arrow"></div>
-              </div>
             <div style="position: relative;height: auto;">
               <div class="search-icon-container">
                 <img id="search-engine-icon" src="../images/placeholder-icon.svg" alt="search-engine-icon"
@@ -64,30 +51,6 @@
               <ul id="search-suggestions" class="search-suggestions"></ul>
               <div id="tabs-container" class="tabs">
                 <span data-i18n="searchTips" class="search-tips">本次使用</span>
-                <div class="tab" data-engine="bing">
-                  Bing
-                </div>
-                <div class="tab active" data-engine="google">
-                  Google
-                </div>
-                <div class="tab" data-engine="doubao">
-                 <span data-i18n="doubaoTab">豆包</span>
-                </div>
-                <div class="tab" data-engine="kimi">
-                 Kimi
-                </div>
-                <div class="tab" data-engine="metaso">
-                  <span data-i18n="metasoTab">秘塔</span>
-                </div>
-                <div class="tab" data-engine="felo">
-                   Felo
-                </div>
-                <div class="tab" data-engine="chatgpt">
-                   ChatGPT
-                </div>
-                <div class="tab" data-engine="baidu">
-                  <span data-i18n="baiduTab">百度</span>
-                </div>     
               </div>
             </div>
           </form>
@@ -354,6 +317,51 @@
     </button>
   </div>
   <!-- 在合适的位置添加检查缓存按钮 -->
+  <div id="search-engines-dialog" class="modal">
+    <div class="modal-content">
+      <span class="close-button settings-modal-close">&times;</span>
+      <h2 data-i18n="searchEnginesTitle" class="search-engines-title">__MSG_searchEnginesTitle__</h2>
+      <div class="search-engines-container">
+        <!-- AI 搜索引擎 -->
+        <div class="search-engine-category">
+          <h3 class="category-title" data-i18n="aiSearchEnginesTitle">__MSG_aiSearchEnginesTitle__</h3>
+          <div class="search-engine-grid" id="ai-search-engines"></div>
+        </div>
+        
+        <!-- 搜索引擎 -->
+        <div class="search-engine-category">
+          <h3 class="category-title" data-i18n="generalSearchEnginesTitle">__MSG_generalSearchEnginesTitle__</h3>
+          <div class="search-engine-grid" id="search-engines"></div>
+        </div>
+        
+        <!-- 社交媒体 -->
+        <div class="search-engine-category">
+          <h3 class="category-title" data-i18n="socialSearchEnginesTitle">__MSG_socialSearchEnginesTitle__</h3>
+          <div class="search-engine-grid" id="social-media-engines"></div>
+        </div>
 
+        <!-- 自定义搜索引擎 -->
+        <div class="search-engine-category">
+          <h3 class="category-title" data-i18n="customSearchEnginesTitle">__MSG_customSearchEnginesTitle__</h3>
+          <div class="custom-engine-container">
+            <div class="custom-engine-grid" id="custom-engines"></div>
+            
+            <div class="custom-engine-form">
+              <div class="input-container">
+                <input type="text" id="custom-engine-name" data-i18n-placeholder="searchEngineNamePlaceholder" class="custom-input">
+              </div>
+              <div class="input-container">
+                <input type="text" id="custom-engine-url" data-i18n-placeholder="searchEngineUrlPlaceholder" class="custom-input">
+              </div>
+              <div class="input-container">
+                <input type="text" id="custom-engine-icon" data-i18n-placeholder="searchEngineIconPlaceholder" class="custom-input">
+              </div>
+              <button id="add-custom-engine" class="custom-button" data-i18n="addSearchEngineButton">__MSG_addSearchEngineButton__</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

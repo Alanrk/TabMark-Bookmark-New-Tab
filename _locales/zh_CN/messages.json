@@ -535,5 +535,113 @@
     "sidebarFeaturesFeature": {
         "message": "新增两项功能：\n1. 快捷侧边栏：\n在任意网页按下 Alt/Command + B，即可打开侧边栏，快速访问书签和搜索功能。\n\n2. 链接打开方式：\n在设置中可自定义书签和快捷链接的打开方式，选择是否在新标签页中打开。",
         "description": "侧边栏搜索和链接打开方式的统一提示信息"
+    },
+    "addSearchEngine": {
+        "message": "添加",
+        "description": "添加搜索引擎按钮的文本"
+    },
+    "searchEnginesTitle": {
+        "message": "常用搜索引擎",
+        "description": "搜索引擎设置标题"
+    },
+    "aiSearchEnginesTitle": {
+        "message": "AI 搜索",
+        "description": "AI搜索引擎分类标题"
+    },
+    "generalSearchEnginesTitle": {
+        "message": "搜索引擎",
+        "description": "常规搜索引擎分类标题"
+    },
+    "socialSearchEnginesTitle": {
+        "message": "社交媒体",
+        "description": "社交媒体搜索分类标题"
+    },
+    "customSearchEnginesTitle": {
+        "message": "自定义搜索引擎",
+        "description": "自定义搜索引擎分类标题"
+    },
+    "searchEngineNamePlaceholder": {
+        "message": "搜索引擎名称",
+        "description": "搜索引擎名称输入框占位符"
+    },
+    "searchEngineUrlPlaceholder": {
+        "message": "搜索 URL (使用 %s 作为搜索词占位符)",
+        "description": "搜索引擎URL输入框占位符"
+    },
+    "searchEngineIconPlaceholder": {
+        "message": "图标 URL（可选，留空将自动获取）",
+        "description": "搜索引擎图标输入框占位符"
+    },
+    "addSearchEngineButton": {
+        "message": "添加",
+        "description": "添加搜索引擎按钮文本"
+    },
+    "searchEngineAddSuccess": {
+        "message": "搜索引擎添加成功",
+        "description": "搜索引擎添加成功提示"
+    },
+    "searchEngineAddError": {
+        "message": "添加搜索引擎失败，请重试",
+        "description": "搜索引擎添加失败提示"
+    },
+    "searchEngineDeleteConfirm": {
+        "message": "确定要删除此搜索引擎吗？",
+        "description": "删除搜索引擎确认提示"
+    },
+    "searchEngineNameRequired": {
+        "message": "请输入搜索引擎名称",
+        "description": "搜索引擎名称必填提示"
+    },
+    "searchEngineUrlRequired": {
+        "message": "请输入搜索引擎URL",
+        "description": "搜索引擎URL必填提示"
+    },
+    "searchEngineUrlInvalid": {
+        "message": "请输入有效的URL，需包含 %s 作为搜索词占位符",
+        "description": "搜索引擎URL格式无效提示"
+    },
+    "semanticscholarLabel": {
+        "message": "Semantic",
+        "description": "Semantic Scholar 搜索引擎标签"
+    },
+    "deepseekLabel": {
+        "message": "Deepseek",
+        "description": "Deepseek 搜索引擎标签"
+    },
+    "yahooLabel": {
+        "message": "雅虎",
+        "description": "Yahoo 搜索引擎标签"
+    },
+    "duckduckgoLabel": {
+        "message": "DuckDuckGo",
+        "description": "DuckDuckGo 搜索引擎标签"
+    },
+    "yandexLabel": {
+        "message": "Yandex",
+        "description": "Yandex 搜索引擎标签"
+    },
+    "xiaohongshuLabel": {
+        "message": "小红书",
+        "description": "小红书搜索引擎标签"
+    },
+    "jikeLabel": {
+        "message": "即刻",
+        "description": "即刻搜索引擎标签"
+    },
+    "zhihuLabel": {
+        "message": "知乎",
+        "description": "知乎搜索引擎标签"
+    },
+    "doubanLabel": {
+        "message": "豆瓣",
+        "description": "豆瓣搜索引擎标签"
+    },
+    "bilibiliLabel": {
+        "message": "哔哩哔哩",
+        "description": "哔哩哔哩搜索引擎标签"
+    },
+    "githubLabel": {
+        "message": "GitHub",
+        "description": "GitHub 搜索引擎标签"
     }
 }
