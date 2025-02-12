@@ -1,4 +1,12 @@
 import { featureTips } from './feature-tips.js';
+import { initGestureNavigation } from './gesture-navigation.js';
+import { 
+  SearchEngineManager, 
+  updateSearchEngineIcon, 
+  createSearchEngineDropdown, 
+  initializeSearchEngineDialog,
+  getSearchUrl 
+} from './search-engine-dropdown.js';
 
 let bookmarkTreeNodes = [];
 let defaultSearchEngine = 'google';
@@ -23,6 +31,9 @@ function updateThemeIcon(isDark) {
 import { replaceIconsWithSvg, getIconHtml } from './icons.js';
 
 document.addEventListener('DOMContentLoaded', function () {
+  // 初始化手势导航，传入 updateBookmarksDisplay 函数
+  initGestureNavigation(updateBookmarksDisplay);
+  
   // 替换所有图标
   replaceIconsWithSvg();
 
@@ -30,11 +41,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const button = document.createElement('button');
   button.innerHTML = getIconHtml('settings') + ' Settings';
 });
+
 function getLocalizedMessage(messageName) {
   const message = chrome.i18n.getMessage(messageName);
   return message || messageName;
 }
-
 
 // Define the context menu creation function
 function createContextMenu() {
@@ -377,69 +388,20 @@ function initVirtualScroll() {
   // 初始化
   initializeListeners();
 }
-function updateSearchEngineIcon(engine) {
-  console.log('[Icon] Updating icon for engine:', engine);
 
-  const searchEngineIcon = document.getElementById('search-engine-icon');
-  if (!searchEngineIcon) {
-    console.warn('[Icon] Search engine icon element not found');
-    return;
-  }
-
-  const iconMap = {
-    'google': '../images/google-logo.svg',
-    'bing': '../images/bing-logo.png',
-    'baidu': '../images/baidu-logo.svg',
-    'kimi': '../images/kimi-logo.svg',
-    'doubao': '../images/doubao-logo.png',
-    'chatgpt': '../images/chatgpt-logo.svg',
-    'felo': '../images/felo-logo.svg',
-    'metaso': '../images/metaso-logo.png'
-  };
-
-  const iconPath = iconMap[engine] || iconMap['google'];
-  console.log('[Icon] Setting icon path:', iconPath);
-  searchEngineIcon.src = iconPath;
-  searchEngineIcon.alt = `${engine} icon`;
-}
 // 3. 合并 DOMContentLoaded 事件监听器
 document.addEventListener('DOMContentLoaded', function() {
   // 初始化虚拟滚动
   initVirtualScroll();
-  createSearchEngineDropdown();
+  
   // 其他初始化代码...
-
-
   startPeriodicSync();
   setupSpecialLinks();
   console.log('[Init] Starting initialization...');
 
-  // 获取当前存储的搜索引擎
-  const currentEngine = localStorage.getItem('selectedSearchEngine');
-  console.log('[Init] Current engine from storage:', currentEngine);
-
-  // 如果没有设置默认搜索引擎，则设置为 google
-  if (!currentEngine) {
-    console.log('[Init] Setting default engine to google');
-    localStorage.setItem('selectedSearchEngine', 'google');
-  }
-
-  // 确认设置成功
-  const defaultEngine = localStorage.getItem('selectedSearchEngine');
-  console.log('[Init] Confirmed default engine:', defaultEngine);
-
-  // 初始化搜索引擎图
-  updateSearchEngineIcon(defaultEngine);
-
-  // 初始化 tabs 的激活状态
-  const tabs = document.querySelectorAll('.tab');
-  tabs.forEach(tab => {
-    if (tab.getAttribute('data-engine') === defaultEngine) {
-      tab.classList.add('active');
-    } else {
-      tab.classList.remove('active');
-    }
-  });
+  // 只调用一次搜索引擎初始化
+  createSearchEngineDropdown();
+  initializeSearchEngineDialog();
 
   // 初始化功能提示
   featureTips.initAllTips();
@@ -1411,13 +1373,32 @@ function createBookmarkCard(bookmark, index) {
     try {
       // 通过页面文件名判断环境
       const isSidePanel = window.location.pathname.endsWith('sidepanel.html');
+      const isInternalUrl = bookmark.url.startsWith('chrome://') || 
+                           bookmark.url.startsWith('chrome-extension://') ||
+                           bookmark.url.startsWith('edge://') ||
+                           bookmark.url.startsWith('about:');
 
       console.log('[Bookmark Click] Starting...', {
         url: bookmark.url,
-        currentUrl: window.location.href,
+        isInternalUrl: isInternalUrl,
         isSidePanel: isSidePanel
       });
 
+      // 处理内部链接
+      if (isInternalUrl) {
+        console.log('[Bookmark Click] Opening internal URL');
+        chrome.tabs.create({
+          url: bookmark.url,
+          active: true
+        }).then(tab => {
+          console.log('[Bookmark Click] Internal tab created successfully:', tab);
+        }).catch(error => {
+          console.error('[Bookmark Click] Failed to create internal tab:', error);
+        });
+        return;
+      }
+
+      // 处理普通链接
       if (isSidePanel) {
         console.log('[Bookmark Click] Opening in Side Panel mode');
         chrome.tabs.create({
@@ -1430,11 +1411,7 @@ function createBookmarkCard(bookmark, index) {
         });
       } else {
         console.log('[Bookmark Click] Opening in Main Window mode');
-        // 在主页面中根据设置决定打开方式
         chrome.storage.sync.get(['openInNewTab'], (result) => {
-          console.log('[Bookmark Click] Settings check:', {
-            openInNewTab: result.openInNewTab
-          });
           if (result.openInNewTab !== false) {
             window.open(bookmark.url, '_blank');
           } else {
@@ -3838,19 +3815,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 将 getSearchUrl 函数移到文件前面，在事件监听器之前定义
   function getSearchUrl(engine, query) {
-      const encodedQuery = encodeURIComponent(query);
-      const searchUrls = {
-          google: `https://www.google.com/search?q=${encodedQuery}`,
-          bing: `https://www.bing.com/search?q=${encodedQuery}`,
-          baidu: `https://www.baidu.com/s?wd=${encodedQuery}`,
-          doubao: `https://www.doubao.com/search?q=${encodedQuery}`,
-          kimi: `https://kimi.moonshot.cn/?q=${encodedQuery}`,
-          metaso: `https://metaso.cn/#/search?q=${encodedQuery}`,
-          felo: `https://felo.me/?q=${encodedQuery}`,
-          chatgpt: `https://chat.openai.com/?q=${encodedQuery}`
-      };
-      
-      return searchUrls[engine.toLowerCase()] || searchUrls.google;
+    const allEngines = SearchEngineManager.getAllEngines();
+    const engineConfig = allEngines.find(e => {
+      // 匹配引擎名称或别名
+      return e.name.toLowerCase() === engine.toLowerCase() || 
+             (e.aliases && e.aliases.some(alias => alias.toLowerCase() === engine.toLowerCase()));
+    });
+
+    if (!engineConfig) {
+      // 如果找不到对应的引擎配置,使用默认引擎
+      const defaultEngine = SearchEngineManager.getDefaultEngine();
+      return defaultEngine.url + encodeURIComponent(query);
+    }
+
+    // 确保 URL 中包含查询参数占位符
+    const url = engineConfig.url.includes('%s') ? 
+      engineConfig.url.replace('%s', encodeURIComponent(query)) :
+      engineConfig.url + encodeURIComponent(query);
+
+    return url;
   }
 
 
@@ -4045,33 +4028,27 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
+  // 修改 getSearchUrl 函数,使用 SearchEngineManager 中的配置
   function getSearchUrl(engine, query) {
-    switch (engine.toLowerCase()) {
-      case 'kimi':
-      case 'kimi':
-        return `https://kimi.moonshot.cn/?q=${encodeURIComponent(query)}`;
-      case 'doubao':
-      case '豆包':
-        return `https://www.doubao.com/chat/?q=${encodeURIComponent(query)}`;
-      case 'chatgpt':
-        return `https://chatgpt.com/?q=${encodeURIComponent(query)}`;
-      case 'felo':
-        return `https://felo.ai/search?q=${query}`;
-      case 'metaso':
-      case '秘塔':
-        return `https://metaso.cn/?q=${query}`;
-      case 'google':
-      case '谷歌':
-        return `https://www.google.com/search?q=${query}`;
-      case 'bing':
-      case '必应':
-        return `https://www.bing.com/search?q=${query}`;
-      case 'baidu':
-      case '百度':
-        return `https://www.baidu.com/s?wd=${encodeURIComponent(query)}`;
-      default:
-        return `https://www.bing.com/search?q=${query}`;
+    const allEngines = SearchEngineManager.getAllEngines();
+    const engineConfig = allEngines.find(e => {
+      // 匹配引擎名称或别名
+      return e.name.toLowerCase() === engine.toLowerCase() ||
+        (e.aliases && e.aliases.some(alias => alias.toLowerCase() === engine.toLowerCase()));
+    });
+
+    if (!engineConfig) {
+      // 如果找不到对应的引擎配置,使用默认引擎
+      const defaultEngine = SearchEngineManager.getDefaultEngine();
+      return defaultEngine.url + encodeURIComponent(query);
     }
+
+    // 确保 URL 中包含查询参数占位符
+    const url = engineConfig.url.includes('%s') ? 
+      engineConfig.url.replace('%s', encodeURIComponent(query)) :
+      engineConfig.url + encodeURIComponent(query);
+
+    return url;
   }
 
   // 动态调整 textarea 度的函数
@@ -4243,7 +4220,7 @@ document.addEventListener('DOMContentLoaded', function () {
       titleStartsWith: 180,    // 提高标题开头匹配权重
       urlStartsWith: 150,      // 提高 URL 开头匹配权重
 
-      // 3. 包含匹配权重适当调��，避免干扰更精确的结果
+      // 3. 包含匹配权重适当调，避免干扰更精确的结果
       titleIncludes: 100,
       urlIncludes: 80,
 
@@ -4515,35 +4492,28 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('selectedSearchEngine', engine);
   }
 
+  // 修改 getSearchUrl 函数,使用 SearchEngineManager 中的配置
   function getSearchUrl(engine, query) {
-    switch (engine.toLowerCase()) {
-      case 'kimi':
-      case 'kimi':
-        return `https://kimi.moonshot.cn/?q=${encodeURIComponent(query)}`;
-      case 'doubao':
-      case '豆包':
-        return `https://www.doubao.com/chat/?q=${encodeURIComponent(query)}`;
-      case 'chatgpt':
-        return `https://chatgpt.com/?q=${encodeURIComponent(query)}`;
-      case 'felo':
-        return `https://felo.ai/search?q=${query}`;
-      case 'metaso':
-      case '秘塔':
-        return `https://metaso.cn/?q=${query}`;
-      case 'google':
-      case '谷歌':
-        return `https://www.google.com/search?q=${query}`;
-      case 'bing':
-      case '必应':
-        return `https://www.bing.com/search?q=${query}`;
-      case 'baidu':
-      case '百度':
-        return `https://www.baidu.com/s?wd=${encodeURIComponent(query)}`;
-      default:
-        return `https://www.bing.com/search?q=${query}`;
-    }
-  }
+    const allEngines = SearchEngineManager.getAllEngines();
+    const engineConfig = allEngines.find(e => {
+      // 匹配引擎名称或别名
+      return e.name.toLowerCase() === engine.toLowerCase() ||
+        (e.aliases && e.aliases.some(alias => alias.toLowerCase() === engine.toLowerCase()));
+    });
 
+    if (!engineConfig) {
+      // 如果找不到对应的引擎配置,使用默认引擎
+      const defaultEngine = SearchEngineManager.getDefaultEngine();
+      return defaultEngine.url + encodeURIComponent(query);
+    }
+
+    // 确保 URL 中包含查询参数占位符
+    const url = engineConfig.url.includes('%s') ? 
+      engineConfig.url.replace('%s', encodeURIComponent(query)) :
+      engineConfig.url + encodeURIComponent(query);
+
+    return url;
+  }
 
 
 
@@ -5365,15 +5335,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 修改这个函数
   function openAllSearchEnginesExceptCurrent(query) {
-    const currentEngine = localStorage.getItem('selectedSearchEngine') || 'google';
-    const engines = ['google', 'bing', 'baidu', 'kimi', 'doubao', 'chatgpt', 'felo', 'metaso'];
+    const currentEngine = SearchEngineManager.getDefaultEngine().name;
+    const enabledEngines = SearchEngineManager.getEnabledEngines();
 
-    const urls = engines
-      .filter(engine => engine.toLowerCase() !== currentEngine.toLowerCase())
-      .map(engine => getSearchUrl(engine, query));
+    const urls = enabledEngines
+      .filter(engine => engine.name.toLowerCase() !== currentEngine.toLowerCase())
+      .map(engine => getSearchUrl(engine.name, query));
 
     if (urls.length > 0) {
-      // 设置一个标志，表示这是通过 Cmd/Ctrl + Enter 触发的搜索
       window.lastSearchTrigger = 'cmdCtrlEnter';
 
       chrome.runtime.sendMessage({
@@ -5381,8 +5350,7 @@ document.addEventListener('DOMContentLoaded', function () {
         urls: urls,
         groupName: query
       }, function (response) {
-        if (response && response.success) {
-        } else {
+        if (!response || !response.success) {
           console.error('打开多个标签页或创建标签组失败:', response ? response.error : '未知错误');
         }
       });
@@ -5392,103 +5360,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// 修改 createSearchEngineDropdown 函数
-function createSearchEngineDropdown() {
-  const searchForm = document.querySelector('.search-form');
-  const iconContainer = document.querySelector('.search-icon-container');
-  const tabsContainer = document.getElementById('tabs-container');
 
-  // 创建下拉菜单容器
-  const dropdownContainer = document.createElement('div');
-  dropdownContainer.className = 'search-engine-dropdown';
-  dropdownContainer.style.display = 'none';
 
-  // 定义搜索引擎列表
-  const engines = [
-    { name: 'google', icon: '../images/google-logo.svg', label: getLocalizedMessage('googleLabel') },
-    { name: 'bing', icon: '../images/bing-logo.png', label: getLocalizedMessage('bingLabel') },
-    { name: 'baidu', icon: '../images/baidu-logo.svg', label: getLocalizedMessage('baiduLabel') },
-    { name: 'kimi', icon: '../images/kimi-logo.svg', label: getLocalizedMessage('kimiLabel') },
-    { name: 'doubao', icon: '../images/doubao-logo.png', label: getLocalizedMessage('doubaoLabel') },
-    { name: 'chatgpt', icon: '../images/chatgpt-logo.svg', label: getLocalizedMessage('chatgptLabel') },
-    { name: 'felo', icon: '../images/felo-logo.svg', label: getLocalizedMessage('feloLabel') },
-    { name: 'metaso', icon: '../images/metaso-logo.png', label: getLocalizedMessage('metasoLabel') }
-  ];
-
-  // 创建下拉菜单选项
-  engines.forEach(engine => {
-    const option = document.createElement('div');
-    option.className = 'search-engine-option';
-    option.innerHTML = `
-      <img src="${engine.icon}" alt="${engine.label}" class="search-engine-icon">
-      <span>${engine.label}</span>
-    `;
-
-    option.addEventListener('click', (e) => {
-      e.stopPropagation();
-      
-      // 更新默认搜索引擎
-      localStorage.setItem('selectedSearchEngine', engine.name);
-      
-      // 更新搜索引擎图标
-      const searchEngineIcon = document.getElementById('search-engine-icon');
-      if (searchEngineIcon) {
-        searchEngineIcon.src = engine.icon;
-        searchEngineIcon.alt = `${engine.label} Search`;
-      }
-
-      // 恢复标签栏到默认搜索引擎状态
-      const defaultEngine = engine.name.toLowerCase();
-      const tabs = document.querySelectorAll('.tab');
-      tabs.forEach(tab => {
-        const tabEngine = tab.getAttribute('data-engine').toLowerCase();
-        if (tabEngine === defaultEngine) {
-          tab.classList.add('active');
-        } else {
-          tab.classList.remove('active');
-        }
-      });
-
-      // 记录状态变化
-      console.log('[Dropdown] Set default engine:', engine.name);
-      console.log('[Dropdown] Updated localStorage:', localStorage.getItem('selectedSearchEngine'));
-      
-      // 隐藏下拉菜单
-      dropdownContainer.style.display = 'none';
-
-      // 触发自定义事件通知其他组件默认搜索引擎已更改
-      const event = new CustomEvent('defaultSearchEngineChanged', {
-        detail: { engine: engine.name }
-      });
-      document.dispatchEvent(event);
-    });
-
-    dropdownContainer.appendChild(option);
-  });
-
-  // 点击图标显示/隐藏下拉菜单
-  iconContainer.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isVisible = dropdownContainer.style.display === 'block';
-    dropdownContainer.style.display = isVisible ? 'none' : 'block';
-  });
-
-  // 点击其他区域隐藏下拉菜单
-  document.addEventListener('click', () => {
-    dropdownContainer.style.display = 'none';
-  });
-
-  // 将下拉菜单添加到搜索表单中
-  searchForm.appendChild(dropdownContainer);
-}
-function logSearchEngineState() {
-  const defaultEngine = localStorage.getItem('selectedSearchEngine');
-  const activeTab = document.querySelector('.tab.active');
-  const currentEngine = activeTab ? activeTab.getAttribute('data-engine') : null;
-
-  console.log('[State] Default engine:', defaultEngine);
-  console.log('[State] Current active engine:', currentEngine);
-}
+// 确保在 DOMContentLoaded 时调用创建函数
+document.addEventListener('DOMContentLoaded', function() {
+  createSearchEngineDropdown();
+  // ... 其他初始化代码 ...
+});
 
 
 
@@ -5550,6 +5428,14 @@ function logSearchEngineState() {
       updateQuickLinksVisibility();
     }
   });
+
+  // 添加搜索引擎变更事件监听
+  document.addEventListener('defaultSearchEngineChanged', (event) => {
+    console.log('[Search] Default engine changed:', event.detail.engine);
+    // 可以在这里添加其他需要响应搜索引擎变更的逻辑
+    createTemporarySearchTabs(); // 添加这行以更新临时搜索标签
+  });
+
 
 
 

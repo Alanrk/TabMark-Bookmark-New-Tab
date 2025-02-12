@@ -2535,40 +2535,64 @@ input:checked+.slider:before {
   transform: scale(1.2);
 }
 
-/* 添加搜索引擎下拉菜单样式 */
+/* 搜索引擎下拉菜单容器 */
 .search-engine-dropdown {
   position: absolute;
+  left: 0;
   top: 100%;
-  left: 10px;
   background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 16px;
   z-index: 1000;
-  width: 160px;
-  padding: 8px 0;
-  margin-top: 4px;
+  width: 580px;
+  margin-top: 8px;
 }
-
+/* 选项容器 */
+.search-engine-options-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+/* 单个选项样式 */
 .search-engine-option {
-  display: flex;
-  align-items: center;
-  padding: 8px 16px;
   cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
 }
 
 .search-engine-option:hover {
-  background-color: #f8f9fa;
+  background-color: #f5f5f5;
 }
-
-.search-engine-option img {
-  width: 16px;
-  height: 16px;
-  margin-right: 12px;
+/* 选项内容布局 */
+.search-engine-option-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
-
-.search-engine-option span {
+/* 选项图标样式 */
+.search-engine-option-icon {
+  height: 24px;
+  margin-bottom: 4px;
+}
+/* 标签样式 */
+.search-engine-option-label {
   font-size: 12px;
   color: #1a202c;
+}
+/* 移动端适配 */
+@media (max-width: 480px) {
+  .search-engine-dropdown {
+    width: calc(100vw - 32px);
+    left: 16px;
+    right: 16px;
+  }
+
+  .search-engine-options-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .dropdown-indicator {
@@ -3320,5 +3344,335 @@ input:checked+.slider:before {
     left: 16px;  /* 在移动端左右留边距 */
     max-width: none;  /* 移动端占满宽度减去边距 */
   }
+}
+
+/* 添加按钮特殊样式 */
+.add-engine {
+  color: #d1d5db;
+  border: 1px dashed #e2e8f0;
+  border-radius: 8px;
+  padding: 8px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.add-engine:hover {
+  background-color: #f0fdf4;
+  border-color: #10b981;
+}
+
+.add-icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+
+/* 搜索引擎对话框基础样式 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1002;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  /* 移除 padding-top */
+  padding: 0;
+  /* 防止背景滚动 */
+  overflow: hidden;
+}
+
+.modal .modal-content {
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #eeeeee;
+  /* 修改定位和尺寸 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh; /* 最大高度为视窗高度的90% */
+  border-radius: 12px;
+  padding: 2rem;
+  /* 只保留overflow设置 */
+  overflow-y: auto;
+}
+
+
+
+/* 搜索引擎容器样式调整 */
+.search-engines-container {
+  /* 移除之前可能存在的外边距 */
+  margin: 0;
+  /* 添加内部间距 */
+  padding-right: 16px;
+}
+
+/* 确保关闭按钮始终可见 */
+.modal .close-button {
+  position: sticky;
+  top: 0;
+  right: 0;
+  float: right;
+  margin: -1rem -1rem 1rem 1rem;
+  background-color: white;
+  padding: 8px;
+  z-index: 1;
+}
+
+/* 搜索引擎列表样式 */
+.search-engines-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #1a202c;
+}
+
+.search-engine-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.search-engine-category {
+  margin-bottom: 32px;
+}
+.category-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 16px;
+}
+.search-engine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.search-engine-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background-color: #f8f9fa;
+  cursor: pointer; /* 添加鼠标指针样式 */
+}
+
+.search-engine-item:hover {
+  background-color: #f0f0f0; /* 稍微调暗一点的悬停背景色 */
+}
+
+.search-engine-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-engine-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.search-engine-name {
+  font-size: 14px;
+  color: #374151;
+  font-weight: 600;
+}
+.custom-checkbox {
+  margin-right: 12px;
+}
+
+/* 自定义搜索引擎样式 */
+.custom-engine-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.custom-engine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px; /* 添加底部间距 */
+}
+
+.custom-engine-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.custom-input {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+}
+
+.custom-button {
+  padding: 8px 16px;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.custom-button:hover {
+  background-color: #059669;
+}
+
+/* 自定义搜索引擎图标样式 */
+.search-engine-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 2px;
+}
+
+.search-engine-icon[src$="default-engine-logo.svg"] {
+  opacity: 0.6;
+  padding: 3px;
+  background-color: #f0f0f0;
+}
+
+/* 添加图标加载动画 */
+@keyframes iconLoading {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+  100% { opacity: 0.3; }
+}
+
+.search-engine-icon.loading {
+  animation: iconLoading 1.5s infinite;
+}
+
+/* 图标加载动画样式 */
+.icon-loading-spinner {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #10b981;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.custom-input.loading {
+  padding-right: 40px; /* 为加载图标留出空间 */
+}
+
+@keyframes spin {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* 修改 custom-engine-form 样式以支持相对定位 */
+.custom-engine-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+/* 修改输入框容器样式 */
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+/* 自定义复选框样式 */
+.custom-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+}
+
+/* 隐藏原生复选框但保持其功能 */
+.custom-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;  /* 改为 0 来隐藏原生复选框 */
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+  z-index: 2;  /* 确保复选框在最上层可以接收点击 */
+}
+
+/* 自定义复选框样式覆盖在原生复选框上 */
+.custom-checkbox .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 4px;
+  background-color: white;
+  pointer-events: none;
+  z-index: 1;
+  transition: all 0.2s ease;
+}
+
+/* 复选框选中状态 */
+.custom-checkbox input:checked + .checkmark {
+  background-color: #10b981;
+  border-color: #10b981;
+}
+
+/* 复选框选中时的对勾 */
+.custom-checkbox input:checked + .checkmark:after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
+
+/* 禁用状态 */
+.custom-checkbox input:disabled ~ .checkmark {
+  background-color: #f3f4f6;
+  border-color: #e5e7eb;
+  cursor: not-allowed;
 }
 

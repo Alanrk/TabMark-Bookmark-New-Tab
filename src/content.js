@@ -841,7 +841,7 @@
     {
       urlPattern: 'https://kimi.moonshot.cn/',
       inputFieldSelector: '[role="textbox"]',
-      sendButtonSelector: 'button[data-testid="msh-chatinput-send-button"]',
+      sendButtonSelector: 'div[class="send-button"]',
       urlParamName: 'q',
       maxRetries: 3,
       retryDelay: 1000
@@ -857,9 +857,9 @@
     {
       urlPattern: 'https://www.doubao.com/chat/',
       inputFieldSelector: 'textarea[data-testid="chat_input_input"]',
-      sendButtonSelector: 'button[data-testid="chat_input_send_button"]',
+      sendButtonSelector: 'button#flow-end-msg-send[data-testid="chat_input_send_button"]',
       urlParamName: 'q',
-      maxRetries: 5,
+      maxRetries: 2,
       retryDelay: 1500
     },
   ];

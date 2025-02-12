@@ -466,5 +466,113 @@
     "sidebarFeaturesFeature": {
         "message": "Two new features added:\n1. Quick Sidebar:\nPress Alt/Command + B on any webpage to open the sidebar for quick access to bookmarks and search features.\n\n2. Link Opening Settings:\nCustomize how bookmarks and quick links are opened in settings, with the option to open in new tabs.",
         "description": "Unified tip for sidebar search and link opening features"
+    },
+    "addSearchEngine": {
+        "message": "Add",
+        "description": "Add search engine button text"
+    },
+    "searchEnginesTitle": {
+        "message": "Common Search Engines",
+        "description": "Title for search engine settings"
+    },
+    "aiSearchEnginesTitle": {
+        "message": "AI Search",
+        "description": "Title for AI search engines category"
+    },
+    "generalSearchEnginesTitle": {
+        "message": "Search Engines",
+        "description": "Title for general search engines category"
+    },
+    "socialSearchEnginesTitle": {
+        "message": "Social Media",
+        "description": "Title for social media search category"
+    },
+    "customSearchEnginesTitle": {
+        "message": "Custom Search Engines",
+        "description": "Title for custom search engines category"
+    },
+    "searchEngineNamePlaceholder": {
+        "message": "Search Engine Name",
+        "description": "Placeholder for search engine name input"
+    },
+    "searchEngineUrlPlaceholder": {
+        "message": "Search URL (use %s as query placeholder)",
+        "description": "Placeholder for search engine URL input"
+    },
+    "searchEngineIconPlaceholder": {
+        "message": "Icon URL (optional, will be auto-fetched if empty)",
+        "description": "Placeholder for search engine icon input"
+    },
+    "addSearchEngineButton": {
+        "message": "Add",
+        "description": "Text for add search engine button"
+    },
+    "searchEngineAddSuccess": {
+        "message": "Search engine added successfully",
+        "description": "Success message for adding search engine"
+    },
+    "searchEngineAddError": {
+        "message": "Failed to add search engine, please try again",
+        "description": "Error message for adding search engine"
+    },
+    "searchEngineDeleteConfirm": {
+        "message": "Are you sure you want to delete this search engine?",
+        "description": "Confirmation message for deleting search engine"
+    },
+    "searchEngineNameRequired": {
+        "message": "Please enter search engine name",
+        "description": "Required message for search engine name"
+    },
+    "searchEngineUrlRequired": {
+        "message": "Please enter search engine URL",
+        "description": "Required message for search engine URL"
+    },
+    "searchEngineUrlInvalid": {
+        "message": "Please enter a valid URL with %s as query placeholder",
+        "description": "Invalid format message for search engine URL"
+    },
+    "semanticscholarLabel": {
+        "message": "Semantic",
+        "description": "Label for Semantic Scholar search engine"
+    },
+    "deepseekLabel": {
+        "message": "Deepseek",
+        "description": "Label for Deepseek search engine"
+    },
+    "yahooLabel": {
+        "message": "Yahoo",
+        "description": "Label for Yahoo search engine"
+    },
+    "duckduckgoLabel": {
+        "message": "DuckDuckGo",
+        "description": "Label for DuckDuckGo search engine"
+    },
+    "yandexLabel": {
+        "message": "Yandex",
+        "description": "Label for Yandex search engine"
+    },
+    "xiaohongshuLabel": {
+        "message": "Xiaohongshu",
+        "description": "Label for Xiaohongshu search engine"
+    },
+    "jikeLabel": {
+        "message": "Jike",
+        "description": "Label for Jike search engine"
+    },
+    "zhihuLabel": {
+        "message": "Zhihu",
+        "description": "Label for Zhihu search engine"
+    },
+    "doubanLabel": {
+        "message": "Douban",
+        "description": "Label for Douban search engine"
+    },
+    "bilibiliLabel": {
+        "message": "Bilibili",
+        "description": "Label for Bilibili search engine"
+    },
+    "githubLabel": {
+        "message": "GitHub",
+        "description": "Label for GitHub search engine"
     }
 }

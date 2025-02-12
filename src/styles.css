@@ -1025,3 +1025,217 @@ input[type="range"]::-webkit-slider-thumb:hover {
   opacity: 0.5;
   pointer-events: none;
 }
+
+/* 搜索引擎对话框暗色模式样式 */
+[data-theme="dark"] .modal .modal-content {
+  background-color: #242424;
+  border-color: #404040;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .search-engines-title {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .category-title {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .search-engine-item {
+  background-color: #333333;
+}
+
+[data-theme="dark"] .search-engine-item:hover {
+  background-color: #404040;
+}
+
+[data-theme="dark"] .search-engine-name {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .custom-engine-form {
+  background-color: #333333;
+}
+
+[data-theme="dark"] .custom-input {
+  background-color: #242424;
+  border-color: #404040;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .custom-input:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+[data-theme="dark"] .custom-input::placeholder {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .settings-modal-close {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .settings-modal-close:hover {
+  color: #ffffff;
+}
+
+/* 暗色模式下的滚动条样式 */
+[data-theme="dark"] .modal .modal-content::-webkit-scrollbar-track {
+  background: #333333;
+}
+
+[data-theme="dark"] .modal .modal-content::-webkit-scrollbar-thumb {
+  background-color: #4a4a4a;
+  border: 2px solid #333333;
+}
+
+/* 暗色模式下的加载动画样式 */
+[data-theme="dark"] .icon-loading-spinner {
+  border-color: #404040;
+  border-top-color: #10b981;
+}
+
+/* 暗色模式下的复选框样式 */
+[data-theme="dark"] .custom-checkbox input:checked + .checkmark {
+  background-color: #10b981;
+  border-color: #10b981;
+}
+
+[data-theme="dark"] .custom-checkbox .checkmark {
+  border-color: #404040;
+  background-color: #242424;
+}
+
+[data-theme="dark"] .custom-checkbox:hover input ~ .checkmark {
+  background-color: #333333;
+}
+
+/* 暗色模式下的删除按钮样式 */
+[data-theme="dark"] .delete-custom-engine {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .delete-custom-engine:hover {
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* 关闭按钮暗色模式样式 */
+[data-theme="dark"] .close-button.settings-modal-close {
+  color: #9ca3af;  /* 默认颜色 */
+  background-color: #242424;  /* 与模态框背景色相同 */
+}
+
+[data-theme="dark"] .close-button.settings-modal-close:hover {
+  color: #e5e7eb;  /* 悬停时颜色变亮 */
+}
+
+[data-theme="dark"] .close-button.settings-modal-close:focus {
+  color: #e5e7eb;
+  outline: none;
+}
+
+/* 确保暗色模式下关闭按钮的背景色与模态框一致 */
+[data-theme="dark"] .modal .close-button.settings-modal-close {
+  background-color: #242424;
+  border-color: #404040;
+}
+
+/* 搜索引擎下拉框暗色模式样式 */
+[data-theme="dark"] .search-engine-dropdown {
+  background-color: #242424;
+  border-color: #404040;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .search-engine-option {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .search-engine-option:hover {
+  background-color: #333333;
+}
+
+[data-theme="dark"] .search-engine-option-content {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .search-engine-option-label {
+  color: #e5e7eb;
+}
+
+/* 添加搜索引擎按钮的暗色模式 */
+[data-theme="dark"] .add-engine {
+  color: #9ca3af;
+  border-color: #404040;
+  background-color: #333333;
+}
+
+[data-theme="dark"] .add-engine:hover {
+  background-color: #404040;
+  border-color: #10b981;
+  color: #e5e7eb;
+}
+
+/* 下拉框分隔线暗色模式 */
+[data-theme="dark"] .search-engine-dropdown .divider {
+  border-color: #404040;
+}
+
+/* 下拉框图标暗色模式 */
+[data-theme="dark"] .search-engine-option-icon {
+  background-color: #ffffff;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+/* 确保图标在暗色模式下有更好的可见度 */
+[data-theme="dark"] .material-icons {
+  color: #e5e7eb;
+}
+
+/* 全局滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 4px 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 12px;
+  border: none;
+  transition: background-color 0.2s;
+  min-height: 60px;  /* 设置滚动条滑块的最小高度 */
+  max-height: 120px; /* 设置滚动条滑块的最大高度 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(156, 163, 175, 0.8);
+}
+
+/* Firefox 全局滚动条样式 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+}
+
+/* 暗色模式全局滚动条样式 */
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background-color: rgba(229, 231, 235, 0.2);
+  min-height: 60px;
+  max-height: 120px; /* 确保暗色模式下也有相同的最大高度 */
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(229, 231, 235, 0.3);
+}
+
+[data-theme="dark"] * {
+  scrollbar-color: rgba(229, 231, 235, 0.2) transparent;
+}
