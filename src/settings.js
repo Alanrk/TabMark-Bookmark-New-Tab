@@ -413,7 +413,7 @@ class SettingsManager {
     // 同步更新全局滚动条的预览数量
     const globalPreviewCount = document.getElementById('global-width-preview-count');
     if (globalPreviewCount) {
-        globalPreviewCount.textContent = count + ' 个/行';
+      globalPreviewCount.textContent = count + ' 个/行';
     }
   }
 
