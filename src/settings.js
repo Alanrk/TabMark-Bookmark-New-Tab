@@ -256,11 +256,24 @@ class SettingsManager {
       this.widthValue.textContent = savedWidth;
       this.updatePreviewCount(savedWidth);
       this.updateBookmarkWidth(savedWidth);
+      
+      // 同步全局滚动条的值
+      const globalSlider = document.getElementById('global-width-slider');
+      const globalValue = document.getElementById('global-width-value');
+      if (globalSlider && globalValue) {
+        globalSlider.value = savedWidth;
+        globalValue.textContent = savedWidth;
+      }
     });
 
     // 监听滑块的鼠标按下事件
     this.widthSlider.addEventListener('mousedown', () => {
       this.showFloatingMode();
+      // 显示全局滚动条
+      const globalRangeSlider = document.querySelector('.global-range-slider');
+      if (globalRangeSlider) {
+        globalRangeSlider.style.display = 'block';
+      }
     });
 
     // 监听滑块的变化
@@ -269,19 +282,50 @@ class SettingsManager {
       this.widthValue.textContent = width;
       this.updatePreviewCount(width);
       this.updateBookmarkWidth(width);
+      
+      // 同步全局滚动条的值
+      const globalValue = document.getElementById('global-width-value');
+      const globalSlider = document.getElementById('global-width-slider');
+      if (globalValue && globalSlider) {
+        globalValue.textContent = width;
+        globalSlider.value = width;
+      }
     });
+
+    // 监听全局滚动条的变化
+    const globalSlider = document.getElementById('global-width-slider');
+    if (globalSlider) {
+      globalSlider.addEventListener('input', (e) => {
+        const width = e.target.value;
+        this.widthSlider.value = width;
+        this.widthValue.textContent = width;
+        this.updatePreviewCount(width);
+        this.updateBookmarkWidth(width);
+        document.getElementById('global-width-value').textContent = width;
+      });
+    }
 
     // 监听滑块的鼠标释放事件
     this.widthSlider.addEventListener('mouseup', () => {
       this.hideFloatingMode();
+      // 隐藏全局滚动条
+      const globalRangeSlider = document.querySelector('.global-range-slider');
+      if (globalRangeSlider) {
+        globalRangeSlider.style.display = 'none';
+      }
       // 保存设置
       chrome.storage.sync.set({ bookmarkWidth: this.widthSlider.value });
     });
 
-    // 监听鼠标移出滑块事件，以防用户在滑块外释放鼠标
+    // 监听鼠标移出滑块事件
     this.widthSlider.addEventListener('mouseleave', () => {
       if (this.widthSettings.classList.contains('floating')) {
         this.hideFloatingMode();
+        // 隐藏全局滚动条
+        const globalRangeSlider = document.querySelector('.global-range-slider');
+        if (globalRangeSlider) {
+          globalRangeSlider.style.display = 'none';
+        }
       }
     });
 
@@ -307,6 +351,19 @@ class SettingsManager {
     this.widthSettings.style.display = 'block';
     this.widthSettings.style.opacity = '1';
     this.widthSettings.style.pointerEvents = 'auto';
+
+    // 显示全局滚动条并定位
+    const globalRangeSlider = document.querySelector('.global-range-slider');
+    const widthSettings = document.getElementById('floating-width-settings');
+    if (globalRangeSlider && widthSettings) {
+      const rect = widthSettings.getBoundingClientRect();
+      globalRangeSlider.style.display = 'block';
+      globalRangeSlider.style.position = 'fixed';
+      globalRangeSlider.style.top = `${rect.top}px`;
+      globalRangeSlider.style.left = `${rect.left}px`;
+      globalRangeSlider.style.width = `${rect.width}px`;
+      globalRangeSlider.style.transform = 'none';
+    }
   }
 
   hideFloatingMode() {
@@ -352,6 +409,12 @@ class SettingsManager {
     
     // 更新显示
     this.widthPreviewCount.textContent = count + ' 个/行';
+    
+    // 同步更新全局滚动条的预览数量
+    const globalPreviewCount = document.getElementById('global-width-preview-count');
+    if (globalPreviewCount) {
+        globalPreviewCount.textContent = count + ' 个/行';
+    }
   }
 
   updateBookmarkWidth(width) {

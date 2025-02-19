@@ -36,19 +36,6 @@
       <div class="flex justify-between items-center mb-4">
         <div class="search-container">
           <form class="search-form" id="search-form">
-              <div class="search-engine-update-tip">
-                <div class="tip-content">
-                  <span class="material-icons">info</span>
-                  <div class="tip-text">
-                    <p data-i18n="searchEngineUpdateTip">You can update your search engine settings here...</p>
-                    <p class="tip-detail" data-i18n="searchEngineUpdateDetail">Details about the update...</p>
-                  </div>
-                  <button class="tip-close">
-                    <span class="material-icons">close</span>
-                  </button>
-                </div>
-                <div class="tip-arrow"></div>
-              </div>
             <div style="position: relative;height: auto;">
               <div class="search-icon-container">
                 <img id="search-engine-icon" src="../images/placeholder-icon.svg" alt="search-engine-icon"
@@ -392,6 +379,22 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <!-- 添加全局滚动条 -->
+  <div class="global-range-slider">
+    <h4 class="settings-section-title" style="display: none;">书签宽度设置</h4>
+    <div id="floating-width-settings-global">
+      <div class="slider-container" style="display: flex; align-items: center; gap: 10px;">
+        <input type="range" id="global-width-slider" min="100" max="300" step="10" style="flex: 1;">
+        <div class="value-display" style="white-space: nowrap;">
+          <span id="global-width-value">190</span>px
+        </div>
+      </div>
+      <div class="preview-text" style="margin-top: 16px;">
+        <span>每行书签按钮数量：</span>
+        <span id="global-width-preview-count"></span>
       </div>
     </div>
   </div>
