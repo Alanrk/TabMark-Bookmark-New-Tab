@@ -232,10 +232,12 @@
         "description": "Onglet du moteur de recherche Baidu"
     },
     "searchEngineUpdateTip": {
-        "message": "La fonction de changement de moteur de recherche a été mise à jour"
+        "message": "La fonction de changement de moteur de recherche a été mise à jour",
+        "description": "Notification de mise à jour de la fonction de moteur de recherche"
     },
     "searchEngineUpdateDetail": {
-        "message": "Cliquez maintenant sur l'icône de recherche pour définir le moteur de recherche par défaut, utilisez la barre d'onglets pour un changement temporaire"
+        "message": "Cliquez sur l'icône de recherche pour définir le moteur de recherche par défaut, prend en charge les moteurs de recherche personnalisés, utilisez la barre d'onglets pour un changement temporaire",
+        "description": "Détails sur la fonction de changement de moteur de recherche"
     },
     "googleLabel": {
         "message": "Google",
@@ -428,5 +430,69 @@
     "sidebarFeaturesFeature": {
         "message": "Deux nouvelles fonctionnalités ajoutées :\n1. Barre latérale rapide :\nAppuyez sur Alt/Command + B sur n'importe quelle page web pour ouvrir la barre latérale et accéder rapidement aux favoris et aux fonctions de recherche.\n\n2. Paramètres d'ouverture des liens :\nPersonnalisez la façon dont les favoris et les liens rapides s'ouvrent dans les paramètres, avec l'option de les ouvrir dans de nouveaux onglets.",
         "description": "Conseil unifié pour la recherche dans la barre latérale et les fonctions d'ouverture des liens"
+    },
+    "addSearchEngine": {
+        "message": "Ajouter",
+        "description": "Texte du bouton d'ajout de moteur de recherche"
+    },
+    "searchEnginesTitle": {
+        "message": "Paramètres des Moteurs de Recherche",
+        "description": "Titre des paramètres des moteurs de recherche"
+    },
+    "aiSearchEnginesTitle": {
+        "message": "Recherche IA",
+        "description": "Titre de la catégorie des moteurs de recherche IA"
+    },
+    "generalSearchEnginesTitle": {
+        "message": "Recherche Générale",
+        "description": "Titre de la catégorie des moteurs de recherche généraux"
+    },
+    "socialSearchEnginesTitle": {
+        "message": "Réseaux Sociaux",
+        "description": "Titre de la catégorie de recherche sur les réseaux sociaux"
+    },
+    "customSearchEnginesTitle": {
+        "message": "Moteurs de Recherche Personnalisés",
+        "description": "Titre de la catégorie des moteurs de recherche personnalisés"
+    },
+    "searchEngineNamePlaceholder": {
+        "message": "Nom du moteur de recherche",
+        "description": "Texte indicatif pour le nom du moteur de recherche"
+    },
+    "searchEngineUrlPlaceholder": {
+        "message": "URL de recherche (utilisez %s comme espace réservé)",
+        "description": "Texte indicatif pour l'URL du moteur de recherche"
+    },
+    "searchEngineIconPlaceholder": {
+        "message": "URL de l'icône (optionnel, sera récupérée automatiquement si vide)",
+        "description": "Texte indicatif pour l'icône du moteur de recherche"
+    },
+    "searchEngineAddSuccess": {
+        "message": "Moteur de recherche ajouté avec succès",
+        "description": "Message de succès pour l'ajout d'un moteur de recherche"
+    },
+    "searchEngineAddError": {
+        "message": "Échec de l'ajout du moteur de recherche, veuillez réessayer",
+        "description": "Message d'erreur pour l'ajout d'un moteur de recherche"
+    },
+    "searchEngineDeleteConfirm": {
+        "message": "Êtes-vous sûr de vouloir supprimer ce moteur de recherche ?",
+        "description": "Message de confirmation pour la suppression d'un moteur de recherche"
+    },
+    "searchEngineNameRequired": {
+        "message": "Veuillez entrer le nom du moteur de recherche",
+        "description": "Message obligatoire pour le nom du moteur de recherche"
+    },
+    "searchEngineUrlRequired": {
+        "message": "Veuillez entrer l'URL du moteur de recherche",
+        "description": "Message obligatoire pour l'URL du moteur de recherche"
+    },
+    "searchEngineUrlInvalid": {
+        "message": "Veuillez entrer une URL valide avec %s comme espace réservé",
+        "description": "Message de format invalide pour l'URL du moteur de recherche"
+    },
+    "searchEngineUpdateFeature": {
+        "message": "La fonction de changement de moteur de recherche a été mise à jour :\n1. Cliquez sur l'icône de recherche pour définir le moteur de recherche par défaut\n2. Prise en charge des moteurs de recherche personnalisés\n3. Utilisez la barre d'onglets pour changer temporairement la recherche en cours",
+        "description": "Détails de la mise à jour de la fonction de changement de moteur de recherche"
     }
 }

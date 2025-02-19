@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="loading-wallpaper">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,7 @@
   <script type="module" src="settings.js"></script>
   <script type="module" src="search-engine-dropdown.js"></script>
 </head>
+
 <body class="h-screen flex flex-col">
   <div id="sidebar-container" class="flex collapsed">
     <aside class="custom-width p-4 overflow-auto border-r border-gray-200 relative">
@@ -36,26 +38,27 @@
       <div class="flex justify-between items-center mb-4">
         <div class="search-container">
           <form class="search-form" id="search-form">
-              <div class="search-engine-update-tip">
-                <div class="tip-content">
-                  <span class="material-icons">info</span>
-                  <div class="tip-text">
-                    <p data-i18n="searchEngineUpdateTip">You can update your search engine settings here...</p>
-                    <p class="tip-detail" data-i18n="searchEngineUpdateDetail">Details about the update...</p>
-                  </div>
-                  <button class="tip-close">
-                    <span class="material-icons">close</span>
-                  </button>
+            <div class="search-engine-update-tip">
+              <div class="tip-content">
+                <span class="material-icons">info</span>
+                <div class="tip-text">
+                  <p data-i18n="searchEngineUpdateTip">You can update your search engine settings here...</p>
+                  <p class="tip-detail" data-i18n="searchEngineUpdateDetail">Details about the update...</p>
                 </div>
-                <div class="tip-arrow"></div>
+                <button class="tip-close">
+                  <span class="material-icons">close</span>
+                </button>
               </div>
+              <div class="tip-arrow"></div>
+            </div>
             <div style="position: relative;height: auto;">
               <div class="search-icon-container">
                 <img id="search-engine-icon" src="../images/placeholder-icon.svg" alt="search-engine-icon"
                   class="search-engine-icon">
                 <span class="dropdown-indicator">▼</span>
               </div>
-              <textarea class="search-input" data-i18n-placeholder="searchPlaceholder" rows="1" style="width: 100%; resize: none; padding-left: 40px;"></textarea>
+              <textarea class="search-input" data-i18n-placeholder="searchPlaceholder" rows="1"
+                style="width: 100%; resize: none; padding-left: 40px;"></textarea>
             </div>
             <div class="search-suggestions-wrapper">
               <div class="line-container" id="line-container">
@@ -64,30 +67,6 @@
               <ul id="search-suggestions" class="search-suggestions"></ul>
               <div id="tabs-container" class="tabs">
                 <span data-i18n="searchTips" class="search-tips">本次使用</span>
-                <div class="tab" data-engine="bing">
-                  Bing
-                </div>
-                <div class="tab active" data-engine="google">
-                  Google
-                </div>
-                <div class="tab" data-engine="doubao">
-                 <span data-i18n="doubaoTab">豆包</span>
-                </div>
-                <div class="tab" data-engine="kimi">
-                 Kimi
-                </div>
-                <div class="tab" data-engine="metaso">
-                  <span data-i18n="metasoTab">秘塔</span>
-                </div>
-                <div class="tab" data-engine="felo">
-                   Felo
-                </div>
-                <div class="tab" data-engine="chatgpt">
-                   ChatGPT
-                </div>
-                <div class="tab" data-engine="baidu">
-                  <span data-i18n="baiduTab">百度</span>
-                </div>     
               </div>
             </div>
           </form>
@@ -154,8 +133,8 @@
         </div>
       </div>
       <footer class="bg-gray-50 text-center p-4 border-t border-gray-200 mt-4">
-      <!-- 新增的进度条容器 -->
-      <div id="year-progress" class="year-progress-container"></div>
+        <!-- 新增的进度条容器 -->
+        <div id="year-progress" class="year-progress-container"></div>
       </footer>
       <div id="side-panel-content" class="side-panel-content">
         <iframe id="side-panel-iframe" class="side-panel-iframe"></iframe>
@@ -212,13 +191,14 @@
           <button class="settings-tab-button" data-tab="floating-ball" data-i18n="floatingBallTab">悬浮球设置</button>
           <button class="settings-tab-button" data-tab="quick-links" data-i18n="quickLinksTab">网站推荐</button>
           <button class="settings-tab-button" data-tab="link-opening" data-i18n="linkOpeningTab">链接打开方式</button>
-          <button class="settings-tab-button" data-tab="bookmark-management" data-i18n="bookmarkManagementTab">书签管理</button>
+          <button class="settings-tab-button" data-tab="bookmark-management"
+            data-i18n="bookmarkManagementTab">书签管理</button>
           <button class="settings-tab-button" data-tab="about" data-i18n="aboutTab">关于</button>
         </div>
         <div class="settings-content">
           <div id="appearance-settings" class="settings-tab-content active">
             <h3 class="settings-modal-subtitle" data-i18n="backgroundTitle">背景设置</h3>
-            
+
             <h4 class="settings-section-title" data-i18n="solidBackgroundTitle">纯色背景</h4>
             <div class="settings-background-options">
               <div class="settings-bg-option gradient-background-1" data-bg="gradient-background-1"></div>
@@ -229,7 +209,7 @@
               <div class="settings-bg-option gradient-background-6" data-bg="gradient-background-6"></div>
               <div class="settings-bg-option gradient-background-7" data-bg="gradient-background-7"></div>
             </div>
-            
+
             <h4 class="settings-section-title" data-i18n="wallpaperTitle">壁纸</h4>
             <div class="wallpaper-section">
               <div class="wallpaper-options">
@@ -251,16 +231,16 @@
             </div>
           </div>
           <div id="floating-ball-settings" class="settings-tab-content">
-             <h3 class="settings-modal-subtitle" data-i18n="floatingBallSettingsTitle">悬浮球设置</h3>
-             <p data-i18n="floatingBallDescription">开启悬浮球后会在页面右上角显示一个可点击的悬浮图标，用于快速访问搜索引擎和书签。</p>
-             <div class="setting-option">
-               <label for="enable-floating-ball" class="switch-label" data-i18n="enableFloatingBall">启悬浮球</label>
-               <label class="switch">
-                 <input type="checkbox" id="enable-floating-ball">
-                 <span class="slider round"></span>
-               </label>
-             </div>
-           </div>
+            <h3 class="settings-modal-subtitle" data-i18n="floatingBallSettingsTitle">悬浮球设置</h3>
+            <p data-i18n="floatingBallDescription">开启悬浮球后会在页面右上角显示一个可点击的悬浮图标，用于快速访问搜索引擎和书签。</p>
+            <div class="setting-option">
+              <label for="enable-floating-ball" class="switch-label" data-i18n="enableFloatingBall">启悬浮球</label>
+              <label class="switch">
+                <input type="checkbox" id="enable-floating-ball">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
           <div id="quick-links-settings" class="settings-tab-content">
             <h3 class="settings-modal-subtitle" data-i18n="quickLinksSettings">Quick Links Settings</h3>
             <p data-i18n="quickLinksDescription">开启快捷链接后，将在搜索框下方显示您最常访问的网站，方便快速访问。访问新的网站时会自动更新快捷链接列表。</p>
@@ -284,50 +264,50 @@
               </label>
             </div>
           </div>
-           <div id="bookmark-management-settings" class="settings-tab-content">
-             <h3 class="settings-modal-subtitle" data-i18n="bookmarkCleanupSettingsTitle">书签清理与统计</h3>
-             <p data-i18n="bookmarkCleanupSettingsDescription">清理重复和失效的书签，查看书签使用统计数据，帮助您更好地管理书签。</p>
-             
-             <div class="bookmark-cleanup-actions">
-               <button id="open-bookmark-cleanup" class="primary-button">
-                 <span class="material-icons">cleaning_services</span>
-                 <span data-i18n="openBookmarkCleanup">打开书签清理工具</span>
-               </button>
-             </div>
-           </div>
-           <div id="about-settings" class="settings-tab-content">
-             <h3 class="settings-modal-subtitle" data-i18n="aboutTitle">关于 TabMark</h3>
-             <div class="about-content">
-               <img src="../images/logo.svg" alt="TabMark Logo" class="about-logo">
-               <p class="about-version" data-i18n="version">Version 1.233</p>
-               <p class="about-description" data-i18n="aboutDescription">
-                 TabMark 是一个简洁、高效的书签管理扩展，帮助您更好地组织和访问您的网络收藏。
-               </p>
-               <div class="about-links">
-                 <a href="https://github.com/Alanrk/TabMark-Bookmark-New-Tab" target="_blank" class="about-link">
-                   <span class="material-icons">code</span>
-                   <span data-i18n="sourceCode">源代码</span>
-                 </a>
-                 <a href="mailto:support@booktap.cc" class="about-link">
-                   <span class="material-icons">email</span>
-                   <span data-i18n="contactUs">联系我们</span>
-                 </a>
-                  <a href="https://x.com/orionwang" class="about-link" target="_blank">
-                    <img src="../images/twitter-logo.png" alt="Twitter" class="twitter-icon">
-                    <span>Twitter</span>
+          <div id="bookmark-management-settings" class="settings-tab-content">
+            <h3 class="settings-modal-subtitle" data-i18n="bookmarkCleanupSettingsTitle">书签清理与统计</h3>
+            <p data-i18n="bookmarkCleanupSettingsDescription">清理重复和失效的书签，查看书签使用统计数据，帮助您更好地管理书签。</p>
+
+            <div class="bookmark-cleanup-actions">
+              <button id="open-bookmark-cleanup" class="primary-button">
+                <span class="material-icons">cleaning_services</span>
+                <span data-i18n="openBookmarkCleanup">打开书签清理工具</span>
+              </button>
+            </div>
+          </div>
+          <div id="about-settings" class="settings-tab-content">
+            <h3 class="settings-modal-subtitle" data-i18n="aboutTitle">关于 TabMark</h3>
+            <div class="about-content">
+              <img src="../images/logo.svg" alt="TabMark Logo" class="about-logo">
+              <p class="about-version" data-i18n="version">Version 1.233</p>
+              <p class="about-description" data-i18n="aboutDescription">
+                TabMark 是一个简洁、高效的书签管理扩展，帮助您更好地组织和访问您的网络收藏。
+              </p>
+              <div class="about-links">
+                <a href="https://github.com/Alanrk/TabMark-Bookmark-New-Tab" target="_blank" class="about-link">
+                  <span class="material-icons">code</span>
+                  <span data-i18n="sourceCode">源代码</span>
+                </a>
+                <a href="mailto:support@booktap.cc" class="about-link">
+                  <span class="material-icons">email</span>
+                  <span data-i18n="contactUs">联系我们</span>
+                </a>
+                <a href="https://x.com/orionwang" class="about-link" target="_blank">
+                  <img src="../images/twitter-logo.png" alt="Twitter" class="twitter-icon">
+                  <span>Twitter</span>
+                </a>
+                <a href="mailto:support@booktap.cc" class="about-link" target="_blank">
+                  <span class="material-icons">feedback</span>
+                  <span data-i18n="feedback">反馈</span>
+                </a>
+                <p class="official-website">
+                  <a href="https://www.ainewtab.app" target="_blank">
+                    <span data-i18n="officialWebsite">Official Website</span>: https://www.ainewtab.app
                   </a>
-                  <a href="mailto:support@booktap.cc" class="about-link" target="_blank">
-                    <span class="material-icons">feedback</span>
-                    <span data-i18n="feedback">反馈</span>
-                  </a>
-                  <p class="official-website">
-                    <a href="https://www.ainewtab.app" target="_blank">
-                      <span data-i18n="officialWebsite">Official Website</span>: https://www.ainewtab.app
-                    </a>
-                  </p>
-               </div>
-             </div>
-           </div>
+                </p>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -354,6 +334,56 @@
     </button>
   </div>
   <!-- 在合适的位置添加检查缓存按钮 -->
+  <div id="search-engines-dialog" class="modal">
+    <div class="modal-content">
+      <span class="close-button settings-modal-close">&times;</span>
+      <h2 data-i18n="searchEnginesTitle" class="search-engines-title">__MSG_searchEnginesTitle__</h2>
+      <div class="search-engines-container">
+        <!-- AI 搜索引擎 -->
+        <div class="search-engine-category">
+          <h3 class="category-title" data-i18n="aiSearchEnginesTitle">__MSG_aiSearchEnginesTitle__</h3>
+          <div class="search-engine-grid" id="ai-search-engines"></div>
+        </div>
 
+        <!-- 搜索引擎 -->
+        <div class="search-engine-category">
+          <h3 class="category-title" data-i18n="generalSearchEnginesTitle">__MSG_generalSearchEnginesTitle__</h3>
+          <div class="search-engine-grid" id="search-engines"></div>
+        </div>
+
+        <!-- 社交媒体 -->
+        <div class="search-engine-category">
+          <h3 class="category-title" data-i18n="socialSearchEnginesTitle">__MSG_socialSearchEnginesTitle__</h3>
+          <div class="search-engine-grid" id="social-media-engines"></div>
+        </div>
+
+        <!-- 自定义搜索引擎 -->
+        <div class="search-engine-category">
+          <h3 class="category-title" data-i18n="customSearchEnginesTitle">__MSG_customSearchEnginesTitle__</h3>
+          <div class="custom-engine-container">
+            <div class="custom-engine-grid" id="custom-engines"></div>
+
+            <div class="custom-engine-form">
+              <div class="input-container">
+                <input type="text" id="custom-engine-name" data-i18n-placeholder="searchEngineNamePlaceholder"
+                  class="custom-input">
+              </div>
+              <div class="input-container">
+                <input type="text" id="custom-engine-url" data-i18n-placeholder="searchEngineUrlPlaceholder"
+                  class="custom-input">
+              </div>
+              <div class="input-container">
+                <input type="text" id="custom-engine-icon" data-i18n-placeholder="searchEngineIconPlaceholder"
+                  class="custom-input">
+              </div>
+              <button id="add-custom-engine" class="custom-button"
+                data-i18n="addSearchEngineButton">__MSG_addSearchEngineButton__</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>

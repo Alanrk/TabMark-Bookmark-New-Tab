@@ -284,10 +284,12 @@
         "description": "百度検索エンジンタブ"
     },
     "searchEngineUpdateTip": {
-        "message": "検索エンジン切り替え機能が更新されました"
+        "message": "検索エンジン切り替え機能が更新されました",
+        "description": "検索エンジン機能の更新に関する通知"
     },
     "searchEngineUpdateDetail": {
-        "message": "検索アイコンをクリックしてデフォルトの検索エンジンを設定し、タブバーで一時的な切り替えを行います"
+        "message": "検索アイコンをクリックしてデフォルトの検索エンジンを設定し、カスタム検索エンジンをサポートし、タブバーで一時的に切り替えを行います",
+        "description": "検索エンジン切り替え機能の詳細"
     },
     "googleLabel": {
         "message": "Google",
@@ -508,5 +510,69 @@
     "sidebarFeaturesFeature": {
         "message": "2つの新機能が追加されました：\n1. クイックサイドバー：\nどのWebページでもAlt/Command + Bを押すと、ブックマークと検索機能にすばやくアクセスできるサイドバーが開きます。\n\n2. リンクを開く設定：\n設定でブックマークとクイックリンクの開き方をカスタマイズでき、新しいタブで開くオプションもあります。",
         "description": "サイドバー検索とリンクを開く機能の統合ヒント"
+    },
+    "addSearchEngine": {
+        "message": "追加",
+        "description": "検索エンジン追加ボタンのテキスト"
+    },
+    "searchEnginesTitle": {
+        "message": "検索エンジン設定",
+        "description": "検索エンジン設定のタイトル"
+    },
+    "aiSearchEnginesTitle": {
+        "message": "AI検索",
+        "description": "AI検索エンジンカテゴリーのタイトル"
+    },
+    "generalSearchEnginesTitle": {
+        "message": "一般検索",
+        "description": "一般検索エンジンカテゴリーのタイトル"
+    },
+    "socialSearchEnginesTitle": {
+        "message": "ソーシャルメディア",
+        "description": "ソーシャルメディア検索カテゴリーのタイトル"
+    },
+    "customSearchEnginesTitle": {
+        "message": "カスタム検索エンジン",
+        "description": "カスタム検索エンジンカテゴリーのタイトル"
+    },
+    "searchEngineNamePlaceholder": {
+        "message": "検索エンジン名",
+        "description": "検索エンジン名入力のプレースホルダー"
+    },
+    "searchEngineUrlPlaceholder": {
+        "message": "検索URL（%sをクエリプレースホルダーとして使用）",
+        "description": "検索エンジンURL入力のプレースホルダー"
+    },
+    "searchEngineIconPlaceholder": {
+        "message": "アイコンURL（オプション、空の場合は自動取得）",
+        "description": "検索エンジンアイコン入力のプレースホルダー"
+    },
+    "searchEngineAddSuccess": {
+        "message": "検索エンジンを追加しました",
+        "description": "検索エンジン追加成功メッセージ"
+    },
+    "searchEngineAddError": {
+        "message": "検索エンジンの追加に失敗しました。もう一度お試しください",
+        "description": "検索エンジン追加エラーメッセージ"
+    },
+    "searchEngineDeleteConfirm": {
+        "message": "この検索エンジンを削除してもよろしいですか？",
+        "description": "検索エンジン削除確認メッセージ"
+    },
+    "searchEngineNameRequired": {
+        "message": "検索エンジン名を入力してください",
+        "description": "検索エンジン名必須メッセージ"
+    },
+    "searchEngineUrlRequired": {
+        "message": "検索エンジンURLを入力してください",
+        "description": "検索エンジンURL必須メッセージ"
+    },
+    "searchEngineUrlInvalid": {
+        "message": "クエリプレースホルダーとして%sを含む有効なURLを入力してください",
+        "description": "検索エンジンURL無効フォーマットメッセージ"
+    },
+    "searchEngineUpdateFeature": {
+        "message": "検索エンジン切り替え機能が更新されました：\n1. 検索アイコンをクリックしてデフォルトの検索エンジンを設定\n2. カスタム検索エンジンのサポート\n3. タブバーで現在の検索を一時的に切り替え",
+        "description": "検索エンジン切り替え機能の更新詳細"
     }
 }

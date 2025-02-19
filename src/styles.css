@@ -316,8 +316,16 @@ main.flex-1 {
   color: #ffffff;
   border-color: #404040;
 }
-[data-theme="dark"] .close-button,
-.close-category-button:hover {
+[data-theme="dark"] .close-button {
+  color: #ffffff;
+}
+[data-theme="dark"] .close-category-button {
+  color: #ffffff;
+}
+[data-theme="dark"] .close-button:hover {
+  color: #ffffff;
+}
+[data-theme="dark"] .close-category-button:hover {
   color: #ffffff;
 }
 [data-theme="dark"] .settings-modal-content {

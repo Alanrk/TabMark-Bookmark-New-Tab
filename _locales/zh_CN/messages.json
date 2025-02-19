@@ -296,7 +296,7 @@
         "description": "搜索引擎切换功能提示"
     },
     "searchEngineUpdateDetail": {
-        "message": "现在点击搜索图标可以设置默认搜索引擎，标签栏用于临时切换当次搜索",
+        "message": "点击搜索图标可以设置默认搜索引擎，支持自定义搜索引擎，标签栏用于临时切换当次搜索",
         "description": "搜索引擎切换功能详细说明"
     },
     "googleLabel": {
@@ -561,7 +561,7 @@
         "description": "添加搜索引擎按钮的文本"
     },
     "searchEnginesTitle": {
-        "message": "常用搜索引擎",
+        "message": "搜索引擎设置",
         "description": "搜索引擎设置标题"
     },
     "aiSearchEnginesTitle": {
@@ -569,8 +569,8 @@
         "description": "AI搜索引擎分类标题"
     },
     "generalSearchEnginesTitle": {
-        "message": "搜索引擎",
-        "description": "常规搜索引擎分类标题"
+        "message": "通用搜索",
+        "description": "通用搜索引擎分类标题"
     },
     "socialSearchEnginesTitle": {
         "message": "社交媒体",
@@ -663,5 +663,21 @@
     "githubLabel": {
         "message": "GitHub",
         "description": "GitHub 搜索引擎标签"
+    },
+    "perplexityLabel": {
+        "message": "Perplexity",
+        "description": "Perplexity 搜索引擎标签"
+    },
+    "claudeLabel": {
+        "message": "Claude",
+        "description": "Claude 搜索引擎标签"
+    },
+    "deleteFolderError": {
+        "message": "删除文件夹失败，请重试",
+        "description": "删除文件夹失败时的错误消息"
+    },
+    "searchEngineUpdateFeature": {
+        "message": "搜索引擎切换功能已更新：\n1. 点击搜索图标设置默认搜索引擎\n2. 支持自定义搜索引擎\n3. 使用标签栏进行临时切换",
+        "description": "搜索引擎切换功能更新详细说明"
     }
 }

@@ -28,12 +28,12 @@ class FeatureTips {
         if (!lastVersion || this.isNewerVersion(this.currentVersion, lastVersion)) {
             // 获取该版本的所有新功能提示
             const features = await this.getVersionFeatures(lastVersion, this.currentVersion);
-            
+
             // 显示新功能提示
             for (const feature of features) {
                 this.checkShowTips(feature);
             }
-            
+
             // 更新存储的版本号
             localStorage.setItem('lastVersion', this.currentVersion);
         }
@@ -42,10 +42,10 @@ class FeatureTips {
     // 比较版本号
     isNewerVersion(current, last) {
         if (!last) return true;
-        
+
         const currentParts = current.split('.').map(Number);
         const lastParts = last.split('.').map(Number);
-        
+
         for (let i = 0; i < currentParts.length; i++) {
             if (currentParts[i] > (lastParts[i] || 0)) return true;
             if (currentParts[i] < (lastParts[i] || 0)) return false;
@@ -57,12 +57,13 @@ class FeatureTips {
     getVersionFeatures(lastVersion, currentVersion) {
         // 版本功能映射表
         const versionFeatures = {
-            '1.238': ['bookmarkCleanup'], 
-            '1.239': ['sidebarFeatures']  // 合并为一个功能提示
+            '1.238': ['bookmarkCleanup'],
+            '1.239': ['sidebarFeatures'],
+            '1.241': ['searchEngineUpdate']
         };
 
         const features = [];
-        
+
         // 如果是新安装（lastVersion 为 null），只显示当前版本的功能
         if (!lastVersion) {
             const currentFeatures = versionFeatures[currentVersion];
@@ -71,7 +72,7 @@ class FeatureTips {
 
         // 获取版本之间的所有新功能
         for (const [version, featureList] of Object.entries(versionFeatures)) {
-            if (this.isNewerVersion(version, lastVersion) && 
+            if (this.isNewerVersion(version, lastVersion) &&
                 !this.isNewerVersion(version, currentVersion)) {
                 features.push(...featureList);
             }
@@ -99,10 +100,10 @@ class FeatureTips {
 
         const tipsElement = document.createElement('div');
         tipsElement.className = 'feature-tips';
-        
+
         // 获取消息文本并将 \n 转换为 <br>
         const messageText = chrome.i18n.getMessage(featureKey + 'Feature').replace(/\n/g, '<br>');
-        
+
         tipsElement.innerHTML = `
       <div class="feature-tips-content">
         <div class="tip-content">
