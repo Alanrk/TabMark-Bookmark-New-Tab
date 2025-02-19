@@ -1013,25 +1013,28 @@ input[type="range"]::-webkit-slider-thumb:hover {
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition: backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+  /* transition: all 0.3s ease; */
 }
 
 /* 当滑块被拖动时，移除模糊效果 */
 .settings-modal.no-blur {
   backdrop-filter: none;
-  background-color: rgba(0, 0, 0, 0);
   -webkit-backdrop-filter: none;
+  background-color: transparent;
+  transition: all 0.3s ease;
 }
 
 /* 当显示浮动卡片时的样式 */
 .settings-modal-content.no-blur {
-  background-color: rgba(254, 254, 254, 0.9);
+  background-color: transparent !important;
+  transition: all 0.3s ease;
 }
 
 /* 当显示浮动卡片时，其他内容的样式 */
 .settings-modal-content.no-blur > *:not(#floating-width-settings) {
-  opacity: 0.5;
+  opacity: 0;
   pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 /* 搜索引擎对话框暗色模式样式 */
@@ -1201,6 +1204,29 @@ input[type="range"]::-webkit-slider-thumb:hover {
 /* 确保图标在暗色模式下有更好的可见度 */
 [data-theme="dark"] .material-icons {
   color: #e5e7eb;
+}
+
+/* 全局滚动条样式 */
+.global-range-slider {
+  position: fixed;
+  display: none;
+  opacity: 0;
+  z-index: 1003;
+  background-color: rgba(254, 254, 254, 0.9);
+  padding: 0px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  /* transition: opacity 0.3s ease; */
+}
+
+.global-range-slider.visible {
+  opacity: 1;
+}
+
+/* 暗色模式下的全局滚动条样式 */
+[data-theme="dark"] .global-range-slider {
+  background-color: #242424;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2);
 }
 
 /* 全局滚动条样式 */

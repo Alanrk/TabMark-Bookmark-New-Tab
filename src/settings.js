@@ -273,6 +273,10 @@ class SettingsManager {
       const globalRangeSlider = document.querySelector('.global-range-slider');
       if (globalRangeSlider) {
         globalRangeSlider.style.display = 'block';
+        // 使用 setTimeout 确保 display:block 已经应用
+        setTimeout(() => {
+          globalRangeSlider.classList.add('visible');
+        }, 10);
       }
     });
 
@@ -311,7 +315,11 @@ class SettingsManager {
       // 隐藏全局滚动条
       const globalRangeSlider = document.querySelector('.global-range-slider');
       if (globalRangeSlider) {
-        globalRangeSlider.style.display = 'none';
+        globalRangeSlider.classList.remove('visible');
+        // 等待过渡效果完成后再隐藏元素
+        setTimeout(() => {
+          globalRangeSlider.style.display = 'none';
+        }, 300);
       }
       // 保存设置
       chrome.storage.sync.set({ bookmarkWidth: this.widthSlider.value });
@@ -324,7 +332,11 @@ class SettingsManager {
         // 隐藏全局滚动条
         const globalRangeSlider = document.querySelector('.global-range-slider');
         if (globalRangeSlider) {
-          globalRangeSlider.style.display = 'none';
+          globalRangeSlider.classList.remove('visible');
+          // 等待过渡效果完成后再隐藏元素
+          setTimeout(() => {
+            globalRangeSlider.style.display = 'none';
+          }, 300);
         }
       }
     });
@@ -342,15 +354,6 @@ class SettingsManager {
     // 移除模糊效果并隐藏其他内容
     this.settingsModal.classList.add('no-blur');
     this.settingsModalContent.classList.add('no-blur');
-    // 隐藏除了宽度设置面板以外的所有内容
-    this.settingsModalContent.querySelectorAll(':not(#floating-width-settings)').forEach(element => {
-      element.style.opacity = '0';
-      element.style.pointerEvents = 'none';
-    });
-    // 确保宽度设置面板可见
-    this.widthSettings.style.display = 'block';
-    this.widthSettings.style.opacity = '1';
-    this.widthSettings.style.pointerEvents = 'auto';
 
     // 显示全局滚动条并定位
     const globalRangeSlider = document.querySelector('.global-range-slider');
@@ -363,6 +366,11 @@ class SettingsManager {
       globalRangeSlider.style.left = `${rect.left}px`;
       globalRangeSlider.style.width = `${rect.width}px`;
       globalRangeSlider.style.transform = 'none';
+      
+      // 使用 setTimeout 确保 display:block 已经应用
+      setTimeout(() => {
+        globalRangeSlider.classList.add('visible');
+      }, 10);
     }
   }
 
@@ -372,11 +380,6 @@ class SettingsManager {
     // 恢复模糊效果
     this.settingsModal.classList.remove('no-blur');
     this.settingsModalContent.classList.remove('no-blur');
-    // 恢复所有内容的显示
-    this.settingsModalContent.querySelectorAll(':not(#floating-width-settings)').forEach(element => {
-      element.style.opacity = '';
-      element.style.pointerEvents = '';
-    });
   }
 
   updatePreviewCount(width) {
@@ -413,7 +416,7 @@ class SettingsManager {
     // 同步更新全局滚动条的预览数量
     const globalPreviewCount = document.getElementById('global-width-preview-count');
     if (globalPreviewCount) {
-      globalPreviewCount.textContent = count + ' 个/行';
+      globalPreviewCount.textContent = count;
     }
   }
 
@@ -440,6 +443,44 @@ class SettingsManager {
         const savedWidth = this.widthSlider.value;
         this.updatePreviewCount(savedWidth);
       });
+    }
+  };
+
+  updatePreviewCount(width) {
+    // 获取书签列表容器
+    const bookmarksList = document.getElementById('bookmarks-list');
+    if (!bookmarksList) return;
+
+    // 确保容器可见
+    const originalDisplay = bookmarksList.style.display;
+    if (getComputedStyle(bookmarksList).display === 'none') {
+      bookmarksList.style.display = 'grid';
+    }
+
+    // 获取容器的实际可用宽度
+    const containerStyle = getComputedStyle(bookmarksList);
+    const containerWidth = bookmarksList.offsetWidth 
+      - parseFloat(containerStyle.paddingLeft) 
+      - parseFloat(containerStyle.paddingRight);
+
+    // 还原容器显示状态
+    bookmarksList.style.display = originalDisplay;
+
+    // 使用与 CSS Grid 相同的计算逻辑
+    const gap = 16; // gap: 1rem
+    const minWidth = parseInt(width);
+    
+    // 计算一行能容纳的最大数量
+    // 使用 Math.floor 确保不会超出容器宽度
+    const count = Math.floor((containerWidth + gap) / (minWidth + gap));
+    
+    // 更新显示
+    this.widthPreviewCount.textContent = count + ' 个/行';
+    
+    // 同步更新全局滚动条的预览数量
+    const globalPreviewCount = document.getElementById('global-width-preview-count');
+    if (globalPreviewCount) {
+      globalPreviewCount.textContent = count + ' 个/行';
     }
   }
 }
