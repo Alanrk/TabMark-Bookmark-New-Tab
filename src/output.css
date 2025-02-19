@@ -842,10 +842,9 @@ html.gradient-background-7 {
   background-color: #ffffff;
   color: #333333;
   border: 1px solid #eeeeee;
-  margin: 5% auto;
   padding: 2rem;
   width: 80%;
-  max-width: 300px;
+  max-width: 360px;
   border-radius: 10px;
   position: relative;
 }
@@ -870,7 +869,7 @@ html.gradient-background-7 {
 #edit-dialog .form-buttons,
 #edit-category-dialog .form-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 10px;
   margin-top: 2rem;
 }
@@ -919,13 +918,14 @@ html.gradient-background-7 {
   font-size: 24px;
   font-weight: 300;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .close-button:hover,
 .close-button:focus,
 .close-category-button:hover,
 .close-category-button:focus {
-  color: black;
+  color: black;  /* 使用主题绿色 */
   text-decoration: none;
 }
 
@@ -2574,7 +2574,7 @@ input:checked+.slider:before {
 }
 /* 选项图标样式 */
 .search-engine-option-icon {
-  height: 24px;
+  height: 20px;
   margin-bottom: 4px;
 }
 /* 标签样式 */
@@ -3420,7 +3420,7 @@ input:checked+.slider:before {
 /* 确保关闭按钮始终可见 */
 .modal .close-button {
   position: sticky;
-  top: 0;
+  top: -30px;
   right: 0;
   float: right;
   margin: -1rem -1rem 1rem 1rem;
@@ -3478,11 +3478,7 @@ input:checked+.slider:before {
   gap: 12px;
 }
 
-.search-engine-icon {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-}
+
 
 .search-engine-name {
   font-size: 14px;

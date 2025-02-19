@@ -280,10 +280,12 @@
         "description": "百度搜尋引擎標籤"
     },
     "searchEngineUpdateTip": {
-        "message": "搜尋引擎切換功能已更新"
+        "message": "搜尋引擎切換功能已更新",
+        "description": "搜尋引擎功能更新提示"
     },
     "searchEngineUpdateDetail": {
-        "message": "現在點擊搜尋圖示可以設置預設搜尋引擎，標籤列用於臨時切換當次搜尋"
+        "message": "點擊搜尋圖標可以設置預設搜尋引擎，支持自定義搜尋引擎，標籤欄用於臨時切換當次搜尋",
+        "description": "搜尋引擎切換功能詳細說明"
     },
     "googleLabel": {
         "message": "谷歌",
@@ -471,7 +473,7 @@
     },
     "floatingBallAltClickTip": {
         "message": "Alt + 點擊",
-        "description": "浮動球Alt+點擊提示"     
+        "description": "浮動球Alt+點擊提示"
     },
     "floatingBallAltClickDesc": {
         "message": "開啟側邊欄",
@@ -504,5 +506,121 @@
     "sidebarFeaturesFeature": {
         "message": "新增兩個功能：\n1. 快速側邊欄：\n在任何網頁按 Alt/Command + B 可開啟側邊欄，快速存取書籤和搜尋功能。\n\n2. 連結開啟設定：\n在設定中自訂書籤和快速連結的開啟方式，可選擇在新分頁中開啟。",
         "description": "側邊欄搜尋和連結開啟功能的統一提示"
-    }
+    },
+    "addSearchEngine": {
+        "message": "新增",
+        "description": "新增搜尋引擎按鈕文字"
+    },
+    "searchEnginesTitle": {
+        "message": "搜尋引擎設定",
+        "description": "搜尋引擎設定的標題"
+    },
+    "aiSearchEnginesTitle": {
+        "message": "AI 搜尋",
+        "description": "AI 搜尋引擎類別的標題"
+    },
+    "generalSearchEnginesTitle": {
+        "message": "一般搜尋",
+        "description": "一般搜尋引擎類別的標題"
+    },
+    "socialSearchEnginesTitle": {
+        "message": "社交媒體",
+        "description": "社交媒體搜尋類別的標題"
+    },
+    "customSearchEnginesTitle": {
+        "message": "自訂搜尋引擎",
+        "description": "自訂搜尋引擎類別的標題"
+    },
+    "searchEngineNamePlaceholder": {
+        "message": "搜尋引擎名稱",
+        "description": "搜尋引擎名稱輸入框的佔位文字"
+    },
+    "searchEngineUrlPlaceholder": {
+        "message": "搜尋網址（使用 %s 作為查詢佔位符）",
+        "description": "搜尋引擎網址輸入框的佔位文字"
+    },
+    "searchEngineIconPlaceholder": {
+        "message": "圖示網址（可選，留空將自動獲取）",
+        "description": "搜尋引擎圖示輸入框的佔位文字"
+    },
+    "searchEngineAddSuccess": {
+        "message": "搜尋引擎新增成功",
+        "description": "新增搜尋引擎成功的提示訊息"
+    },
+    "searchEngineAddError": {
+        "message": "新增搜尋引擎失敗，請重試",
+        "description": "新增搜尋引擎失敗的錯誤訊息"
+    },
+    "searchEngineDeleteConfirm": {
+        "message": "確定要刪除此搜尋引擎嗎？",
+        "description": "刪除搜尋引擎的確認訊息"
+    },
+    "searchEngineNameRequired": {
+        "message": "請輸入搜尋引擎名稱",
+        "description": "搜尋引擎名稱必填的提示訊息"
+    },
+    "searchEngineUrlRequired": {
+        "message": "請輸入搜尋引擎網址",
+        "description": "搜尋引擎網址必填的提示訊息"
+    },
+    "searchEngineUrlInvalid": {
+        "message": "請輸入有效的網址，並使用 %s 作為查詢佔位符",
+        "description": "搜尋引擎網址格式無效的提示訊息"
+    },
+    "claudeLabel": {
+        "message": "Claude",
+        "description": "Claude AI 搜尋引擎標籤"
+    },
+    "perplexityLabel": {
+        "message": "Perplexity",
+        "description": "Perplexity AI 搜尋引擎標籤"
+    },
+    "semanticscholarLabel": {
+        "message": "Semantic Scholar",
+        "description": "Semantic Scholar 搜尋引擎標籤"
+    },
+    "deepseekLabel": {
+        "message": "Deepseek",
+        "description": "Deepseek 搜尋引擎標籤"
+    },
+    "yahooLabel": {
+        "message": "Yahoo",
+        "description": "Yahoo 搜尋引擎標籤"
+    },
+    "duckduckgoLabel": {
+        "message": "DuckDuckGo",
+        "description": "DuckDuckGo 搜尋引擎標籤"
+    },
+    "yandexLabel": {
+        "message": "Yandex",
+        "description": "Yandex 搜尋引擎標籤"
+    },
+    "xiaohongshuLabel": {
+        "message": "小紅書",
+        "description": "小紅書社交平台標籤"
+    },
+    "jikeLabel": {
+        "message": "即刻",
+        "description": "即刻社交平台標籤"
+    },
+    "zhihuLabel": {
+        "message": "知乎",
+        "description": "知乎問答平台標籤"
+    },
+    "doubanLabel": {
+        "message": "豆瓣",
+        "description": "豆瓣社交平台標籤"
+    },
+    "bilibiliLabel": {
+        "message": "嗶哩嗶哩",
+        "description": "嗶哩嗶哩影片平台標籤"
+    },
+    "githubLabel": {
+        "message": "GitHub",
+        "description": "GitHub 平台標籤"
+    },
+    "searchEngineUpdateFeature": {
+        "message": "搜尋引擎切換功能已更新：\n1. 點擊搜尋圖示設定預設搜尋引擎\n2. 支援自訂搜尋引擎\n3. 使用分頁列進行臨時切換",
+        "description": "搜尋引擎切換功能更新詳細"
+    }   
 }

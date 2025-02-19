@@ -232,10 +232,12 @@
         "description": "Pestaña del motor de búsqueda Baidu"
     },
     "searchEngineUpdateTip": {
-        "message": "La función de cambio de motor de búsqueda se ha actualizado"
+        "message": "La función de cambio de motor de búsqueda ha sido actualizada",
+        "description": "Notificación sobre la actualización de la función de motor de búsqueda"
     },
     "searchEngineUpdateDetail": {
-        "message": "Ahora haga clic en el icono de búsqueda para establecer el motor de búsqueda predeterminado, use la barra de pestañas para cambiar temporalmente"
+        "message": "Haga clic en el icono de búsqueda para establecer el motor de búsqueda predeterminado, admite motores de búsqueda personalizados, use la barra de pestañas para cambiar temporalmente",
+        "description": "Detalles sobre la función de cambio de motor de búsqueda"
     },
     "googleLabel": {
         "message": "Google",
@@ -428,5 +430,69 @@
     "sidebarFeaturesFeature": {
         "message": "Se han añadido dos nuevas funciones:\n1. Barra lateral rápida:\nPresione Alt/Command + B en cualquier página web para abrir la barra lateral y acceder rápidamente a los marcadores y funciones de búsqueda.\n\n2. Configuración de apertura de enlaces:\nPersonalice cómo se abren los marcadores y enlaces rápidos en la configuración, con la opción de abrirlos en nuevas pestañas.",
         "description": "Consejo unificado para la búsqueda en la barra lateral y las funciones de apertura de enlaces"
+    },
+    "addSearchEngine": {
+        "message": "Agregar",
+        "description": "Texto del botón para agregar motor de búsqueda"
+    },
+    "searchEnginesTitle": {
+        "message": "Configuración de Motores de Búsqueda",
+        "description": "Título para la configuración de motores de búsqueda"
+    },
+    "aiSearchEnginesTitle": {
+        "message": "Búsqueda de IA",
+        "description": "Título para la categoría de motores de búsqueda de IA"
+    },
+    "generalSearchEnginesTitle": {
+        "message": "Búsqueda General",
+        "description": "Título para la categoría de motores de búsqueda generales"
+    },
+    "socialSearchEnginesTitle": {
+        "message": "Redes Sociales",
+        "description": "Título para la categoría de búsqueda en redes sociales"
+    },
+    "customSearchEnginesTitle": {
+        "message": "Motores de Búsqueda Personalizados",
+        "description": "Título para la categoría de motores de búsqueda personalizados"
+    },
+    "searchEngineNamePlaceholder": {
+        "message": "Nombre del motor de búsqueda",
+        "description": "Marcador de posición para el nombre del motor de búsqueda"
+    },
+    "searchEngineUrlPlaceholder": {
+        "message": "URL de búsqueda (use %s como marcador de consulta)",
+        "description": "Marcador de posición para la URL del motor de búsqueda"
+    },
+    "searchEngineIconPlaceholder": {
+        "message": "URL del ícono (opcional, se obtendrá automáticamente si está vacío)",
+        "description": "Marcador de posición para el ícono del motor de búsqueda"
+    },
+    "searchEngineAddSuccess": {
+        "message": "Motor de búsqueda agregado exitosamente",
+        "description": "Mensaje de éxito al agregar motor de búsqueda"
+    },
+    "searchEngineAddError": {
+        "message": "Error al agregar el motor de búsqueda, por favor intente de nuevo",
+        "description": "Mensaje de error al agregar motor de búsqueda"
+    },
+    "searchEngineDeleteConfirm": {
+        "message": "¿Está seguro de que desea eliminar este motor de búsqueda?",
+        "description": "Mensaje de confirmación para eliminar motor de búsqueda"
+    },
+    "searchEngineNameRequired": {
+        "message": "Por favor ingrese el nombre del motor de búsqueda",
+        "description": "Mensaje requerido para el nombre del motor de búsqueda"
+    },
+    "searchEngineUrlRequired": {
+        "message": "Por favor ingrese la URL del motor de búsqueda",
+        "description": "Mensaje requerido para la URL del motor de búsqueda"
+    },
+    "searchEngineUrlInvalid": {
+        "message": "Por favor ingrese una URL válida con %s como marcador de consulta",
+        "description": "Mensaje de formato inválido para la URL del motor de búsqueda"
+    },
+    "searchEngineUpdateFeature": {
+        "message": "La función de cambio de motor de búsqueda se ha actualizado:\n1. Haga clic en el icono de búsqueda para establecer el motor de búsqueda predeterminado\n2. Soporte para motores de búsqueda personalizados\n3. Use la barra de pestañas para cambiar temporalmente la búsqueda actual",
+        "description": "Detalles de la actualización de la función de cambio de motor de búsqueda"
     }
 }

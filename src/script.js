@@ -5,7 +5,8 @@ import {
   updateSearchEngineIcon, 
   createSearchEngineDropdown, 
   initializeSearchEngineDialog,
-  getSearchUrl 
+  getSearchUrl,
+  createTemporarySearchTabs
 } from './search-engine-dropdown.js';
 
 let bookmarkTreeNodes = [];
@@ -33,7 +34,8 @@ import { replaceIconsWithSvg, getIconHtml } from './icons.js';
 document.addEventListener('DOMContentLoaded', function () {
   // 初始化手势导航，传入 updateBookmarksDisplay 函数
   initGestureNavigation(updateBookmarksDisplay);
-  
+   // 初始化功能提示
+  featureTips.initAllTips();
   // 替换所有图标
   replaceIconsWithSvg();
 
@@ -403,8 +405,7 @@ document.addEventListener('DOMContentLoaded', function() {
   createSearchEngineDropdown();
   initializeSearchEngineDialog();
 
-  // 初始化功能提示
-  featureTips.initAllTips();
+ 
 
   // 加载保存的背景颜色
   const savedBg = localStorage.getItem('selectedBackground');
@@ -2539,8 +2540,32 @@ function createMenuItems(menu) {
         const folderTitle = currentBookmarkFolder.querySelector('.card-title').textContent;
         showConfirmDialog(chrome.i18n.getMessage("confirmDeleteFolder", [`<strong>${folderTitle}</strong>`]), () => {
           chrome.bookmarks.removeTree(folderId, () => {
-            currentBookmarkFolder.remove();
-            Utilities.showToast(getLocalizedMessage('categoryDeleted'));
+            if (chrome.runtime.lastError) {
+              console.error('Error deleting folder:', chrome.runtime.lastError);
+              Utilities.showToast(getLocalizedMessage('deleteFolderError'));
+            } else {
+              // 立即从 UI 中移除文件夹卡片
+              const folderCard = document.querySelector(`.bookmark-folder[data-id="${folderId}"]`);
+              if (folderCard) {
+                folderCard.remove();
+              }
+              
+              // 从侧边栏中移除对应的文件夹
+              const sidebarFolder = document.querySelector(`#categories-list li[data-id="${folderId}"]`);
+              if (sidebarFolder) {
+                sidebarFolder.remove();
+              }
+
+              // 显示删除成功的 toast 消息
+              Utilities.showToast(getLocalizedMessage('deleteSuccess'));
+
+              // 如果删除的是当前显示的文件夹，则返回上一级
+              const bookmarksList = document.getElementById('bookmarks-list');
+              if (bookmarksList.dataset.parentId === folderId) {
+                const parentId = currentBookmarkFolder.dataset.parentId || '1';
+                updateBookmarksDisplay(parentId);
+              }
+            }
           });
         });
       }

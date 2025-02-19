@@ -7,10 +7,10 @@ const ALL_ENGINES = [
   { name: 'bing', icon: '../images/bing-logo.png', label: 'bingLabel', url: 'https://www.bing.com/search?q=' },
   { name: 'baidu', icon: '../images/baidu-logo.svg', label: 'baiduLabel', url: 'https://www.baidu.com/s?wd=', aliases: ['百度'] },
   { name: 'kimi', icon: '../images/kimi-logo.svg', label: 'kimiLabel', url: 'https://kimi.moonshot.cn/?q=', aliases: ['Kimi'] },
-  { name: 'doubao', icon: '../images/doubao-logo.png', label: 'doubaoLabel', url: 'https://www.doubao.com/search?q=', aliases: ['豆包'] },
+  { name: 'doubao', icon: '../images/doubao-logo.png', label: 'doubaoLabel', url: 'https://www.doubao.com/?q=', aliases: ['豆包'] },
   { name: 'chatgpt', icon: '../images/chatgpt-logo.svg', label: 'chatgptLabel', url: 'https://chat.openai.com/?q=', aliases: ['ChatGPT'] },
-  { name: 'felo', icon: '../images/felo-logo.svg', label: 'feloLabel', url: 'https://felo.me/search?q=', aliases: ['Felo'] },
-  { name: 'metaso', icon: '../images/metaso-logo.png', label: 'metasoLabel', url: 'https://metaso.cn/#/search?q=', aliases: ['Metaso'] },
+  { name: 'felo', icon: '../images/felo-logo.svg', label: 'feloLabel', url: 'https://felo.ai/search?q=', aliases: ['Felo'] },
+  { name: 'metaso', icon: '../images/metaso-logo.png', label: 'metasoLabel', url: 'https://metaso.cn/?q=', aliases: ['Metaso'] },
   { name: 'perplexity', icon: '../images/perplexity-logo.svg', label: 'perplexityLabel', url: 'https://www.perplexity.ai/?q=', aliases: ['Perplexity'] },
   { name: 'semanticscholar', icon: '../images/semanticscholar-logo.png', label: 'semanticscholarLabel', url: 'https://www.semanticscholar.org/search?q=', aliases: ['Semantic Scholar'] },
   { name: 'deepseek', icon: '../images/deepseek-logo.svg', label: 'deepseekLabel', url: 'https://chat.deepseek.com/?q=', aliases: ['DeepSeek'] },  
@@ -929,5 +929,6 @@ export {
   updateSearchEngineIcon, 
   createSearchEngineDropdown, 
   initializeSearchEngineDialog,
-  getSearchUrl
+  getSearchUrl,
+  createTemporarySearchTabs
 };

@@ -232,10 +232,12 @@
         "description": "Baidu-Suchmaschinen-Tab"
     },
     "searchEngineUpdateTip": {
-        "message": "Die Suchmaschinen-Umschaltfunktion wurde aktualisiert"
+        "message": "Die Suchmaschinen-Wechselfunktion wurde aktualisiert",
+        "description": "Hinweis zur Aktualisierung der Suchmaschinen-Funktion"
     },
     "searchEngineUpdateDetail": {
-        "message": "Klicken Sie jetzt auf das Suchsymbol, um die Standardsuchmaschine festzulegen. Verwenden Sie die Registerkartenleiste für temporäres Umschalten"
+        "message": "Klicken Sie auf das Suchsymbol, um die Standard-Suchmaschine festzulegen, unterstützt benutzerdefinierte Suchmaschinen, verwenden Sie die Tab-Leiste für temporäres Umschalten",
+        "description": "Details zur Suchmaschinen-Wechsel-Funktion"
     },
     "googleLabel": {
         "message": "Google",
@@ -456,5 +458,69 @@
     "sidebarFeaturesFeature": {
         "message": "Zwei neue Funktionen hinzugefügt:\n1. Schnelle Seitenleiste:\nDrücken Sie Alt/Command + B auf einer beliebigen Webseite, um die Seitenleiste für schnellen Zugriff auf Lesezeichen und Suchfunktionen zu öffnen.\n\n2. Link-Öffnungseinstellungen:\nPassen Sie in den Einstellungen an, wie Lesezeichen und Schnelllinks geöffnet werden, mit der Option, sie in neuen Tabs zu öffnen.",
         "description": "Einheitlicher Tipp für Seitenleistensuche und Link-Öffnungsfunktionen"
+    },
+    "addSearchEngine": {
+        "message": "Hinzufügen",
+        "description": "Text für die Schaltfläche zum Hinzufügen einer Suchmaschine"
+    },
+    "searchEnginesTitle": {
+        "message": "Suchmaschinen-Einstellungen",
+        "description": "Titel für Suchmaschinen-Einstellungen"
+    },
+    "aiSearchEnginesTitle": {
+        "message": "KI-Suche",
+        "description": "Titel für KI-Suchmaschinen-Kategorie"
+    },
+    "generalSearchEnginesTitle": {
+        "message": "Allgemeine Suche",
+        "description": "Titel für allgemeine Suchmaschinen-Kategorie"
+    },
+    "socialSearchEnginesTitle": {
+        "message": "Soziale Medien",
+        "description": "Titel für Social-Media-Suchkategorie"
+    },
+    "customSearchEnginesTitle": {
+        "message": "Benutzerdefinierte Suchmaschinen",
+        "description": "Titel für benutzerdefinierte Suchmaschinen-Kategorie"
+    },
+    "searchEngineNamePlaceholder": {
+        "message": "Name der Suchmaschine",
+        "description": "Platzhalter für Suchmaschinen-Namenseingabe"
+    },
+    "searchEngineUrlPlaceholder": {
+        "message": "Such-URL (verwenden Sie %s als Abfrage-Platzhalter)",
+        "description": "Platzhalter für Suchmaschinen-URL-Eingabe"
+    },
+    "searchEngineIconPlaceholder": {
+        "message": "Symbol-URL (optional, wird automatisch abgerufen, wenn leer)",
+        "description": "Platzhalter für Suchmaschinen-Symbol-Eingabe"
+    },
+    "searchEngineAddSuccess": {
+        "message": "Suchmaschine erfolgreich hinzugefügt",
+        "description": "Erfolgsmeldung beim Hinzufügen einer Suchmaschine"
+    },
+    "searchEngineAddError": {
+        "message": "Fehler beim Hinzufügen der Suchmaschine, bitte versuchen Sie es erneut",
+        "description": "Fehlermeldung beim Hinzufügen einer Suchmaschine"
+    },
+    "searchEngineDeleteConfirm": {
+        "message": "Möchten Sie diese Suchmaschine wirklich löschen?",
+        "description": "Bestätigungsmeldung zum Löschen einer Suchmaschine"
+    },
+    "searchEngineNameRequired": {
+        "message": "Bitte geben Sie einen Namen für die Suchmaschine ein",
+        "description": "Pflichtfeld-Meldung für Suchmaschinenname"
+    },
+    "searchEngineUrlRequired": {
+        "message": "Bitte geben Sie eine URL für die Suchmaschine ein",
+        "description": "Pflichtfeld-Meldung für Suchmaschinen-URL"
+    },
+    "searchEngineUrlInvalid": {
+        "message": "Bitte geben Sie eine gültige URL mit %s als Abfrage-Platzhalter ein",
+        "description": "Ungültiges Format-Meldung für Suchmaschinen-URL"
+    },
+    "searchEngineUpdateFeature": {
+        "message": "Die Suchmaschinen-Wechselfunktion wurde aktualisiert:\n1. Klicken Sie auf das Suchsymbol, um die Standard-Suchmaschine festzulegen\n2. Unterstützung für benutzerdefinierte Suchmaschinen\n3. Verwenden Sie die Tab-Leiste für temporäres Umschalten der aktuellen Suche",
+        "description": "Details zur Aktualisierung der Suchmaschinen-Wechselfunktion"
     }
 }

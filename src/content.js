@@ -862,6 +862,14 @@
       maxRetries: 2,
       retryDelay: 1500
     },
+    {
+      urlPattern: 'https://chat.deepseek.com/',
+      inputFieldSelector: 'textarea#chat-input',
+      sendButtonSelector: 'div.f6d670[role="button"]',
+      urlParamName: 'q',
+      maxRetries: 2,
+      retryDelay: 1500
+    }
   ];
 
   const autoInput = new AutoInputManager(siteConfigs);
