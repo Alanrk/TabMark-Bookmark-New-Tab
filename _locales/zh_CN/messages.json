@@ -680,6 +680,23 @@
         "message": "搜索引擎切换功能已更新：\n1. 点击搜索图标设置默认搜索引擎\n2. 支持自定义搜索引擎\n3. 使用标签栏进行临时切换",
         "description": "搜索引擎切换功能更新详细说明"
     },
+
+    "themeTitle": {
+        "message": "主题设置",
+        "description": "主题设置标题"
+    },
+    "lightTheme": {
+        "message": "浅色",
+        "description": "浅色主题选项"
+    },
+    "darkTheme": {
+        "message": "深色",
+        "description": "深色主题选项"
+    },
+    "autoTheme": {
+        "message": "跟随系统",
+        "description": "跟随系统主题选项"
+    },
     "layoutTab": {
         "message": "布局设置",
         "description": "布局设置选项卡名称"

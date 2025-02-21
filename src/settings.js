@@ -156,11 +156,63 @@ class SettingsManager {
   }
 
   initTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
+    const themeSelect = document.getElementById('theme-select');
+    const savedTheme = localStorage.getItem('theme') || 'auto';
+    
+    // 设置下拉菜单的初始值
+    themeSelect.value = savedTheme;
+    
+    // 如果是自动模式，根据系统主题设置初始主题
+    if (savedTheme === 'auto') {
+      this.setThemeBasedOnSystem();
+    } else {
       document.documentElement.setAttribute('data-theme', savedTheme);
       this.updateThemeIcon(savedTheme === 'dark');
     }
+
+    // 监听系统主题变化
+    window.matchMedia('(prefers-color-scheme: dark)').addListener((e) => {
+      if (localStorage.getItem('theme') === 'auto') {
+        const isDark = e.matches;
+        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        this.updateThemeIcon(isDark);
+      }
+    });
+
+    // 监听主题选择变化
+    themeSelect.addEventListener('change', (e) => {
+      const selectedTheme = e.target.value;
+      localStorage.setItem('theme', selectedTheme);
+      
+      if (selectedTheme === 'auto') {
+        this.setThemeBasedOnSystem();
+      } else {
+        document.documentElement.setAttribute('data-theme', selectedTheme);
+        this.updateThemeIcon(selectedTheme === 'dark');
+      }
+    });
+
+    // 保留原有的主题切换按钮功能
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeSelect.value = newTheme;
+        
+        this.updateThemeIcon(newTheme === 'dark');
+      });
+    }
+  }
+
+  setThemeBasedOnSystem() {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = isDarkMode ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    this.updateThemeIcon(isDarkMode);
   }
 
   updateThemeIcon(isDark) {
