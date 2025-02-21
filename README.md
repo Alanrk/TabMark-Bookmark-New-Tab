@@ -6,6 +6,8 @@ TabMark 将收藏夹变成新标签页，让你收藏的书签一目了然、整
 
 ![MacBook Air 13_ - 5@1x](https://github.com/user-attachments/assets/bb4f9996-902c-4b69-8a7f-4c2b2e219ffc)
 
+## 请注意Github上的为测试版，正式版请从商店下载。
+
 ## 主要功能
 
 **将书签设置为新标签页**：安装拓展后，可以选择常用的书签文件夹。右键点击，选择"将书签设为主页"，即可在新标签页中快速打开选中路径书签文件夹。支持书签拖拽排序，侧边栏树状文件夹视图让你直观管理书签文件夹，快速找到所需内容；
@@ -32,7 +34,7 @@ https://cooing-loganberry-b74.notion.site/TabMark-Bookmark-New-Tab-7a083a74f84e4
 
 **微信交流群**
 
-<img src="https://raw.githubusercontent.com/Alanrk/blogimg/main/IMG_4251.JPG" width="300" />
+<img src="https://raw.githubusercontent.com/Alanrk/blogimg/main/IMG_4351.jpg" width="300" />
 
 **赞赏码**
 
