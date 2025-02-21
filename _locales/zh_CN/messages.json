@@ -536,6 +536,26 @@
         "message": "新增两项功能：\n1. 快捷侧边栏：\n在任意网页按下 Alt/Command + B，即可打开侧边栏，快速访问书签和搜索功能。\n\n2. 链接打开方式：\n在设置中可自定义书签和快捷链接的打开方式，选择是否在新标签页中打开。",
         "description": "侧边栏搜索和链接打开方式的统一提示信息"
     },
+    "layoutTab": {
+        "message": "布局设置",
+        "description": "布局设置选项卡名称"
+    },
+    "layoutSettingsTitle": {
+        "message": "布局设置",
+        "description": "布局设置标题"
+    },
+    "layoutSettingsDescription": {
+        "message": "自定义书签和界面的布局显示方式",
+        "description": "布局设置描述"
+    },
+    "bookmarkWidthTitle": {
+        "message": "书签宽度设置",
+        "description": "书签宽度设置的标题"
+    },
+    "previewText": {
+        "message": "每行书签按钮数量：",
+        "description": "书签宽度预览效果的说明文本"
+    },
     "addSearchEngine": {
         "message": "添加",
         "description": "添加搜索引擎按钮的文本"
