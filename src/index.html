@@ -97,6 +97,12 @@
           <!-- 可以根据需要添加更多占位符 -->
         </div>
       </div>
+      <!-- 添加默认文件夹切换区域 -->
+      <div class="default-folders-tabs">
+        <div class="tabs-container">
+          <!-- 文件夹标签将通过JS动态生成 -->
+        </div>
+      </div>
       <!-- Edit Bookmark Dialog -->
       <div id="edit-dialog" class="modal">
         <div class="modal-content">
@@ -185,6 +191,7 @@
       <div class="settings-layout">
         <div class="settings-sidebar">
           <button class="settings-tab-button active" data-tab="appearance" data-i18n="appearanceTab">外观设置</button>
+          <button class="settings-tab-button" data-tab="layout" data-i18n="layoutTab">布局设置</button>
           <button class="settings-tab-button" data-tab="floating-ball" data-i18n="floatingBallTab">悬浮球设置</button>
           <button class="settings-tab-button" data-tab="quick-links" data-i18n="quickLinksTab">网站推荐</button>
           <button class="settings-tab-button" data-tab="link-opening" data-i18n="linkOpeningTab">链接打开方式</button>
@@ -223,6 +230,24 @@
                   <span data-i18n="uploadWallpaper">上传壁纸</span>
                 </label>
                 <input type="file" id="upload-wallpaper" accept="image/*">
+              </div>
+            </div>
+          </div>
+          <div id="layout-settings" class="settings-tab-content">
+            <h3 class="settings-modal-subtitle" data-i18n="layoutSettingsTitle">布局设置</h3>
+            <p data-i18n="layoutSettingsDescription">自定义书签和界面的布局显示方式。</p>
+            
+            <h4 class="settings-section-title" data-i18n="bookmarkWidthTitle">书签宽度设置</h4>
+            <div id="floating-width-settings">
+              <div class="slider-container" style="display: flex; align-items: center; gap: 10px;">
+                <input type="range" id="width-slider" min="100" max="300" step="10" style="flex: 1;">
+                <div class="value-display" style="white-space: nowrap;">
+                  <span id="width-value">190</span>px
+                </div>
+              </div>
+              <div class="preview-text" style="margin-top: 16px;">
+                <span data-i18n="previewText">每行书签按钮数量：</span>
+                <span id="width-preview-count"></span>
               </div>
             </div>
           </div>
@@ -374,6 +399,22 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <!-- 添加全局滚动条 -->
+  <div class="global-range-slider">
+    <h4 class="settings-section-title" style="display: none;">书签宽度设置</h4>
+    <div id="floating-width-settings-global">
+      <div class="slider-container" style="display: flex; align-items: center; gap: 10px;">
+        <input type="range" id="global-width-slider" min="100" max="300" step="10" style="flex: 1;">
+        <div class="value-display" style="white-space: nowrap;">
+          <span id="global-width-value">190</span>px
+        </div>
+      </div>
+      <div class="preview-text" style="margin-top: 16px;">
+        <span>每行书签按钮数量：</span>
+        <span id="global-width-preview-count"></span>
+      </div> 
     </div>
   </div>
 </body>

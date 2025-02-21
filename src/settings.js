@@ -13,6 +13,11 @@ class SettingsManager {
     this.enableFloatingBallCheckbox = document.getElementById('enable-floating-ball');
     this.enableQuickLinksCheckbox = document.getElementById('enable-quick-links');
     this.openInNewTabCheckbox = document.getElementById('open-in-new-tab');
+    this.widthSettings = document.getElementById('floating-width-settings');
+    this.widthSlider = document.getElementById('width-slider');
+    this.widthValue = document.getElementById('width-value');
+    this.widthPreviewCount = document.getElementById('width-preview-count');
+    this.settingsModalContent = document.querySelector('.settings-modal-content');
     this.init();
   }
 
@@ -23,10 +28,14 @@ class SettingsManager {
     this.loadSavedSettings();
     // 初始化主题
     this.initTheme();
+    // 更新 UI 语言
+    window.updateUILanguage();
     this.initQuickLinksSettings();
     this.initFloatingBallSettings();
     this.initBookmarkManagementTab();
     this.initLinkOpeningSettings();
+    this.initBookmarkWidthSettings();
+    this.initLayoutSettings();
   }
 
   initEventListeners() {
@@ -70,14 +79,26 @@ class SettingsManager {
   }
 
   switchTab(tabName) {
-    this.tabButtons.forEach(btn => btn.classList.remove('active'));
-    this.tabContents.forEach(content => content.classList.remove('active'));
-
+    // 移除所有标签的 active 类
+    this.tabButtons.forEach(button => {
+      button.classList.remove('active');
+    });
+    
+    // 移除所有内容的 active 类
+    this.tabContents.forEach(content => {
+      content.classList.remove('active');
+    });
+    
+    // 添加当前标签的 active 类
     const selectedButton = document.querySelector(`[data-tab="${tabName}"]`);
     const selectedContent = document.getElementById(`${tabName}-settings`);
-
-    selectedButton.classList.add('active');
-    selectedContent.classList.add('active');
+    
+    if (selectedButton && selectedContent) {
+      selectedButton.classList.add('active');
+      selectedContent.classList.add('active');
+      // 更新 UI 语言
+      window.updateUILanguage();
+    }
   }
 
   handleBackgroundChange(option) {
@@ -205,7 +226,6 @@ class SettingsManager {
     });
   }
 
-
   initBookmarkManagementTab() {
     const tabButton = document.querySelector('[data-tab="bookmark-management"]');
     if (tabButton) {
@@ -214,7 +234,256 @@ class SettingsManager {
       });
     }
   }
+
+  // 添加 debounce 方法来优化性能
+  debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  initBookmarkWidthSettings() {
+    // 从存储中获取保存的宽度值
+    chrome.storage.sync.get(['bookmarkWidth'], (result) => {
+      const savedWidth = result.bookmarkWidth || 190;
+      this.widthSlider.value = savedWidth;
+      this.widthValue.textContent = savedWidth;
+      this.updatePreviewCount(savedWidth);
+      this.updateBookmarkWidth(savedWidth);
+      
+      // 同步全局滚动条的值
+      const globalSlider = document.getElementById('global-width-slider');
+      const globalValue = document.getElementById('global-width-value');
+      if (globalSlider && globalValue) {
+        globalSlider.value = savedWidth;
+        globalValue.textContent = savedWidth;
+      }
+    });
+
+    // 监听滑块的鼠标按下事件
+    this.widthSlider.addEventListener('mousedown', () => {
+      this.showFloatingMode();
+      // 显示全局滚动条
+      const globalRangeSlider = document.querySelector('.global-range-slider');
+      if (globalRangeSlider) {
+        globalRangeSlider.style.display = 'block';
+        // 使用 setTimeout 确保 display:block 已经应用
+        setTimeout(() => {
+          globalRangeSlider.classList.add('visible');
+        }, 10);
+      }
+    });
+
+    // 监听滑块的变化
+    this.widthSlider.addEventListener('input', (e) => {
+      const width = e.target.value;
+      this.widthValue.textContent = width;
+      this.updatePreviewCount(width);
+      this.updateBookmarkWidth(width);
+      
+      // 同步全局滚动条的值
+      const globalValue = document.getElementById('global-width-value');
+      const globalSlider = document.getElementById('global-width-slider');
+      if (globalValue && globalSlider) {
+        globalValue.textContent = width;
+        globalSlider.value = width;
+      }
+    });
+
+    // 监听全局滚动条的变化
+    const globalSlider = document.getElementById('global-width-slider');
+    if (globalSlider) {
+      globalSlider.addEventListener('input', (e) => {
+        const width = e.target.value;
+        this.widthSlider.value = width;
+        this.widthValue.textContent = width;
+        this.updatePreviewCount(width);
+        this.updateBookmarkWidth(width);
+        document.getElementById('global-width-value').textContent = width;
+      });
+    }
+
+    // 监听滑块的鼠标释放事件
+    this.widthSlider.addEventListener('mouseup', () => {
+      this.hideFloatingMode();
+      // 隐藏全局滚动条
+      const globalRangeSlider = document.querySelector('.global-range-slider');
+      if (globalRangeSlider) {
+        globalRangeSlider.classList.remove('visible');
+        // 等待过渡效果完成后再隐藏元素
+        setTimeout(() => {
+          globalRangeSlider.style.display = 'none';
+        }, 300);
+      }
+      // 保存设置
+      chrome.storage.sync.set({ bookmarkWidth: this.widthSlider.value });
+    });
+
+    // 监听鼠标移出滑块事件
+    this.widthSlider.addEventListener('mouseleave', () => {
+      if (this.widthSettings.classList.contains('floating')) {
+        this.hideFloatingMode();
+        // 隐藏全局滚动条
+        const globalRangeSlider = document.querySelector('.global-range-slider');
+        if (globalRangeSlider) {
+          globalRangeSlider.classList.remove('visible');
+          // 等待过渡效果完成后再隐藏元素
+          setTimeout(() => {
+            globalRangeSlider.style.display = 'none';
+          }, 300);
+        }
+      }
+    });
+
+    // 添加窗口大小改变的监听
+    const debouncedUpdate = this.debounce(() => {
+      this.updatePreviewCount(this.widthSlider.value);
+    }, 250);
+    window.addEventListener('resize', debouncedUpdate);
+  }
+
+  showFloatingMode() {
+    // 添加浮动模式类，使卡片显示在最上层并添加阴影效果
+    this.widthSettings.classList.add('floating');
+    // 移除模糊效果并隐藏其他内容
+    this.settingsModal.classList.add('no-blur');
+    this.settingsModalContent.classList.add('no-blur');
+
+    // 显示全局滚动条并定位
+    const globalRangeSlider = document.querySelector('.global-range-slider');
+    const widthSettings = document.getElementById('floating-width-settings');
+    if (globalRangeSlider && widthSettings) {
+      const rect = widthSettings.getBoundingClientRect();
+      globalRangeSlider.style.display = 'block';
+      globalRangeSlider.style.position = 'fixed';
+      globalRangeSlider.style.top = `${rect.top}px`;
+      globalRangeSlider.style.left = `${rect.left}px`;
+      globalRangeSlider.style.width = `${rect.width}px`;
+      globalRangeSlider.style.transform = 'none';
+      
+      // 使用 setTimeout 确保 display:block 已经应用
+      setTimeout(() => {
+        globalRangeSlider.classList.add('visible');
+      }, 10);
+    }
+  }
+
+  hideFloatingMode() {
+    // 移除浮动模式类
+    this.widthSettings.classList.remove('floating');
+    // 恢复模糊效果
+    this.settingsModal.classList.remove('no-blur');
+    this.settingsModalContent.classList.remove('no-blur');
+  }
+
+  updatePreviewCount(width) {
+    // 获取书签列表容器
+    const bookmarksList = document.getElementById('bookmarks-list');
+    if (!bookmarksList) return;
+
+    // 确保容器可见
+    const originalDisplay = bookmarksList.style.display;
+    if (getComputedStyle(bookmarksList).display === 'none') {
+      bookmarksList.style.display = 'grid';
+    }
+
+    // 获取容器的实际可用宽度
+    const containerStyle = getComputedStyle(bookmarksList);
+    const containerWidth = bookmarksList.offsetWidth 
+      - parseFloat(containerStyle.paddingLeft) 
+      - parseFloat(containerStyle.paddingRight);
+
+    // 还原容器显示状态
+    bookmarksList.style.display = originalDisplay;
+
+    // 使用与 CSS Grid 相同的计算逻辑
+    const gap = 16; // gap: 1rem
+    const minWidth = parseInt(width);
+    
+    // 计算一行能容纳的最大数量
+    // 使用 Math.floor 确保不会超出容器宽度
+    const count = Math.floor((containerWidth + gap) / (minWidth + gap));
+    
+    // 更新显示
+    this.widthPreviewCount.textContent = count + ' 个/行';
+    
+    // 同步更新全局滚动条的预览数量
+    const globalPreviewCount = document.getElementById('global-width-preview-count');
+    if (globalPreviewCount) {
+      globalPreviewCount.textContent = count;
+    }
+  }
+
+  updateBookmarkWidth(width) {
+    // 更新CSS变量
+    document.documentElement.style.setProperty('--bookmark-width', width + 'px');
+    
+    // 更新Grid布局
+    const bookmarksList = document.getElementById('bookmarks-list');
+    if (bookmarksList) {
+      // 使用 minmax 确保最小宽度，但允许在空间足够时扩展
+      bookmarksList.style.gridTemplateColumns = `repeat(auto-fit, minmax(${width}px, 1fr))`;
+      // 设置 gap
+      bookmarksList.style.gap = '1rem';
+    }
+  }
+
+  initLayoutSettings() {
+    const layoutTab = document.querySelector('[data-tab="layout"]');
+    if (layoutTab) {
+      layoutTab.addEventListener('click', () => {
+        this.switchTab('layout');
+        // 切换到布局设置时重新计算预览数量
+        const savedWidth = this.widthSlider.value;
+        this.updatePreviewCount(savedWidth);
+      });
+    }
+  };
+
+  updatePreviewCount(width) {
+    // 获取书签列表容器
+    const bookmarksList = document.getElementById('bookmarks-list');
+    if (!bookmarksList) return;
+
+    // 确保容器可见
+    const originalDisplay = bookmarksList.style.display;
+    if (getComputedStyle(bookmarksList).display === 'none') {
+      bookmarksList.style.display = 'grid';
+    }
+
+    // 获取容器的实际可用宽度
+    const containerStyle = getComputedStyle(bookmarksList);
+    const containerWidth = bookmarksList.offsetWidth 
+      - parseFloat(containerStyle.paddingLeft) 
+      - parseFloat(containerStyle.paddingRight);
+
+    // 还原容器显示状态
+    bookmarksList.style.display = originalDisplay;
+
+    // 使用与 CSS Grid 相同的计算逻辑
+    const gap = 16; // gap: 1rem
+    const minWidth = parseInt(width);
+    
+    // 计算一行能容纳的最大数量
+    // 使用 Math.floor 确保不会超出容器宽度
+    const count = Math.floor((containerWidth + gap) / (minWidth + gap));
+    
+    // 更新显示
+    this.widthPreviewCount.textContent = count + ' 个/行';
+    
+    // 同步更新全局滚动条的预览数量
+    const globalPreviewCount = document.getElementById('global-width-preview-count');
+    if (globalPreviewCount) {
+      globalPreviewCount.textContent = count + ' 个/行';
+    }
+  }
 }
 
 // 导出设置管理器实例
-export const settingsManager = new SettingsManager(); 
+export const settingsManager = new SettingsManager();

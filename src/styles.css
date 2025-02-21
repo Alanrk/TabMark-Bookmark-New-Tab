@@ -150,7 +150,7 @@ main.flex-1 {
 /* 暗黑模式下的壁纸容器样式 */
 [data-theme="dark"] .wallpaper-option {
   border: 2px solid #404040;
-  background-color: #1c1c1c;
+  background-color: #242424;
 }
 
 [data-theme="dark"] body {
@@ -868,6 +868,175 @@ main {
   }
 }
 
+/* 布局设置页面样式 */
+.layout-settings-container {
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.layout-settings-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 1rem;
+}
+
+.layout-settings-description {
+  font-size: 0.875rem;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.bookmark-width-settings {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.width-slider-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.width-value-display {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4a5568;
+  padding: 0.25rem 0.75rem;
+  background: #e2e8f0;
+  border-radius: 4px;
+  min-width: 60px;
+  text-align: right;
+}
+
+input[type="range"] {
+  flex: 1;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #10b981;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.1);
+}
+
+.width-preview {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+#width-preview-count {
+  font-weight: 600;
+  color: #10b981;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .layout-settings-container {
+  background: #1f2937;
+}
+
+[data-theme="dark"] .layout-settings-title {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .layout-settings-description {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .bookmark-width-settings {
+  background: #374151;
+}
+
+[data-theme="dark"] .width-slider {
+  background: #374151;
+}
+
+[data-theme="dark"] .width-value-display {
+  color: #e5e7eb;
+  background: #4b5563;
+}
+
+[data-theme="dark"] input[type="range"] {
+  background: #4b5563;
+}
+
+[data-theme="dark"] .width-preview {
+  color: #9ca3af;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .floating-width-settings {
+  background: #1f2937;
+  color: #e5e7eb;
+}
+
+/* 当显示浮动卡片时移除模糊效果 */
+.settings-modal-content.no-blur {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* 设置模态框的基础样式 */
+.settings-modal {
+  display: none;
+  position: fixed;
+  z-index: 1002;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* transition: all 0.3s ease; */
+}
+
+/* 当滑块被拖动时，移除模糊效果 */
+.settings-modal.no-blur {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+/* 当显示浮动卡片时的样式 */
+.settings-modal-content.no-blur {
+  background-color: transparent !important;
+  transition: all 0.3s ease;
+}
+
+/* 当显示浮动卡片时，其他内容的样式 */
+.settings-modal-content.no-blur > *:not(#floating-width-settings) {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
 /* 搜索引擎对话框暗色模式样式 */
 [data-theme="dark"] .modal .modal-content {
   background-color: #242424;
@@ -1038,6 +1207,29 @@ main {
 }
 
 /* 全局滚动条样式 */
+.global-range-slider {
+  position: fixed;
+  display: none;
+  opacity: 0;
+  z-index: 1003;
+  background-color: rgba(254, 254, 254, 0.9);
+  padding: 0px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  /* transition: opacity 0.3s ease; */
+}
+
+.global-range-slider.visible {
+  opacity: 1;
+}
+
+/* 暗色模式下的全局滚动条样式 */
+[data-theme="dark"] .global-range-slider {
+  background-color: #242424;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2);
+}
+
+/* 全局滚动条样式 */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -1080,4 +1272,140 @@ main {
 
 [data-theme="dark"] * {
   scrollbar-color: rgba(229, 231, 235, 0.2) transparent;
+}
+
+/* 修改默认文件夹切换区域样式 */
+.default-folders-tabs {
+  position: fixed; /* 固定定位 */
+  bottom: 60px; /* 距离底部的距离，根据 footer 高度调整 */
+  left: 0;
+  right: 0;
+  padding: 16px 0;
+  display: flex;
+  justify-content: center;
+  z-index: 10; /* 确保在其他内容之上 */
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .default-folders-tabs {
+  background: linear-gradient(to bottom, transparent, rgba(28, 28, 28, 0.9) 20%);
+}
+
+
+
+/* 优化 tabs-container 样式 */
+.tabs-container {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  backdrop-filter: blur(8px); /* 添加模糊效果 */
+  border-radius: 20px; /* 圆角效果 */
+  background: rgba(255, 255, 255, 0.3); /* 半透明背景 */
+}
+
+/* 暗色模式适配 tabs-container */
+[data-theme="dark"] .tabs-container {
+  background: rgba(28, 28, 28, 0.3);
+}
+
+/* 点状分页符样式 */
+.folder-tab {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  will-change: transform;
+}
+
+/* 优化悬停和激活状态的动画 */
+.folder-tab:hover {
+  transform: scale(1.2);
+  background-color: #d1d5db;
+}
+
+/* 加强激活状态的显示效果 */
+.folder-tab.active {
+  width: 10px;
+  height: 10px;
+  background-color: #10b981;
+  transform: scale(1.2);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2); /* 添加光晕效果 */
+}
+
+/* 文件夹名称提示基础样式 */
+.folder-tab::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-bottom: 8px;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* 悬停时的提示样式 */
+.folder-tab:hover::after {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 切换时的临时提示样式 */
+.folder-tab.active.switching::after {
+  opacity: 1;
+  background-color: rgba(16, 185, 129, 0.9);
+  animation: fadeOutAfterDelay 1.5s ease forwards;
+}
+
+/* 调整淡出动画时间比例 */
+@keyframes fadeOutAfterDelay {
+  0%, 70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* 移除之前的重复样式 */
+.folder-tab.active::after {
+  opacity: 0;
+}
+
+/* 切换时的动画效果 */
+.folder-tab.switching {
+  animation: pulse 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1.2); }
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .folder-tab {
+  background-color: #4b5563;
+}
+
+[data-theme="dark"] .folder-tab:hover {
+  background-color: #6b7280;
+}
+
+[data-theme="dark"] .folder-tab.active {
+  background-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3); /* 暗色模式下调整光晕效果 */
+}
+
+/* 添加选中状态的图标样式 */
+.icon-svg.selected svg {
+  fill: #10b981; /* 使用主题色 */
 }

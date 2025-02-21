@@ -918,14 +918,13 @@ html.gradient-background-7 {
   font-size: 24px;
   font-weight: 300;
   cursor: pointer;
-  transition: color 0.2s ease;
 }
 
 .close-button:hover,
 .close-button:focus,
 .close-category-button:hover,
 .close-category-button:focus {
-  color: black;  /* 使用主题绿色 */
+  color: black;
   text-decoration: none;
 }
 
@@ -1171,6 +1170,9 @@ main {
   gap: 1rem;
   margin: 0 auto;
   width: 100%;
+  overflow-y: auto;
+  padding: 0 0 1rem 0;
+  height: auto;
   
   /* 默认桌面布局 */
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
@@ -1642,7 +1644,7 @@ img.w-6.h-6.mr-2 {
   text-align: left;
   /* 左对齐 */
   display: flex;
-  margin: 0 auto 1rem;
+  margin: 0 0 1rem 0;
   color: #717882;
   height: 32px;
 }
@@ -1667,6 +1669,11 @@ img.w-6.h-6.mr-2 {
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
   will-change: opacity, transform; /* 优化性能 */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: calc(100vh - 280px);
   
   @media (max-width: 1024px) {
     width: 95%;
@@ -2574,7 +2581,7 @@ input:checked+.slider:before {
 }
 /* 选项图标样式 */
 .search-engine-option-icon {
-  height: 20px;
+  height: 18px;
   margin-bottom: 4px;
 }
 /* 标签样式 */
@@ -3478,7 +3485,11 @@ input:checked+.slider:before {
   gap: 12px;
 }
 
-
+.search-engine-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
 
 .search-engine-name {
   font-size: 14px;
@@ -3545,8 +3556,8 @@ input:checked+.slider:before {
 
 /* 自定义搜索引擎图标样式 */
 .search-engine-icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
   border-radius: 4px;
   background-color: #fff;
@@ -3670,5 +3681,79 @@ input:checked+.slider:before {
   background-color: #f3f4f6;
   border-color: #e5e7eb;
   cursor: not-allowed;
+}
+
+/* 全局滚动条样式 */
+.global-range-slider {
+  position: fixed;
+  display: none;
+  z-index: 1003;
+  background-color: rgba(254, 254, 254, 0.9);
+  padding: 0px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+}
+
+.global-range-slider #floating-width-settings-global {
+  min-width: 300px;
+}
+
+.global-range-slider .slider-container {
+  margin-bottom: 16px;
+}
+
+.global-range-slider input[type="range"] {
+  width: 100%;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.global-range-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #10b981;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.global-range-slider input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.1);
+}
+
+.global-range-slider .value-display {
+  white-space: nowrap;
+  font-size: 75%;
+  color: #4a5568;
+}
+
+.global-range-slider .preview-text {
+  margin-top: 16px;
+  font-size: 75%;
+  color: #4a5568;
+}
+
+.global-range-slider .preview-text span:last-child {
+  color: #10b981;
+  font-weight: 500;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .global-range-slider {
+  background: #1f2937;
+}
+
+[data-theme="dark"] .global-range-slider input[type="range"] {
+  background: #4b5563;
+}
+
+[data-theme="dark"] .global-range-slider .value-display,
+[data-theme="dark"] .global-range-slider .preview-text {
+  color: #e5e7eb;
 }
 

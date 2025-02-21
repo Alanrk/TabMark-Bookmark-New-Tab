@@ -574,5 +574,25 @@
     "searchEngineUpdateFeature": {
         "message": "검색 엔진 전환 기능이 업데이트되었습니다:\n1. 검색 아이콘을 클릭하여 기본 검색 엔진 설정\n2. 사용자 정의 검색 엔진 지원\n3. 탭 바를 사용하여 현재 검색 임시 전환",
         "description": "검색 엔진 전환 기능 업데이트 상세 내용"
+    },
+    "layoutTab": {
+        "message": "레이아웃",
+        "description": "레이아웃 설정 탭 이름"
+    },
+    "layoutSettingsTitle": {
+        "message": "레이아웃 설정",
+        "description": "레이아웃 설정 제목"
+    },
+    "layoutSettingsDescription": {
+        "message": "북마크 및 인터페이스 레이아웃 표시 사용자 지정",
+        "description": "레이아웃 설정 설명"
+    },
+    "bookmarkWidthTitle": {
+        "message": "북마크 너비 설정",
+        "description": "북마크 너비 설정 제목"
+    },
+    "previewText": {
+        "message": "행당 북마크 버튼 수:",
+        "description": "북마크 너비 미리보기 설명 텍스트"
     }
 }

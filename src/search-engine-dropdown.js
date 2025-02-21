@@ -893,42 +893,46 @@ function initializeSearchEngineDialog() {
 
 // 修改 updateSearchEngineIcon 函数
 function updateSearchEngineIcon(engine) {
-  console.log('[Icon] Updating icon for engine:', engine);
+  if (typeof engine === 'string') {
+    setSearchEngineIcon(engine);
+  } else if (engine && engine.name) {
+    setSearchEngineIcon(engine.name);
+  }
+}
+
+// 添加 setSearchEngineIcon 函数
+function setSearchEngineIcon(engineName) {
   const searchEngineIcon = document.getElementById('search-engine-icon');
-  if (!searchEngineIcon) {
-    console.error('[Icon] Search engine icon element not found');
-    return;
-  }
+  if (!searchEngineIcon) return;
+
+  const allEngines = SearchEngineManager.getAllEngines();
+  const engine = allEngines.find(e => e.name === engineName);
   
-  if (!engine) {
-    console.error('[Icon] No engine provided');
-    return;
-  }
-
-  if (!engine.icon) {
-    console.warn('[Icon] No icon path for engine:', engine.name);
+  if (engine) {
+    searchEngineIcon.src = engine.icon;
+    searchEngineIcon.alt = `${getLocalizedMessage(engine.label)} Search`;
+  } else {
+    // 使用默认图标
     searchEngineIcon.src = '../images/placeholder-icon.svg';
-    return;
+    searchEngineIcon.alt = 'Search';
   }
+}
 
-  searchEngineIcon.src = engine.icon;
-  searchEngineIcon.alt = `${getLocalizedMessage(engine.label)} Search`;
-  
-  // 添加错误处理
-  searchEngineIcon.onerror = () => {
-    console.warn('[Icon] Failed to load icon:', engine.icon);
-    searchEngineIcon.src = '../images/placeholder-icon.svg';
-  };
-
-  console.log('[Icon] Successfully updated icon to:', engine.icon);
+// Add this function if it doesn't exist
+function getSearchEngineIconPath(engineName) {
+  const allEngines = SearchEngineManager.getAllEngines();
+  const engine = allEngines.find(e => e.name === engineName);
+  return engine ? engine.icon : '../images/placeholder-icon.svg';
 }
 
 // 在文件末尾统一导出所有需要的函数和变量
 export { 
   SearchEngineManager, 
   updateSearchEngineIcon, 
+  setSearchEngineIcon,
   createSearchEngineDropdown, 
   initializeSearchEngineDialog,
   getSearchUrl,
-  createTemporarySearchTabs
+  createTemporarySearchTabs,
+  getSearchEngineIconPath
 };

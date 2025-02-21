@@ -622,5 +622,25 @@
     "searchEngineUpdateFeature": {
         "message": "搜尋引擎切換功能已更新：\n1. 點擊搜尋圖示設定預設搜尋引擎\n2. 支援自訂搜尋引擎\n3. 使用分頁列進行臨時切換",
         "description": "搜尋引擎切換功能更新詳細"
-    }   
+    },
+    "layoutTab": {
+        "message": "佈局",
+        "description": "佈局設定分頁名稱"
+    },
+    "layoutSettingsTitle": {
+        "message": "佈局設定",
+        "description": "佈局設定標題"
+    },
+    "layoutSettingsDescription": {
+        "message": "自訂書籤和界面的佈局顯示",
+        "description": "佈局設定描述"
+    },
+    "bookmarkWidthTitle": {
+        "message": "書籤寬度設定",
+        "description": "書籤寬度設定標題"
+    },
+    "previewText": {
+        "message": "每行書籤按鈕數量：",
+        "description": "書籤寬度預覽說明文字"
+    }
 }

@@ -574,5 +574,25 @@
     "searchEngineUpdateFeature": {
         "message": "検索エンジン切り替え機能が更新されました：\n1. 検索アイコンをクリックしてデフォルトの検索エンジンを設定\n2. カスタム検索エンジンのサポート\n3. タブバーで現在の検索を一時的に切り替え",
         "description": "検索エンジン切り替え機能の更新詳細"
+    },
+    "layoutTab": {
+        "message": "レイアウト",
+        "description": "レイアウト設定タブ名"
+    },
+    "layoutSettingsTitle": {
+        "message": "レイアウト設定",
+        "description": "レイアウト設定のタイトル"
+    },
+    "layoutSettingsDescription": {
+        "message": "ブックマークとインターフェースのレイアウト表示をカスタマイズ",
+        "description": "レイアウト設定の説明"
+    },
+    "bookmarkWidthTitle": {
+        "message": "ブックマーク幅設定",
+        "description": "ブックマーク幅設定のタイトル"
+    },
+    "previewText": {
+        "message": "1行あたりのブックマークボタン数：",
+        "description": "ブックマーク幅プレビューの説明テキスト"
     }
 }

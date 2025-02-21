@@ -659,5 +659,40 @@
     "searchEngineUpdateFeature": {
         "message": "搜索引擎切换功能已更新：\n1. 点击搜索图标设置默认搜索引擎\n2. 支持自定义搜索引擎\n3. 使用标签栏进行临时切换",
         "description": "搜索引擎切换功能更新详细说明"
+    },
+    "layoutTab": {
+        "message": "布局设置",
+        "description": "布局设置选项卡名称"
+    },
+    "layoutSettingsTitle": {
+        "message": "布局设置",
+        "description": "布局设置标题"
+    },
+    "layoutSettingsDescription": {
+        "message": "自定义书签和界面的布局显示方式",
+        "description": "布局设置描述"
+    },
+    "bookmarkWidthTitle": {
+        "message": "书签宽度设置",
+        "description": "书签宽度设置的标题"
+    },
+    "previewText": {
+        "message": "每行书签按钮数量：",
+        "description": "书签宽度预览效果的说明文本"
+    },
+    "addToDefaultFolders": {
+        "message": "添加到默认文件夹"
+    },
+    "removeFromDefaultFolders": {
+        "message": "从默认文件夹移除"
+    },
+    "addedToDefaultFolders": {
+        "message": "已将 $1 添加到默认文件夹"
+    },
+    "removedFromDefaultFolders": {
+        "message": "已将 $1 从默认文件夹移除"
+    },
+    "maxDefaultFoldersReached": {
+        "message": "最多只能设置5个默认文件夹"
     }
 }
