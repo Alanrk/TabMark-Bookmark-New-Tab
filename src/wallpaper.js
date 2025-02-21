@@ -237,19 +237,24 @@ class WallpaperManager {
         const savedBg = localStorage.getItem('selectedBackground');
         const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
 
-        if (useDefaultBackground === 'true' && savedBg) {
+        // 清除所有选中状态
+        this.clearAllActiveStates();
+
+        if (useDefaultBackground === 'true') {
             // 如果使用纯色背景，激活对应的选项
-            const bgOption = document.querySelector(`.settings-bg-option[data-bg="${savedBg}"]`);
+            const bgClass = savedBg || 'gradient-background-7';
+            const bgOption = document.querySelector(`.settings-bg-option[data-bg="${bgClass}"]`);
+            
             if (bgOption) {
                 bgOption.classList.add('active');
                 this.activeOption = bgOption;
-            }
-            // 在暗黑模式下保持暗色背景
-            if (isDarkMode) {
-                document.documentElement.className = savedBg;
-                document.documentElement.setAttribute('data-theme', 'dark');
-            } else {
-                document.documentElement.className = savedBg;
+                // 在暗黑模式下保持暗色背景
+                if (isDarkMode) {
+                    document.documentElement.className = bgClass;
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.className = bgClass;
+                }
             }
             return;
         }
@@ -279,6 +284,16 @@ class WallpaperManager {
                 img.onerror = resolve;
                 img.src = savedWallpaper;
             });
+        } else {
+            // 如果没有保存的壁纸和背景，使用默认背景
+            const defaultBgOption = document.querySelector('.settings-bg-option[data-bg="gradient-background-7"]');
+            if (defaultBgOption) {
+                defaultBgOption.classList.add('active');
+                this.activeOption = defaultBgOption;
+                document.documentElement.className = 'gradient-background-7';
+                localStorage.setItem('useDefaultBackground', 'true');
+                localStorage.setItem('selectedBackground', 'gradient-background-7');
+            }
         }
     }
 
@@ -287,14 +302,18 @@ class WallpaperManager {
         // 清除所有选中状态
         this.clearAllActiveStates();
         this.clearWallpaper();
-        localStorage.setItem('useDefaultBackground', 'true');
-        // 重置为默认背景时可以选中默认的纯色背景选项
+        
+        // 设置默认背景
         const defaultBgOption = document.querySelector('.settings-bg-option[data-bg="gradient-background-7"]');
         if (defaultBgOption) {
             defaultBgOption.classList.add('active');
             this.activeOption = defaultBgOption;
             document.documentElement.className = 'gradient-background-7';
+            // 保存默认背景设置
+            localStorage.setItem('useDefaultBackground', 'true');
+            localStorage.setItem('selectedBackground', 'gradient-background-7');
         }
+        
         // 使用本地化的成功提示
         alert(chrome.i18n.getMessage('wallpaperResetSuccess'));
     }

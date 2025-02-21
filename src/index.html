@@ -183,6 +183,15 @@
           <div id="appearance-settings" class="settings-tab-content active">
             <h3 class="settings-modal-subtitle" data-i18n="backgroundTitle">背景设置</h3>
             
+            <h4 class="settings-section-title" data-i18n="themeTitle">主题设置</h4>
+            <div class="theme-setting-section">
+              <select id="theme-select" class="theme-select">
+                <option value="light" data-i18n="lightTheme">浅色</option>
+                <option value="dark" data-i18n="darkTheme">深色</option>
+                <option value="auto" data-i18n="autoTheme">跟随系统</option>
+              </select>
+            </div>
+            
             <h4 class="settings-section-title" data-i18n="solidBackgroundTitle">纯色背景</h4>
             <div class="settings-background-options">
               <div class="settings-bg-option gradient-background-1" data-bg="gradient-background-1"></div>
@@ -330,11 +339,6 @@
     </div>
   </div>
   <div id="toast" class="toast" style="display: none;"></div>
-  <div class="theme-toggle">
-    <button id="theme-toggle-btn" title="Toggle theme mode">
-      <span class="material-icons">light_mode</span>
-    </button>
-  </div>
   <!-- 在合适的位置添加检查缓存按钮 -->
   <div id="search-engines-dialog" class="modal">
     <div class="modal-content">

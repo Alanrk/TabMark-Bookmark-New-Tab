@@ -119,10 +119,6 @@ main.flex-1 {
 [data-theme="dark"] {
   color-scheme: dark;
 }
-[data-theme="dark"] #theme-toggle-btn{
-  background: #404040;
-  border-color: #404040;
-}
 
 /* 暗黑模式下的背景渐变类 */
 [data-theme="dark"] html[class*="gradient-background"] {
@@ -150,7 +146,7 @@ main.flex-1 {
 /* 暗黑模式下的壁纸容器样式 */
 [data-theme="dark"] .wallpaper-option {
   border: 2px solid #404040;
-  background-color: #1c1c1c;
+  background-color: #242424;
 }
 
 [data-theme="dark"] body {
@@ -176,9 +172,6 @@ main.flex-1 {
 }
 [data-theme="dark"] aside ul li:hover {
   color: #242424;
-}
-[data-theme="dark"] #theme-toggle-btn .material-icons {
-  color: #e0e0e0;
 }
 [data-theme="dark"] .bookmark-folder.card-title:hover {
   color: #ffffff;
@@ -339,9 +332,6 @@ main.flex-1 {
 [data-theme="dark"] .settings-tab-button {
   color: #ffffff;
 }
-[data-theme="dark"] .settings-tab-button {
-  color: #ffffff;
-}
 [data-theme="dark"] .settings-modal-subtitle {
   color: #ffffff;
 }
@@ -416,26 +406,50 @@ main.flex-1 {
 .wallpaper-options {
   display: flex;
   flex-wrap: wrap;
-    gap: 10px;
-    max-width: 380px;
-    max-height: 230px;
-    overflow-y: auto;
-    padding: 10px 0;
-    margin-bottom: 16px;
+  gap: 10px;
+  max-width: 380px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 10px 0;
+  margin-bottom: 16px;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
 }
 
 .wallpaper-option {
-    width: 100px;
-    height: 100px;
+    border: 2px solid #242424;
+    width: 80px;
+    height: 80px;
     background-size: cover;
     cursor: pointer;
-    border: 2px solid transparent;
     transition: border-color 0.3s;
     flex: 0 0 auto;
+    border-radius: 8px;
 }
 
 .wallpaper-option:hover {
-    border-color: #10b981;
+  border-color: #10b981;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.wallpaper-option.active {
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .wallpaper-option {
+  border-color: #404040;
+}
+
+[data-theme="dark"] .wallpaper-option:hover {
+  border-color: #10b981;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .wallpaper-option.active {
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
 }
 
 .wallpaper-loading {
@@ -474,7 +488,7 @@ main {
 }
 
 .wallpaper-actions {
-    margin-top: 16px;
+    margin-top: 12px;
     display: flex;
     gap: 12px;
     align-items: center;
@@ -482,11 +496,12 @@ main {
 
 .wallpaper-actions button,
 .wallpaper-actions label {
-  height: 36px;
-  padding: 0 12px;
+  height: 32px;
+  min-width: 110px;
+  padding: 0 10px;
+  font-size: 13px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
-  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
@@ -495,7 +510,6 @@ main {
   justify-content: center;
   background-color: #f3f4f6;
   color: #374151;
-  min-width: 120px;
 }
 
 .wallpaper-actions button:hover,
@@ -569,38 +583,6 @@ main {
 
 #upload-wallpaper {
   display: none;
-}
-
-
-
-.wallpaper-option {
-  width: 80px;
-  height: 80px;
-    background-size: cover;
-    cursor: pointer;
-  border: 2px solid #242424;
-    transition: border-color 0.3s;
-    flex: 0 0 auto;
-  border-radius: 8px;
-}
-
-.wallpaper-option.active {
-    border-color: #10b981;
-}
-
-/* 暗色模式适配 */
-[data-theme="dark"] .background-divider {
-  background-color: #404040;
-}
-
-[data-theme="dark"] .upload-wallpaper-label {
-  background-color: #404040;
-  border-color: #4b5563;
-  color: #ffffff;
-}
-
-[data-theme="dark"] .upload-wallpaper-label:hover {
-  background-color: #4b5563;
 }
 
 /* Material Icons 字体声明 */
@@ -1272,4 +1254,65 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 [data-theme="dark"] * {
   scrollbar-color: rgba(229, 231, 235, 0.2) transparent;
+}
+
+/* 主题设置区域样式 */
+.theme-setting-section {
+    margin-bottom: 20px;
+}
+
+/* 主题选择下拉菜单样式 */
+.theme-select {
+    width: 140px;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #374151;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s;
+    appearance: none; /* 移除默认的下拉箭头 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center; /* 调整箭头位置 */
+    background-size: 16px; /* 调整箭头大小 */
+}
+
+.theme-select:hover {
+    border-color: #10b981;
+}
+
+.theme-select:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+/* 暗色模式下的箭头颜色 */
+[data-theme="dark"] .theme-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23E5E7EB'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-color: #404040;
+    border-color: #4b5563;
+    color: #e5e7eb;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .settings-section-title {
+    color: #e5e7eb;
+}
+
+[data-theme="dark"] .theme-select {
+    background-color: #404040;
+    border-color: #4b5563;
+    color: #e5e7eb;
+}
+
+[data-theme="dark"] .theme-select:hover {
+    border-color: #10b981;
+}
+
+[data-theme="dark"] .theme-select:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
 }

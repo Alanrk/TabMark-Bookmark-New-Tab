@@ -707,53 +707,12 @@ document.addEventListener('DOMContentLoaded', function () {
     setSearchEngineIcon(engineName);
   }
 
-
   // 更新侧边栏默认书签指示器和选中状态
   updateSidebarDefaultBookmarkIndicator();
 
   // ... 其他代码 ...
 
-  // 主题切换功能
-  const themeToggleBtn = document.getElementById('theme-toggle-btn');
-  const themeIcon = themeToggleBtn.querySelector('.material-icons');
-
-  // 从 localStorage 获取主题设置
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme === 'dark');
-  }
-
-  themeToggleBtn.addEventListener('click', () => {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const newTheme = isDark ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // 更新背景样式
-    const activeBackground = document.documentElement.className;
-    if (activeBackground && activeBackground.includes('gradient-background')) {
-      // 如果有活动的背景，重新应用以触发暗黑模式样式
-      requestAnimationFrame(() => {
-        document.documentElement.className = '';
-        requestAnimationFrame(() => {
-          document.documentElement.className = activeBackground;
-        });
-      });
-    }
-    
-    updateThemeIcon(!isDark);
-  });
-
-  function updateThemeIcon(isDark) {
-    const themeToggleBtn = document.getElementById('theme-toggle-btn');
-    if (!themeToggleBtn) return;
-    
-    // 使用 innerHTML 来设置 SVG 图标
-    themeToggleBtn.innerHTML = isDark ? ICONS.dark_mode : ICONS.light_mode;
-  }
-
+  
 
 
   
@@ -5460,9 +5419,3 @@ document.addEventListener('DOMContentLoaded', function() {
     // 可以在这里添加其他需要响应搜索引擎变更的逻辑
     createTemporarySearchTabs(); // 添加这行以更新临时搜索标签
   });
-
-
-
-
-
-
