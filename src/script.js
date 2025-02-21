@@ -2,11 +2,13 @@ import { featureTips } from './feature-tips.js';
 import { initGestureNavigation } from './gesture-navigation.js';
 import { 
   SearchEngineManager, 
-  updateSearchEngineIcon, 
+  updateSearchEngineIcon,
+  setSearchEngineIcon,
   createSearchEngineDropdown, 
   initializeSearchEngineDialog,
   getSearchUrl,
-  createTemporarySearchTabs
+  createTemporarySearchTabs,
+  getSearchEngineIconPath
 } from './search-engine-dropdown.js';
 
 let bookmarkTreeNodes = [];
@@ -42,6 +44,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // 或者在动态创建元素时使用
   const button = document.createElement('button');
   button.innerHTML = getIconHtml('settings') + ' Settings';
+
+  // 更新这部分代码
+  console.log('[Init] Default search engine:', localStorage.getItem('selectedSearchEngine'));
+  updateSearchEngineIcon(defaultSearchEngine);
+
+  const searchEngineIcon = document.getElementById('search-engine-icon');
+  if (searchEngineIcon && searchEngineIcon.src === '') {      
+    searchEngineIcon.src = '../images/placeholder-icon.svg';
+  }
 });
 
 function getLocalizedMessage(messageName) {
@@ -276,19 +287,15 @@ const ColorCache = {
   }, 1000)
 };
 
-function getSearchEngineIconPath(engineName) {
-  const iconPaths = {
-    google: '../images/google-logo.svg',
-    bing: '../images/bing-logo.png',
-    baidu: '../images/baidu-logo.svg', // 添加百度图标路径
-    doubao: '../images/doubao-logo.png',
-    kimi: '../images/kimi-logo.svg',
-    metaso: '../images/metaso-logo.png',
-    felo: '../images/felo-logo.svg',
-    chatgpt: '../images/chatgpt-logo.svg'
-  };
-  return iconPaths[engineName.toLowerCase()] || '../images/google-logo.svg';
-}
+
+
+// 页面加载时更新图标
+document.addEventListener('DOMContentLoaded', () => {
+  const defaultEngine = SearchEngineManager.getDefaultEngine();
+  if (defaultEngine) {
+    updateSearchEngineIcon(defaultEngine);
+  }
+});
 
 // 同样，将这个函数也移到全作用域
 function setDefaultIcon(iconElement) {
@@ -689,19 +696,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // 调用 updateBookmarkCards
   updateBookmarkCards();
   
-  setSearchEngineIcon(defaultSearchEngine);
+  updateSearchEngineIcon(defaultSearchEngine);
 
-  function setSearchEngineIcon(engineName) {
-    const iconPath = getSearchEngineIconPath(engineName);
-    searchEngineIcon.src = iconPath;
-    searchEngineIcon.alt = `${engineName} Search`;
-  }
   if (searchEngineIcon.src === '') {      
     searchEngineIcon.src = '../images/placeholder-icon.svg';
   }
   setTimeout(() => {
     updateSearchEngineIcon(defaultSearchEngine);
   }, 0);
+
   // 修改 updateSearchEngineIcon 函数
   function updateSearchEngineIcon(engineName) {
     setSearchEngineIcon(engineName);
@@ -873,10 +876,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 在点击其他地方时重置状态
   document.addEventListener('click', function () {
+    // 延迟处理点击事件，让菜单项的点击事件先执行
+    setTimeout(() => {
     if (contextMenu) {
       contextMenu.style.display = 'none';
-      currentBookmark = null;  // 重置 currentBookmark
-    }
+        currentBookmark = null;
+      }
+      
+      if (bookmarkFolderContextMenu) {
+        bookmarkFolderContextMenu.style.display = 'none';
+        currentBookmarkFolder = null;
+      }
+    }, 200);
   });
 });
 
@@ -2538,31 +2549,66 @@ function createMenuItems(menu) {
         });
       }
     }},
-    { text: getLocalizedMessage('setAsHomepage'), icon: 'home', action: () => currentBookmarkFolder && setDefaultBookmark(currentBookmarkFolder.dataset.id) }
+    {
+      // 使用异步函数来动态设置文本和图标
+      text: getLocalizedMessage('addToDefaultFolders'), // 默认文本
+      icon: 'like', // 改为使用 like 图标
+      action: async () => {
+        const folder = currentBookmarkFolder;
+        if (!folder || !folder.dataset || !folder.dataset.id) {
+          console.error('No valid folder selected');
+          return;
+        }
+
+        const isDefault = await isDefaultFolder(folder.dataset.id);
+        const text = isDefault ? 'removeFromDefaultFolders' : 'addToDefaultFolders';
+        const icon = isDefault ? 'like' : 'like'; // 使用同一个图标，通过样式区分状态
+        
+        await toggleDefaultFolder(folder);
+        
+        // 更新菜单项文本和图标
+        const menuItem = menu.querySelector(`[data-action="toggleDefault"]`);
+        if (menuItem) {
+          menuItem.querySelector('.text').textContent = getLocalizedMessage(text);
+          const iconElement = menuItem.querySelector('.icon-svg');
+          if (iconElement) {
+            iconElement.innerHTML = ICONS[icon];
+            // 可以通过添加类来改变图标颜色，区分选中状态
+            iconElement.classList.toggle('selected', isDefault);
+          }
+        }
+      }
+    }
   ];
 
-  // 创建菜单项的其余代码保持不变
+  // 创建菜单项
   menuItems.forEach(item => {
     const menuItem = document.createElement('div');
     menuItem.className = 'custom-context-menu-item';
+    if (item.text === getLocalizedMessage('addToDefaultFolders')) {
+      menuItem.dataset.action = 'toggleDefault';
+    }
     
     const icon = document.createElement('span');
     icon.className = 'material-icons';
-    icon.innerHTML = ICONS[item.icon];
+    icon.innerHTML = ICONS[item.icon] || item.icon;
     icon.style.marginRight = '8px';
-    icon.style.fontSize = '18px';
     
     const text = document.createElement('span');
+    text.className = 'text';
     text.textContent = item.text;
 
     menuItem.appendChild(icon);
     menuItem.appendChild(text);
 
-    menuItem.addEventListener('click', () => {
-      if (typeof item.action === 'function') {
-        item.action();
-      }
+    // 修改点击事件处理
+    menuItem.addEventListener('click', async (e) => {
+      e.stopPropagation(); // 阻止事件冒泡
+      await item.action();
+      // 延迟隐藏菜单，确保动作完成
+      setTimeout(() => {
       menu.style.display = 'none';
+      }, 100);
     });
 
     menu.appendChild(menuItem);
@@ -3213,10 +3259,18 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   document.addEventListener('click', function () {
+    // 延迟处理点击事件，让菜单项的点击事件先执行
+    setTimeout(() => {
     if (contextMenu) {
       contextMenu.style.display = 'none';
-      currentBookmark = null;  // Reset currentBookmark
-    }
+        currentBookmark = null;
+      }
+      
+      if (bookmarkFolderContextMenu) {
+        bookmarkFolderContextMenu.style.display = 'none';
+        currentBookmarkFolder = null;
+      }
+    }, 200);
   });
 
   const editDialog = document.getElementById('edit-dialog');
@@ -5419,3 +5473,264 @@ document.addEventListener('DOMContentLoaded', function() {
     // 可以在这里添加其他需要响应搜索引擎变更的逻辑
     createTemporarySearchTabs(); // 添加这行以更新临时搜索标签
   });
+
+
+  // 新增辅助函数
+  async function isDefaultFolder(folderId) {
+    if (!folderId) return false;
+    
+    const data = await chrome.storage.sync.get('defaultFolders');
+    const defaultFolders = data.defaultFolders?.items || [];
+    return defaultFolders.some(folder => folder.id === folderId);
+  }
+
+  async function toggleDefaultFolder(folder) {
+    if (!folder?.dataset?.id) {
+      console.error('Invalid folder object:', folder);
+      return;
+    }
+
+    const folderId = folder.dataset.id;
+    const folderName = folder.querySelector('.card-title')?.textContent;
+    
+    if (!folderName) {
+      console.error('Could not find folder name');
+      return;
+    }
+
+    try {
+      const data = await chrome.storage.sync.get('defaultFolders');
+      let defaultFolders = data.defaultFolders?.items || [];
+      const isDefault = defaultFolders.some(f => f.id === folderId);
+
+      if (isDefault) {
+        // 移除时，保持其他文件夹的顺序不变
+        defaultFolders = defaultFolders.filter(f => f.id !== folderId);
+        // 重新计算顺序
+        defaultFolders = defaultFolders.map((f, index) => ({
+          ...f,
+          order: index
+        }));
+        showToast(chrome.i18n.getMessage("removedFromDefaultFolders", [folderName]));
+      } else {
+        if (defaultFolders.length >= 5) {
+          showToast(chrome.i18n.getMessage("maxDefaultFoldersReached"));
+          return;
+        }
+        // 新添加的文件夹放在最后
+        defaultFolders.push({
+          id: folderId,
+          name: folderName,
+          order: defaultFolders.length
+        });
+        showToast(chrome.i18n.getMessage("addedToDefaultFolders", [folderName]));
+      }
+
+      await chrome.storage.sync.set({
+        defaultFolders: {
+          items: defaultFolders,
+          lastUpdated: Date.now()
+        }
+      });
+
+      // 立即更新UI
+      await initDefaultFoldersTabs();
+
+      // 如果是新添加的默认文件夹，自动切换到该文件夹
+      if (!isDefault) {
+        await switchToFolder(folderId);
+      }
+
+      // 触发更新事件
+      document.dispatchEvent(new CustomEvent('defaultFoldersChanged', {
+        detail: { folders: defaultFolders }
+      }));
+
+    } catch (error) {
+      console.error('Error toggling default folder:', error);
+      showToast('操作失败，请重试');
+    }
+  }
+
+  // 修改 initDefaultFoldersTabs 函数，添加更多日志
+  async function initDefaultFoldersTabs() {
+    const tabsContainer = document.querySelector('.tabs-container');
+    if (!tabsContainer) {
+      console.error('Tabs container not found');
+      return;
+    }
+
+    // 获取默认文件夹列表和上次查看的文件夹ID
+    const data = await chrome.storage.sync.get(['defaultFolders', 'lastViewedFolder']);
+    let defaultFolders = data.defaultFolders?.items || [];
+    const lastViewedFolder = data.lastViewedFolder;
+    
+    // 确保文件夹按 order 排序
+    defaultFolders = defaultFolders.sort((a, b) => a.order - b.order);
+    
+    console.log('Initializing default folders tabs:', defaultFolders, 'Last viewed:', lastViewedFolder);
+
+    // 清空现有标签
+    tabsContainer.innerHTML = '';
+
+    // 创建标签
+    for (const folder of defaultFolders) {
+      const tab = document.createElement('div');
+      tab.className = 'folder-tab';
+      tab.dataset.folderId = folder.id;
+      tab.dataset.order = folder.order;
+      tab.dataset.name = folder.name; // 添加文件夹名称作为提示
+      
+      // 不再需要内部的图标和文字
+      tab.addEventListener('click', () => switchToFolder(folder.id));
+      tabsContainer.appendChild(tab);
+    }
+
+    // 如果有默认文件夹，决定激活哪个
+    if (defaultFolders.length > 0) {
+      // 优先显示上次查看的文件夹，如果没有则显示第一个
+      const folderToShow = lastViewedFolder && 
+        defaultFolders.some(f => f.id === lastViewedFolder) ? 
+        lastViewedFolder : 
+        defaultFolders[0].id;
+      
+      await switchToFolder(folderToShow);
+    }
+
+    // 如果没有默认文件夹，隐藏整个区域
+    const tabsArea = document.querySelector('.default-folders-tabs');
+    if (tabsArea) {
+      const shouldShow = defaultFolders.length > 0;
+      console.log('Should show tabs area:', shouldShow, 'Folder count:', defaultFolders.length);
+      tabsArea.style.display = shouldShow ? 'block' : 'none';
+    } else {
+      console.error('Tabs area not found');
+    }
+
+    // 初始化滚轮切换功能
+    initWheelSwitching();
+  }
+
+  // 修改 switchToFolder 函数，添加错误处理
+  async function switchToFolder(folderId) {
+    try {
+      console.log('Switching to folder:', folderId);
+      
+      // 验证文件夹ID是否有效
+      const data = await chrome.storage.sync.get('defaultFolders');
+      const defaultFolders = data.defaultFolders?.items || [];
+      if (!defaultFolders.some(f => f.id === folderId)) {
+        console.error('Invalid folder ID:', folderId);
+        return;
+      }
+
+      // 更新标签激活状态和动画
+      document.querySelectorAll('.folder-tab').forEach(tab => {
+        const isActive = tab.dataset.folderId === folderId;
+        tab.classList.toggle('active', isActive);
+        tab.style.transform = isActive ? 'scale(1.2)' : 'scale(1)';
+        tab.style.transition = 'transform 0.3s ease';
+        
+        if (isActive) {
+          // 添加切换动画类
+          tab.classList.add('switching');
+          // 移除切换动画类和重置动画
+          setTimeout(() => {
+            tab.classList.remove('switching');
+            // 通过移除和重新添加类来重置动画
+            void tab.offsetWidth; // 触发重排以重置动画
+            tab.classList.add('switching');
+          }, 0);
+        }
+      });
+
+      // 保存最后查看的文件夹
+      await chrome.storage.sync.set({ 
+        lastViewedFolder: folderId,
+        lastViewedTime: Date.now()
+      });
+
+      // 更新书签显示
+      await updateBookmarksDisplay(folderId);
+      
+    } catch (error) {
+      console.error('Error switching folder:', error);
+    }
+  }
+
+  // 监听默认文件夹变化
+  document.addEventListener('defaultFoldersChanged', async (event) => {
+    await initDefaultFoldersTabs();
+  });
+
+  // 在文档加载完成后初始化
+  document.addEventListener('DOMContentLoaded', async () => {
+    await initDefaultFoldersTabs();
+  });
+
+  // 添加滚轮切换功能
+  function initWheelSwitching() {
+    const main = document.querySelector('main');
+    if (!main) return;
+
+    let wheelTimeout;
+    
+    main.addEventListener('wheel', async (event) => {
+      // 如果在 bookmarks-list 内部滚动，不触发切换
+      if (event.target.closest('#bookmarks-list')) {
+        return;
+      }
+
+      // 防抖处理，避免快速滚动触发多次
+      clearTimeout(wheelTimeout);
+      wheelTimeout = setTimeout(async () => {
+        const data = await chrome.storage.sync.get('defaultFolders');
+        const defaultFolders = data.defaultFolders?.items || [];
+        if (defaultFolders.length <= 1) return;
+
+        // 获取当前激活的标签
+        const activeTab = document.querySelector('.folder-tab.active');
+        if (!activeTab) return;
+
+        const currentOrder = parseInt(activeTab.dataset.order);
+        let nextOrder;
+
+        // 根据滚动方向决定下一个标签
+        if (event.deltaY > 0) { // 向下滚动
+          nextOrder = currentOrder + 1;
+          if (nextOrder >= defaultFolders.length) {
+            nextOrder = 0;
+          }
+        } else { // 向上滚动
+          nextOrder = currentOrder - 1;
+          if (nextOrder < 0) {
+            nextOrder = defaultFolders.length - 1;
+          }
+        }
+
+        // 找到对应顺序的文件夹并切换
+        const nextFolder = defaultFolders.find(f => f.order === nextOrder);
+        if (nextFolder) {
+          await switchToFolder(nextFolder.id);
+          
+          // 添加平滑的动画效果
+          const tabs = document.querySelectorAll('.folder-tab');
+          tabs.forEach(tab => {
+            if (tab.dataset.folderId === nextFolder.id) {
+              tab.style.transform = 'scale(1.2)';
+              tab.style.transition = 'transform 0.3s ease';
+            } else {
+              tab.style.transform = 'scale(1)';
+            }
+          });
+        }
+      }, 150); // 150ms 的防抖延迟
+    });
+  }
+
+
+
+
+
+
+

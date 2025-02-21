@@ -494,5 +494,25 @@
     "searchEngineUpdateFeature": {
         "message": "La fonction de changement de moteur de recherche a été mise à jour :\n1. Cliquez sur l'icône de recherche pour définir le moteur de recherche par défaut\n2. Prise en charge des moteurs de recherche personnalisés\n3. Utilisez la barre d'onglets pour changer temporairement la recherche en cours",
         "description": "Détails de la mise à jour de la fonction de changement de moteur de recherche"
+    },
+    "layoutTab": {
+        "message": "Mise en page",
+        "description": "Nom de l'onglet des paramètres de mise en page"
+    },
+    "layoutSettingsTitle": {
+        "message": "Paramètres de mise en page",
+        "description": "Titre des paramètres de mise en page"
+    },
+    "layoutSettingsDescription": {
+        "message": "Personnaliser l'affichage de la mise en page des favoris et de l'interface",
+        "description": "Description des paramètres de mise en page"
+    },
+    "bookmarkWidthTitle": {
+        "message": "Paramètres de largeur des favoris",
+        "description": "Titre des paramètres de largeur des favoris"
+    },
+    "previewText": {
+        "message": "Nombre de boutons de favoris par ligne :",
+        "description": "Texte expliquant l'aperçu de la largeur des favoris"
     }
 }

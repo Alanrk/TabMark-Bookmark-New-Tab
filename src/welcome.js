@@ -1,4 +1,4 @@
-let userName = localStorage.getItem('userName') || 'Orion Wang';
+let userName = localStorage.getItem('userName') || 'Sowhale';
 
 // 集中管理欢迎消息的颜色逻辑
 const WelcomeManager = {

@@ -522,5 +522,25 @@
     "searchEngineUpdateFeature": {
         "message": "Die Suchmaschinen-Wechselfunktion wurde aktualisiert:\n1. Klicken Sie auf das Suchsymbol, um die Standard-Suchmaschine festzulegen\n2. Unterstützung für benutzerdefinierte Suchmaschinen\n3. Verwenden Sie die Tab-Leiste für temporäres Umschalten der aktuellen Suche",
         "description": "Details zur Aktualisierung der Suchmaschinen-Wechselfunktion"
+    },
+    "layoutTab": {
+        "message": "Layout",
+        "description": "Layout-Einstellungen Tab-Name"
+    },
+    "layoutSettingsTitle": {
+        "message": "Layout-Einstellungen",
+        "description": "Titel für Layout-Einstellungen"
+    },
+    "layoutSettingsDescription": {
+        "message": "Passen Sie die Layout-Anzeige von Lesezeichen und Benutzeroberfläche an",
+        "description": "Beschreibung der Layout-Einstellungen"
+    },
+    "bookmarkWidthTitle": {
+        "message": "Lesezeichen-Breite Einstellungen",
+        "description": "Titel für Lesezeichen-Breite Einstellungen"
+    },
+    "previewText": {
+        "message": "Anzahl der Lesezeichen-Schaltflächen pro Zeile:",
+        "description": "Text zur Erklärung der Lesezeichen-Breiten-Vorschau"
     }
 }

@@ -494,5 +494,25 @@
     "searchEngineUpdateFeature": {
         "message": "La función de cambio de motor de búsqueda se ha actualizado:\n1. Haga clic en el icono de búsqueda para establecer el motor de búsqueda predeterminado\n2. Soporte para motores de búsqueda personalizados\n3. Use la barra de pestañas para cambiar temporalmente la búsqueda actual",
         "description": "Detalles de la actualización de la función de cambio de motor de búsqueda"
+    },
+    "layoutTab": {
+        "message": "Diseño",
+        "description": "Nombre de la pestaña de configuración de diseño"
+    },
+    "layoutSettingsTitle": {
+        "message": "Configuración de Diseño",
+        "description": "Título para la configuración de diseño"
+    },
+    "layoutSettingsDescription": {
+        "message": "Personalizar la visualización del diseño de marcadores e interfaz",
+        "description": "Descripción de la configuración de diseño"
+    },
+    "bookmarkWidthTitle": {
+        "message": "Configuración de Ancho de Marcadores",
+        "description": "Título para la configuración de ancho de marcadores"
+    },
+    "previewText": {
+        "message": "Número de botones de marcadores por fila:",
+        "description": "Texto que explica la vista previa del ancho de marcadores"
     }
 }

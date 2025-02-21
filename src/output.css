@@ -842,10 +842,9 @@ html.gradient-background-7 {
   background-color: #ffffff;
   color: #333333;
   border: 1px solid #eeeeee;
-  margin: 5% auto;
   padding: 2rem;
   width: 80%;
-  max-width: 300px;
+  max-width: 360px;
   border-radius: 10px;
   position: relative;
 }
@@ -870,7 +869,7 @@ html.gradient-background-7 {
 #edit-dialog .form-buttons,
 #edit-category-dialog .form-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 10px;
   margin-top: 2rem;
 }
@@ -1171,6 +1170,9 @@ main {
   gap: 1rem;
   margin: 0 auto;
   width: 100%;
+  overflow-y: auto;
+  padding: 0 0 1rem 0;
+  height: auto;
   
   /* 默认桌面布局 */
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
@@ -1642,7 +1644,7 @@ img.w-6.h-6.mr-2 {
   text-align: left;
   /* 左对齐 */
   display: flex;
-  margin: 0 auto 1rem;
+  margin: 0 0 1rem 0;
   color: #717882;
   height: 32px;
 }
@@ -1667,6 +1669,11 @@ img.w-6.h-6.mr-2 {
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
   will-change: opacity, transform; /* 优化性能 */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: calc(100vh - 280px);
   
   @media (max-width: 1024px) {
     width: 95%;
@@ -2574,7 +2581,7 @@ input:checked+.slider:before {
 }
 /* 选项图标样式 */
 .search-engine-option-icon {
-  height: 24px;
+  height: 18px;
   margin-bottom: 4px;
 }
 /* 标签样式 */
@@ -3420,7 +3427,7 @@ input:checked+.slider:before {
 /* 确保关闭按钮始终可见 */
 .modal .close-button {
   position: sticky;
-  top: 0;
+  top: -30px;
   right: 0;
   float: right;
   margin: -1rem -1rem 1rem 1rem;
@@ -3549,8 +3556,8 @@ input:checked+.slider:before {
 
 /* 自定义搜索引擎图标样式 */
 .search-engine-icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
   border-radius: 4px;
   background-color: #fff;
