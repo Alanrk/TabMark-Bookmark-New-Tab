@@ -589,6 +589,23 @@
         "message": "Search engine switching feature has been updated:\n1. Click the search icon to set the default search engine\n2. Support for custom search engines\n3. Use the tab bar for temporary switching of the current search",
         "description": "Search engine switching feature update details"
     },
+
+    "themeTitle": {
+        "message": "Theme Settings",
+        "description": "Theme settings title"
+    },
+    "lightTheme": {
+        "message": "Light",
+        "description": "Light theme option"
+    },
+    "darkTheme": {
+        "message": "Dark",
+        "description": "Dark theme option"
+    },
+    "autoTheme": {
+        "message": "Follow System",
+        "description": "Follow system theme option"
+    },
     "layoutTab": {
         "message": "Layout",
         "description": "Layout settings tab name"
