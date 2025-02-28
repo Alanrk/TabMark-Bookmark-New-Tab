@@ -1170,13 +1170,50 @@ main {
   gap: 1rem;
   margin: 0 auto;
   width: 100%;
-  overflow-y: auto;
+  overflow-y: overlay; /* 改为 overlay 使滚动条不占用空间 */
+  overflow-x: hidden;
   padding: 0 0 1rem 0;
   height: auto;
   
   /* 默认桌面布局 */
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  max-width: 1300px;
+  max-width: 1200px;
+  
+  /* 隐藏滚动条，但保持可滚动 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  
+  /* Chrome, Safari 和 Opera 的滚动条样式 */
+  &::-webkit-scrollbar {
+    width: 6px;
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 12px;
+    transition: background-color 0.2s ease;
+  }
+  
+  /* 只在鼠标悬停或元素获得焦点时显示滚动条 */
+  &:hover::-webkit-scrollbar-thumb,
+  &:focus::-webkit-scrollbar-thumb,
+  &:active::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+  }
+  
+  &:hover::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(156, 163, 175, 0.8);
+  }
+  
+  /* 暗色模式适配 */
+  [data-theme="dark"] &:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(229, 231, 235, 0.2);
+  }
+  
+  [data-theme="dark"] &:hover::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(229, 231, 235, 0.3);
+  }
   
   /* 平板布局 */
   @media (max-width: 1024px) {
@@ -1565,11 +1602,19 @@ img.w-6.h-6.mr-2 {
   z-index: 2;
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
   display: flex;
   flex-direction: column;
-  width: 40px;  /* 减小宽度 */
-  padding: 6px 0;  /* 减小内边距 */
+  width: 40px;
+  padding: 6px 0;
+  
+  /* 移除这个样式，因为我们现在通过 JavaScript 控制显示/隐藏 */
+  /*
+  &:empty,
+  &:not(:has(a:not([style*="display: none"]))) {
+    display: none;
+  }
+  */
 }
 
 .links-icons a {
@@ -1659,13 +1704,12 @@ img.w-6.h-6.mr-2 {
 }
 .bookmarks-container {
   opacity: 0; /* 初始透明度设为 0 */
-  transform: translateY(20px); /* 初始位置向下偏移 */
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
   background: #ffffff;
   padding: 1rem 2rem 2rem 2rem;
-  width: 95%;
-  max-width: 1096px;
-  margin: 2.5rem auto 0;
+  width: 85%;
+  max-width: 1200px;
+  margin: 2.5rem auto 2.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
   will-change: opacity, transform; /* 优化性能 */
@@ -1673,7 +1717,7 @@ img.w-6.h-6.mr-2 {
   display: flex;
   flex-direction: column;
   position: relative;
-  height: calc(100vh - 280px);
+  overflow-x: hidden;
   
   @media (max-width: 1024px) {
     width: 95%;
@@ -1693,6 +1737,10 @@ img.w-6.h-6.mr-2 {
   
 }
 
+.bookmarks-container.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
 
 .custom-context-menu-item {
   display: flex;
@@ -2016,60 +2064,7 @@ svg.suggestion-icon {
 .settings-icon a:active {
   transform: scale(0.95);
 }
-.settings-modal {
-  display: none;
-  position: fixed;
-  z-index: 1002;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  /* 为Safari浏览器添加前缀 */
-}
 
-.settings-modal-content {
-  background-color: rgba(254, 254, 254, 0.9);
-  /* 稍微透明的背景 */
-  margin: 10% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 700px;
-  height: 600px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
-  
-  @media (max-width: 768px) {
-    width: 90%;
-    max-width: 800px;
-    
-    @media (max-width: 768px) {
-      width: 95%;
-      padding: 1rem;
-      
-      .settings-layout {
-        flex-direction: column;
-      }
-      
-      .settings-sidebar {
-        width: 100%;
-        margin-bottom: 1rem;
-      }
-    }
-  }
-}
-
-.settings-modal-close {
-  color: #aaa;
-  float: right;
-  font-size: 24px;
-  font-weight: 500;
-  cursor: pointer;
-}
 
 .settings-modal-close:hover,
 .settings-modal-close:focus {
@@ -2079,8 +2074,8 @@ svg.suggestion-icon {
 }
 
 .settings-modal-title {
-  margin: 0 0 2rem 8px;
-  font-size: 26px;
+  margin: 0 0 0 8px;
+  font-size: 20px;
   font-weight: 600; 
   color: #1a202c;
 }
@@ -2096,33 +2091,8 @@ svg.suggestion-icon {
   margin-top: 20px;
 }
 
-.settings-sidebar {
-  width: 210px;
-  padding-right: 20px;
-  border-right: 1px solid #eeeeee;
-}
-
-.settings-content {
-  flex: 1;
-  margin: 0px 20px;
-}
-
-.settings-tab-button {
-  display: block;
-  width: 100%;
-  padding: 10px 16px 10px 16px;
-  margin-bottom: 10px;
-  text-align: left;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  color: #334155;
-}
 .setting-option {
   font-size: 14px;
-  margin: 16px 0;
 }
 
 .settings-tab-button.active {
@@ -2222,7 +2192,11 @@ input:checked+.slider:before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  transition: background-color 0.2s;
 }
 
 .switch-label {
@@ -2274,9 +2248,8 @@ input:checked+.slider:before {
   text-decoration: none;
   color: #374151;
   transition: all 0.2s ease;
-  width: 160px;  /* 添加最小宽度确保统一性 */
-  height: 36px;
   justify-content: center;  /* 确保内容居中 */
+  width: 140px;
 }
 
 .about-link:hover {
@@ -3755,5 +3728,17 @@ input:checked+.slider:before {
 [data-theme="dark"] .global-range-slider .value-display,
 [data-theme="dark"] .global-range-slider .preview-text {
   color: #e5e7eb;
+}
+
+.search-engine-update-tip,
+.settings-update-tip {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.search-engine-update-tip.tip-fade-out,
+.settings-update-tip.tip-fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 

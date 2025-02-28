@@ -514,5 +514,151 @@
     "previewText": {
         "message": "Número de botones de marcadores por fila:",
         "description": "Texto que explica la vista previa del ancho de marcadores"
+    },
+    "addToDefaultFolders": {
+        "message": "Fijar a la página de inicio"
+    },
+    "removeFromDefaultFolders": {
+        "message": "Desfijar"
+    },
+    "addedToDefaultFolders": {
+        "message": "Se fijó $1 a la página de inicio"
+    },
+    "removedFromDefaultFolders": {
+        "message": "Se desfijó $1"
+    },
+    "maxDefaultFoldersReached": {
+        "message": "Solo puede fijar hasta 8 carpetas"
+    },
+    "deleteFolderError": {
+        "message": "No se pudo eliminar la carpeta, por favor intente de nuevo"
+    },
+    "themeTitle": {
+        "message": "Configuración del tema",
+        "description": "Título de configuración del tema"
+    },
+    "lightTheme": {
+        "message": "Claro",
+        "description": "Opción de tema claro"
+    },
+    "darkTheme": {
+        "message": "Oscuro",
+        "description": "Opción de tema oscuro"
+    },
+    "autoTheme": {
+        "message": "Seguir sistema",
+        "description": "Opción de seguir tema del sistema"
+    },
+    "interfaceElementsTitle": {
+        "message": "Visualización de Elementos de Interfaz",
+        "description": "Título de configuración de visualización de elementos de interfaz"
+    },
+    "showSearchBox": {
+        "message": "Mostrar Cuadro de Búsqueda",
+        "description": "Opción para mostrar cuadro de búsqueda"
+    },
+    "showWelcomeMessage": {
+        "message": "Mostrar Mensaje de Bienvenida",
+        "description": "Opción para mostrar mensaje de bienvenida"
+    },
+    "showFooter": {
+        "message": "Mostrar Pie de Página",
+        "description": "Opción para mostrar pie de página"
+    },
+    "quickAccessLinksTitle": {
+        "message": "Enlaces de Acceso Rápido",
+        "description": "Título de configuración de enlaces de acceso rápido"
+    },
+    "showHistoryLink": {
+        "message": "Mostrar Historial",
+        "description": "Opción para mostrar enlace de historial"
+    },
+    "showDownloadsLink": {
+        "message": "Mostrar Descargas",
+        "description": "Opción para mostrar enlace de descargas"
+    },
+    "showPasswordsLink": {
+        "message": "Mostrar Contraseñas",
+        "description": "Opción para mostrar enlace de contraseñas"
+    },
+    "showExtensionsLink": {
+        "message": "Mostrar Extensiones",
+        "description": "Opción para mostrar enlace de extensiones"
+    },
+    "searchTab": {
+        "message": "Búsqueda",
+        "description": "Nombre de la pestaña de configuración de búsqueda"
+    },
+    "searchSettingsTitle": {
+        "message": "Configuración de búsqueda",
+        "description": "Título de la página de configuración de búsqueda"
+    },
+    "searchSettingsDescription": {
+        "message": "Personalizar la visualización y el comportamiento de las sugerencias de búsqueda",
+        "description": "Descripción de la página de configuración de búsqueda"
+    },
+    "searchSuggestionsTitle": {
+        "message": "Configuración de sugerencias de búsqueda",
+        "description": "Título de la configuración de sugerencias de búsqueda"
+    },
+    "showHistorySuggestions": {
+        "message": "Mostrar sugerencias del historial",
+        "description": "Opción para mostrar sugerencias del historial"
+    },
+    "showBookmarkSuggestions": {
+        "message": "Mostrar sugerencias de marcadores",
+        "description": "Opción para mostrar sugerencias de marcadores"
+    },
+    "containerWidthTitle": {
+        "message": "Ancho del contenedor de marcadores",
+        "description": "Título para la configuración del ancho del contenedor de marcadores"
+    },
+    "containerWidthDescription": {
+        "message": "Ajustar la proporción de ancho del contenedor de marcadores en la página",
+        "description": "Descripción de la configuración del ancho del contenedor de marcadores"
+    },
+    "donateTab": {
+        "message": "Apóyanos",
+        "description": "Donate tab name in settings"
+    },
+    "donateTitle": {
+        "message": "Apoya el Desarrollo de TabMark",
+        "description": "Title for donation section"
+    },
+    "donateDescription": {
+        "message": "Si encuentras útil TabMark, por favor considera apoyar su desarrollo continuo. Tu contribución nos ayuda a mejorar la extensión y añadir nuevas funciones.",
+        "description": "Description for donation section"
+    },
+    "wechatDonateTitle": {
+        "message": "WeChat Pay",
+        "description": "Title for WeChat donation option"
+    },
+    "paypalDonateTitle": {
+        "message": "PayPal",
+        "description": "Title for PayPal donation option"
+    },
+    "scanQRCodeToDonate": {
+        "message": "Escanea el código QR para donar",
+        "description": "Text for scanning QR code to donate"
+    },
+    "donateWithPaypal": {
+        "message": "Donar con PayPal",
+        "description": "Text for PayPal donation button"
+    },
+    "thankYouForSupport": {
+        "message": "¡Gracias por tu apoyo!",
+        "description": "Thank you message for donations"
+    },
+    "bookmarksPerRow": {
+        "message": "$1 por fila",
+        "description": "Número de marcadores por fila"
+    },
+    "grokLabel": {
+        "message": "Grok",
+        "description": "Etiqueta del motor de búsqueda Grok"
+    },
+    "searchBoxDisplayTitle": {
+        "message": "Visualización del Cuadro de Búsqueda",
+        "description": "Título para la configuración de visualización del cuadro de búsqueda"
     }
 }

@@ -697,39 +697,133 @@
         "message": "跟随系统",
         "description": "跟随系统主题选项"
     },
-    "layoutTab": {
-        "message": "布局设置",
-        "description": "布局设置选项卡名称"
-    },
-    "layoutSettingsTitle": {
-        "message": "布局设置",
-        "description": "布局设置标题"
-    },
-    "layoutSettingsDescription": {
-        "message": "自定义书签和界面的布局显示方式",
-        "description": "布局设置描述"
-    },
-    "bookmarkWidthTitle": {
-        "message": "书签宽度设置",
-        "description": "书签宽度设置的标题"
-    },
-    "previewText": {
-        "message": "每行书签按钮数量：",
-        "description": "书签宽度预览效果的说明文本"
-    },
     "addToDefaultFolders": {
-        "message": "添加到默认文件夹"
+        "message": "固定到主页"
     },
     "removeFromDefaultFolders": {
-        "message": "从默认文件夹移除"
+        "message": "取消固定"
     },
     "addedToDefaultFolders": {
-        "message": "已将 $1 添加到默认文件夹"
+        "message": "已将 $1 固定到主页"
     },
     "removedFromDefaultFolders": {
-        "message": "已将 $1 从默认文件夹移除"
+        "message": "已取消固定 $1"
     },
     "maxDefaultFoldersReached": {
-        "message": "最多只能设置5个默认文件夹"
-    }
+        "message": "最多只能固定8个文件夹"
+    },
+    "interfaceElementsTitle": {
+        "message": "界面元素显示",
+        "description": "界面元素显示设置标题"
+    },
+    "showSearchBox": {
+        "message": "显示搜索框",
+        "description": "显示搜索框选项"
+    },
+    "showWelcomeMessage": {
+        "message": "显示欢迎语",
+        "description": "显示欢迎语选项"
+    },
+    "showFooter": {
+        "message": "显示页脚",
+        "description": "显示页脚选项"
+    },
+    "quickAccessLinksTitle": {
+        "message": "快捷访问链接",
+        "description": "快捷访问链接设置标题"
+    },
+    "showHistoryLink": {
+        "message": "显示历史记录",
+        "description": "显示历史记录选项"
+    },
+    "showDownloadsLink": {
+        "message": "显示下载记录",
+        "description": "显示下载记录选项"
+    },
+    "showPasswordsLink": {
+        "message": "显示密码管理",
+        "description": "显示密码管理选项"
+    },
+    "showExtensionsLink": {
+        "message": "显示扩展管理",
+        "description": "显示扩展管理选项"
+    },
+    "searchTab": {
+        "message": "搜索设置",
+        "description": "搜索设置标签名称"
+    },
+    "searchSettingsTitle": {
+        "message": "搜索设置",
+        "description": "搜索设置页面标题"
+    },
+    "searchSettingsDescription": {
+        "message": "自定义搜索建议的显示内容和行为",
+        "description": "搜索设置页面描述"
+    },
+    "searchSuggestionsTitle": {
+        "message": "搜索建议设置",
+        "description": "搜索建议设置标题"
+    },
+    "showHistorySuggestions": {
+        "message": "显示历史记录建议",
+        "description": "显示历史记录建议选项"
+    },
+    "showBookmarkSuggestions": {
+        "message": "显示书签建议",
+        "description": "显示书签建议选项"
+    },
+    "containerWidthTitle": {
+        "message": "书签容器宽度"
+    },
+    "containerWidthDescription": {
+        "message": "调整书签容器在页面中的宽度比例"
+    },
+    "donateTab": {
+        "message": "支持我们",
+        "description": "Donate tab name in settings"
+    },
+    "donateTitle": {
+        "message": "支持 TabMark 开发",
+        "description": "Title for donation section"
+    },
+    "donateDescription": {
+        "message": "如果您觉得 TabMark 有用，请考虑支持它的持续开发。您的贡献将帮助我们改进扩展并添加新功能。",
+        "description": "Description for donation section"
+    },
+    "wechatDonateTitle": {
+        "message": "微信支付",
+        "description": "Title for WeChat donation option"
+    },
+    "paypalDonateTitle": {
+        "message": "PayPal",
+        "description": "Title for PayPal donation option"
+    },
+    "scanQRCodeToDonate": {
+        "message": "扫描二维码捐赠",
+        "description": "Text for scanning QR code to donate"
+    },
+    "donateWithPaypal": {
+        "message": "使用 PayPal 捐赠",
+        "description": "Text for PayPal donation button"
+    },
+    "thankYouForSupport": {
+        "message": "感谢您的支持！",
+        "description": "Thank you message for donations"
+    },
+    "bookmarksPerRow": {
+        "message": "$1 个/行",
+        "description": "每行显示的书签数量"
+    },
+    "customTabFeature": {
+        "message": "新增自定义标签页功能：\n1. 现在您可以自定义主页显示的内容，在设置中的「布局设置」选项卡下\n2. 可以选择隐藏或显示搜索框、欢迎语和页脚\n3. 可以自定义快捷访问链接的显示\n4. 调整书签容器宽度，获得最适合您的布局\n5. 在「搜索设置」中可以选择是否显示历史记录和书签建议\n6. 新增「支持我们」选项，如果您喜欢这个扩展，可以通过微信赞赏支持开发",
+        "description": "自定义标签页功能的提示信息"
+    },
+    "grokLabel": {
+        "message": "Grok",
+        "description": "Grok 搜索引擎标签"
+    },
+    "searchBoxDisplayTitle": {
+            "message": "搜索框显示",
+            "description": "搜索框显示设置标题"
+        }
 }

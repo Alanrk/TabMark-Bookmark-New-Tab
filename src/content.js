@@ -78,36 +78,88 @@
 
   async function displayBookmarks() {
     try {
+      // 1. 获取所有书签
       const bookmarks = await fetchBookmarks();
       const bookmarkListContainer = shadow.getElementById('bookmark-list');
       bookmarkListContainer.innerHTML = '';
 
-      let defaultBookmarkId = await getDefaultBookmarkId();
-      let defaultBookmarkNode = null;
+      // 2. 获取默认文件夹列表
+      const { defaultFolders } = await chrome.storage.sync.get('defaultFolders');
+      const { lastViewedFolder } = await chrome.storage.local.get('lastViewedFolder');
+      
+      let folderToShow = null;
+      let folderContents = [];
 
-      if (defaultBookmarkId) {
-        defaultBookmarkNode = findBookmarkNodeById(bookmarks[0], defaultBookmarkId);
+      // 3. 修改逻辑以匹配新标签页，但通过消息传递获取书签
+      if (defaultFolders?.items?.length > 0) {
+        // 检查上次访问的文件夹是否在默认文件夹列表中
+        let folderToActivate;
+        
+        if (lastViewedFolder && defaultFolders.items.some(f => f.id === lastViewedFolder)) {
+          folderToActivate = lastViewedFolder;
+        } else {
+          // 否则使用第一个默认文件夹
+          folderToActivate = defaultFolders.items[0].id;
+        }
+        
+        try {
+          // 通过消息传递获取文件夹信息
+          const response = await chrome.runtime.sendMessage({ 
+            action: 'getBookmarkFolder', 
+            folderId: folderToActivate 
+          });
+          
+          if (response.success && response.folder) {
+            folderToShow = response.folder;
+            if (response.children) {
+              folderContents = response.children;
+            }
+          }
+        } catch (error) {
+          console.log('Folder not found:', error);
+        }
       }
 
-      if (!defaultBookmarkNode) {
-        const parentIdOneBookmarks = findBookmarksByParentId(bookmarks[0], '1');
-        const filteredBookmarks = parentIdOneBookmarks.filter(bookmark => bookmark.url);
+      // 如果没有找到有效的文件夹，回退到根书签文件夹(id='1')
+      if (!folderToShow) {
+        try {
+          // 通过消息传递获取根文件夹信息
+          const response = await chrome.runtime.sendMessage({ 
+            action: 'getBookmarkFolder', 
+            folderId: '1' 
+          });
+          
+          if (response.success && response.folder) {
+            folderToShow = response.folder;
+            if (response.children) {
+              folderContents = response.children;
+            }
+          }
+        } catch (error) {
+          console.log('Root folder not found:', error);
+        }
+      }
 
-        if (filteredBookmarks.length > 0) {
-          filteredBookmarks.forEach(bookmark => {
-            bookmarkListContainer.appendChild(createBookmarkElement(bookmark));
+      // 显示选定的文件夹内容
+      if (folderToShow) {
+        if (folderToShow.url) {
+          bookmarkListContainer.appendChild(createBookmarkElement(folderToShow));
+        } else if (folderContents.length > 0) {
+          // 使用已获取的文件夹内容
+          folderContents.forEach(child => {
+            if (child.url) {
+              bookmarkListContainer.appendChild(createBookmarkElement(child));
+            }
           });
         } else {
-          defaultBookmarkNode = bookmarks[0];
-          displayBookmarksRecursive(defaultBookmarkNode, bookmarkListContainer);
+          // 如果没有预先获取的内容，尝试通过递归显示
+          displayBookmarksRecursive(folderToShow, bookmarkListContainer);
         }
       } else {
-        if (defaultBookmarkNode.url) {
-          bookmarkListContainer.appendChild(createBookmarkElement(defaultBookmarkNode));
-        } else {
-          displayBookmarksRecursive(defaultBookmarkNode, bookmarkListContainer);
-        }
+        // 最后的回退方案：显示所有书签
+        displayBookmarksRecursive(bookmarks[0], bookmarkListContainer);
       }
+
     } catch (error) {
       console.error('Failed to fetch bookmarks:', error);
     }
@@ -275,6 +327,10 @@
     <img src="${chrome.runtime.getURL('../images/sider-icon/chatgpt-logo.svg')}" alt="ChatGPT" class="search-icon">
     <span>ChatGPT <span class="shortcut-key">Alt+8</span></span>
   </li>
+  <li data-url="https://grok.com/?q=" data-shortcut="9" ${defaultSearchEngine === 'grok' ? 'class="selected"' : ''}>
+    <img src="${chrome.runtime.getURL('../images/grok-logo.svg')}" alt="Grok" class="search-icon">
+    <span>Grok <span class="shortcut-key">Alt+9</span></span>
+  </li>
 </ul>
 <ul id="bookmark-list"></ul>
   `;
@@ -341,41 +397,6 @@
     item.addEventListener('click', (event) => {
       openSearch(event.target.closest('li'));
     });
-  });
-
-  window.addEventListener('keydown', (event) => {
-    cachedSelectedText = getSelectedText();
-
-    if ((event.altKey && event.key === 'Enter') || (event.metaKey && event.key === 'Enter')) {
-      event.preventDefault();
-      openAllSearches();
-      return;
-    }
-
-    if (event.altKey) {
-      const code = event.code;
-
-      switch (code) {
-        case 'Digit1':
-        case 'Digit2':
-        case 'Digit3':
-        case 'Digit4':
-        case 'Digit5':
-        case 'Digit6':
-        case 'Digit7':
-          event.preventDefault();
-          const item = searchSwitcher.querySelector(`li[data-shortcut="${code.slice(-1)}"]`);
-          if (item) {
-            openSearch(item);
-          }
-          break;
-      }
-    }
-
-    if (event.altKey && event.key === 'b') {
-      event.preventDefault();
-      openSidePanel();
-    }
   });
 
   const styleSheet = document.createElement("style");
@@ -688,6 +709,12 @@
     if (request.action === 'loadDefaultBookmark') {
       displayBookmarks();
     }
+    if (request.action === 'updateBookmarkDisplay') {
+      const { folderId } = request;
+      if (folderId) {
+        displayBookmarks();
+      }
+    }
   });
 
   displayBookmarks();
@@ -869,6 +896,14 @@
       urlParamName: 'q',
       maxRetries: 2,
       retryDelay: 1500
+    },
+    {
+      urlPattern: 'https://grok.com/',
+      inputFieldSelector: 'textarea.grok-chat-input',
+      sendButtonSelector: 'button.grok-send-button',
+      urlParamName: 'q',
+      maxRetries: 3,
+      retryDelay: 1000
     }
   ];
 
@@ -957,16 +992,5 @@
       }
     });
   }
-
-  // 修改快捷键监听，同时支持 Windows/Linux (Alt+B) 和 Mac (Command+B)
-  document.addEventListener('keydown', (e) => {
-    const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
-    
-    if ((isMac && e.metaKey && e.key.toLowerCase() === 'b') || 
-        (!isMac && e.altKey && e.key.toLowerCase() === 'b')) {
-      e.preventDefault(); // 阻止默认行为
-      openSidePanel();
-    }
-  });
 
 })();

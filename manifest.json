@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TabMark-Bookmark New Tab",
-  "version": "1.241",
+  "version": "1.242",
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "chrome_url_overrides": {
@@ -12,10 +12,10 @@
     "favicon",
     "storage",
     "history",
-    "alarms",
     "tabGroups",
     "management",
-    "sidePanel"
+    "sidePanel",
+    "commands"
   ],
   "host_permissions": [
     "https://*/*",
@@ -58,19 +58,12 @@
     "default_width": 430
   },
   "commands": {
-    "_execute_side_panel": {
+    "open_side_panel": {
       "suggested_key": {
         "default": "Alt+B",
         "mac": "Command+B"
       },
-      "description": "Toggle side panel"
-    },
-    "close_side_panel": {
-      "suggested_key": {
-        "default": "Alt+Shift+B",
-        "mac": "Command+Shift+B"
-      },
-      "description": "Close side panel"
+      "description": "打开侧边栏"
     }
   }
 }

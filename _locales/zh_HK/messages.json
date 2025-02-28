@@ -642,5 +642,151 @@
     "previewText": {
         "message": "每行書籤按鈕數量：",
         "description": "書籤寬度預覽說明文字"
+    },
+    "addToDefaultFolders": {
+        "message": "固定到主頁"
+    },
+    "removeFromDefaultFolders": {
+        "message": "取消固定"
+    },
+    "addedToDefaultFolders": {
+        "message": "已將 $1 固定到主頁"
+    },
+    "removedFromDefaultFolders": {
+        "message": "已取消固定 $1"
+    },
+    "maxDefaultFoldersReached": {
+        "message": "最多只能固定8個資料夾"
+    },
+    "deleteFolderError": {
+        "message": "刪除資料夾失敗，請重試"
+    },
+    "themeTitle": {
+        "message": "主題設定",
+        "description": "主題設定標題"
+    },
+    "lightTheme": {
+        "message": "淺色",
+        "description": "淺色主題選項"
+    },
+    "darkTheme": {
+        "message": "深色",
+        "description": "深色主題選項"
+    },
+    "autoTheme": {
+        "message": "跟隨系統",
+        "description": "跟隨系統主題選項"
+    },
+    "interfaceElementsTitle": {
+        "message": "界面元素顯示",
+        "description": "界面元素顯示設定標題"
+    },
+    "showSearchBox": {
+        "message": "顯示搜尋框",
+        "description": "顯示搜尋框選項"
+    },
+    "showWelcomeMessage": {
+        "message": "顯示歡迎語",
+        "description": "顯示歡迎語選項"
+    },
+    "showFooter": {
+        "message": "顯示頁腳",
+        "description": "顯示頁腳選項"
+    },
+    "quickAccessLinksTitle": {
+        "message": "快捷訪問連結",
+        "description": "快捷訪問連結設定標題"
+    },
+    "showHistoryLink": {
+        "message": "顯示歷史記錄",
+        "description": "顯示歷史記錄選項"
+    },
+    "showDownloadsLink": {
+        "message": "顯示下載記錄",
+        "description": "顯示下載記錄選項"
+    },
+    "showPasswordsLink": {
+        "message": "顯示密碼管理",
+        "description": "顯示密碼管理選項"
+    },
+    "showExtensionsLink": {
+        "message": "顯示擴展管理",
+        "description": "顯示擴展管理選項"
+    },
+    "searchTab": {
+        "message": "搜尋設定",
+        "description": "搜尋設定標籤名稱"
+    },
+    "searchSettingsTitle": {
+        "message": "搜尋設定",
+        "description": "搜尋設定頁面標題"
+    },
+    "searchSettingsDescription": {
+        "message": "自訂搜尋建議的顯示內容和行為",
+        "description": "搜尋設定頁面描述"
+    },
+    "searchSuggestionsTitle": {
+        "message": "搜尋建議設定",
+        "description": "搜尋建議設定標題"
+    },
+    "showHistorySuggestions": {
+        "message": "顯示歷史記錄建議",
+        "description": "顯示歷史記錄建議選項"
+    },
+    "showBookmarkSuggestions": {
+        "message": "顯示書籤建議",
+        "description": "顯示書籤建議選項"
+    },
+    "containerWidthTitle": {
+        "message": "書籤容器寬度",
+        "description": "書籤容器寬度設定標題"
+    },
+    "containerWidthDescription": {
+        "message": "調整書籤容器在頁面中的寬度比例",
+        "description": "書籤容器寬度設定描述"
+    },
+    "donateTab": {
+        "message": "支持我們",
+        "description": "Donate tab name in settings"
+    },
+    "donateTitle": {
+        "message": "支持 TabMark 開發",
+        "description": "Title for donation section"
+    },
+    "donateDescription": {
+        "message": "如果您覺得 TabMark 有用，請考慮支持它的持續開發。您的貢獻將幫助我們改進擴展並添加新功能。",
+        "description": "Description for donation section"
+    },
+    "wechatDonateTitle": {
+        "message": "微信支付",
+        "description": "Title for WeChat donation option"
+    },
+    "paypalDonateTitle": {
+        "message": "PayPal",
+        "description": "Title for PayPal donation option"
+    },
+    "scanQRCodeToDonate": {
+        "message": "掃描二維碼捐贈",
+        "description": "Text for scanning QR code to donate"
+    },
+    "donateWithPaypal": {
+        "message": "使用 PayPal 捐贈",
+        "description": "Text for PayPal donation button"
+    },
+    "thankYouForSupport": {
+        "message": "感謝您的支持！",
+        "description": "Thank you message for donations"
+    },
+    "bookmarksPerRow": {
+        "message": "$1 個/行",
+        "description": "每行顯示的書籤數量"
+    },
+    "grokLabel": {
+        "message": "Grok",
+        "description": "Grok 搜索引擎標籤"
+    },
+    "searchBoxDisplayTitle": {
+        "message": "搜尋框顯示",
+        "description": "搜尋框顯示設定標題"
     }
 }

@@ -514,5 +514,133 @@
     "previewText": {
         "message": "Nombre de boutons de favoris par ligne :",
         "description": "Texte expliquant l'aperçu de la largeur des favoris"
+    },
+    "themeTitle": {
+        "message": "Paramètres du thème",
+        "description": "Titre des paramètres du thème"
+    },
+    "lightTheme": {
+        "message": "Clair",
+        "description": "Option de thème clair"
+    },
+    "darkTheme": {
+        "message": "Sombre",
+        "description": "Option de thème sombre"
+    },
+    "autoTheme": {
+        "message": "Suivre système",
+        "description": "Option de suivre le thème système"
+    },
+    "interfaceElementsTitle": {
+        "message": "Affichage des Éléments d'Interface",
+        "description": "Titre des paramètres d'affichage des éléments d'interface"
+    },
+    "showSearchBox": {
+        "message": "Afficher la Barre de Recherche",
+        "description": "Option pour afficher la barre de recherche"
+    },
+    "showWelcomeMessage": {
+        "message": "Afficher le Message de Bienvenue",
+        "description": "Option pour afficher le message de bienvenue"
+    },
+    "showFooter": {
+        "message": "Afficher le Pied de Page",
+        "description": "Option pour afficher le pied de page"
+    },
+    "quickAccessLinksTitle": {
+        "message": "Liens d'Accès Rapide",
+        "description": "Titre des paramètres des liens d'accès rapide"
+    },
+    "showHistoryLink": {
+        "message": "Afficher l'Historique",
+        "description": "Option pour afficher le lien de l'historique"
+    },
+    "showDownloadsLink": {
+        "message": "Afficher les Téléchargements",
+        "description": "Option pour afficher le lien des téléchargements"
+    },
+    "showPasswordsLink": {
+        "message": "Afficher les Mots de Passe",
+        "description": "Option pour afficher le lien des mots de passe"
+    },
+    "showExtensionsLink": {
+        "message": "Afficher les Extensions",
+        "description": "Option pour afficher le lien des extensions"
+    },
+    "searchTab": {
+        "message": "Recherche",
+        "description": "Nom de l'onglet des paramètres de recherche"
+    },
+    "searchSettingsTitle": {
+        "message": "Paramètres de recherche",
+        "description": "Titre de la page des paramètres de recherche"
+    },
+    "searchSettingsDescription": {
+        "message": "Personnaliser l'affichage et le comportement des suggestions de recherche",
+        "description": "Description de la page des paramètres de recherche"
+    },
+    "searchSuggestionsTitle": {
+        "message": "Paramètres des suggestions de recherche",
+        "description": "Titre des paramètres des suggestions de recherche"
+    },
+    "showHistorySuggestions": {
+        "message": "Afficher les suggestions d'historique",
+        "description": "Option pour afficher les suggestions d'historique"
+    },
+    "showBookmarkSuggestions": {
+        "message": "Afficher les suggestions de favoris",
+        "description": "Option pour afficher les suggestions de favoris"
+    },
+    "containerWidthTitle": {
+        "message": "Largeur du conteneur de favoris",
+        "description": "Titre des paramètres de largeur du conteneur de favoris"
+    },
+    "containerWidthDescription": {
+        "message": "Ajuster la largeur du conteneur de favoris dans la page",
+        "description": "Description des paramètres de largeur du conteneur de favoris"
+    },
+    "donateTab": {
+        "message": "Nous Soutenir",
+        "description": "Donate tab name in settings"
+    },
+    "donateTitle": {
+        "message": "Soutenez le Développement de TabMark",
+        "description": "Title for donation section"
+    },
+    "donateDescription": {
+        "message": "Si vous trouvez TabMark utile, veuillez envisager de soutenir son développement continu. Votre contribution nous aide à améliorer l'extension et à ajouter de nouvelles fonctionnalités.",
+        "description": "Description for donation section"
+    },
+    "wechatDonateTitle": {
+        "message": "WeChat Pay",
+        "description": "Title for WeChat donation option"
+    },
+    "paypalDonateTitle": {
+        "message": "PayPal",
+        "description": "Title for PayPal donation option"
+    },
+    "scanQRCodeToDonate": {
+        "message": "Scannez le code QR pour faire un don",
+        "description": "Text for scanning QR code to donate"
+    },
+    "donateWithPaypal": {
+        "message": "Faire un don avec PayPal",
+        "description": "Text for PayPal donation button"
+    },
+    "thankYouForSupport": {
+        "message": "Merci pour votre soutien !",
+        "description": "Thank you message for donations"
+    },
+    "bookmarksPerRow": {
+        "message": "$1 par ligne",
+        "description": "Nombre de favoris par ligne"
+    },
+    "grokLabel": {
+        "message": "Grok",
+        "description": "Label du moteur de recherche Grok"
+    },
+    "searchBoxDisplayTitle": {
+        "message": "検索ボックスの表示",
+        "description": "検索ボックス表示設定のタイトル"
     }
 }

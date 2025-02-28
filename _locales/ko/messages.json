@@ -594,5 +594,151 @@
     "previewText": {
         "message": "행당 북마크 버튼 수:",
         "description": "북마크 너비 미리보기 설명 텍스트"
+    },
+    "addToDefaultFolders": {
+        "message": "홈페이지에 고정"
+    },
+    "removeFromDefaultFolders": {
+        "message": "고정 해제"
+    },
+    "addedToDefaultFolders": {
+        "message": "$1을(를) 홈페이지에 고정했습니다"
+    },
+    "removedFromDefaultFolders": {
+        "message": "$1의 고정을 해제했습니다"
+    },
+    "maxDefaultFoldersReached": {
+        "message": "최대 8개의 폴더만 고정할 수 있습니다"
+    },
+    "deleteFolderError": {
+        "message": "폴더 삭제에 실패했습니다. 다시 시도해 주세요"
+    },
+    "themeTitle": {
+        "message": "테마 설정",
+        "description": "테마 설정 제목"
+    },
+    "lightTheme": {
+        "message": "라이트",
+        "description": "라이트 테마 옵션"
+    },
+    "darkTheme": {
+        "message": "다크",
+        "description": "다크 테마 옵션"
+    },
+    "autoTheme": {
+        "message": "시스템 따르기",
+        "description": "시스템 테마 따르기 옵션"
+    },
+    "interfaceElementsTitle": {
+        "message": "인터페이스 요소 표시",
+        "description": "인터페이스 요소 표시 설정 제목"
+    },
+    "showSearchBox": {
+        "message": "검색창 표시",
+        "description": "검색창 표시 옵션"
+    },
+    "showWelcomeMessage": {
+        "message": "환영 메시지 표시",
+        "description": "환영 메시지 표시 옵션"
+    },
+    "showFooter": {
+        "message": "푸터 표시",
+        "description": "푸터 표시 옵션"
+    },
+    "quickAccessLinksTitle": {
+        "message": "빠른 접근 링크",
+        "description": "빠른 접근 링크 설정 제목"
+    },
+    "showHistoryLink": {
+        "message": "방문 기록 표시",
+        "description": "방문 기록 링크 표시 옵션"
+    },
+    "showDownloadsLink": {
+        "message": "다운로드 표시",
+        "description": "다운로드 링크 표시 옵션"
+    },
+    "showPasswordsLink": {
+        "message": "비밀번호 표시",
+        "description": "비밀번호 링크 표시 옵션"
+    },
+    "showExtensionsLink": {
+        "message": "확장 프로그램 표시",
+        "description": "확장 프로그램 링크 표시 옵션"
+    },
+    "searchTab": {
+        "message": "검색",
+        "description": "검색 설정 탭 이름"
+    },
+    "searchSettingsTitle": {
+        "message": "검색 설정",
+        "description": "검색 설정 페이지 제목"
+    },
+    "searchSettingsDescription": {
+        "message": "검색 제안 표시 및 동작 사용자 지정",
+        "description": "검색 설정 페이지 설명"
+    },
+    "searchSuggestionsTitle": {
+        "message": "검색 제안 설정",
+        "description": "검색 제안 설정 제목"
+    },
+    "showHistorySuggestions": {
+        "message": "방문 기록 제안 표시",
+        "description": "방문 기록 제안 표시 옵션"
+    },
+    "showBookmarkSuggestions": {
+        "message": "북마크 제안 표시",
+        "description": "북마크 제안 표시 옵션"
+    },
+    "containerWidthTitle": {
+        "message": "북마크 컨테이너 너비",
+        "description": "북마크 컨테이너 너비 설정 제목"
+    },
+    "containerWidthDescription": {
+        "message": "페이지 내 북마크 컨테이너의 너비 비율을 조정합니다.",
+        "description": "북마크 컨테이너 너비 설정 설명"
+    },
+    "donateTab": {
+        "message": "후원하기",
+        "description": "Donate tab name in settings"
+    },
+    "donateTitle": {
+        "message": "TabMark 개발 지원하기",
+        "description": "Title for donation section"
+    },
+    "donateDescription": {
+        "message": "TabMark가 유용하다고 생각하신다면, 지속적인 개발을 지원해 주세요. 여러분의 기여는 확장 프로그램을 개선하고 새로운 기능을 추가하는 데 도움이 됩니다.",
+        "description": "Description for donation section"
+    },
+    "wechatDonateTitle": {
+        "message": "WeChat Pay",
+        "description": "Title for WeChat donation option"
+    },
+    "paypalDonateTitle": {
+        "message": "PayPal",
+        "description": "Title for PayPal donation option"
+    },
+    "scanQRCodeToDonate": {
+        "message": "QR 코드를 스캔하여 후원하기",
+        "description": "Text for scanning QR code to donate"
+    },
+    "donateWithPaypal": {
+        "message": "PayPal로 후원하기",
+        "description": "Text for PayPal donation button"
+    },
+    "thankYouForSupport": {
+        "message": "후원해 주셔서 감사합니다!",
+        "description": "Thank you message for donations"
+    },
+    "bookmarksPerRow": {
+        "message": "행당 $1 개",
+        "description": "행당 북마크 버튼 수"
+    },
+    "grokLabel": {
+        "message": "Grok",
+        "description": "Grok 검색 엔진 레이블"
+    },
+    "searchBoxDisplayTitle": {
+        "message": "검색창 표시",
+        "description": "검색창 표시 설정 제목"
     }
 }

@@ -594,5 +594,151 @@
     "previewText": {
         "message": "1行あたりのブックマークボタン数：",
         "description": "ブックマーク幅プレビューの説明テキスト"
+    },
+    "addToDefaultFolders": {
+        "message": "ホームページにピン留め"
+    },
+    "removeFromDefaultFolders": {
+        "message": "ピン留めを解除"
+    },
+    "addedToDefaultFolders": {
+        "message": "$1 をホームページにピン留めしました"
+    },
+    "removedFromDefaultFolders": {
+        "message": "$1 のピン留めを解除しました"
+    },
+    "maxDefaultFoldersReached": {
+        "message": "ピン留めできるフォルダは最大8個までです"
+    },
+    "deleteFolderError": {
+        "message": "フォルダの削除に失敗しました。もう一度お試しください"
+    },
+    "themeTitle": {
+        "message": "テーマ設定",
+        "description": "テーマ設定のタイトル"
+    },
+    "lightTheme": {
+        "message": "ライト",
+        "description": "ライトテーマオプション"
+    },
+    "darkTheme": {
+        "message": "ダーク",
+        "description": "ダークテーマオプション"
+    },
+    "autoTheme": {
+        "message": "システムに従う",
+        "description": "システムテーマに従うオプション"
+    },
+    "interfaceElementsTitle": {
+        "message": "インターフェース要素の表示",
+        "description": "インターフェース要素表示設定のタイトル"
+    },
+    "showSearchBox": {
+        "message": "検索ボックスを表示",
+        "description": "検索ボックス表示オプション"
+    },
+    "showWelcomeMessage": {
+        "message": "ウェルカムメッセージを表示",
+        "description": "ウェルカムメッセージ表示オプション"
+    },
+    "showFooter": {
+        "message": "フッターを表示",
+        "description": "フッター表示オプション"
+    },
+    "quickAccessLinksTitle": {
+        "message": "クイックアクセスリンク",
+        "description": "クイックアクセスリンク設定のタイトル"
+    },
+    "showHistoryLink": {
+        "message": "履歴を表示",
+        "description": "履歴リンク表示オプション"
+    },
+    "showDownloadsLink": {
+        "message": "ダウンロードを表示",
+        "description": "ダウンロードリンク表示オプション"
+    },
+    "showPasswordsLink": {
+        "message": "パスワードを表示",
+        "description": "パスワードリンク表示オプション"
+    },
+    "showExtensionsLink": {
+        "message": "拡張機能を表示",
+        "description": "拡張機能リンク表示オプション"
+    },
+    "searchTab": {
+        "message": "検索",
+        "description": "検索設定タブ名"
+    },
+    "searchSettingsTitle": {
+        "message": "検索設定",
+        "description": "検索設定ページのタイトル"
+    },
+    "searchSettingsDescription": {
+        "message": "検索候補の表示と動作をカスタマイズ",
+        "description": "検索設定ページの説明"
+    },
+    "searchSuggestionsTitle": {
+        "message": "検索候補設定",
+        "description": "検索候補設定のタイトル"
+    },
+    "showHistorySuggestions": {
+        "message": "履歴候補を表示",
+        "description": "履歴候補を表示するオプション"
+    },
+    "showBookmarkSuggestions": {
+        "message": "ブックマーク候補を表示",
+        "description": "ブックマーク候補を表示するオプション"
+    },
+    "containerWidthTitle": {
+        "message": "ブックマークコンテナの幅",
+        "description": "ブックマークコンテナの幅設定のタイトル"
+    },
+    "containerWidthDescription": {
+        "message": "ページ内のブックマークコンテナの幅比率を調整",
+        "description": "ブックマークコンテナの幅設定の説明"
+    },
+    "donateTab": {
+        "message": "サポートする",
+        "description": "設定の寄付タブ名"
+    },
+    "donateTitle": {
+        "message": "TabMark開発をサポートする",
+        "description": "寄付セクションのタイトル"
+    },
+    "donateDescription": {
+        "message": "TabMarkが役立つと感じられた場合は、継続的な開発をサポートすることをご検討ください。あなたの貢献は、拡張機能の改善と新機能の追加に役立ちます。",
+        "description": "寄付セクションの説明"
+    },
+    "wechatDonateTitle": {
+        "message": "WeChat Pay",
+        "description": "WeChatでの寄付オプションのタイトル"
+    },
+    "paypalDonateTitle": {
+        "message": "PayPal",
+        "description": "PayPalでの寄付オプションのタイトル"
+    },
+    "scanQRCodeToDonate": {
+        "message": "QRコードをスキャンして寄付する",
+        "description": "QRコードをスキャンして寄付するためのテキスト"
+    },
+    "donateWithPaypal": {
+        "message": "PayPalで寄付する",
+        "description": "PayPal寄付ボタンのテキスト"
+    },
+    "thankYouForSupport": {
+        "message": "ご支援ありがとうございます！",
+        "description": "寄付への感謝メッセージ"
+    },
+    "bookmarksPerRow": {
+        "message": "1行あたり $1 個",
+        "description": "1行あたりのブックマークボタン数"
+    },
+    "grokLabel": {
+        "message": "Grok",
+        "description": "Grok 検索エンジンラベル"
+    },
+    "searchBoxDisplayTitle": {
+        "message": "検索ボックスの表示",
+        "description": "検索ボックス表示設定のタイトル"
     }
 }

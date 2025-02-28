@@ -148,4 +148,111 @@
 
 .back-to-links:hover {
   background: #f5f5f5;
+}
+
+/* 侧边栏模式下的样式调整 - 增强选择器优先级 */
+body.is-sidepanel footer,
+.is-sidepanel footer,
+body[class*="is-sidepanel"] footer,
+#sidebar-container.is-sidepanel ~ footer,
+footer[data-sidepanel-hidden="true"] {
+  display: none !important; /* 确保页脚在侧边栏模式下隐藏 */
+  visibility: hidden !important; /* 双重保险 */
+  height: 0 !important; /* 确保不占用空间 */
+  overflow: hidden !important; /* 防止内容溢出 */
+  opacity: 0 !important; /* 确保不可见 */
+  pointer-events: none !important; /* 禁用交互 */
+}
+
+/* 强制隐藏页脚的类 */
+body.force-hide-footer footer {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 其他侧边栏样式保持不变 */
+body.is-sidepanel .default-folders-tabs {
+  bottom: 20px !important; /* 调整默认文件夹切换区域位置 */
+}
+
+body.is-sidepanel main {
+  padding: 1rem !important;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* 侧边栏模式下的容器调整 */
+#sidebar-container.is-sidepanel {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 侧边栏模式下的书签容器调整 */
+body.is-sidepanel .bookmarks-container {
+  margin-bottom: 60px; /* 为底部导航留出空间 */
+  width: 100% !important; /* 确保在侧边栏模式下宽度为100% */
+  max-width: 100% !important; /* 防止其他样式覆盖 */
+}
+
+/* 确保侧边栏模式下的主容器也是100%宽度 */
+body.is-sidepanel main {
+  padding: 1rem !important;
+  height: 100vh;
+  overflow-y: auto;
+  width: 100% !important;
+}
+
+/* 确保侧边栏模式下的书签列表也是100%宽度 */
+body.is-sidepanel #bookmarks-list {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* 侧边栏模式下的 default-folders-tabs 样式 */
+body.is-sidepanel .default-folders-tabs {
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 16px 0 !important;
+  z-index: 1000 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* 确保在侧边栏模式下的 tabs-container 样式正确 */
+body.is-sidepanel .tabs-container {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 8px !important;
+  padding: 8px 16px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] body.is-sidepanel .tabs-container {
+  background: rgba(28, 28, 28, 0.9) !important;
+}
+
+/* 确保在侧边栏模式下的提示文本正确显示 */
+body.is-sidepanel .folder-tab::after {
+  bottom: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-bottom: 8px !important;
+}
+
+/* 调整书签容器底部边距，为 default-folders-tabs 留出空间 */
+body.is-sidepanel .bookmarks-container {
+  margin-bottom: 80px !important;
 } 

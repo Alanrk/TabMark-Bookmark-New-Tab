@@ -542,5 +542,151 @@
     "previewText": {
         "message": "Anzahl der Lesezeichen-Schaltflächen pro Zeile:",
         "description": "Text zur Erklärung der Lesezeichen-Breiten-Vorschau"
+    },
+    "addToDefaultFolders": {
+        "message": "An Startseite anheften"
+    },
+    "removeFromDefaultFolders": {
+        "message": "Losheften"
+    },
+    "addedToDefaultFolders": {
+        "message": "$1 wurde an die Startseite angeheftet"
+    },
+    "removedFromDefaultFolders": {
+        "message": "$1 wurde losgeheftet"
+    },
+    "maxDefaultFoldersReached": {
+        "message": "Sie können maximal 8 Ordner anheften"
+    },
+    "deleteFolderError": {
+        "message": "Ordner konnte nicht gelöscht werden, bitte versuchen Sie es erneut"
+    },
+    "themeTitle": {
+        "message": "Design-Einstellungen",
+        "description": "Titel der Design-Einstellungen"
+    },
+    "lightTheme": {
+        "message": "Hell",
+        "description": "Helles Design Option"
+    },
+    "darkTheme": {
+        "message": "Dunkel", 
+        "description": "Dunkles Design Option"
+    },
+    "autoTheme": {
+        "message": "System folgen",
+        "description": "System Design Option"
+    },
+    "searchTab": {
+        "message": "Suche",
+        "description": "Name des Sucheinstellungen-Tabs"
+    },
+    "searchSettingsTitle": {
+        "message": "Sucheinstellungen",
+        "description": "Titel der Sucheinstellungsseite"
+    },
+    "searchSettingsDescription": {
+        "message": "Anzeige und Verhalten der Suchvorschläge anpassen",
+        "description": "Beschreibung der Sucheinstellungsseite"
+    },
+    "searchSuggestionsTitle": {
+        "message": "Suchvorschläge-Einstellungen",
+        "description": "Titel der Suchvorschläge-Einstellungen"
+    },
+    "showHistorySuggestions": {
+        "message": "Verlaufsvorschläge anzeigen",
+        "description": "Option zum Anzeigen von Verlaufsvorschlägen"
+    },
+    "showBookmarkSuggestions": {
+        "message": "Lesezeichenvorschläge anzeigen",
+        "description": "Option zum Anzeigen von Lesezeichenvorschlägen"
+    },
+    "containerWidthTitle": {
+        "message": "Lesezeichen-Container-Breite",
+        "description": "Titel für Lesezeichen-Container-Breite-Einstellungen"
+    },
+    "containerWidthDescription": {
+        "message": "Anpassen Sie die Breite des Lesezeichen-Containers im Seitenbereich",
+        "description": "Beschreibung der Lesezeichen-Container-Breite-Einstellungen"
+    },
+    "interfaceElementsTitle": {
+        "message": "Anzeige der Benutzeroberfläche",
+        "description": "Titel der Einstellungen für die Anzeige der Benutzeroberfläche"
+    },
+    "showSearchBox": {
+        "message": "Suchfeld anzeigen",
+        "description": "Option zum Anzeigen des Suchfelds"
+    },
+    "showWelcomeMessage": {
+        "message": "Willkommensnachricht anzeigen",
+        "description": "Option zum Anzeigen der Willkommensnachricht"
+    },
+    "showFooter": {
+        "message": "Fußzeile anzeigen",
+        "description": "Option zum Anzeigen der Fußzeile"
+    },
+    "quickAccessLinksTitle": {
+        "message": "Schnellzugriffslinks",
+        "description": "Titel der Schnellzugriffslinks-Einstellungen"
+    },
+    "showHistoryLink": {
+        "message": "Verlauf anzeigen",
+        "description": "Option zum Anzeigen des Verlaufslinks"
+    },
+    "showDownloadsLink": {
+        "message": "Downloads anzeigen",
+        "description": "Option zum Anzeigen des Download-Links"
+    },
+    "showPasswordsLink": {
+        "message": "Passwörter anzeigen",
+        "description": "Option zum Anzeigen des Passwort-Links"
+    },
+    "showExtensionsLink": {
+        "message": "Erweiterungen anzeigen",
+        "description": "Option zum Anzeigen des Erweiterungs-Links"
+    },
+    "donateTab": {
+        "message": "Unterstützen Sie uns",
+        "description": "Donate tab name in settings"
+    },
+    "donateTitle": {
+        "message": "Unterstützen Sie die TabMark-Entwicklung",
+        "description": "Title for donation section"
+    },
+    "donateDescription": {
+        "message": "Wenn Sie TabMark nützlich finden, erwägen Sie bitte, die kontinuierliche Entwicklung zu unterstützen. Ihr Beitrag hilft uns, die Erweiterung zu verbessern und neue Funktionen hinzuzufügen.",
+        "description": "Description for donation section"
+    },
+    "wechatDonateTitle": {
+        "message": "WeChat Pay",
+        "description": "Title for WeChat donation option"
+    },
+    "paypalDonateTitle": {
+        "message": "PayPal",
+        "description": "Title for PayPal donation option"
+    },
+    "scanQRCodeToDonate": {
+        "message": "QR-Code scannen, um zu spenden",
+        "description": "Text for scanning QR code to donate"
+    },
+    "donateWithPaypal": {
+        "message": "Mit PayPal spenden",
+        "description": "Text for PayPal donation button"
+    },
+    "thankYouForSupport": {
+        "message": "Vielen Dank für Ihre Unterstützung!",
+        "description": "Thank you message for donations"
+    },
+    "bookmarksPerRow": {
+        "message": "$1 pro Zeile",
+        "description": "Anzahl der Lesezeichen pro Zeile"
+    },
+    "grokLabel": {
+        "message": "Grok",
+        "description": "Grok Suchmaschinen-Label"
+    },
+    "searchBoxDisplayTitle": {
+            "message": "Suchfeld-Anzeige",
+            "description": "Titel für die Suchfeld-Anzeigeeinstellungen"
     }
 }

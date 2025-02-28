@@ -407,8 +407,7 @@ main.flex-1 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  max-width: 380px;
-  max-height: 180px;
+  max-height: 340px;
   overflow-y: auto;
   padding: 10px 0;
   margin-bottom: 16px;
@@ -418,8 +417,8 @@ main.flex-1 {
 
 .wallpaper-option {
     border: 2px solid #242424;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     background-size: cover;
     cursor: pointer;
     transition: border-color 0.3s;
@@ -489,15 +488,14 @@ main {
 
 .wallpaper-actions {
     margin-top: 12px;
-    display: flex;
     gap: 12px;
     align-items: center;
 }
 
 .wallpaper-actions button,
 .wallpaper-actions label {
-  height: 32px;
-  min-width: 110px;
+  height: 40px;
+  width: 180px;
   padding: 0 10px;
   font-size: 13px;
   border: 1px solid #d1d5db;
@@ -508,8 +506,8 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #f3f4f6;
   color: #374151;
+  margin-bottom: 16px;
 }
 
 .wallpaper-actions button:hover,
@@ -544,8 +542,8 @@ main {
 }
 
 .settings-bg-option {
-  width: 36px;
-  height: 36px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   cursor: pointer;
   background-size: 200% 200%;
@@ -560,7 +558,6 @@ main {
 
 .wallpaper-actions {
     margin-top: 24px;
-    display: flex;
     gap: 12px;
     align-items: center;
 }
@@ -570,7 +567,6 @@ main {
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background-color: #f3f4f6;
   border: 1px solid #d1d5db;
   border-radius: 6px;
   cursor: pointer;
@@ -676,7 +672,7 @@ main {
 .settings-section-title {
     font-size: 14px;
     font-weight: 500;
-    color: #374151;
+    color: #1a202c;
     margin-bottom: 12px;
     margin-top: 12px;
 }
@@ -728,7 +724,9 @@ main {
   color: #10b981;
 }
 [data-theme="dark"] .settings-sidebar {
-  border-right: 1px solid #2d2d2d;
+  background-color: #1c1c1c;
+  box-shadow: -1px 0 5px rgba(0, 0, 0, 0.05); /* 减轻阴影 */
+  border-left: 1px solid #404040; /* 添加左边框 */
 }
 /* 暗色模式适配 */
 [data-theme="dark"] .official-website a {
@@ -960,7 +958,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 [data-theme="dark"] input[type="range"] {
-  background: #4b5563;
+  background: #ffffff;
 }
 
 [data-theme="dark"] .width-preview {
@@ -1319,38 +1317,53 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 /* 修改默认文件夹切换区域样式 */
 .default-folders-tabs {
-  position: fixed; /* 固定定位 */
-  bottom: 60px; /* 距离底部的距离，根据 footer 高度调整 */
-  left: 0;
-  right: 0;
-  padding: 16px 0;
-  display: flex;
+  position: fixed;
+  top: 40%;  /* 垂直居中 */
+  transform: translateY(-50%);  /* 垂直居中偏移 */
+  left: 16rem;  /* 与侧边栏宽度对应 */
+  padding: 16px 8px;  /* 调整内边距 */
+  display: none; /* 默认隐藏 */
+  flex-direction: column;  /* 改为垂直布局 */
   justify-content: center;
-  z-index: 10; /* 确保在其他内容之上 */
+  z-index: 10;
+  transition: left 0.3s ease;  /* 修改过渡效果 */
+  background: rgba(255, 255, 255, 0.9);  /* 添加半透明背景 */
+  border-radius: 0 12px 12px 0;  /* 右侧圆角 */
+  box-shadow:0 4px 6px -1px rgb(0 0 0 / 0.06),
+    0 2px 4px -2px rgb(0 0 0 / 0.06);  /* 添加阴影 */
 }
 
-/* 暗色模式适配 */
-[data-theme="dark"] .default-folders-tabs {
-  background: linear-gradient(to bottom, transparent, rgba(28, 28, 28, 0.9) 20%);
+/* 显示类 */
+.default-folders-tabs.show {
+  display: flex;
 }
 
-
+/* 当侧边栏收起时调整位置 */
+body .default-folders-tabs.sidebar-collapsed {
+  left: 0;
+  border-radius: 0px 12px 12px 0px;
+    /* 右侧圆角 */
+}
+/* 当侧边栏收起时调整位置 */
+body .default-folders-tabs.sidebar-expanded {
+  display: none;
+  /* 右侧圆角 */
+}
 
 /* 优化 tabs-container 样式 */
 .tabs-container {
   display: flex;
-  gap: 8px;
+  flex-direction: column;  /* 改为垂直布局 */
+  gap: 12px;
   justify-content: center;
   align-items: center;
-  padding: 0 16px;
-  backdrop-filter: blur(8px); /* 添加模糊效果 */
-  border-radius: 20px; /* 圆角效果 */
-  background: rgba(255, 255, 255, 0.3); /* 半透明背景 */
+  padding: 8px;
+  border-radius: 12px;
 }
 
 /* 暗色模式适配 tabs-container */
-[data-theme="dark"] .tabs-container {
-  background: rgba(28, 28, 28, 0.3);
+[data-theme="dark"] .default-folders-tabs {
+  background: rgba(28, 28, 28, 0.9);
 }
 
 /* 点状分页符样式 */
@@ -1363,6 +1376,427 @@ input[type="range"]::-webkit-slider-thumb:hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   will-change: transform;
+}
+
+/* 文件夹名称提示基础样式 */
+.folder-tab::after {
+  content: attr(data-name);
+  position: absolute;
+  left: 100%;  /* 改为显示在右侧 */
+  top: 50%;  /* 垂直居中 */
+  transform: translateY(-50%);  /* 垂直居中偏移 */
+  padding: 4px 8px;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-left: 8px;  /* 添加左边距 */
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 响应式布局调整 */
+@media (max-width: 1024px) {
+  .default-folders-tabs {
+    display: none !important;  /* 在小屏幕上隐藏 */
+  }
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .folder-tab {
+  background-color: #4b5563;
+}
+
+[data-theme="dark"] .folder-tab:hover {
+  background-color: #6b7280;
+}
+
+[data-theme="dark"] .folder-tab.active {
+  background-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3); /* 暗色模式下调整光晕效果 */
+}
+
+/* 添加界面元素设置区域的样式 */
+.interface-elements-settings {
+  margin-top: 1rem;
+  max-height: 520px; /* 设置最大高度 */
+  overflow-y: auto; /* 添加竖向滚动条 */
+  padding-right: 12px; /* 为滚动条预留空间 */
+}
+
+/* 自定义滚动条样式 */
+.interface-elements-settings::-webkit-scrollbar {
+  width: 8px;
+}
+
+.interface-elements-settings::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.interface-elements-settings::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.interface-elements-settings::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .interface-elements-settings::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+[data-theme="dark"] .interface-elements-settings::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+}
+
+[data-theme="dark"] .interface-elements-settings::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a;
+}
+
+/* 保持其他样式不变 */
+.interface-elements-settings .setting-option {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.interface-elements-settings .setting-option:hover {
+  background-color: #f0f0f0;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .interface-elements-settings .setting-option {
+  background-color: #2d2d2d;
+}
+
+[data-theme="dark"] .interface-elements-settings .setting-option:hover {
+  background-color: #363636;
+}
+
+/* 搜索设置面板样式 */
+.search-suggestions-settings {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+
+.search-suggestions-settings .setting-option {
+  margin-bottom: 1rem;
+}
+
+.search-suggestions-settings .setting-option:last-child {
+  margin-bottom: 0;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .search-suggestions-settings {
+  background: #2d2d2d;
+}
+
+
+
+[data-theme="dark"] .search-suggestions-settings .setting-option:hover {
+  background-color: #404040;
+}
+
+/* 修改设置侧边栏样式，使其不使用遮罩 */
+.settings-sidebar {
+  position: fixed;
+  top: 0;
+  right: -500px; /* 初始位置在屏幕外 */
+  width: 500px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: -1px 0 5px rgba(0, 0, 0, 0.05); /* 减轻阴影 */
+  z-index: 1003;
+  overflow-y: auto;
+  transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* 调整为更慢的动画，使用缓动函数 */
+}
+
+.settings-sidebar.open {
+  right: 0;
+}
+
+/* 移除遮罩层样式 */
+.settings-overlay {
+  display: none !important; /* 完全禁用遮罩层 */
+}
+
+.settings-sidebar-content {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.settings-sidebar-close {
+  font-size: 24px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.settings-sidebar-close:hover {
+  color: #000;
+}
+
+.settings-sidebar .settings-layout {
+  display: flex;
+  flex-direction: row;
+  height: calc(100% - 60px);
+  overflow: hidden;
+}
+
+.settings-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 0;
+  padding-right: 20px;
+  border-right: 1px solid #eeeeee;
+  width: 160px;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+
+.settings-sidebar .settings-content {
+  flex: 1;
+  overflow-y: auto;
+  margin : 0px 20px;
+
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .settings-sidebar {
+    width: 100%;
+    right: -100%;
+  }
+}
+
+/* 设置选项卡按钮样式 */
+.settings-tab-button {
+  text-align: left;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #1a202c;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.settings-tab-button:hover {
+  background-color: #f3f4f6;
+  color: #10b981;
+}
+
+.settings-tab-button.active {
+  background-color: #10b981;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .settings-sidebar-nav {
+  border-right-color: #333333;
+}
+
+[data-theme="dark"] .settings-tab-button {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .settings-tab-button:hover {
+  background-color: #374151;
+  color: #10b981;
+}
+
+[data-theme="dark"] .settings-tab-button.active {
+  background-color: #10b981;
+  color: #ffffff;
+}
+[data-theme="dark"] .settings-sidebar-header {
+  border-bottom: 1px solid #404040;
+}
+[data-theme="dark"] .settings-sidebar-close:hover {
+  color: #ffffff;
+}
+/* 响应式设计 - 在小屏幕上切换回上下结构 */
+@media (max-width: 768px) {
+  .settings-sidebar .settings-layout {
+    flex-direction: column;
+  }
+  
+  .settings-sidebar-nav {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #eeeeee;
+    padding-right: 0;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .settings-sidebar .settings-content {
+    padding-left: 0;
+  }
+  
+  [data-theme="dark"] .settings-sidebar-nav {
+    border-bottom-color: #333333;
+  }
+}
+
+
+
+#container-width-settings {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+#floating-width-settings {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] #container-width-settings {
+  background: #2d2d2d;
+}
+[data-theme="dark"] #floating-width-settings {
+  background: #2d2d2d;
+}
+.settings-tab-content p {
+  font-size: 14px;
+}
+
+/* 赞赏页面样式 */
+.donate-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #374151;
+  margin-bottom: 24px;
+}
+
+.donate-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.donate-option {
+  flex: 1;
+  min-width: 200px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.donate-option-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.donate-qrcode-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.donate-qrcode {
+  width: 180px;
+  height: 180px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.donate-qrcode-text {
+  font-size: 14px;
+  color: #4a5568;
+  text-align: center;
+}
+
+.donate-paypal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.donate-paypal-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background-color: #0070ba;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.donate-paypal-button:hover {
+  background-color: #005ea6;
+}
+
+.donate-thank-you {
+  font-size: 16px;
+  font-weight: 600;
+  color: #10b981;
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .donate-description {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .donate-option {
+  background-color: #2d2d2d;
+}
+
+[data-theme="dark"] .donate-option-title {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .donate-qrcode-text {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .donate-thank-you {
+  color: #10b981;
 }
 
 /* 优化悬停和激活状态的动画 */
@@ -1380,29 +1814,9 @@ input[type="range"]::-webkit-slider-thumb:hover {
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2); /* 添加光晕效果 */
 }
 
-/* 文件夹名称提示基础样式 */
-.folder-tab::after {
-  content: attr(data-name);
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 4px 8px;
-  color: white;
-  border-radius: 4px;
-  font-size: 12px;
-  white-space: nowrap;
-  margin-bottom: 8px;
-  z-index: 10;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
 /* 悬停时的提示样式 */
 .folder-tab:hover::after {
   opacity: 1;
-  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* 切换时的临时提示样式 */
@@ -1432,24 +1846,4 @@ input[type="range"]::-webkit-slider-thumb:hover {
   0% { transform: scale(1); }
   50% { transform: scale(1.3); }
   100% { transform: scale(1.2); }
-}
-
-/* 暗色模式适配 */
-[data-theme="dark"] .folder-tab {
-  background-color: #4b5563;
-}
-
-[data-theme="dark"] .folder-tab:hover {
-  background-color: #6b7280;
-}
-
-[data-theme="dark"] .folder-tab.active {
-  background-color: #10b981;
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3); /* 暗色模式下调整光晕效果 */
-}
-
-/* 添加选中状态的图标样式 */
-.icon-svg.selected svg {
-  fill: #10b981; /* 使用主题色 */
-
 }

@@ -9,14 +9,28 @@ const WelcomeManager = {
 
     // 初始化方法
     initialize() {
-        this.updateWelcomeMessage();
-        this.initializeColorCache();
-        this.setupEventListeners();
-        this.setupThemeChangeListener();
+        // 先检查欢迎语是否应该显示，再更新内容
+        chrome.storage.sync.get(['showWelcomeMessage'], (result) => {
+            const welcomeElement = document.getElementById('welcome-message');
+            if (welcomeElement) {
+                // 立即设置显示状态，避免闪烁
+                welcomeElement.style.display = result.showWelcomeMessage !== false ? '' : 'none';
+                
+                // 只有在需要显示时才更新内容
+                if (result.showWelcomeMessage !== false) {
+                    this.updateWelcomeMessage(false); // 传入false表示不再检查显示状态
+                }
+            }
+            
+            // 继续其他初始化
+            this.initializeColorCache();
+            this.setupEventListeners();
+            this.setupThemeChangeListener();
+        });
     },
 
     // 更新欢迎消息
-    updateWelcomeMessage() {
+    updateWelcomeMessage(checkVisibility = true) {
         const now = new Date();
         const hours = now.getHours();
         let greeting;
@@ -33,6 +47,14 @@ const WelcomeManager = {
         const welcomeElement = document.getElementById('welcome-message');
         if (welcomeElement) {
             welcomeElement.textContent = welcomeMessage;
+            
+            // 只有在需要时才检查显示状态
+            if (checkVisibility) {
+                chrome.storage.sync.get(['showWelcomeMessage'], (result) => {
+                    welcomeElement.style.display = result.showWelcomeMessage !== false ? '' : 'none';
+                });
+            }
+            
             this.adjustTextColor(welcomeElement);
         }
     },
@@ -222,6 +244,29 @@ const WelcomeManager = {
                 this.updateWelcomeMessage();
             }
         });
+
+        // 添加对欢迎消息内容变化的监听
+        const welcomeElement = document.getElementById('welcome-message');
+        if (welcomeElement) {
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'childList' || mutation.type === 'characterData') {
+                        const currentText = welcomeElement.textContent;
+                        // 检查是否缺少用户名
+                        if (currentText && !currentText.includes(userName) && 
+                            (currentText.includes('早上好') || currentText.includes('下午好') || currentText.includes('晚上好'))) {
+                            this.updateWelcomeMessage();
+                        }
+                    }
+                });
+            });
+            
+            observer.observe(welcomeElement, {
+                childList: true,
+                characterData: true,
+                subtree: true
+            });
+        }
     },
 
     // 添加主题变化监听方法

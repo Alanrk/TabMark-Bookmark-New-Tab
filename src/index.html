@@ -31,24 +31,11 @@
     </aside>
     <main class="flex-1 bg-gray-50 p-8 overflow-auto flex flex-col">
       <div class="welcome-search-container">
-        <div id="welcome-message" data-i18n="welcomeMessage"></div>
+        <div id="welcome-message" data-i18n="welcomeMessage" style="visibility: hidden;"></div>
       </div>
       <div class="flex justify-between items-center mb-4">
         <div class="search-container">
           <form class="search-form" id="search-form">
-              <div class="search-engine-update-tip">
-                <div class="tip-content">
-                  <span class="material-icons">info</span>
-                  <div class="tip-text">
-                    <p data-i18n="searchEngineUpdateTip">You can update your search engine settings here...</p>
-                    <p class="tip-detail" data-i18n="searchEngineUpdateDetail">Details about the update...</p>
-                  </div>
-                  <button class="tip-close">
-                    <span class="material-icons">close</span>
-                  </button>
-                </div>
-                <div class="tip-arrow"></div>
-              </div>
             <div style="position: relative;height: auto;">
               <div class="search-icon-container">
                 <img id="search-engine-icon" src="../images/placeholder-icon.svg" alt="search-engine-icon"
@@ -184,18 +171,22 @@
     </div>
   </div>
   <!-- 在 body 标签结束前添加 -->
-  <div id="settings-modal" class="settings-modal">
-    <div class="settings-modal-content">
-      <span class="settings-modal-close">&times;</span>
-      <h2 class="settings-modal-title" data-i18n="settingsTitle">设置</h2>
+  <div id="settings-sidebar" class="settings-sidebar">
+    <div class="settings-sidebar-content">
+      <div class="settings-sidebar-header">
+        <h2 class="settings-modal-title" data-i18n="settingsTitle">设置</h2>
+        <span class="settings-sidebar-close">&times;</span>
+      </div>
       <div class="settings-layout">
-        <div class="settings-sidebar">
+        <div class="settings-sidebar-nav">
           <button class="settings-tab-button active" data-tab="appearance" data-i18n="appearanceTab">外观设置</button>
           <button class="settings-tab-button" data-tab="layout" data-i18n="layoutTab">布局设置</button>
+          <button class="settings-tab-button" data-tab="search" data-i18n="searchTab">搜索设置</button>
           <button class="settings-tab-button" data-tab="floating-ball" data-i18n="floatingBallTab">悬浮球设置</button>
           <button class="settings-tab-button" data-tab="quick-links" data-i18n="quickLinksTab">网站推荐</button>
           <button class="settings-tab-button" data-tab="link-opening" data-i18n="linkOpeningTab">链接打开方式</button>
           <button class="settings-tab-button" data-tab="bookmark-management" data-i18n="bookmarkManagementTab">书签管理</button>
+          <button class="settings-tab-button" data-tab="donate" data-i18n="donateTab">支持我们</button>
           <button class="settings-tab-button" data-tab="about" data-i18n="aboutTab">关于</button>
         </div>
         <div class="settings-content">
@@ -244,7 +235,7 @@
           </div>
           <div id="layout-settings" class="settings-tab-content">
             <h3 class="settings-modal-subtitle" data-i18n="layoutSettingsTitle">布局设置</h3>
-            <p data-i18n="layoutSettingsDescription">自定义书签和界面的布局显示方式。</p>
+            <p data-i18n="layoutSettingsDescription" class="settings-description">自定义界面元素的显示方式。</p>
             
             <h4 class="settings-section-title" data-i18n="bookmarkWidthTitle">书签宽度设置</h4>
             <div id="floating-width-settings">
@@ -257,6 +248,105 @@
               <div class="preview-text" style="margin-top: 16px;">
                 <span data-i18n="previewText">每行书签按钮数量：</span>
                 <span id="width-preview-count"></span>
+              </div>
+            </div>
+
+            <!-- 新增书签容器宽度设置 -->
+            <h4 class="settings-section-title" data-i18n="containerWidthTitle">书签容器宽度</h4>
+            <div id="container-width-settings">
+              <div class="slider-container" style="display: flex; align-items: center; gap: 10px;">
+                <input type="range" id="container-width-slider" min="50" max="100" step="5" value="85" style="flex: 1;">
+                <div class="value-display" style="white-space: nowrap;">
+                  <span id="container-width-value">85</span>%
+                </div>
+              </div>
+              <div class="preview-text" style="margin-top: 16px;">
+                <span data-i18n="containerWidthDescription">调整书签容器在页面中的宽度比例</span>
+              </div>
+            </div>
+
+            <!-- 新增界面元素显示设置 -->
+            <h4 class="settings-section-title" data-i18n="interfaceElementsTitle">界面元素显示</h4>
+            <div class="interface-elements-settings">
+              <div class="setting-option">
+                <label for="show-welcome-message" class="switch-label" data-i18n="showWelcomeMessage">显示欢迎语</label>
+                <label class="switch">
+                  <input type="checkbox" id="show-welcome-message">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div class="setting-option">
+                <label for="show-footer" class="switch-label" data-i18n="showFooter">显示页脚</label>
+                <label class="switch">
+                  <input type="checkbox" id="show-footer">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+                <h4 class="settings-section-title" data-i18n="quickAccessLinksTitle">快捷访问链接</h4>
+                
+                <div class="setting-option">
+                  <label for="show-history-link" class="switch-label" data-i18n="showHistoryLink">显示历史记录</label>
+                  <label class="switch">
+                    <input type="checkbox" id="show-history-link">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                
+                <div class="setting-option">
+                  <label for="show-downloads-link" class="switch-label" data-i18n="showDownloadsLink">显示下载记录</label>
+                  <label class="switch">
+                    <input type="checkbox" id="show-downloads-link">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                
+                <div class="setting-option">
+                  <label for="show-passwords-link" class="switch-label" data-i18n="showPasswordsLink">显示密码管理</label>
+                  <label class="switch">
+                    <input type="checkbox" id="show-passwords-link">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                
+                <div class="setting-option">
+                  <label for="show-extensions-link" class="switch-label" data-i18n="showExtensionsLink">显示扩展管理</label>
+                  <label class="switch">
+                    <input type="checkbox" id="show-extensions-link">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+            </div>
+          </div>
+          <div id="search-settings" class="settings-tab-content">
+            <h3 class="settings-modal-subtitle" data-i18n="searchSettingsTitle">搜索设置</h3>
+            <p data-i18n="searchSettingsDescription">自定义搜索建议的显示内容和行为</p>
+            
+            <h4 class="settings-section-title" data-i18n="searchBoxDisplayTitle">搜索框显示</h4>
+            <div class="setting-option">
+              <label for="show-search-box" class="switch-label" data-i18n="showSearchBox">显示搜索框</label>
+              <label class="switch">
+                <input type="checkbox" id="show-search-box">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            
+            <h4 class="settings-section-title" data-i18n="searchSuggestionsTitle">搜索建议设置</h4>
+            <div class="search-suggestions-settings">
+              <div class="setting-option">
+                <label for="show-history-suggestions" class="switch-label" data-i18n="showHistorySuggestions">显示历史记录建议</label>
+                <label class="switch">
+                  <input type="checkbox" id="show-history-suggestions">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              
+              <div class="setting-option">
+                <label for="show-bookmark-suggestions" class="switch-label" data-i18n="showBookmarkSuggestions">显示书签建议</label>
+                <label class="switch">
+                  <input type="checkbox" id="show-bookmark-suggestions">
+                  <span class="slider round"></span>
+                </label>
               </div>
             </div>
           </div>
@@ -305,11 +395,28 @@
                </button>
              </div>
            </div>
+           <div id="donate-settings" class="settings-tab-content">
+             <h3 class="settings-modal-subtitle" data-i18n="donateTitle">支持 TabMark 开发</h3>
+             <p class="donate-description" data-i18n="donateDescription">如果您觉得 TabMark 有用，请考虑支持它的持续开发。您的贡献将帮助我们改进扩展并添加新功能。</p>
+             
+             <div class="donate-options">
+               <!-- 微信赞赏码 -->
+               <div class="donate-option">
+                 <h4 class="donate-option-title" data-i18n="wechatDonateTitle">微信支付</h4>
+                 <div class="donate-qrcode-container">
+                   <img src="../images/wechat-donate.png" alt="WeChat Donate QR Code" class="donate-qrcode">
+                   <p class="donate-qrcode-text" data-i18n="scanQRCodeToDonate">扫描二维码赞赏</p>
+                 </div>
+               </div>
+             </div>
+             
+             <p class="donate-thank-you" data-i18n="thankYouForSupport">感谢您的支持！</p>
+           </div>
            <div id="about-settings" class="settings-tab-content">
              <h3 class="settings-modal-subtitle" data-i18n="aboutTitle">关于 TabMark</h3>
              <div class="about-content">
                <img src="../images/logo.svg" alt="TabMark Logo" class="about-logo">
-               <p class="about-version" data-i18n="version">Version 1.233</p>
+               <p class="about-version"></p>
                <p class="about-description" data-i18n="aboutDescription">
                  TabMark 是一个简洁、高效的书签管理扩展，帮助您更好地组织和访问您的网络收藏。
                </p>
@@ -318,11 +425,7 @@
                    <span class="material-icons">code</span>
                    <span data-i18n="sourceCode">源代码</span>
                  </a>
-                 <a href="mailto:support@booktap.cc" class="about-link">
-                   <span class="material-icons">email</span>
-                   <span data-i18n="contactUs">联系我们</span>
-                 </a>
-                  <a href="https://x.com/orionwang" class="about-link" target="_blank">
+                  <a href="https://x.com/thesowhale" class="about-link" target="_blank">
                     <img src="../images/twitter-logo.png" alt="Twitter" class="twitter-icon">
                     <span>Twitter</span>
                   </a>
@@ -343,6 +446,9 @@
       </div>
     </div>
   </div>
+
+  <!-- 添加遮罩层 -->
+  <div id="settings-overlay" class="settings-overlay"></div>
   <button id="toggle-sidebar" class="bg-gray-300 p-1 rounded-r-md">
     &gt;
   </button>
@@ -416,9 +522,9 @@
         </div>
       </div>
       <div class="preview-text" style="margin-top: 16px;">
-        <span>每行书签按钮数量：</span>
+        <span data-i18n="previewText">每行书签按钮数量：</span>
         <span id="global-width-preview-count"></span>
-      </div> 
+      </div>
     </div>
   </div>
 </body>

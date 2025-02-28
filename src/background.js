@@ -1,34 +1,36 @@
 // 当扩展安装或更新时触发
-chrome.runtime.onInstalled.addListener(function (details) {
+chrome.runtime.onInstalled.addListener((details) => {
+  console.log("Extension installed or updated:", details.reason);
+  
   if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
     chrome.tabs.create({ url: "chrome://newtab" });
     chrome.storage.local.set({ defaultBookmarkId: null });
     chrome.storage.sync.set({ openInNewTab: true }); // 默认在新标签页打开
   }
-});
 
-// 定义 defaultBookmarkId 变量
-let defaultBookmarkId = null;
-
-// 从存储中获取 defaultBookmarkId
-function loadDefaultBookmarkId() {
-  chrome.storage.local.get(['defaultBookmarkId'], function (result) {
-    if (chrome.runtime.lastError) {
-      console.error('Error loading defaultBookmarkId:', chrome.runtime.lastError);
-      return;
+  // 检查命令是否正确注册
+  chrome.commands.getAll((commands) => {
+    console.log("Registered commands:", commands);
+    
+    // 查找侧边栏命令
+    const sidePanelCommand = commands.find(cmd => cmd.name === "open_side_panel");
+    if (sidePanelCommand) {
+      console.log("Side panel command registered with shortcut:", sidePanelCommand.shortcut);
+    } else {
+      console.warn("Side panel command not found! Available commands:", commands.map(cmd => cmd.name).join(", "));
+      
+      // 检查是否有其他可能的侧边栏命令
+      const alternativeCommand = commands.find(cmd => 
+        cmd.name === "_execute_action_with_ui" || 
+        cmd.name.includes("side") || 
+        cmd.name.includes("panel")
+      );
+      
+      if (alternativeCommand) {
+        console.log("Found alternative command that might be for side panel:", alternativeCommand);
+      }
     }
-    defaultBookmarkId = result?.defaultBookmarkId ?? null;
   });
-}
-
-// 初始加载
-loadDefaultBookmarkId();
-
-// 监听存储变化
-chrome.storage.onChanged.addListener(function (changes, area) {
-  if (area === 'local' && changes.defaultBookmarkId) {
-    defaultBookmarkId = changes.defaultBookmarkId.newValue;
-  }
 });
 
 // 修改防重复机制
@@ -149,16 +151,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       return true;
 
     case 'openSidePanel':
-      // 获取当前窗口和标签页
-      chrome.windows.getCurrent({}, function(window) {
-        chrome.sidePanel.open({
-          windowId: window.id
-        }).then(() => {
-          sendResponse({ success: true });
-        }).catch((error) => {
-          sendResponse({ success: false, error: error.message });
-        });
-      });
+      openSidePanel();
+      sendResponse({ success: true });
       return true;
 
     case 'reloadExtension':
@@ -192,6 +186,64 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           openingTabs.delete(request.url);
         }, DEBOUNCE_TIME);
       });
+      return true;
+
+    case 'updateBookmarkDisplay':
+      chrome.tabs.query({}, (tabs) => {
+        tabs.forEach((tab) => {
+          try {
+            chrome.tabs.sendMessage(tab.id, {
+              action: 'updateBookmarkDisplay',
+              folderId: request.folderId
+            });
+          } catch (error) {
+            console.error('Error sending message to tab:', error);
+          }
+        });
+      });
+      sendResponse({ success: true });
+      return true;
+
+    case 'getBookmarkFolder':
+      chrome.bookmarks.get(request.folderId, (folder) => {
+        if (chrome.runtime.lastError) {
+          sendResponse({ 
+            success: false, 
+            error: chrome.runtime.lastError.message 
+          });
+          return;
+        }
+        
+        // 如果是文件夹，获取其子项
+        if (!folder[0].url) {
+          chrome.bookmarks.getChildren(request.folderId, (children) => {
+            if (chrome.runtime.lastError) {
+              sendResponse({ 
+                success: true, 
+                folder: folder[0],
+                error: chrome.runtime.lastError.message 
+              });
+            } else {
+              sendResponse({ 
+                success: true, 
+                folder: folder[0],
+                children: children 
+              });
+            }
+          });
+          return true; // 保持消息通道开放以进行异步响应
+        } else {
+          // 如果是书签，直接返回
+          sendResponse({ 
+            success: true, 
+            folder: folder[0] 
+          });
+        }
+      });
+      return true; // 保持消息通道开放以进行异步响应
+
+    case 'checkSidePanelStatus':
+      sendResponse({ isOpen: sidePanelState.isOpen });
       return true;
 
     default:
@@ -243,33 +295,62 @@ function handleOpenMultipleTabsAndGroup(request, sendResponse) {
   });
 }
 
-// 修改快捷键监听器
-chrome.commands.onCommand.addListener(async (command) => {
-  if (command === "_execute_side_panel") {
-    try {
-      // 获取当前窗口
-      const window = await chrome.windows.getCurrent();
-      
-      // 打开侧边栏
-      await chrome.sidePanel.open({
-        windowId: window.id
-      });
-    } catch (error) {
-      console.error('Failed to open side panel:', error);
-      
-      // 如果失败，尝试延迟重试
-      setTimeout(async () => {
-        try {
-          const window = await chrome.windows.getCurrent();
-          await chrome.sidePanel.open({
-            windowId: window.id
+// 在打开和关闭侧边栏时更新状态
+let sidePanelState = { isOpen: false };
+
+// 修改打开侧边栏的代码，移除定时器逻辑
+function openSidePanel() {
+  try {
+    // 首先获取当前活动标签页
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+      if (tabs && tabs.length > 0) {
+        const tabId = tabs[0].id;
+        
+        // 使用获取到的 tabId 打开侧边栏
+        chrome.sidePanel.open({ tabId: tabId }).then(() => {
+          console.log("Side panel opened successfully with tabId:", tabId);
+          sidePanelState.isOpen = true;
+          // 移除了定时器逻辑
+        }).catch((error) => {
+          console.error("Failed to open side panel with tabId:", error);
+          
+          // 尝试使用 windowId
+          chrome.windows.getCurrent(function(window) {
+            if (window) {
+              chrome.sidePanel.open({ windowId: window.id }).then(() => {
+                console.log("Side panel opened successfully with windowId:", window.id);
+                sidePanelState.isOpen = true;
+                // 移除了定时器逻辑
+              }).catch((windowError) => {
+                console.error("Failed to open side panel with windowId:", windowError);
+              });
+            }
           });
-        } catch (retryError) {
-          console.error('Retry failed:', retryError);
-        }
-      }, 500);
-    }
+        });
+      } else {
+        console.error("No active tabs found");
+      }
+    });
+  } catch (error) {
+    console.error("Error opening side panel:", error);
   }
+}
+
+// 修改命令监听器使用自定义命令
+chrome.commands.onCommand.addListener((command) => {
+  console.log(`Command received: ${command}`);
+  
+  if (command === "open_side_panel") {
+    console.log("Attempting to open side panel with custom shortcut");
+    openSidePanel(); // 使用上面修改过的函数
+  }
+});
+
+// 添加扩展图标点击事件处理
+chrome.action.onClicked.addListener((tab) => {
+  console.log("Extension icon clicked");
+  // 这里可以自定义点击扩展图标时的行为
+  // 例如，打开选项页面或执行其他操作
 });
 
 // 在 background.js 顶部添加这些变量

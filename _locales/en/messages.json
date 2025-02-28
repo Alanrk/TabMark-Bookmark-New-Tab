@@ -625,5 +625,139 @@
     "previewText": {
         "message": "Number of bookmark buttons per row:",
         "description": "Text explaining the bookmark width preview"
+    },
+    "addToDefaultFolders": {
+        "message": "Pin to Homepage"
+    },
+    "removeFromDefaultFolders": {
+        "message": "Unpin"
+    },
+    "addedToDefaultFolders": {
+        "message": "Pinned $1 to Homepage"
+    },
+    "removedFromDefaultFolders": {
+        "message": "Unpinned $1"
+    },
+    "maxDefaultFoldersReached": {
+        "message": "You can only pin up to 8 folders"
+    },
+    "deleteFolderError": {
+        "message": "Failed to delete folder, please try again"
+    },
+    "searchTab": {
+        "message": "Search",
+        "description": "Search settings tab name"
+    },
+    "searchSettingsTitle": {
+        "message": "Search Settings",
+        "description": "Search settings page title"
+    },
+    "searchSettingsDescription": {
+        "message": "Customize search suggestions display and behavior",
+        "description": "Search settings page description"
+    },
+    "searchSuggestionsTitle": {
+        "message": "Search Suggestions Settings",
+        "description": "Search suggestions settings title"
+    },
+    "showHistorySuggestions": {
+        "message": "Show history suggestions",
+        "description": "Option to show history suggestions"
+    },
+    "showBookmarkSuggestions": {
+        "message": "Show bookmark suggestions",
+        "description": "Option to show bookmark suggestions"
+    },
+    "containerWidthTitle": {
+        "message": "Bookmark Container Width",
+        "description": "Title for bookmark container width setting"
+    },
+    "containerWidthDescription": {
+        "message": "Adjust the width proportion of the bookmark container in the page",
+        "description": "Description of bookmark container width setting"
+    },
+    "interfaceElementsTitle": {
+        "message": "Interface Elements Display",
+        "description": "Interface elements display settings title"
+    },
+    "showSearchBox": {
+        "message": "Show Search Box",
+        "description": "Show search box option"
+    },
+    "showWelcomeMessage": {
+        "message": "Show Welcome Message",
+        "description": "Show welcome message option"
+    },
+    "showFooter": {
+        "message": "Show Footer",
+        "description": "Show footer option"
+    },
+    "quickAccessLinksTitle": {
+        "message": "Quick Access Links",
+        "description": "Quick access links settings title"
+    },
+    "showHistoryLink": {
+        "message": "Show History",
+        "description": "Show history link option"
+    },
+    "showDownloadsLink": {
+        "message": "Show Downloads",
+        "description": "Show downloads link option"
+    },
+    "showPasswordsLink": {
+        "message": "Show Passwords",
+        "description": "Show passwords link option"
+    },
+    "showExtensionsLink": {
+        "message": "Show Extensions",
+        "description": "Show extensions link option"
+    },
+    "donateTab": {
+        "message": "Support Us",
+        "description": "Donate tab name in settings"
+    },
+    "donateTitle": {
+        "message": "Support TabMark Development",
+        "description": "Title for donation section"
+    },
+    "donateDescription": {
+        "message": "If you find TabMark useful, please consider supporting its continued development. Your contribution helps us improve the extension and add new features.",
+        "description": "Description for donation section"
+    },
+    "wechatDonateTitle": {
+        "message": "WeChat Pay",
+        "description": "Title for WeChat donation option"
+    },
+    "paypalDonateTitle": {
+        "message": "PayPal",
+        "description": "Title for PayPal donation option"
+    },
+    "scanQRCodeToDonate": {
+        "message": "Scan QR code to donate",
+        "description": "Text for scanning QR code to donate"
+    },
+    "donateWithPaypal": {
+        "message": "Donate with PayPal",
+        "description": "Text for PayPal donation button"
+    },
+    "thankYouForSupport": {
+        "message": "Thank you for your support!",
+        "description": "Thank you message for donations"
+    },
+    "bookmarksPerRow": {
+        "message": "$1 per row",
+        "description": "Number of bookmarks per row"
+    },
+    "customTabFeature": {
+        "message": "New custom tab features:\n1. You can now customize the content displayed on your homepage in the \"Layout Settings\" tab\n2. Choose to hide or show the search box, welcome message, and footer\n3. Customize which quick access links are displayed\n4. Adjust the bookmark container width for your preferred layout\n5. In \"Search Settings\", you can choose whether to display history and bookmark suggestions\n6. Added a \"Support Us\" option where you can support development through WeChat if you like this extension",
+        "description": "Information about the custom tab feature"
+    },
+    "grokLabel": {
+        "message": "Grok",
+        "description": "Grok search engine label"
+    },
+    "searchBoxDisplayTitle": {
+        "message": "搜索框显示",
+        "description": "搜索框显示设置标题"
     }
 }
