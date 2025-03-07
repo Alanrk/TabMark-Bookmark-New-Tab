@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "TabMark",
+        "message": "新標籤頁",
         "description": "擴充功能的名稱"
     },
     "extDescription": {
@@ -396,8 +396,8 @@
         "description": "官方網站連結文字"
     },
     "feedback": {
-        "message": "反饋",
-        "description": "反饋連結文字"
+        "message": "電郵",
+        "description": "電郵連結文字"
     },
     "settingsUpdateTip": {
         "message": "你可以在這裡設定背景顏色、桌布、懸浮球、推薦網站、連結開啟方式、清理失效書籤...",
@@ -742,7 +742,7 @@
         "description": "書籤容器寬度設定描述"
     },
     "donateTab": {
-        "message": "支持我們",
+        "message": "讚賞",
         "description": "Donate tab name in settings"
     },
     "donateTitle": {
@@ -762,8 +762,12 @@
         "description": "Title for PayPal donation option"
     },
     "scanQRCodeToDonate": {
-        "message": "掃描二維碼捐贈",
+        "message": "掃描二維碼讚賞",
         "description": "Text for scanning QR code to donate"
+    },
+    "donateListLink": {
+        "message": "查看讚賞列表",
+        "description": "Link text to view donation list"
     },
     "donateWithPaypal": {
         "message": "使用 PayPal 捐贈",
@@ -784,5 +788,57 @@
     "searchBoxDisplayTitle": {
             "message": "搜尋框顯示",
             "description": "搜尋框顯示設定標題"
+    },
+    "shortcutsTab": {
+        "message": "快速鍵",
+        "description": "Shortcuts settings tab name"
+    },
+    "shortcutsSettingsTitle": {
+        "message": "快速鍵設定",
+        "description": "Shortcuts settings title"
+    },
+    "shortcutsSettingsDescription": {
+        "message": "自訂快速鍵設定",
+        "description": "Shortcuts settings description"
+    },
+    "sidebarShortcutName": {
+        "message": "側邊欄快速鍵",
+        "description": "Sidebar shortcut name"
+    },
+    "configureShortcuts": {
+        "message": "設定快速鍵",
+        "description": "Configure shortcuts button text"
+    },
+    "shortcutValue": {
+        "message": "預設",
+        "description": "Default shortcut value"
+    },
+    "wheelSwitchingTab": {
+        "message": "滾輪切換",
+        "description": "Wheel switching tab name in settings"
+    },
+    "wheelSwitchingSettingsTitle": {
+        "message": "滾輪切換設定",
+        "description": "Title for wheel switching settings"
+    },
+    "wheelSwitchingDescription": {
+        "message": "開啟滾輪切換功能後，在主頁非書籤列表區域滾動滑鼠滾輪即可快速切換固定的資料夾",
+        "description": "Description for wheel switching settings"
+    },
+    "enableWheelSwitching": {
+        "message": "啟用滾輪切換",
+        "description": "Option to enable wheel switching feature"
+    },
+    "shortcutsFeature": {
+        "message": "新增功能：\n1. 側邊欄快速鍵自訂：現在您可以在Chrome擴展快速鍵設定中自訂打開或關閉側邊欄的快速鍵\n2. 在設定 > 快速鍵中可以快速跳轉到Chrome快速鍵設定頁面\n3. 雙向控制：按下相同的快速鍵可以打開或關閉側邊欄，更加便捷\n\n自訂標籤頁功能：\n1. 現在您可以自訂主頁顯示的內容，在設定中的「版面設定」選項卡下\n2. 可以選擇隱藏或顯示搜尋框、歡迎語和頁尾\n3. 可以自訂快速存取連結的顯示\n4. 調整書籤容器寬度，獲得最適合您的版面\n5. 在「搜尋設定」中可以選擇是否顯示歷史記錄和書籤建議\n6. 新增「讚賞」選項，如果您喜歡這個擴展，可以通過微信讚賞支持開發",
+        "description": "快速鍵自訂功能的提示信息"
+    },
+    "wechatGroup": {
+        "message": "微信群",
+        "description": "微信群名称"
+    },
+    "feedbacks": {
+        "message": "電郵",
+        "description": "電郵連結文字"
     }
 }

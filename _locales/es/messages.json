@@ -320,7 +320,7 @@
         "description": "Texto del enlace del sitio web oficial"
     },
     "feedback": {
-        "message": "Comentarios",
+        "message": "Email",
         "description": "Texto del enlace de comentarios"
     },
     "settingsUpdateTip": {
@@ -641,6 +641,10 @@
         "message": "Escanea el código QR para donar",
         "description": "Text for scanning QR code to donate"
     },
+    "donateListLink": {
+        "message": "Ver lista de donaciones",
+        "description": "Link text to view donation list"
+    },
     "donateWithPaypal": {
         "message": "Donar con PayPal",
         "description": "Text for PayPal donation button"
@@ -660,5 +664,57 @@
     "searchBoxDisplayTitle": {
         "message": "Visualización del Cuadro de Búsqueda",
         "description": "Título para la configuración de visualización del cuadro de búsqueda"
+    },
+    "shortcutsTab": {
+        "message": "Atajos",
+        "description": "Shortcuts settings tab name"
+    },
+    "shortcutsSettingsTitle": {
+        "message": "Configuración de Atajos",
+        "description": "Shortcuts settings title"
+    },
+    "shortcutsSettingsDescription": {
+        "message": "Personalizar atajos para acceso rápido",
+        "description": "Shortcuts settings description"
+    },
+    "sidebarShortcutName": {
+        "message": "Atajo de Barra Lateral",
+        "description": "Sidebar shortcut name"
+    },
+    "configureShortcuts": {
+        "message": "Configurar Atajos",
+        "description": "Configure shortcuts button text"
+    },
+    "shortcutValue": {
+        "message": "Predeterminado",
+        "description": "Default shortcut value"
+    },
+    "wheelSwitchingTab": {
+        "message": "Cambio con Rueda",
+        "description": "Wheel switching tab name in settings"
+    },
+    "wheelSwitchingSettingsTitle": {
+        "message": "Configuración de Cambio con Rueda",
+        "description": "Title for wheel switching settings"
+    },
+    "wheelSwitchingDescription": {
+        "message": "Cuando el cambio con rueda está habilitado, puede cambiar rápidamente entre carpetas fijadas desplazando la rueda del ratón en áreas fuera de la lista de marcadores en la página principal",
+        "description": "Description for wheel switching settings"
+    },
+    "enableWheelSwitching": {
+        "message": "Habilitar Cambio con Rueda",
+        "description": "Option to enable wheel switching feature"
+    },
+    "shortcutsFeature": {
+        "message": "Nuevas funciones:\n1. Personalización de atajos de barra lateral: Ahora puede personalizar el atajo para abrir o cerrar la barra lateral en la configuración de atajos de extensiones de Chrome\n2. En Configuración > Atajos, puede saltar rápidamente a la página de configuración de atajos de Chrome\n3. Control bidireccional: Presione el mismo atajo para abrir o cerrar la barra lateral para mayor comodidad\n\nFunciones de pestaña personalizada:\n1. Ahora puede personalizar el contenido mostrado en su página de inicio en la pestaña \"Configuración de Diseño\"\n2. Elija ocultar o mostrar el cuadro de búsqueda, mensaje de bienvenida y pie de página\n3. Personalice qué enlaces de acceso rápido se muestran\n4. Ajuste el ancho del contenedor de marcadores para su diseño preferido\n5. En \"Configuración de búsqueda\", puede elegir si mostrar sugerencias de historial y marcadores\n6. Se agregó una opción \"Apóyanos\" donde puede apoyar el desarrollo a través de WeChat si le gusta esta extensión",
+        "description": "Información sobre la función de personalización de atajos"
+    },
+    "wechatGroup": {
+        "message": "Grupo de WeChat",
+        "description": "Nombre del grupo de WeChat"
+    },
+    "feedbacks": {
+        "message": "Feedback",
+        "description": "Feedback link text"
     }
 }

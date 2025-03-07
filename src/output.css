@@ -666,7 +666,7 @@ video {
 }
 
 .p-4 {
-  padding: 3rem 1.5rem 0rem 1.5rem; 
+  padding: 1rem 1.5rem 0rem 1.5rem; 
 }
 
 .p-2 {
@@ -1170,49 +1170,57 @@ main {
   gap: 1rem;
   margin: 0 auto;
   width: 100%;
-  overflow-y: overlay; /* 改为 overlay 使滚动条不占用空间 */
+  overflow-y: auto; /* 改为标准auto，更好的兼容性 */
   overflow-x: hidden;
   padding: 0 0 1rem 0;
   height: auto;
+  scroll-behavior: smooth; /* 添加平滑滚动效果 */
   
   /* 默认桌面布局 */
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   max-width: 1200px;
   
-  /* 隐藏滚动条，但保持可滚动 */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  /* 滚动条基本样式 - 适用于Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
   
   /* Chrome, Safari 和 Opera 的滚动条样式 */
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 6px; /* 更细的滚动条 */
     background: transparent;
   }
   
   &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    border-radius: 12px;
-    transition: background-color 0.2s ease;
+    background-color: transparent; /* 默认完全透明 */
+    border-radius: 6px; /* 完全圆角 */
+    transition: background-color 0.3s ease; /* 平滑过渡效果 */
   }
   
-  /* 只在鼠标悬停或元素获得焦点时显示滚动条 */
-  &:hover::-webkit-scrollbar-thumb,
-  &:focus::-webkit-scrollbar-thumb,
-  &:active::-webkit-scrollbar-thumb {
-    background-color: rgba(156, 163, 175, 0.5);
+  /* 滚动时的滚动条样式 - 通过JS添加.scrolling类 */
+  &.scrolling::-webkit-scrollbar-thumb {
+    background-color: rgba(203, 213, 225, 0.5); /* 滚动时显示 */
   }
   
-  &:hover::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(156, 163, 175, 0.8);
+  /* 悬停时的滚动条样式 */
+  &.scrolling:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.6); /* 悬停时稍微明显一些 */
+  }
+  
+  &.scrolling:hover::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(107, 114, 128, 0.7); /* 悬停在滚动条上时更明显 */
   }
   
   /* 暗色模式适配 */
-  [data-theme="dark"] &:hover::-webkit-scrollbar-thumb {
-    background-color: rgba(229, 231, 235, 0.2);
+  [data-theme="dark"] &.scrolling::-webkit-scrollbar-thumb {
+    background-color: rgba(75, 85, 99, 0.5); /* 暗色模式下的滚动时颜色 */
   }
   
-  [data-theme="dark"] &:hover::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(229, 231, 235, 0.3);
+  [data-theme="dark"] &.scrolling:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(107, 114, 128, 0.6); /* 暗色模式下悬停时的颜色 */
+  }
+  
+  [data-theme="dark"] &.scrolling:hover::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(156, 163, 175, 0.7); /* 暗色模式下悬停在滚动条上时的颜色 */
   }
   
   /* 平板布局 */
@@ -1461,14 +1469,29 @@ img.w-6.h-6.mr-2 {
 }
 .custom-context-menu {
   display: none;
-  position: absolute;
+  position: fixed; /* Change from absolute to fixed to ensure it's positioned relative to the viewport */
   background: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 10000;
   padding: 10px;
   border-radius: 5px;
   width: 260px;
+  max-height: 80vh; /* Add max height */
+  overflow-y: auto; /* Add scrolling if needed */
+}
 
+/* Add smooth scrolling for the context menu */
+.custom-context-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-context-menu::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.custom-context-menu::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .custom-context-menu-item {
@@ -1713,11 +1736,10 @@ img.w-6.h-6.mr-2 {
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
   will-change: opacity, transform; /* 优化性能 */
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow-x: hidden;
+ 
   
   @media (max-width: 1024px) {
     width: 95%;
@@ -3740,5 +3762,77 @@ input:checked+.slider:before {
 .settings-update-tip.tip-fade-out {
     opacity: 0;
     transition: opacity 0.3s ease;
+}
+
+/* 滚动指示器样式 */
+.scroll-indicator {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.scroll-indicator svg {
+  width: 20px;
+  height: 20px;
+  color: #6B7280;
+  transition: color 0.3s ease;
+}
+
+.bookmarks-container:hover .scroll-indicator {
+  opacity: 0.6;
+  pointer-events: auto;
+}
+
+.bookmarks-container:hover .scroll-indicator:hover {
+  opacity: 0.9;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* 当书签列表处于滚动状态时，让指示器更明显 */
+.bookmarks-list.scrolling ~ .scroll-indicator,
+.bookmarks-container:hover .bookmarks-list.scrolling ~ .scroll-indicator {
+  opacity: 0.8;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .scroll-indicator {
+  background-color: rgba(31, 41, 55, 0.7);
+}
+
+[data-theme="dark"] .scroll-indicator svg {
+  color: #D1D5DB;
+}
+
+[data-theme="dark"] .bookmarks-container:hover .scroll-indicator:hover {
+  background-color: rgba(31, 41, 55, 0.9);
+}
+
+/* 滚动指示器动画 */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+.scroll-indicator.animate {
+  animation: bounce 2s infinite;
 }
 

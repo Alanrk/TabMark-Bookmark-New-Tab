@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "TabMark",
+        "message": "新标签页",
         "description": "扩展的名称"
     },
     "extDescription": {
@@ -425,7 +425,7 @@
         "description": "官方网站链接文本"
     },
     "feedback": {
-        "message": "反馈",
+        "message": "邮箱",
         "description": "反馈链接文本"
     },
     "settingsUpdateTip": {
@@ -779,7 +779,7 @@
         "message": "调整书签容器在页面中的宽度比例"
     },
     "donateTab": {
-        "message": "支持我们",
+        "message": "赞赏",
         "description": "Donate tab name in settings"
     },
     "donateTitle": {
@@ -799,8 +799,12 @@
         "description": "Title for PayPal donation option"
     },
     "scanQRCodeToDonate": {
-        "message": "扫描二维码捐赠",
+        "message": "扫描二维码赞赏",
         "description": "Text for scanning QR code to donate"
+    },
+    "donateListLink": {
+        "message": "查看赞赏列表",
+        "description": "Link text to view donation list"
     },
     "donateWithPaypal": {
         "message": "使用 PayPal 捐赠",
@@ -815,7 +819,7 @@
         "description": "每行显示的书签数量"
     },
     "customTabFeature": {
-        "message": "新增自定义标签页功能：\n1. 现在您可以自定义主页显示的内容，在设置中的「布局设置」选项卡下\n2. 可以选择隐藏或显示搜索框、欢迎语和页脚\n3. 可以自定义快捷访问链接的显示\n4. 调整书签容器宽度，获得最适合您的布局\n5. 在「搜索设置」中可以选择是否显示历史记录和书签建议\n6. 新增「支持我们」选项，如果您喜欢这个扩展，可以通过微信赞赏支持开发",
+        "message": "新增自定义标签页功能：\n1. 现在您可以自定义主页显示的内容，在设置中的「布局设置」选项卡下\n2. 可以选择隐藏或显示搜索框、欢迎语和页脚\n3. 可以自定义快捷访问链接的显示\n4. 调整书签容器宽度，获得最适合您的布局\n5. 在「搜索设置」中可以选择是否显示历史记录和书签建议\n6. 新增「赞赏」选项，如果您喜欢这个扩展，可以通过微信赞赏支持开发",
         "description": "自定义标签页功能的提示信息"
     },
     "grokLabel": {
@@ -823,7 +827,59 @@
         "description": "Grok 搜索引擎标签"
     },
     "searchBoxDisplayTitle": {
-            "message": "搜索框显示",
-            "description": "搜索框显示设置标题"
-        }
+        "message": "搜索框显示",
+        "description": "搜索框显示设置标题"
+    },
+    "shortcutsTab": {
+        "message": "快捷键",
+        "description": "Shortcuts tab name in settings"
+    },
+    "wheelSwitchingTab": {
+        "message": "文件夹切换",
+        "description": "Wheel switching tab name in settings"
+    },
+    "wheelSwitchingSettingsTitle": {
+        "message": "滚轮切换设置",
+        "description": "Title for wheel switching settings"
+    },
+    "wheelSwitchingDescription": {
+        "message": "开启滚轮切换功能后，在主页非书签列表区域滚动鼠标滚轮即可快速切换固定的文件夹",
+        "description": "Description for wheel switching settings"
+    },
+    "enableWheelSwitching": {
+        "message": "启用滚轮切换",
+        "description": "Option to enable wheel switching feature"
+    },
+    "wechatGroup": {
+        "message": "微信群",
+        "description": "微信群名称"
+    },
+    "feedbacks": {
+        "message": "反馈建议",
+        "description": "反馈建议链接文本"
+    },
+    "shortcutsSettingsTitle": {
+        "message": "快捷键设置",
+        "description": "快捷键设置标题"
+    },
+    "shortcutsSettingsDescription": {
+        "message": "自定义快捷键设置",
+        "description": "快捷键设置描述"
+    },
+    "sidebarShortcutName": {
+        "message": "侧边栏快捷键",
+        "description": "侧边栏快捷键名称"
+    },
+    "configureShortcuts": {
+        "message": "配置快捷键",
+        "description": "配置快捷键按钮文本"
+    },
+    "shortcutValue": {
+        "message": "默认",
+        "description": "默认快捷键值"
+    },
+    "shortcutsFeature": {
+        "message": "新增功能：\n1. 侧边栏快捷键自定义：现在您可以在Chrome扩展快捷键设置中自定义打开侧边栏的快捷键\n2. 在设置 > 快捷键中可以快速跳转到Chrome快捷键设置页面\n3. 双向控制：按下相同的快捷键可以打开或关闭侧边栏，更加便捷\n\n自定义标签页功能：\n1. 现在您可以自定义主页显示的内容，在设置中的「布局设置」选项卡下\n2. 可以选择隐藏或显示搜索框、欢迎语和页脚\n3. 可以自定义快捷访问链接的显示\n4. 调整书签容器宽度，获得最适合您的布局\n5. 在「搜索设置」中可以选择是否显示历史记录和书签建议\n6. 新增「赞赏」选项，如果您喜欢这个扩展，可以通过微信赞赏支持开发",
+        "description": "快捷键自定义功能的提示信息"
+    }
 }

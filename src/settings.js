@@ -22,26 +22,24 @@ class SettingsManager {
     this.settingsModalContent = document.querySelector('.settings-modal-content');
     this.showHistorySuggestionsCheckbox = document.getElementById('show-history-suggestions');
     this.showBookmarkSuggestionsCheckbox = document.getElementById('show-bookmark-suggestions');
+    this.enableWheelSwitchingCheckbox = document.getElementById('enable-wheel-switching');
     this.init();
   }
 
   init() {
-    // 初始化事件监听
-    this.initEventListeners();
-    // 加载已保存的设置
     this.loadSavedSettings();
-    // 初始化主题
+    this.initEventListeners();
     this.initTheme();
-    // 更新 UI 语言
-    window.updateUILanguage();
     this.initQuickLinksSettings();
     this.initFloatingBallSettings();
-    this.initBookmarkManagementTab();
     this.initLinkOpeningSettings();
+    this.initBookmarkManagementTab();
     this.initBookmarkWidthSettings();
     this.initContainerWidthSettings();
     this.initLayoutSettings();
     this.initSearchSuggestionsSettings();
+    this.initShortcutsSettings();
+    this.initWheelSwitchingTab();
   }
 
   initEventListeners() {
@@ -352,6 +350,33 @@ class SettingsManager {
     }
   }
 
+  initWheelSwitchingTab() {
+    const tabButton = document.querySelector('[data-tab="wheel-switching"]');
+    if (tabButton) {
+      tabButton.addEventListener('click', () => {
+        this.switchTab('wheel-switching');
+      });
+    }
+    
+    // 加载保存的设置
+    chrome.storage.sync.get({ enableWheelSwitching: false }, (result) => {
+      if (this.enableWheelSwitchingCheckbox) {
+        this.enableWheelSwitchingCheckbox.checked = result.enableWheelSwitching;
+        
+        // 添加事件监听器
+        this.enableWheelSwitchingCheckbox.addEventListener('change', () => {
+          const isEnabled = this.enableWheelSwitchingCheckbox.checked;
+          chrome.storage.sync.set({ enableWheelSwitching: isEnabled });
+          
+          // 触发自定义事件，通知滚轮切换状态变化
+          document.dispatchEvent(new CustomEvent('wheelSwitchingChanged', {
+            detail: { enabled: isEnabled }
+          }));
+        });
+      }
+    });
+  }
+
   // 添加 debounce 方法来优化性能
   debounce(func, wait) {
     let timeout;
@@ -373,28 +398,11 @@ class SettingsManager {
       this.widthValue.textContent = savedWidth;
       this.updatePreviewCount(savedWidth);
       this.updateBookmarkWidth(savedWidth);
-      
-      // 同步全局滚动条的值
-      const globalSlider = document.getElementById('global-width-slider');
-      const globalValue = document.getElementById('global-width-value');
-      if (globalSlider && globalValue) {
-        globalSlider.value = savedWidth;
-        globalValue.textContent = savedWidth;
-      }
     });
 
     // 监听滑块的鼠标按下事件
     this.widthSlider.addEventListener('mousedown', () => {
-      this.showFloatingMode();
-      // 显示全局滚动条
-      const globalRangeSlider = document.querySelector('.global-range-slider');
-      if (globalRangeSlider) {
-        globalRangeSlider.style.display = 'block';
-        // 使用 setTimeout 确保 display:block 已经应用
-        setTimeout(() => {
-          globalRangeSlider.classList.add('visible');
-        }, 10);
-      }
+      // 不再调用showFloatingMode和显示全局滑块
     });
 
     // 监听滑块的变化
@@ -403,59 +411,12 @@ class SettingsManager {
       this.widthValue.textContent = width;
       this.updatePreviewCount(width);
       this.updateBookmarkWidth(width);
-      
-      // 同步全局滚动条的值
-      const globalValue = document.getElementById('global-width-value');
-      const globalSlider = document.getElementById('global-width-slider');
-      if (globalValue && globalSlider) {
-        globalValue.textContent = width;
-        globalSlider.value = width;
-      }
     });
-
-    // 监听全局滚动条的变化
-    const globalSlider = document.getElementById('global-width-slider');
-    if (globalSlider) {
-      globalSlider.addEventListener('input', (e) => {
-        const width = e.target.value;
-        this.widthSlider.value = width;
-        this.widthValue.textContent = width;
-        this.updatePreviewCount(width);
-        this.updateBookmarkWidth(width);
-        document.getElementById('global-width-value').textContent = width;
-      });
-    }
 
     // 监听滑块的鼠标释放事件
     this.widthSlider.addEventListener('mouseup', () => {
-      this.hideFloatingMode();
-      // 隐藏全局滚动条
-      const globalRangeSlider = document.querySelector('.global-range-slider');
-      if (globalRangeSlider) {
-        globalRangeSlider.classList.remove('visible');
-        // 等待过渡效果完成后再隐藏元素
-        setTimeout(() => {
-          globalRangeSlider.style.display = 'none';
-        }, 300);
-      }
       // 保存设置
       chrome.storage.sync.set({ bookmarkWidth: this.widthSlider.value });
-    });
-
-    // 监听鼠标移出滑块事件
-    this.widthSlider.addEventListener('mouseleave', () => {
-      if (this.widthSettings.classList.contains('floating')) {
-        this.hideFloatingMode();
-        // 隐藏全局滚动条
-        const globalRangeSlider = document.querySelector('.global-range-slider');
-        if (globalRangeSlider) {
-          globalRangeSlider.classList.remove('visible');
-          // 等待过渡效果完成后再隐藏元素
-          setTimeout(() => {
-            globalRangeSlider.style.display = 'none';
-          }, 300);
-        }
-      }
     });
 
     // 添加窗口大小改变的监听
@@ -463,40 +424,6 @@ class SettingsManager {
       this.updatePreviewCount(this.widthSlider.value);
     }, 250);
     window.addEventListener('resize', debouncedUpdate);
-  }
-
-  showFloatingMode() {
-    // 添加浮动模式类，使卡片显示在最上层并添加阴影效果
-    this.widthSettings.classList.add('floating');
-    // 移除模糊效果并隐藏其他内容
-    this.settingsModal.classList.add('no-blur');
-    this.settingsModalContent.classList.add('no-blur');
-
-    // 显示全局滚动条并定位
-    const globalRangeSlider = document.querySelector('.global-range-slider');
-    const widthSettings = document.getElementById('floating-width-settings');
-    if (globalRangeSlider && widthSettings) {
-      const rect = widthSettings.getBoundingClientRect();
-      globalRangeSlider.style.display = 'block';
-      globalRangeSlider.style.position = 'fixed';
-      globalRangeSlider.style.top = `${rect.top}px`;
-      globalRangeSlider.style.left = `${rect.left}px`;
-      globalRangeSlider.style.width = `${rect.width}px`;
-      globalRangeSlider.style.transform = 'none';
-      
-      // 使用 setTimeout 确保 display:block 已经应用
-      setTimeout(() => {
-        globalRangeSlider.classList.add('visible');
-      }, 10);
-    }
-  }
-
-  hideFloatingMode() {
-    // 移除浮动模式类
-    this.widthSettings.classList.remove('floating');
-    // 恢复模糊效果
-    this.settingsModal.classList.remove('no-blur');
-    this.settingsModalContent.classList.remove('no-blur');
   }
 
   updatePreviewCount(width) {
@@ -530,12 +457,6 @@ class SettingsManager {
     // 更新显示 - 使用本地化文本
     const previewText = chrome.i18n.getMessage("bookmarksPerRow", [count]) || `${count} 个/行`;
     this.widthPreviewCount.textContent = previewText;
-    
-    // 同步更新全局滚动条的预览数量
-    const globalPreviewCount = document.getElementById('global-width-preview-count');
-    if (globalPreviewCount) {
-      globalPreviewCount.textContent = count;
-    }
   }
 
   updateBookmarkWidth(width) {
@@ -609,7 +530,7 @@ class SettingsManager {
         'showDownloadsLink',
         'showPasswordsLink',
         'showExtensionsLink'
-      ], 
+      ],
       (result) => {
         // 设置复选框状态 - 修改搜索框的默认值为 false
         this.showSearchBoxCheckbox.checked = result.showSearchBox === true; // 默认为 false
@@ -731,7 +652,7 @@ class SettingsManager {
   initSearchSuggestionsSettings() {
     // 加载搜索建议设置
     chrome.storage.sync.get(
-      ['showHistorySuggestions', 'showBookmarkSuggestions'], 
+      ['showHistorySuggestions', 'showBookmarkSuggestions', 'showSearchBox'], 
       (result) => {
         // 如果设置不存在(undefined)或者没有明确设置为 false,则默认为 true
         this.showHistorySuggestionsCheckbox.checked = result.showHistorySuggestions !== false;
@@ -743,6 +664,9 @@ class SettingsManager {
         }
         if (!('showBookmarkSuggestions' in result)) {
           chrome.storage.sync.set({ showBookmarkSuggestions: true });
+        }
+        if (!('showSearchBox' in result)) {
+          chrome.storage.sync.set({ showSearchBox: false });
         }
       }
     );
@@ -757,6 +681,17 @@ class SettingsManager {
       const isEnabled = this.showBookmarkSuggestionsCheckbox.checked;
       chrome.storage.sync.set({ showBookmarkSuggestions: isEnabled });
     });
+  }
+
+  initShortcutsSettings() {
+    const shortcutItem = document.getElementById('configure-shortcuts');
+    if (shortcutItem) {
+      shortcutItem.addEventListener('click', () => {
+        chrome.tabs.create({
+          url: 'chrome://extensions/shortcuts'
+        });
+      });
+    }
   }
 }
 

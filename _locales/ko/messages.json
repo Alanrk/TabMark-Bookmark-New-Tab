@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "TabMark",
+        "message": "탭 마크",
         "description": "확장 프로그램 이름"
     },
     "extDescription": {
@@ -400,8 +400,8 @@
         "description": "공식 웹사이트 링크 텍스트"
     },
     "feedback": {
-        "message": "피드백",
-        "description": "피드백 링크 텍스트"
+        "message": "이메일",
+        "description": "이메일 링크 텍스트"
     },
     "settingsUpdateTip": {
         "message": "배경색, 배경화면, 플로팅 볼, 추천 사이트, 링크 열기 방식, 유효하지 않은 북마크 정리 등을 설정할 수 있습니다...",
@@ -698,7 +698,7 @@
         "description": "북마크 컨테이너 너비 설정 설명"
     },
     "donateTab": {
-        "message": "후원하기",
+        "message": "기부",
         "description": "Donate tab name in settings"
     },
     "donateTitle": {
@@ -721,6 +721,10 @@
         "message": "QR 코드를 스캔하여 후원하기",
         "description": "Text for scanning QR code to donate"
     },
+    "donateListLink": {
+        "message": "기부 목록 보기",
+        "description": "Link text to view donation list"
+    },
     "donateWithPaypal": {
         "message": "PayPal로 후원하기",
         "description": "Text for PayPal donation button"
@@ -740,5 +744,57 @@
     "searchBoxDisplayTitle": {
         "message": "검색창 표시",
         "description": "검색창 표시 설정 제목"
+    },
+    "shortcutsTab": {
+        "message": "단축키",
+        "description": "Shortcuts settings tab name"
+    },
+    "shortcutsSettingsTitle": {
+        "message": "단축키 설정",
+        "description": "Shortcuts settings title"
+    },
+    "shortcutsSettingsDescription": {
+        "message": "빠른 접근을 위한 단축키 사용자 지정",
+        "description": "Shortcuts settings description"
+    },
+    "sidebarShortcutName": {
+        "message": "사이드바 단축키",
+        "description": "Sidebar shortcut name"
+    },
+    "configureShortcuts": {
+        "message": "단축키 구성",
+        "description": "Configure shortcuts button text"
+    },
+    "shortcutValue": {
+        "message": "기본값",
+        "description": "Default shortcut value"
+    },
+    "wheelSwitchingTab": {
+        "message": "휠 전환",
+        "description": "Wheel switching tab name in settings"
+    },
+    "wheelSwitchingSettingsTitle": {
+        "message": "휠 전환 설정",
+        "description": "Title for wheel switching settings"
+    },
+    "wheelSwitchingDescription": {
+        "message": "휠 전환이 활성화되면 메인 페이지의 북마크 목록 외 영역에서 마우스 휠을 스크롤하여 고정된 폴더 간에 빠르게 전환할 수 있습니다",
+        "description": "Description for wheel switching settings"
+    },
+    "enableWheelSwitching": {
+        "message": "휠 전환 활성화",
+        "description": "Option to enable wheel switching feature"
+    },
+    "shortcutsFeature": {
+        "message": "새로운 기능:\n1. 사이드바 단축키 사용자 지정: 이제 Chrome 확장 프로그램 단축키 설정에서 사이드바를 열거나 닫는 단축키를 사용자 지정할 수 있습니다\n2. 설정 > 단축키에서 Chrome 단축키 설정 페이지로 빠르게 이동할 수 있습니다\n3. 양방향 제어: 동일한 단축키를 눌러 사이드바를 열고 닫을 수 있어 더욱 편리합니다\n\n사용자 정의 탭 기능:\n1. 이제 \"레이아웃 설정\" 탭에서 홈페이지에 표시되는 콘텐츠를 사용자 정의할 수 있습니다\n2. 검색 상자, 환영 메시지 및 바닥글을 숨기거나 표시하도록 선택할 수 있습니다\n3. 표시할 빠른 액세스 링크를 사용자 정의할 수 있습니다\n4. 원하는 레이아웃에 맞게 북마크 컨테이너 너비를 조정할 수 있습니다\n5. \"검색 설정\"에서 기록 및 북마크 제안을 표시할지 여부를 선택할 수 있습니다\n6. 이 확장 프로그램이 마음에 드신다면 WeChat을 통해 개발을 지원할 수 있는 \"기부\" 옵션이 추가되었습니다",
+        "description": "단축키 사용자 지정 기능에 대한 정보"
+    },
+    "wechatGroup": {
+        "message": "WeChat 그룹",
+        "description": "WeChat 그룹 이름"
+    },
+    "feedbacks": {
+        "message": "피드백",
+        "description": "피드백 링크 텍스트"
     }
 }

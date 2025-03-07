@@ -34,7 +34,7 @@ https://cooing-loganberry-b74.notion.site/TabMark-Bookmark-New-Tab-7a083a74f84e4
 
 **微信交流群**
 
-<img src="https://raw.githubusercontent.com/Alanrk/blogimg/main/IMG_4366.JPG" width="300" />
+<img src="https://raw.githubusercontent.com/Alanrk/blogimg/main/IMG_4351.jpg" width="300" />
 
 **赞赏码**
 

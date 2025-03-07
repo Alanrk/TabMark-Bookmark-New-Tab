@@ -151,7 +151,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       return true;
 
     case 'openSidePanel':
-      openSidePanel();
+      toggleSidePanel();
       sendResponse({ success: true });
       return true;
 
@@ -298,51 +298,51 @@ function handleOpenMultipleTabsAndGroup(request, sendResponse) {
 // 在打开和关闭侧边栏时更新状态
 let sidePanelState = { isOpen: false };
 
-// 修改打开侧边栏的代码，移除定时器逻辑
-function openSidePanel() {
-  try {
-    // 首先获取当前活动标签页
-    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-      if (tabs && tabs.length > 0) {
-        const tabId = tabs[0].id;
-        
-        // 使用获取到的 tabId 打开侧边栏
-        chrome.sidePanel.open({ tabId: tabId }).then(() => {
-          console.log("Side panel opened successfully with tabId:", tabId);
-          sidePanelState.isOpen = true;
-          // 移除了定时器逻辑
-        }).catch((error) => {
-          console.error("Failed to open side panel with tabId:", error);
-          
-          // 尝试使用 windowId
-          chrome.windows.getCurrent(function(window) {
-            if (window) {
-              chrome.sidePanel.open({ windowId: window.id }).then(() => {
-                console.log("Side panel opened successfully with windowId:", window.id);
-                sidePanelState.isOpen = true;
-                // 移除了定时器逻辑
-              }).catch((windowError) => {
-                console.error("Failed to open side panel with windowId:", windowError);
-              });
-            }
-          });
-        });
-      } else {
-        console.error("No active tabs found");
-      }
+// 修改打开侧边栏的代码
+function toggleSidePanel() {
+  // 获取当前标签页
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (!tabs || tabs.length === 0) {
+      console.error("No active tabs found");
+      return;
+    }
+
+    const tabId = tabs[0].id;
+
+    // 如果侧边栏已经打开，则关闭它
+    if (sidePanelState.isOpen) {
+      chrome.sidePanel.setOptions({
+        enabled: false
+      });
+      sidePanelState.isOpen = false;
+      console.log("Side panel closed");
+      return;
+    }
+
+    // 尝试打开侧边栏
+    chrome.sidePanel.setOptions({
+      enabled: true
     });
-  } catch (error) {
-    console.error("Error opening side panel:", error);
-  }
+    
+    // 打开侧边栏
+    chrome.sidePanel.open({
+      tabId: tabId
+    }).then(() => {
+      console.log("Side panel opened successfully");
+      sidePanelState.isOpen = true;
+    }).catch((error) => {
+      console.error("Failed to open side panel:", error);
+    });
+  });
 }
 
-// 修改命令监听器使用自定义命令
+// 修改命令监听器使用切换功能
 chrome.commands.onCommand.addListener((command) => {
   console.log(`Command received: ${command}`);
   
   if (command === "open_side_panel") {
-    console.log("Attempting to open side panel with custom shortcut");
-    openSidePanel(); // 使用上面修改过的函数
+    console.log("Toggling side panel with shortcut");
+    toggleSidePanel();
   }
 });
 

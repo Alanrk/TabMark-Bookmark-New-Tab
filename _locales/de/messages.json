@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "TabMark",
+        "message": "Neue Registerkarte",
         "description": "Der Name der Erweiterung"
     },
     "extDescription": {
@@ -348,7 +348,7 @@
         "description": "Offizieller Website-Link-Text"
     },
     "feedback": {
-        "message": "Feedback",
+        "message": "Email",
         "description": "Feedback-Link-Text"
     },
     "settingsUpdateTip": {
@@ -646,7 +646,7 @@
         "description": "Option zum Anzeigen des Erweiterungs-Links"
     },
     "donateTab": {
-        "message": "Unterstützen Sie uns",
+        "message": "Spenden",
         "description": "Donate tab name in settings"
     },
     "donateTitle": {
@@ -669,6 +669,10 @@
         "message": "QR-Code scannen, um zu spenden",
         "description": "Text for scanning QR code to donate"
     },
+    "donateListLink": {
+        "message": "Spendenliste anzeigen",
+        "description": "Link text to view donation list"
+    },
     "donateWithPaypal": {
         "message": "Mit PayPal spenden",
         "description": "Text for PayPal donation button"
@@ -688,5 +692,57 @@
     "searchBoxDisplayTitle": {
             "message": "Suchfeld-Anzeige",
             "description": "Titel für die Suchfeld-Anzeigeeinstellungen"
+    },
+    "shortcutsTab": {
+        "message": "Tastenkombinationen",
+        "description": "Shortcuts settings tab name"
+    },
+    "shortcutsSettingsTitle": {
+        "message": "Tastenkombinationen-Einstellungen",
+        "description": "Shortcuts settings title"
+    },
+    "shortcutsSettingsDescription": {
+        "message": "Tastenkombinationen für schnellen Zugriff anpassen",
+        "description": "Shortcuts settings description"
+    },
+    "sidebarShortcutName": {
+        "message": "Seitenleisten-Tastenkombination",
+        "description": "Sidebar shortcut name"
+    },
+    "configureShortcuts": {
+        "message": "Tastenkombinationen konfigurieren",
+        "description": "Configure shortcuts button text"
+    },
+    "shortcutValue": {
+        "message": "Standard",
+        "description": "Default shortcut value"
+    },
+    "wheelSwitchingTab": {
+        "message": "Ordnerwechsel",
+        "description": "Wheel switching tab name in settings"
+    },
+    "wheelSwitchingSettingsTitle": {
+        "message": "Einstellungen für Mausrad-Wechsel",
+        "description": "Title for wheel switching settings"
+    },
+    "wheelSwitchingDescription": {
+        "message": "Wenn der Mausrad-Wechsel aktiviert ist, können Sie schnell zwischen angehefteten Ordnern wechseln, indem Sie das Mausrad in Bereichen außerhalb der Lesezeichenliste auf der Hauptseite scrollen",
+        "description": "Description for wheel switching settings"
+    },
+    "enableWheelSwitching": {
+        "message": "Mausrad-Wechsel aktivieren",
+        "description": "Option to enable wheel switching feature"
+    },
+    "shortcutsFeature": {
+        "message": "Neue Funktionen:\n1. Anpassung der Seitenleisten-Tastenkombination: Sie können jetzt die Tastenkombination zum Öffnen oder Schließen der Seitenleiste in den Chrome-Erweiterungstastenkombinationseinstellungen anpassen\n2. In Einstellungen > Tastenkombinationen können Sie schnell zur Chrome-Tastenkombinationseinstellungsseite springen\n3. Zweiwegsteuerung: Drücken Sie dieselbe Tastenkombination, um die Seitenleiste zu öffnen oder zu schließen, für mehr Komfort\n\nBenutzerdefinierte Tab-Funktionen:\n1. Sie können jetzt den auf Ihrer Startseite angezeigten Inhalt im Tab \"Layout-Einstellungen\" anpassen\n2. Wählen Sie, ob die Suchleiste, die Willkommensnachricht und die Fußzeile angezeigt werden sollen\n3. Passen Sie an, welche Schnellzugriffslinks angezeigt werden\n4. Passen Sie die Breite des Lesezeichenbehälters für Ihr bevorzugtes Layout an\n5. In den \"Sucheinstellungen\" können Sie wählen, ob Verlaufs- und Lesezeichenvorschläge angezeigt werden sollen\n6. Eine Option \"Spenden\" wurde hinzugefügt, über die Sie die Entwicklung über WeChat unterstützen können, wenn Ihnen diese Erweiterung gefällt",
+        "description": "Informationen über die Tastenkombinationsanpassungsfunktion"
+    },
+    "wechatGroup": {
+        "message": "WeChat Gruppe",
+        "description": "WeChat Gruppenname"
+    },
+    "feedbacks": {
+        "message": "Feedback",
+        "description": "Feedback link text"
     }
 }

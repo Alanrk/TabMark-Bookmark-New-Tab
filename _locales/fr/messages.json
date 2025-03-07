@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "TabMark",
+        "message": "Nouvel onglet",
         "description": "Le nom de l'extension"
     },
     "extDescription": {
@@ -320,7 +320,7 @@
         "description": "Texte du lien du site officiel"
     },
     "feedback": {
-        "message": "Retour",
+        "message": "Email",
         "description": "Texte du lien de retour"
     },
     "settingsUpdateTip": {
@@ -600,7 +600,7 @@
         "description": "Description des paramètres de largeur du conteneur de favoris"
     },
     "donateTab": {
-        "message": "Nous Soutenir",
+        "message": "Faire un don",
         "description": "Donate tab name in settings"
     },
     "donateTitle": {
@@ -623,6 +623,10 @@
         "message": "Scannez le code QR pour faire un don",
         "description": "Text for scanning QR code to donate"
     },
+    "donateListLink": {
+        "message": "Voir la liste des donateurs",
+        "description": "Link text to view donation list"
+    },
     "donateWithPaypal": {
         "message": "Faire un don avec PayPal",
         "description": "Text for PayPal donation button"
@@ -642,5 +646,57 @@
     "searchBoxDisplayTitle": {
         "message": "検索ボックスの表示",
         "description": "検索ボックス表示設定のタイトル"
+    },
+    "shortcutsTab": {
+        "message": "Raccourcis",
+        "description": "Shortcuts settings tab name"
+    },
+    "shortcutsSettingsTitle": {
+        "message": "Paramètres des raccourcis",
+        "description": "Shortcuts settings title"
+    },
+    "shortcutsSettingsDescription": {
+        "message": "Personnaliser les raccourcis pour un accès rapide",
+        "description": "Shortcuts settings description"
+    },
+    "sidebarShortcutName": {
+        "message": "Raccourci de la barre latérale",
+        "description": "Sidebar shortcut name"
+    },
+    "configureShortcuts": {
+        "message": "Configurer les raccourcis",
+        "description": "Configure shortcuts button text"
+    },
+    "shortcutValue": {
+        "message": "Par défaut",
+        "description": "Default shortcut value"
+    },
+    "wheelSwitchingTab": {
+        "message": "Changement par Molette",
+        "description": "Wheel switching tab name in settings"
+    },
+    "wheelSwitchingSettingsTitle": {
+        "message": "Paramètres de Changement par Molette",
+        "description": "Title for wheel switching settings"
+    },
+    "wheelSwitchingDescription": {
+        "message": "Lorsque le changement par molette est activé, vous pouvez rapidement basculer entre les dossiers épinglés en faisant défiler la molette de la souris dans les zones en dehors de la liste de signets sur la page principale",
+        "description": "Description for wheel switching settings"
+    },
+    "enableWheelSwitching": {
+        "message": "Activer le Changement par Molette",
+        "description": "Option to enable wheel switching feature"
+    },
+    "shortcutsFeature": {
+        "message": "Nouvelles fonctionnalités :\n1. Personnalisation des raccourcis de la barre latérale : Vous pouvez maintenant personnaliser le raccourci pour ouvrir ou fermer la barre latérale dans les paramètres de raccourcis des extensions Chrome\n2. Dans Paramètres > Raccourcis, vous pouvez accéder rapidement à la page de paramètres des raccourcis Chrome\n3. Contrôle bidirectionnel : Appuyez sur le même raccourci pour ouvrir ou fermer la barre latérale pour plus de commodité\n\nFonctionnalités de l'onglet personnalisé :\n1. Vous pouvez maintenant personnaliser le contenu affiché sur votre page d'accueil dans l'onglet \"Mise en page\"\n2. Choisissez de masquer ou d'afficher la barre de recherche, le message de bienvenue et le pied de page\n3. Personnalisez les liens d'accès rapide affichés\n4. Ajustez la largeur du conteneur de favoris pour votre mise en page préférée\n5. Dans \"Paramètres de recherche\", vous pouvez choisir d'afficher ou non les suggestions d'historique et de favoris\n6. Ajout d'une option \"Faire un don\" où vous pouvez soutenir le développement via WeChat si vous aimez cette extension",
+        "description": "Informations sur la fonction de personnalisation des raccourcis"
+    },
+    "wechatGroup": {
+        "message": "Groupe WeChat",
+        "description": "Nom du groupe WeChat"
+    },
+    "feedbacks": {
+        "message": "Feedback",
+        "description": "Feedback link text"
     }
 }

@@ -396,6 +396,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // 初始化虚拟滚动
   initVirtualScroll();
   
+  // 初始化滚动指示器
+  initScrollIndicator();
+  
   // 其他初始化代码...
   startPeriodicSync();
   setupSpecialLinks();
@@ -925,24 +928,43 @@ document.addEventListener('DOMContentLoaded', function () {
       // 重新创建菜单项
       await createMenuItems(bookmarkFolderContextMenu);
       
-      // 设置菜单位置
-      const rect = event.target.getBoundingClientRect();
+      // 先显示菜单但设为不可见，以便获取其尺寸
       bookmarkFolderContextMenu.style.display = 'block';
-      bookmarkFolderContextMenu.style.left = `${event.clientX}px`;
-      bookmarkFolderContextMenu.style.top = `${event.clientY}px`;
-
-      // 确保菜单不会超出视窗
+      bookmarkFolderContextMenu.style.visibility = 'hidden';
+      bookmarkFolderContextMenu.style.left = '0';
+      bookmarkFolderContextMenu.style.top = '0';
+      
+      // 获取视窗尺寸
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
-      const menuRect = bookmarkFolderContextMenu.getBoundingClientRect();
-
-      if (event.clientX + menuRect.width > viewportWidth) {
-        bookmarkFolderContextMenu.style.left = `${viewportWidth - menuRect.width - 5}px`;
-      }
-
-      if (event.clientY + menuRect.height > viewportHeight) {
-        bookmarkFolderContextMenu.style.top = `${viewportHeight - menuRect.height - 5}px`;
-      }
+      
+      // 等待一下以确保菜单已渲染
+      setTimeout(() => {
+        const menuRect = bookmarkFolderContextMenu.getBoundingClientRect();
+        
+        // 计算最佳位置
+        let left = event.clientX;
+        let top = event.clientY;
+        
+        // 检查右侧空间
+        if (left + menuRect.width > viewportWidth) {
+          // 如果右侧空间不足，尝试将菜单放在点击位置的左侧
+          left = Math.max(5, left - menuRect.width);
+        }
+        
+        // 检查底部空间
+        if (top + menuRect.height > viewportHeight) {
+          // 如果底部空间不足，尝试将菜单放在点击位置的上方
+          top = Math.max(5, viewportHeight - menuRect.height - 5);
+        }
+        
+        // 应用计算后的位置
+        bookmarkFolderContextMenu.style.left = `${left}px`;
+        bookmarkFolderContextMenu.style.top = `${top}px`;
+        
+        // 使菜单可见
+        bookmarkFolderContextMenu.style.visibility = 'visible';
+      }, 0);
 
       // 隐藏其他上下文菜单
       if (contextMenu) {
@@ -1178,8 +1200,14 @@ function initWheelSwitching() {
 
   let wheelTimeout;
   let isProcessing = false;
+  let wheelEventListener = null;
+  let isEnabled = false; // 默认禁用
   
-  main.addEventListener('wheel', async (event) => {
+  // 创建滚轮事件处理函数
+  const wheelHandler = async (event) => {
+    // 如果功能被禁用，直接返回
+    if (!isEnabled) return;
+    
     // 检查是否在搜索相关元素内滚动
     if (event.target.closest('#bookmarks-list') || 
         event.target.closest('.search-form') || 
@@ -1255,7 +1283,34 @@ function initWheelSwitching() {
         }, 150);
       }
     }, 50); // 50ms 的防抖延迟
-  }, { passive: true }); // 使用 passive 监听器提高性能
+  };
+  
+  // 添加或移除事件监听器的函数
+  const updateWheelListener = (enabled) => {
+    if (enabled) {
+      if (!wheelEventListener) {
+        main.addEventListener('wheel', wheelHandler, { passive: true });
+        wheelEventListener = wheelHandler;
+      }
+    } else {
+      if (wheelEventListener) {
+        main.removeEventListener('wheel', wheelEventListener);
+        wheelEventListener = null;
+      }
+    }
+  };
+  
+  // 检查设置并初始化
+  chrome.storage.sync.get({ enableWheelSwitching: false }, (result) => {
+    isEnabled = result.enableWheelSwitching;
+    updateWheelListener(isEnabled);
+  });
+  
+  // 监听设置变化
+  document.addEventListener('wheelSwitchingChanged', (event) => {
+    isEnabled = event.detail.enabled;
+    updateWheelListener(isEnabled);
+  });
 }
 
 // 修改文件夹切换函数，确保同步更新所有状态
@@ -1839,23 +1894,43 @@ function showContextMenu(event, item, type = 'bookmark') {
     type: item.type || type  // 优先使用项目自带的类型，否则使用传入的类型
   };
 
-  // 显示上下文菜单
+  // 先显示菜单但设为不可见，以便获取其尺寸
   contextMenu.style.display = 'block';
-  contextMenu.style.left = `${event.clientX}px`;
-  contextMenu.style.top = `${event.clientY}px`;
-
-  // 确保菜单不会超出视窗
+  contextMenu.style.visibility = 'hidden';
+  contextMenu.style.left = '0';
+  contextMenu.style.top = '0';
+  
+  // 获取视窗尺寸
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
-  const menuRect = contextMenu.getBoundingClientRect();
-
-  if (event.clientX + menuRect.width > viewportWidth) {
-    contextMenu.style.left = `${viewportWidth - menuRect.width - 5}px`;
-  }
-
-  if (event.clientY + menuRect.height > viewportHeight) {
-    contextMenu.style.top = `${viewportHeight - menuRect.height - 5}px`;
-  }
+  
+  // 等待一下以确保菜单已渲染
+  setTimeout(() => {
+    const menuRect = contextMenu.getBoundingClientRect();
+    
+    // 计算最佳位置
+    let left = event.clientX;
+    let top = event.clientY;
+    
+    // 检查右侧空间
+    if (left + menuRect.width > viewportWidth) {
+      // 如果右侧空间不足，尝试将菜单放在点击位置的左侧
+      left = Math.max(5, left - menuRect.width);
+    }
+    
+    // 检查底部空间
+    if (top + menuRect.height > viewportHeight) {
+      // 如果底部空间不足，尝试将菜单放在点击位置的上方
+      top = Math.max(5, viewportHeight - menuRect.height - 5);
+    }
+    
+    // 应用计算后的位置
+    contextMenu.style.left = `${left}px`;
+    contextMenu.style.top = `${top}px`;
+    
+    // 使菜单可见
+    contextMenu.style.visibility = 'visible';
+  }, 0);
 }
 
 
@@ -2493,23 +2568,43 @@ function createFolderCard(folder, index) {
     // 重新创建菜单项以反映当前文件夹的状态
     await createMenuItems(bookmarkFolderContextMenu);
     
-    // 设置菜单位置
+    // 先显示菜单但设为不可见，以便获取其尺寸
     bookmarkFolderContextMenu.style.display = 'block';
-    bookmarkFolderContextMenu.style.top = `${event.clientY}px`;
-    bookmarkFolderContextMenu.style.left = `${event.clientX}px`;
-
-    // 确保菜单不会超出视窗
+    bookmarkFolderContextMenu.style.visibility = 'hidden';
+    bookmarkFolderContextMenu.style.left = '0';
+    bookmarkFolderContextMenu.style.top = '0';
+    
+    // 获取视窗尺寸
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
-    const menuRect = bookmarkFolderContextMenu.getBoundingClientRect();
-
-    if (event.clientX + menuRect.width > viewportWidth) {
-      bookmarkFolderContextMenu.style.left = `${viewportWidth - menuRect.width - 5}px`;
-    }
-
-    if (event.clientY + menuRect.height > viewportHeight) {
-      bookmarkFolderContextMenu.style.top = `${viewportHeight - menuRect.height - 5}px`;
-    }
+    
+    // 等待一下以确保菜单已渲染
+    setTimeout(() => {
+      const menuRect = bookmarkFolderContextMenu.getBoundingClientRect();
+      
+      // 计算最佳位置
+      let left = event.clientX;
+      let top = event.clientY;
+      
+      // 检查右侧空间
+      if (left + menuRect.width > viewportWidth) {
+        // 如果右侧空间不足，尝试将菜单放在点击位置的左侧
+        left = Math.max(5, left - menuRect.width);
+      }
+      
+      // 检查底部空间
+      if (top + menuRect.height > viewportHeight) {
+        // 如果底部空间不足，尝试将菜单放在点击位置的上方
+        top = Math.max(5, viewportHeight - menuRect.height - 5);
+      }
+      
+      // 应用计算后的位置
+      bookmarkFolderContextMenu.style.left = `${left}px`;
+      bookmarkFolderContextMenu.style.top = `${top}px`;
+      
+      // 使菜单可见
+      bookmarkFolderContextMenu.style.visibility = 'visible';
+    }, 0);
 
     // 隐藏其他上下文菜单
     if (contextMenu) {
@@ -6097,6 +6192,154 @@ document.addEventListener('DOMContentLoaded', function() {
       document.body.style.overflow = ''; // 恢复背景滚动
     });
   }
+});
+
+// 添加滚动指示器功能
+function initScrollIndicator() {
+  const bookmarksContainer = document.querySelector('.bookmarks-container');
+  const bookmarksList = document.getElementById('bookmarks-list');
+  
+  if (!bookmarksContainer || !bookmarksList) return;
+  
+  // 创建滚动指示器
+  const scrollIndicator = document.createElement('div');
+  scrollIndicator.className = 'scroll-indicator';
+  scrollIndicator.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="7 13 12 18 17 13"></polyline>
+      <polyline points="7 6 12 11 17 6"></polyline>
+    </svg>
+  `;
+  bookmarksContainer.appendChild(scrollIndicator);
+  
+  // 滚动状态变量
+  let scrollTimeout;
+  let isScrolling = false;
+  
+  // 检查是否需要滚动
+  function checkScrollable() {
+    const isScrollable = bookmarksList.scrollHeight > bookmarksList.clientHeight;
+    
+    if (isScrollable) {
+      scrollIndicator.style.display = 'flex';
+      // 添加动画类
+      if (!scrollIndicator.classList.contains('animate')) {
+        scrollIndicator.classList.add('animate');
+        // 5秒后移除动画
+        setTimeout(() => {
+          scrollIndicator.classList.remove('animate');
+        }, 5000);
+      }
+    } else {
+      scrollIndicator.style.display = 'none';
+    }
+  }
+  
+  // 监听滚动事件
+  bookmarksList.addEventListener('scroll', () => {
+    // 如果已经滚动到底部，隐藏指示器
+    const isAtBottom = bookmarksList.scrollHeight - bookmarksList.scrollTop <= bookmarksList.clientHeight + 10;
+    if (isAtBottom) {
+      scrollIndicator.style.opacity = '0';
+    } else {
+      scrollIndicator.style.opacity = '';
+    }
+    
+    // 添加滚动中的类
+    if (!isScrolling) {
+      isScrolling = true;
+      bookmarksList.classList.add('scrolling');
+    }
+    
+    // 清除之前的定时器
+    clearTimeout(scrollTimeout);
+    
+    // 设置新的定时器，滚动停止1.5秒后移除滚动中的类
+    scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+      bookmarksList.classList.remove('scrolling');
+    }, 1500);
+  });
+  
+  // 鼠标进入书签列表时，如果可滚动，添加滚动中的类
+  bookmarksList.addEventListener('mouseenter', () => {
+    if (bookmarksList.scrollHeight > bookmarksList.clientHeight) {
+      bookmarksList.classList.add('scrolling');
+      
+      // 鼠标离开时，如果不在滚动，移除滚动中的类
+      const handleMouseLeave = () => {
+        if (!isScrolling) {
+          bookmarksList.classList.remove('scrolling');
+        }
+        bookmarksList.removeEventListener('mouseleave', handleMouseLeave);
+      };
+      
+      bookmarksList.addEventListener('mouseleave', handleMouseLeave);
+    }
+  });
+  
+  // 初始检查和窗口大小变化时重新检查
+  checkScrollable();
+  window.addEventListener('resize', _.debounce(checkScrollable, 200));
+  
+  // 当书签列表内容变化时重新检查
+  const observer = new MutationObserver(_.debounce(checkScrollable, 200));
+  observer.observe(bookmarksList, { childList: true, subtree: true });
+  
+  // 点击指示器滚动到下一屏
+  scrollIndicator.addEventListener('click', () => {
+    const currentScroll = bookmarksList.scrollTop;
+    const nextScroll = currentScroll + bookmarksList.clientHeight * 0.8;
+    bookmarksList.scrollTo({
+      top: nextScroll,
+      behavior: 'smooth'
+    });
+    
+    // 点击时添加滚动中的类
+    bookmarksList.classList.add('scrolling');
+    isScrolling = true;
+    
+    // 清除之前的定时器
+    clearTimeout(scrollTimeout);
+    
+    // 设置新的定时器
+    scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+      bookmarksList.classList.remove('scrolling');
+    }, 1500);
+  });
+
+  // 监听触摸事件，支持触摸设备
+  bookmarksList.addEventListener('touchstart', () => {
+    bookmarksList.classList.add('scrolling');
+    isScrolling = true;
+    
+    // 清除之前的定时器
+    clearTimeout(scrollTimeout);
+  });
+  
+  bookmarksList.addEventListener('touchend', () => {
+    // 设置新的定时器，触摸结束后1.5秒移除滚动中的类
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+      bookmarksList.classList.remove('scrolling');
+    }, 1500);
+  });
+  
+  // 初始检查和窗口大小变化时重新检查
+}
+
+// 在DOMContentLoaded事件中调用
+document.addEventListener('DOMContentLoaded', function() {
+  // 初始化虚拟滚动
+  initVirtualScroll();
+  
+  // 初始化滚动指示器
+  initScrollIndicator();
+  
+  // 其他初始化代码...
+  startPeriodicSync();
 });
 
 

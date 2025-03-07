@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "TabMark",
+        "message": "New Tab",
         "description": "The name of the extension"
     },
     "extDescription": {
@@ -356,7 +356,7 @@
         "description": "Official website link text"
     },
     "feedback": {
-        "message": "Feedback",
+        "message": "Email",
         "description": "Feedback link text"
     },
     "settingsUpdateTip": {
@@ -713,7 +713,7 @@
         "description": "Show extensions link option"
     },
     "donateTab": {
-        "message": "Support Us",
+        "message": "Donate",
         "description": "Donate tab name in settings"
     },
     "donateTitle": {
@@ -736,6 +736,10 @@
         "message": "Scan QR code to donate",
         "description": "Text for scanning QR code to donate"
     },
+    "donateListLink": {
+        "message": "View Donation List",
+        "description": "Link text to view donation list"
+    },
     "donateWithPaypal": {
         "message": "Donate with PayPal",
         "description": "Text for PayPal donation button"
@@ -749,7 +753,7 @@
         "description": "Number of bookmarks per row"
     },
     "customTabFeature": {
-        "message": "New custom tab features:\n1. You can now customize the content displayed on your homepage in the \"Layout Settings\" tab\n2. Choose to hide or show the search box, welcome message, and footer\n3. Customize which quick access links are displayed\n4. Adjust the bookmark container width for your preferred layout\n5. In \"Search Settings\", you can choose whether to display history and bookmark suggestions\n6. Added a \"Support Us\" option where you can support development through WeChat if you like this extension",
+        "message": "New custom tab features:\n1. You can now customize the content displayed on your homepage in the \"Layout Settings\" tab\n2. Choose to hide or show the search box, welcome message, and footer\n3. Customize which quick access links are displayed\n4. Adjust the bookmark container width for your preferred layout\n5. In \"Search Settings\", you can choose whether to display history and bookmark suggestions\n6. Added a \"Donate\" option where you can support development through WeChat if you like this extension",
         "description": "Information about the custom tab feature"
     },
     "grokLabel": {
@@ -757,7 +761,67 @@
         "description": "Grok search engine label"
     },
     "searchBoxDisplayTitle": {
-        "message": "搜索框显示",
-        "description": "搜索框显示设置标题"
+        "message": "Search Box Display",
+        "description": "Search box display settings title"
+    },
+    "shortcutsTab": {
+        "message": "Shortcuts",
+        "description": "Shortcuts tab name in settings"
+    },
+    "wheelSwitchingTab": {
+        "message": "Wheel Switching",
+        "description": "Wheel switching tab name in settings"
+    },
+    "wheelSwitchingSettingsTitle": {
+        "message": "Wheel Switching Settings",
+        "description": "Title for wheel switching settings"
+    },
+    "wheelSwitchingDescription": {
+        "message": "When wheel switching is enabled, you can quickly switch between pinned folders by scrolling the mouse wheel in non-bookmark list areas of the main page",
+        "description": "Description for wheel switching settings"
+    },
+    "enableWheelSwitching": {
+        "message": "Enable Wheel Switching",
+        "description": "Option to enable wheel switching feature"
+    },
+    "wechatGroup": {
+        "message": "WeChat Group",
+        "description": "WeChat group name"
+    },
+    "feedbacks": {
+        "message": "Feedback",
+        "description": "Feedback link text"
+    },
+    "shortcutsSettingsTitle": {
+        "message": "Shortcuts Settings",
+        "description": "Shortcuts settings title"
+    },
+    "shortcutsSettingsDescription": {
+        "message": "Customize shortcut keys for quick access",
+        "description": "Shortcuts settings description"
+    },
+    "sidebarShortcutName": {
+        "message": "Sidebar Shortcut",
+        "description": "Sidebar shortcut name"
+    },
+    "sidebarShortcutDescription": {
+        "message": "Quickly open the sidebar panel for quick access",
+        "description": "Description of the sidebar shortcut functionality"
+    },
+    "shortcutsTip": {
+        "message": "Click the \"Configure Shortcuts\" button to go to Chrome's extension shortcuts settings page for customization",
+        "description": "Tip text for configuring shortcuts"
+    },
+    "configureShortcuts": {
+        "message": "Configure Shortcuts",
+        "description": "Configure shortcuts button text"
+    },
+    "shortcutValue": {
+        "message": "Default",
+        "description": "Label for default shortcut value"
+    },
+    "shortcutsFeature": {
+        "message": "New features:\n1. Sidebar shortcut customization: You can now customize the shortcut to open or close the sidebar in Chrome extension shortcuts settings\n2. In Settings > Shortcuts, you can quickly jump to Chrome's shortcut settings page\n3. Two-way control: Press the same shortcut to open or close the sidebar for more convenience\n\nCustom tab features:\n1. You can now customize the content displayed on your homepage in the \"Layout Settings\" tab\n2. Choose to hide or show the search box, welcome message, and footer\n3. Customize which quick access links are displayed\n4. Adjust the bookmark container width for your preferred layout\n5. In \"Search Settings\", you can choose whether to display history and bookmark suggestions\n6. Added a \"Donate\" option where you can support development through WeChat if you like this extension",
+        "description": "Information about the shortcuts customization feature"
     }
 }

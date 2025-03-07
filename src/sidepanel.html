@@ -262,6 +262,7 @@
           <button class="settings-tab-button" data-tab="link-opening" data-i18n="linkOpeningTab">链接打开方式</button>
           <button class="settings-tab-button" data-tab="bookmark-management"
             data-i18n="bookmarkManagementTab">书签管理</button>
+          <button class="settings-tab-button" data-tab="wheel-switching" data-i18n="wheelSwitchingTab">滚轮切换</button>
           <button class="settings-tab-button" data-tab="donate" data-i18n="donateTab">支持我们</button>
           <button class="settings-tab-button" data-tab="about" data-i18n="aboutTab">关于</button>
         </div>
@@ -462,14 +463,25 @@
             </div>
           </div>
           <div id="bookmark-management-settings" class="settings-tab-content">
-            <h3 class="settings-modal-subtitle" data-i18n="bookmarkCleanupSettingsTitle">书签清理与统计</h3>
-            <p data-i18n="bookmarkCleanupSettingsDescription">清理重复和失效的书签，查看书签使用统计数据，帮助您更好地管理书签。</p>
-
+            <h3 class="settings-modal-subtitle" data-i18n="bookmarkManagementTitle">书签管理</h3>
+            <p data-i18n="bookmarkManagementDescription">管理您的书签设置</p>
+            
             <div class="bookmark-cleanup-actions">
-              <button id="open-bookmark-cleanup" class="primary-button">
+              <button class="primary-button" id="cleanup-empty-folders">
                 <span class="material-icons">cleaning_services</span>
-                <span data-i18n="openBookmarkCleanup">打开书签清理工具</span>
+                <span data-i18n="cleanupEmptyFolders">清理空文件夹</span>
               </button>
+            </div>
+          </div>
+          <div id="wheel-switching-settings" class="settings-tab-content">
+            <h3 class="settings-modal-subtitle" data-i18n="wheelSwitchingSettingsTitle">滚轮切换设置</h3>
+            <p data-i18n="wheelSwitchingDescription">配置默认文件夹的滚轮切换功能</p>
+            <div class="setting-option">
+              <label for="enable-wheel-switching" class="switch-label" data-i18n="enableWheelSwitching">启用滚轮切换</label>
+              <label class="switch">
+                <input type="checkbox" id="enable-wheel-switching">
+                <span class="slider round"></span>
+              </label>
             </div>
           </div>
           <div id="donate-settings" class="settings-tab-content">
@@ -484,6 +496,7 @@
                 <div class="donate-qrcode-container">
                   <img src="../images/wechat-donate.png" alt="WeChat Donate QR Code" class="donate-qrcode">
                   <p class="donate-qrcode-text" data-i18n="scanQRCodeToDonate">扫描二维码赞赏</p>
+                  <a href="https://cooing-loganberry-b74.notion.site/Tabmark-1af1ee1c3b3a80d7b268fda1c74f0404" target="_blank" class="donate-list-link" data-i18n="donateListLink">查看赞赏列表</a>
                 </div>
               </div>
             </div>

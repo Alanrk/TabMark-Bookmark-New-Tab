@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "TabMark",
+        "message": "新しいタブ",
         "description": "拡張機能の名前"
     },
     "extDescription": {
@@ -400,7 +400,7 @@
         "description": "公式サイトのリンクテキスト"
     },
     "feedback": {
-        "message": "フィードバック",
+        "message": "メール",
         "description": "フィードバックリンクのテキスト"
     },
     "settingsUpdateTip": {
@@ -698,7 +698,7 @@
         "description": "ブックマークコンテナの幅設定の説明"
     },
     "donateTab": {
-        "message": "サポートする",
+        "message": "寄付",
         "description": "設定の寄付タブ名"
     },
     "donateTitle": {
@@ -719,7 +719,11 @@
     },
     "scanQRCodeToDonate": {
         "message": "QRコードをスキャンして寄付する",
-        "description": "QRコードをスキャンして寄付するためのテキスト"
+        "description": "Text for scanning QR code to donate"
+    },
+    "donateListLink": {
+        "message": "寄付リストを表示",
+        "description": "Link text to view donation list"
     },
     "donateWithPaypal": {
         "message": "PayPalで寄付する",
@@ -740,5 +744,57 @@
     "searchBoxDisplayTitle": {
         "message": "検索ボックスの表示",
         "description": "検索ボックス表示設定のタイトル"
+    },
+    "shortcutsTab": {
+        "message": "ショートカット",
+        "description": "Shortcuts settings tab name"
+    },
+    "shortcutsSettingsTitle": {
+        "message": "ショートカット設定",
+        "description": "Shortcuts settings title"
+    },
+    "shortcutsSettingsDescription": {
+        "message": "クイックアクセス用のショートカットをカスタマイズ",
+        "description": "Shortcuts settings description"
+    },
+    "sidebarShortcutName": {
+        "message": "サイドバーショートカット",
+        "description": "Sidebar shortcut name"
+    },
+    "configureShortcuts": {
+        "message": "ショートカットを設定",
+        "description": "Configure shortcuts button text"
+    },
+    "shortcutValue": {
+        "message": "デフォルト",
+        "description": "Default shortcut value"
+    },
+    "wheelSwitchingTab": {
+        "message": "ホイール切り替え",
+        "description": "Wheel switching tab name in settings"
+    },
+    "wheelSwitchingSettingsTitle": {
+        "message": "ホイール切り替え設定",
+        "description": "Title for wheel switching settings"
+    },
+    "wheelSwitchingDescription": {
+        "message": "ホイール切り替えを有効にすると、メインページのブックマークリスト以外の領域でマウスホイールをスクロールすることで、固定されたフォルダ間を素早く切り替えることができます",
+        "description": "Description for wheel switching settings"
+    },
+    "enableWheelSwitching": {
+        "message": "ホイール切り替えを有効にする",
+        "description": "Option to enable wheel switching feature"
+    },
+    "shortcutsFeature": {
+        "message": "新機能：\n1. サイドバーショートカットのカスタマイズ：Chromeの拡張機能ショートカット設定でサイドバーを開くまたは閉じるショートカットをカスタマイズできるようになりました\n2. 設定 > ショートカットから、Chromeのショートカット設定ページに素早くアクセスできます\n3. 双方向コントロール：同じショートカットを押してサイドバーを開いたり閉じたりできるようになり、より便利になりました\n\nカスタムタブ機能：\n1. 「レイアウト設定」タブでホームページに表示されるコンテンツをカスタマイズできるようになりました\n2. 検索ボックス、ウェルカムメッセージ、フッターの表示/非表示を選択できます\n3. 表示するクイックアクセスリンクをカスタマイズできます\n4. お好みのレイアウトに合わせてブックマークコンテナの幅を調整できます\n5. 「検索設定」で履歴とブックマークの提案を表示するかどうかを選択できます\n6. この拡張機能が気に入った場合、WeChatを通じて開発をサポートできる「寄付」オプションが追加されました",
+        "description": "ショートカットカスタマイズ機能に関する情報"
+    },
+    "wechatGroup": {
+        "message": "WeChatグループ",
+        "description": "WeChatグループ名"
+    },
+    "feedbacks": {
+        "message": "フィードバック",
+        "description": "フィードバックリンクのテキスト"
     }
 }

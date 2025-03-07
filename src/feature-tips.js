@@ -153,7 +153,8 @@ class FeatureTips {
             '1.238': ['bookmarkCleanup'],
             '1.239': ['sidebarFeatures'],
             '1.241': ['searchEngineUpdate'],
-            '1.242': ['customTab'],
+            '1.243': ['customTab'],
+            '1.244': ['shortcuts'],
         };
 
         const features = [];
