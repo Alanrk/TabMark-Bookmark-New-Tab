@@ -99,19 +99,6 @@
       <div class="flex justify-between items-center mb-4">
         <div class="search-container">
           <form class="search-form" id="search-form">
-            <div class="search-engine-update-tip">
-              <div class="tip-content">
-                <span class="material-icons">info</span>
-                <div class="tip-text">
-                  <p data-i18n="searchEngineUpdateTip">You can update your search engine settings here...</p>
-                  <p class="tip-detail" data-i18n="searchEngineUpdateDetail">Details about the update...</p>
-                </div>
-                <button class="tip-close">
-                  <span class="material-icons">close</span>
-                </button>
-              </div>
-              <div class="tip-arrow"></div>
-            </div>
             <div style="position: relative;height: auto;">
               <div class="search-icon-container">
                 <img id="search-engine-icon" src="../images/placeholder-icon.svg" alt="search-engine-icon"
@@ -265,6 +252,7 @@
           <button class="settings-tab-button" data-tab="bookmark-management"
             data-i18n="bookmarkManagementTab">书签管理</button>
           <button class="settings-tab-button" data-tab="wheel-switching" data-i18n="wheelSwitchingTab">滚轮切换</button>
+          <button class="settings-tab-button" data-tab="shortcuts" data-i18n="shortcutsTab">快捷键</button>
           <button class="settings-tab-button" data-tab="donate" data-i18n="donateTab">支持我们</button>
           <button class="settings-tab-button" data-tab="about" data-i18n="aboutTab">关于</button>
         </div>
@@ -330,17 +318,17 @@
               </div>
             </div>
 
-            <!-- 新增书签容器宽度设置 -->
-            <h4 class="settings-section-title" data-i18n="containerWidthTitle">书签容器宽度</h4>
-            <div id="container-width-settings">
+            <!-- 新增书签卡片高度设置 -->
+            <h4 class="settings-section-title" data-i18n="bookmarkHeightTitle">书签卡片高度</h4>
+            <div id="card-height-settings">
               <div class="slider-container" style="display: flex; align-items: center; gap: 10px;">
-                <input type="range" id="container-width-slider" min="50" max="100" step="5" value="85" style="flex: 1;">
+                <input type="range" id="height-slider" min="36" max="80" step="4" value="48" style="flex: 1;">
                 <div class="value-display" style="white-space: nowrap;">
-                  <span id="container-width-value">85</span>%
+                  <span id="height-value">48</span>px
                 </div>
               </div>
               <div class="preview-text" style="margin-top: 16px;">
-                <span data-i18n="containerWidthDescription">调整书签容器在页面中的宽度比例</span>
+                <span data-i18n="heightPreviewText">调整书签卡片的高度</span>
               </div>
             </div>
 
@@ -409,6 +397,15 @@
             <h3 class="settings-modal-subtitle" data-i18n="searchSettingsTitle">搜索设置</h3>
             <p data-i18n="searchSettingsDescription">自定义搜索建议的显示内容和行为</p>
 
+            <h4 class="settings-section-title" data-i18n="searchBoxDisplayTitle">搜索框显示</h4>
+            <div class="setting-option">
+              <label for="show-search-box" class="switch-label" data-i18n="showSearchBox">显示搜索框</label>
+              <label class="switch">
+                <input type="checkbox" id="show-search-box">
+                <span class="slider round"></span>
+              </label>
+            </div>
+
             <h4 class="settings-section-title" data-i18n="searchSuggestionsTitle">搜索建议设置</h4>
             <div class="search-suggestions-settings">
               <div class="setting-option">
@@ -474,15 +471,33 @@
                 <span class="slider round"></span>
               </label>
             </div>
+            
+            <!-- 添加侧边栏模式下的链接打开方式选项 -->
+            <h4 class="settings-section-title" data-i18n="sidePanelLinkOpeningTitle">侧边栏模式</h4>
+            <p data-i18n="sidePanelLinkOpeningDescription">设置在侧边栏模式下点击书签时的打开方式。</p>
+            <div class="setting-option">
+              <label for="sidepanel-open-in-new-tab" class="switch-label" data-i18n="sidePanelOpenInNewTab">在新标签页中打开</label>
+              <label class="switch">
+                <input type="checkbox" id="sidepanel-open-in-new-tab" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="setting-option">
+              <label for="sidepanel-open-in-sidepanel" class="switch-label" data-i18n="sidePanelOpenInSidepanel">在侧边栏内打开</label>
+              <label class="switch">
+                <input type="checkbox" id="sidepanel-open-in-sidepanel">
+                <span class="slider round"></span>
+              </label>
+            </div>
           </div>
           <div id="bookmark-management-settings" class="settings-tab-content">
-            <h3 class="settings-modal-subtitle" data-i18n="bookmarkManagementTitle">书签管理</h3>
-            <p data-i18n="bookmarkManagementDescription">管理您的书签设置</p>
+            <h3 class="settings-modal-subtitle" data-i18n="bookmarkCleanupSettingsTitle">书签清理与统计</h3>
+            <p data-i18n="bookmarkCleanupSettingsDescription">清理重复和失效的书签，查看书签使用统计数据，帮助您更好地管理书签。</p>
             
             <div class="bookmark-cleanup-actions">
-              <button class="primary-button" id="cleanup-empty-folders">
+              <button id="open-bookmark-cleanup" class="primary-button">
                 <span class="material-icons">cleaning_services</span>
-                <span data-i18n="cleanupEmptyFolders">清理空文件夹</span>
+                <span data-i18n="openBookmarkCleanup">打开书签清理工具</span>
               </button>
             </div>
           </div>
@@ -495,6 +510,23 @@
                 <input type="checkbox" id="enable-wheel-switching">
                 <span class="slider round"></span>
               </label>
+            </div>
+          </div>
+          <div id="shortcuts-settings" class="settings-tab-content">
+            <h3 class="settings-modal-subtitle" data-i18n="shortcutsSettingsTitle">快捷键设置</h3>
+            <p data-i18n="shortcutsSettingsDescription" class="settings-description">自定义快捷键设置</p>
+            
+            <div class="shortcuts-settings-container">
+              <div class="shortcut-item" id="configure-shortcuts">
+                <div class="shortcut-info">
+                  <span class="shortcut-name" data-i18n="sidebarShortcutName">侧边栏快捷键</span>
+                  <div class="shortcut-value">
+                    <span class="shortcut-value-label" data-i18n="shortcutValue">默认</span>
+                    <span class="shortcut-value-text">Alt/Command + B</span>
+                  </div>
+                </div>
+                <span class="material-icons shortcut-arrow">chevron_right</span>
+              </div>
             </div>
           </div>
           <div id="donate-settings" class="settings-tab-content">

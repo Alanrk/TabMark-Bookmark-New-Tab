@@ -6,14 +6,7 @@ TabMark 将收藏夹变成新标签页，让你收藏的书签一目了然、整
 
 ![MacBook Air 13_ - 5@1x](https://github.com/user-attachments/assets/bb4f9996-902c-4b69-8a7f-4c2b2e219ffc)
 
-👀
-
-## Chrome版本因为商店要求不能同时修改用户的新标签页和搜索功能，故不再支持自定义搜索，当前版本落后于实际开发版本。
-## 各平台版本
-
-- chrome : 1.243(实际为 1.141)
-- Edge: 审核中
-- GitHub：1.245
+## 请注意Github为测试版，正式版请在商店安装
 
 ## 主要功能
 
