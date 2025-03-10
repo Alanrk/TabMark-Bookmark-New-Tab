@@ -505,7 +505,23 @@
     },
     "linkOpeningDescription": {
         "message": "메인 페이지에서 북마크와 빠른 링크를 클릭할 때 열리는 방식을 설정합니다.",
-        "description": "링크 열기 설정 설명"
+        "description": "링크 열기 방식 설정 설명"
+    },
+    "sidePanelLinkOpeningTitle": {
+        "message": "사이드 패널 링크 열기 방식",
+        "description": "사이드 패널 링크 열기 방식 설정 제목"
+    },
+    "sidePanelLinkOpeningDescription": {
+        "message": "사이드 패널에서 북마크와 빠른 링크를 클릭할 때 열리는 방식을 설정합니다",
+        "description": "사이드 패널 링크 열기 방식 설정 설명"
+    },
+    "sidePanelOpenInNewTab": {
+        "message": "새 탭에서 열기",
+        "description": "사이드 패널에서 클릭한 링크를 새 탭에서 여는 옵션"
+    },
+    "sidePanelOpenInSidepanel": {
+        "message": "사이드 패널에서 열기",
+        "description": "링크를 사이드 패널 내에서 여는 옵션"
     },
     "sidebarFeaturesFeature": {
         "message": "두 가지 새로운 기능이 추가되었습니다:\n1. 빠른 사이드바:\n어느 웹 페이지에서나 Alt/Command + B를 눌러 북마크와 검색 기능에 빠르게 접근할 수 있는 사이드바를 엽니다.\n\n2. 링크 열기 설정:\n설정에서 북마크와 빠른 링크를 여는 방식을 사용자 지정하고, 새 탭에서 열기 옵션을 선택할 수 있습니다.",
@@ -594,6 +610,14 @@
     "previewText": {
         "message": "행당 북마크 버튼 수:",
         "description": "북마크 너비 미리보기 설명 텍스트"
+    },
+    "bookmarkHeightTitle": {
+        "message": "북마크 카드 높이",
+        "description": "북마크 카드 높이 설정 제목"
+    },
+    "heightPreviewText": {
+        "message": "북마크 카드의 높이 조정",
+        "description": "북마크 높이 미리보기 텍스트"
     },
     "addToDefaultFolders": {
         "message": "홈페이지에 고정"
@@ -796,5 +820,25 @@
     "feedbacks": {
         "message": "피드백",
         "description": "피드백 링크 텍스트"
+    },
+    "searchResultsOpeningTitle": {
+        "message": "검색 결과 열기 방식",
+        "description": "검색 결과 열기 방식 설정 제목"
+    },
+    "openSearchInNewTab": {
+        "message": "새 탭에서 검색 결과 열기",
+        "description": "새 탭에서 검색 결과를 여는 옵션"
+    },
+    "searchSuggestionsFeature": {
+        "message": "버전 1.245 업데이트:\n1. 모든 검색 엔진 검색 기능 수정: Cmd/Ctrl+Enter로 검색할 때 기본 검색 엔진이 포함됩니다\n2. 검색 결과 열기 방식 설정 추가: 검색 결과를 새 탭 또는 현재 페이지에서 열지 선택할 수 있습니다\n3. 북마크 카드 높이 사용자 정의 추가: 북마크 카드의 높이를 취향에 맞게 조정할 수 있습니다\n4. 사이드 패널의 링크 열기 방식 설정 추가: 링크를 사이드 패널 또는 새 탭에서 열지 선택할 수 있습니다\n5. 사용자 경험 향상을 위한 여러 UI 문제 수정",
+        "description": "버전 1.245 업데이트 정보"
+    },
+    "bookmarkCardHeightTitle": {
+        "message": "북마크 카드 높이",
+        "description": "북마크 카드 높이 설정 제목"
+    },
+    "bookmarkCardHeightValue": {
+        "message": "$1 픽셀",
+        "description": "북마크 카드 높이 값"
     }
 }

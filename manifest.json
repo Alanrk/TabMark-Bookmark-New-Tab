@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TabMark-Bookmark New Tab",
-  "version": "1.244",
+  "version": "1.245",
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "chrome_url_overrides": {
@@ -15,7 +15,8 @@
     "tabGroups",
     "management",
     "sidePanel",
-    "commands"
+    "commands",
+    "tabs"
   ],
   "host_permissions": [
     "https://*/*",
@@ -40,6 +41,11 @@
     {
       "matches": ["<all_urls>"],
       "js": ["src/content.js"]
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/sidepanel-navigation.js"],
+      "run_at": "document_end"
     }
   ],
   "web_accessible_resources": [

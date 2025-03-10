@@ -382,13 +382,83 @@ document.addEventListener('DOMContentLoaded', function () {
 
           if (isSidePanel) {
             console.log('[Quick Link Click] Opening in Side Panel mode');
-            chrome.tabs.create({
-              url: site.url,
-              active: true
-            }).then(tab => {
-              console.log('[Quick Link Click] Tab created successfully:', tab);
-            }).catch(error => {
-              console.error('[Quick Link Click] Failed to create tab:', error);
+            // 获取侧边栏模式下的链接打开方式设置
+            chrome.storage.sync.get(['sidepanelOpenInNewTab', 'sidepanelOpenInSidepanel'], (result) => {
+              // 默认在新标签页中打开
+              const openInNewTab = result.sidepanelOpenInNewTab !== false;
+              const openInSidepanel = result.sidepanelOpenInSidepanel === true;
+              
+              console.log('[Quick Link Click] Side Panel settings:', {
+                openInNewTab: openInNewTab,
+                openInSidepanel: openInSidepanel
+              });
+              
+              if (openInSidepanel) {
+                // 在侧边栏内打开链接
+                console.log('[Quick Link Click] Opening in Side Panel iframe');
+                // 使用 SidePanelManager 加载 URL
+                try {
+                  // 检查 SidePanelManager 是否已定义
+                  if (typeof SidePanelManager === 'undefined') {
+                    // 如果未定义，则创建一个简单的加载函数
+                    console.log('[Quick Link Click] SidePanelManager not defined, using fallback method');
+                    const sidePanelContent = document.getElementById('side-panel-content');
+                    const sidePanelIframe = document.getElementById('side-panel-iframe');
+                    
+                    if (sidePanelContent && sidePanelIframe) {
+                      sidePanelContent.style.display = 'block';
+                      sidePanelIframe.src = site.url;
+                      
+                      // 添加返回按钮
+                      let backButton = document.querySelector('.back-to-links');
+                      if (!backButton) {
+                        backButton = document.createElement('div');
+                        backButton.className = 'back-to-links';
+                        backButton.innerHTML = '<span class="material-icons">arrow_back</span>';
+                        document.body.appendChild(backButton);
+                        
+                        // 添加点击事件
+                        backButton.addEventListener('click', () => {
+                          sidePanelContent.style.display = 'none';
+                          backButton.style.display = 'none';
+                        });
+                      }
+                      
+                      // 显示返回按钮
+                      backButton.style.display = 'flex';
+                    } else {
+                      console.error('[Quick Link Click] Side panel elements not found, falling back to new tab');
+                      chrome.tabs.create({
+                        url: site.url,
+                        active: true
+                      });
+                    }
+                  } else if (window.sidePanelManager) {
+                    window.sidePanelManager.loadUrl(site.url);
+                  } else {
+                    // 如果 SidePanelManager 已定义但实例不存在，创建一个新实例
+                    window.sidePanelManager = new SidePanelManager();
+                    window.sidePanelManager.loadUrl(site.url);
+                  }
+                } catch (error) {
+                  console.error('[Quick Link Click] Error using SidePanelManager:', error);
+                  // 出错时回退到在新标签页中打开
+                  chrome.tabs.create({
+                    url: site.url,
+                    active: true
+                  });
+                }
+              } else if (openInNewTab) {
+                // 在新标签页中打开
+                chrome.tabs.create({
+                  url: site.url,
+                  active: true
+                }).then(tab => {
+                  console.log('[Quick Link Click] Tab created successfully:', tab);
+                }).catch(error => {
+                  console.error('[Quick Link Click] Failed to create tab:', error);
+                });
+              }
             });
           } else {
             console.log('[Quick Link Click] Opening in Main Window mode');

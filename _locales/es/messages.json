@@ -424,8 +424,24 @@
         "description": "Título de configuración de apertura de enlaces"
     },
     "linkOpeningDescription": {
-        "message": "Configure cómo se abren los marcadores y enlaces rápidos al hacer clic en la página principal.",
+        "message": "Establezca cómo se abren los marcadores y enlaces rápidos al hacer clic en la página principal.",
         "description": "Descripción de la configuración de apertura de enlaces"
+    },
+    "sidePanelLinkOpeningTitle": {
+        "message": "Apertura de Enlaces en el Panel Lateral",
+        "description": "Título de la configuración de apertura de enlaces en el panel lateral"
+    },
+    "sidePanelLinkOpeningDescription": {
+        "message": "Configure cómo se abren los marcadores y enlaces rápidos al hacer clic en el panel lateral",
+        "description": "Descripción de la configuración de apertura de enlaces en el panel lateral"
+    },
+    "sidePanelOpenInNewTab": {
+        "message": "Abrir en nueva pestaña",
+        "description": "Opción para abrir enlaces en nueva pestaña al hacer clic en el panel lateral"
+    },
+    "sidePanelOpenInSidepanel": {
+        "message": "Abrir en el panel lateral",
+        "description": "Opción para abrir enlaces dentro del panel lateral"
     },
     "sidebarFeaturesFeature": {
         "message": "Se han añadido dos nuevas funciones:\n1. Barra lateral rápida:\nPresione Alt/Command + B en cualquier página web para abrir la barra lateral y acceder rápidamente a los marcadores y funciones de búsqueda.\n\n2. Configuración de apertura de enlaces:\nPersonalice cómo se abren los marcadores y enlaces rápidos en la configuración, con la opción de abrirlos en nuevas pestañas.",
@@ -508,12 +524,20 @@
         "description": "Descripción de la configuración de diseño"
     },
     "bookmarkWidthTitle": {
-        "message": "Configuración de Ancho de Marcadores",
+        "message": "Configuración de ancho de marcadores",
         "description": "Título para la configuración de ancho de marcadores"
     },
     "previewText": {
-        "message": "Número de botones de marcadores por fila:",
-        "description": "Texto que explica la vista previa del ancho de marcadores"
+        "message": "Marcadores por fila:",
+        "description": "Texto para la vista previa del ancho de marcadores"
+    },
+    "bookmarkHeightTitle": {
+        "message": "Altura de tarjeta de marcador",
+        "description": "Título para la configuración de altura de tarjeta de marcador"
+    },
+    "heightPreviewText": {
+        "message": "Ajustar la altura de las tarjetas de marcadores",
+        "description": "Texto para la vista previa de altura de marcadores"
     },
     "addToDefaultFolders": {
         "message": "Fijar a la página de inicio"
@@ -716,5 +740,25 @@
     "feedbacks": {
         "message": "Feedback",
         "description": "Feedback link text"
+    },
+    "searchResultsOpeningTitle": {
+        "message": "Método de Apertura de Resultados de Búsqueda",
+        "description": "Título para la configuración del método de apertura de resultados de búsqueda"
+    },
+    "openSearchInNewTab": {
+        "message": "Abrir Resultados de Búsqueda en Nueva Pestaña",
+        "description": "Opción para abrir resultados de búsqueda en nueva pestaña"
+    },
+    "searchSuggestionsFeature": {
+        "message": "Actualización de la versión 1.245:\n1. Se corrigió la función de búsqueda en todos los motores: ahora la búsqueda con Cmd/Ctrl+Enter incluye el motor de búsqueda predeterminado\n2. Se agregó la configuración del método de apertura de resultados de búsqueda: elija abrir resultados en una nueva pestaña o en la página actual\n3. Se agregó la personalización de la altura de las tarjetas de marcadores: ajuste la altura de las tarjetas según su preferencia\n4. Se agregó una nueva configuración para abrir enlaces en el panel lateral: elija si los enlaces se abren en el panel lateral o en una nueva pestaña\n5. Se corrigieron múltiples problemas de interfaz para una mejor experiencia de usuario",
+        "description": "Información sobre las actualizaciones de la versión 1.245"
+    },
+    "bookmarkCardHeightTitle": {
+        "message": "Altura de Tarjeta de Marcador",
+        "description": "Título para la configuración de altura de tarjeta de marcador"
+    },
+    "bookmarkCardHeightValue": {
+        "message": "$1 píxeles",
+        "description": "Valor para la altura de tarjeta de marcador"
     }
 }

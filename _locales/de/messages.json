@@ -452,8 +452,24 @@
         "description": "Titel für Link-Öffnungseinstellungen"
     },
     "linkOpeningDescription": {
-        "message": "Legen Sie fest, wie Lesezeichen und Schnelllinks beim Klicken auf der Hauptseite geöffnet werden.",
-        "description": "Beschreibung der Link-Öffnungseinstellungen"
+        "message": "Legen Sie fest, wie Lesezeichen und Schnelllinks geöffnet werden, wenn sie auf der Hauptseite angeklickt werden.",
+        "description": "Beschreibung der Einstellungen für das Öffnen von Links"
+    },
+    "sidePanelLinkOpeningTitle": {
+        "message": "Linköffnung im Seitenbereich",
+        "description": "Titel für die Einstellungen zum Öffnen von Links im Seitenbereich"
+    },
+    "sidePanelLinkOpeningDescription": {
+        "message": "Konfigurieren Sie, wie Lesezeichen und Schnelllinks geöffnet werden, wenn sie im Seitenbereich angeklickt werden",
+        "description": "Beschreibung für die Einstellungen zum Öffnen von Links im Seitenbereich"
+    },
+    "sidePanelOpenInNewTab": {
+        "message": "In neuem Tab öffnen",
+        "description": "Option zum Öffnen von Links in einem neuen Tab, wenn sie im Seitenbereich angeklickt werden"
+    },
+    "sidePanelOpenInSidepanel": {
+        "message": "Im Seitenbereich öffnen",
+        "description": "Option zum Öffnen von Links innerhalb des Seitenbereichs"
     },
     "sidebarFeaturesFeature": {
         "message": "Zwei neue Funktionen hinzugefügt:\n1. Schnelle Seitenleiste:\nDrücken Sie Alt/Command + B auf einer beliebigen Webseite, um die Seitenleiste für schnellen Zugriff auf Lesezeichen und Suchfunktionen zu öffnen.\n\n2. Link-Öffnungseinstellungen:\nPassen Sie in den Einstellungen an, wie Lesezeichen und Schnelllinks geöffnet werden, mit der Option, sie in neuen Tabs zu öffnen.",
@@ -536,12 +552,20 @@
         "description": "Beschreibung der Layout-Einstellungen"
     },
     "bookmarkWidthTitle": {
-        "message": "Lesezeichen-Breite Einstellungen",
-        "description": "Titel für Lesezeichen-Breite Einstellungen"
+        "message": "Lesezeichen-Breite",
+        "description": "Title for bookmark width settings"
     },
     "previewText": {
-        "message": "Anzahl der Lesezeichen-Schaltflächen pro Zeile:",
-        "description": "Text zur Erklärung der Lesezeichen-Breiten-Vorschau"
+        "message": "Lesezeichen pro Zeile:",
+        "description": "Text for bookmark width preview"
+    },
+    "bookmarkHeightTitle": {
+        "message": "Lesezeichen-Kartenhöhe",
+        "description": "Title for bookmark card height settings"
+    },
+    "heightPreviewText": {
+        "message": "Passen Sie die Höhe der Lesezeichenkarten an",
+        "description": "Text for bookmark height preview"
     },
     "addToDefaultFolders": {
         "message": "An Startseite anheften"
@@ -743,6 +767,26 @@
     },
     "feedbacks": {
         "message": "Feedback",
-        "description": "Feedback link text"
+        "description": "Feedback-Link-Text"
+    },
+    "searchResultsOpeningTitle": {
+        "message": "Öffnungsmethode für Suchergebnisse",
+        "description": "Titel für die Einstellungen zur Öffnungsmethode von Suchergebnissen"
+    },
+    "openSearchInNewTab": {
+        "message": "Suchergebnisse in neuem Tab öffnen",
+        "description": "Option zum Öffnen von Suchergebnissen in einem neuen Tab"
+    },
+    "searchSuggestionsFeature": {
+        "message": "Version 1.245 Updates:\n1. Suche in allen Suchmaschinen korrigiert: Die Suche mit Cmd/Ctrl+Enter umfasst jetzt auch die Standard-Suchmaschine\n2. Einstellung für die Öffnungsmethode von Suchergebnissen hinzugefügt: Wählen Sie, ob Suchergebnisse in einem neuen Tab oder auf der aktuellen Seite geöffnet werden sollen\n3. Anpassung der Lesezeichenkartenhöhe hinzugefügt: Passen Sie die Höhe der Lesezeichenkarten nach Ihren Vorlieben an\n4. Neue Einstellung für die Öffnung von Links im Seitenbereich hinzugefügt: Wählen Sie, ob Links im Seitenbereich oder in einem neuen Tab geöffnet werden sollen\n5. Mehrere Benutzeroberflächen-Probleme für eine bessere Benutzererfahrung behoben",
+        "description": "Informationen zu den Updates der Version 1.245"
+    },
+    "bookmarkCardHeightTitle": {
+        "message": "Lesezeichenkartenhöhe",
+        "description": "Titel für die Einstellungen der Lesezeichenkartenhöhe"
+    },
+    "bookmarkCardHeightValue": {
+        "message": "$1 Pixel",
+        "description": "Wert für die Lesezeichenkartenhöhe"
     }
 }

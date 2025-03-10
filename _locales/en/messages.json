@@ -623,8 +623,16 @@
         "description": "Title for bookmark width settings"
     },
     "previewText": {
-        "message": "Number of bookmark buttons per row:",
-        "description": "Text explaining the bookmark width preview"
+        "message": "Bookmarks per row:",
+        "description": "Text for bookmark width preview"
+    },
+    "bookmarkHeightTitle": {
+        "message": "Bookmark Card Height",
+        "description": "Title for bookmark card height settings"
+    },
+    "heightPreviewText": {
+        "message": "Adjust the height of bookmark cards",
+        "description": "Text for bookmark height preview"
     },
     "addToDefaultFolders": {
         "message": "Pin to Homepage"
@@ -658,14 +666,14 @@
     },
     "searchSuggestionsTitle": {
         "message": "Search Suggestions Settings",
-        "description": "Search suggestions settings title"
+        "description": "Title for search suggestions settings"
     },
     "showHistorySuggestions": {
-        "message": "Show history suggestions",
+        "message": "Show History Suggestions",
         "description": "Option to show history suggestions"
     },
     "showBookmarkSuggestions": {
-        "message": "Show bookmark suggestions",
+        "message": "Show Bookmark Suggestions",
         "description": "Option to show bookmark suggestions"
     },
     "containerWidthTitle": {
@@ -823,5 +831,41 @@
     "shortcutsFeature": {
         "message": "New features:\n1. Sidebar shortcut customization: You can now customize the shortcut to open or close the sidebar in Chrome extension shortcuts settings\n2. In Settings > Shortcuts, you can quickly jump to Chrome's shortcut settings page\n3. Two-way control: Press the same shortcut to open or close the sidebar for more convenience\n\nCustom tab features:\n1. You can now customize the content displayed on your homepage in the \"Layout Settings\" tab\n2. Choose to hide or show the search box, welcome message, and footer\n3. Customize which quick access links are displayed\n4. Adjust the bookmark container width for your preferred layout\n5. In \"Search Settings\", you can choose whether to display history and bookmark suggestions\n6. Added a \"Donate\" option where you can support development through WeChat if you like this extension",
         "description": "Information about the shortcuts customization feature"
+    },
+    "searchResultsOpeningTitle": {
+        "message": "Search Results Opening Method",
+        "description": "Title for search results opening method settings"
+    },
+    "openSearchInNewTab": {
+        "message": "Open Search Results in New Tab",
+        "description": "Option to open search results in new tab"
+    },
+    "searchSuggestionsFeature": {
+        "message": "Version 1.245 Updates:\n1. Fixed search all engines: Now Cmd/Ctrl+Enter search includes the default search engine\n2. Added search results opening method settings: Choose to open search results in new tab or current page\n3. Added bookmark card height customization: Adjust the height of bookmark cards to your preference\n4. Fixed multiple UI issues for better user experience",
+        "description": "Information about version 1.245 updates"
+    },
+    "bookmarkCardHeightTitle": {
+        "message": "Bookmark Card Height",
+        "description": "Title for bookmark card height settings"
+    },
+    "bookmarkCardHeightValue": {
+        "message": "$1 pixels",
+        "description": "Value for bookmark card height"
+    },
+    "sidePanelLinkOpeningTitle": {
+        "message": "Side Panel Link Opening",
+        "description": "Title for side panel link opening settings"
+    },
+    "sidePanelLinkOpeningDescription": {
+        "message": "Configure how bookmarks and quick links are opened when clicked in the side panel",
+        "description": "Description for side panel link opening settings"
+    },
+    "sidePanelOpenInNewTab": {
+        "message": "Open in New Tab",
+        "description": "Option to open links in new tab when clicked in side panel"
+    },
+    "sidePanelOpenInSidepanel": {
+        "message": "Open in Side Panel",
+        "description": "Option to open links within the side panel"
     }
 }

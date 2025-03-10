@@ -44,15 +44,17 @@
     height: 100%;
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     background: white;
     z-index: 1000;
+    overflow: hidden;
 }
 
 .side-panel-iframe {
     width: 100%;
     height: 100%;
     border: none;
+    overflow: hidden;
 }
 
 /* 当在侧边栏模式时显示内容 */
@@ -121,11 +123,61 @@
 /* 加载指示器样式 */
 .loading-indicator {
   position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1001;
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #3b82f6;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 为暗色主题设置不同的加载指示器样式 */
+[data-theme="dark"] .loading-spinner {
+  border-color: rgba(255, 255, 255, 0.1);
+  border-top-color: #60a5fa;
+}
+
+/* 替代位置选项 - 可以将这些类添加到loading-indicator元素上来改变位置 */
+
+/* 1. 页面中心 (适合全屏加载) */
+.loading-indicator.center {
   top: 50%;
   left: 50%;
+  right: auto;
   transform: translate(-50%, -50%);
-  z-index: 1001;
-  display: none;
+}
+
+/* 2. 顶部中央 (类似进度条位置) */
+.loading-indicator.top-center {
+  top: 15px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+}
+
+/* 3. 底部右侧 (不妨碍阅读和导航) */
+.loading-indicator.bottom-right {
+  top: auto;
+  bottom: 15px;
+  right: 15px;
+}
+
+/* 4. 导航栏旁 (适合侧边栏有明确导航区域时) */
+.loading-indicator.nav-adjacent {
+  top: 55px;
+  right: 15px;
 }
 
 /* 返回按钮样式 */
@@ -255,4 +307,159 @@ body.is-sidepanel .folder-tab::after {
 /* 调整书签容器底部边距，为 default-folders-tabs 留出空间 */
 body.is-sidepanel .bookmarks-container {
   margin-bottom: 80px !important;
+}
+
+/* 导航栏样式优化 */
+.side-panel-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background-color: rgba(248, 249, 250, 0.95);
+  border-bottom: 1px solid #dee2e6;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.side-panel-nav .nav-controls {
+  display: flex;
+  align-items: center;
+}
+
+.side-panel-nav button {
+  background: none;
+  border: none;
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 2px;
+  color: #555;
+}
+
+.side-panel-nav button:hover {
+  background-color: #e9ecef;
+}
+
+.side-panel-nav button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.side-panel-nav button .material-icons {
+  font-size: 16px;
+}
+
+.side-panel-nav .url-container {
+  flex: 1;
+  margin: 0 5px;
+}
+
+.side-panel-nav .url-input {
+  width: 100%;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: white;
+}
+
+/* 紧凑模式 */
+.side-panel-nav.compact-mode {
+  transform: translateY(-28px);
+}
+
+.side-panel-nav.compact-mode:hover,
+.side-panel-nav:has(.url-input:focus) {
+  transform: translateY(0);
+}
+
+.toggle-compact-btn {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 12px;
+  background-color: rgba(248, 249, 250, 0.95);
+  border: 1px solid #dee2e6;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.toggle-compact-btn .material-icons {
+  font-size: 16px;
+  line-height: 12px;
+}
+
+/* 当导航栏处于紧凑模式时，调整iframe位置 */
+body.nav-compact-mode .side-panel-iframe {
+  margin-top: 4px;
+}
+
+/* 暗色模式的导航栏 */
+@media (prefers-color-scheme: dark) {
+  .side-panel-nav {
+    background-color: rgba(32, 33, 36, 0.95);
+    border-bottom-color: #3c4043;
+  }
+  
+  .side-panel-nav button {
+    color: #e8eaed;
+  }
+  
+  .side-panel-nav button:hover {
+    background-color: #3c4043;
+  }
+  
+  .side-panel-nav .url-input {
+    background-color: #202124;
+    border-color: #3c4043;
+    color: #e8eaed;
+  }
+  
+  .toggle-compact-btn {
+    background-color: rgba(32, 33, 36, 0.95);
+    border-color: #3c4043;
+    color: #e8eaed;
+  }
+}
+
+/* 优化侧边栏导航样式，确保不遮挡网站内容 */
+.sidepanel-nav-bar {
+  height: 32px !important;
+  background-color: rgba(248, 249, 250, 0.95) !important; /* 半透明背景 */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+  backdrop-filter: blur(5px); /* 添加模糊效果增强可读性 */
+  transition: transform 0.3s ease, opacity 0.3s ease !important;
+}
+
+/* 紧凑模式样式 */
+.sidepanel-nav-bar.compact-mode {
+  transform: translateY(-28px) !important;
+}
+
+.sidepanel-nav-bar.compact-mode:hover {
+  transform: translateY(0) !important;
+}
+
+/* 当导航栏处于紧凑模式时，调整页面内容位置 */
+body.nav-compact-mode {
+  margin-top: 4px !important;
 } 

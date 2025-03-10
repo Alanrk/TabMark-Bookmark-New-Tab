@@ -8,6 +8,7 @@
   <link href="output.css" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
   <link href="sidepanel.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="icon" type="image/png" href="../images/favicon.png">
   <style id="dynamic-background"></style>
   <script src="localization.js"></script>
@@ -20,6 +21,7 @@
   <script type="module" src="feature-tips.js"></script>
   <script type="module" src="settings.js"></script>
   <script type="module" src="search-engine-dropdown.js"></script>
+  <script src="sidepanel-manager.js"></script>
   <style>
     /* 确保在侧边栏模式下立即隐藏页脚和欢迎语 */
     @media (max-width: 480px),
@@ -427,6 +429,17 @@
                 </label>
               </div>
             </div>
+            
+            <h4 class="settings-section-title" data-i18n="searchResultsOpeningTitle">搜索结果打开方式</h4>
+            <div class="search-opening-settings">
+              <div class="setting-option">
+                <label for="open-search-in-new-tab" class="switch-label" data-i18n="openSearchInNewTab">在新标签页中打开搜索结果</label>
+                <label class="switch">
+                  <input type="checkbox" id="open-search-in-new-tab" checked>
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
           </div>
           <div id="floating-ball-settings" class="settings-tab-content">
             <h3 class="settings-modal-subtitle" data-i18n="floatingBallSettingsTitle">悬浮球设置</h3>
@@ -496,9 +509,15 @@
                 <div class="donate-qrcode-container">
                   <img src="../images/wechat-donate.png" alt="WeChat Donate QR Code" class="donate-qrcode">
                   <p class="donate-qrcode-text" data-i18n="scanQRCodeToDonate">扫描二维码赞赏</p>
-                  <a href="https://cooing-loganberry-b74.notion.site/Tabmark-1af1ee1c3b3a80d7b268fda1c74f0404" target="_blank" class="donate-list-link" data-i18n="donateListLink">查看赞赏列表</a>
                 </div>
               </div>
+            </div>
+            
+            <!-- 赞赏列表链接 - 独立区域 -->
+            <div class="donate-list-container">
+              <a href="https://cooing-loganberry-b74.notion.site/Tabmark-1af1ee1c3b3a80d7b268fda1c74f0404" target="_blank" class="donate-list-button">
+                <span data-i18n="donateListLink">查看赞赏列表</span>
+              </a>
             </div>
 
             <p class="donate-thank-you" data-i18n="thankYouForSupport">感谢您的支持！</p>

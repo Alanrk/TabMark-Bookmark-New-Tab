@@ -1699,7 +1699,7 @@ img.w-6.h-6.mr-2 {
 }
 
 .search-input {
-  padding-left: 50px !important;
+  padding-left: 60px !important;
 }
 
 /* Add this to your CSS file */
@@ -2271,7 +2271,7 @@ input:checked+.slider:before {
   color: #374151;
   transition: all 0.2s ease;
   justify-content: center;  /* 确保内容居中 */
-  width: 140px;
+  min-width: 140px;
 }
 
 .about-link:hover {

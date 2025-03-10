@@ -155,6 +155,7 @@ class FeatureTips {
             '1.241': ['searchEngineUpdate'],
             '1.243': ['customTab'],
             '1.244': ['shortcuts'],
+            '1.245': ['searchSuggestions'],
         };
 
         const features = [];

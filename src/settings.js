@@ -15,6 +15,15 @@ class SettingsManager {
     this.enableFloatingBallCheckbox = document.getElementById('enable-floating-ball');
     this.enableQuickLinksCheckbox = document.getElementById('enable-quick-links');
     this.openInNewTabCheckbox = document.getElementById('open-in-new-tab');
+    
+    // 侧边栏模式下的链接打开方式设置元素可能不存在于所有页面
+    // 添加安全检查，避免在元素不存在时出错
+    const sidepanelOpenInNewTab = document.getElementById('sidepanel-open-in-new-tab');
+    const sidepanelOpenInSidepanel = document.getElementById('sidepanel-open-in-sidepanel');
+    
+    this.sidepanelOpenInNewTabCheckbox = sidepanelOpenInNewTab;
+    this.sidepanelOpenInSidepanelCheckbox = sidepanelOpenInSidepanel;
+    
     this.widthSettings = document.getElementById('floating-width-settings');
     this.widthSlider = document.getElementById('width-slider');
     this.widthValue = document.getElementById('width-value');
@@ -23,6 +32,7 @@ class SettingsManager {
     this.showHistorySuggestionsCheckbox = document.getElementById('show-history-suggestions');
     this.showBookmarkSuggestionsCheckbox = document.getElementById('show-bookmark-suggestions');
     this.enableWheelSwitchingCheckbox = document.getElementById('enable-wheel-switching');
+    this.openSearchInNewTabCheckbox = document.getElementById('open-search-in-new-tab');
     this.init();
   }
 
@@ -30,16 +40,67 @@ class SettingsManager {
     this.loadSavedSettings();
     this.initEventListeners();
     this.initTheme();
-    this.initQuickLinksSettings();
-    this.initFloatingBallSettings();
-    this.initLinkOpeningSettings();
-    this.initBookmarkManagementTab();
-    this.initBookmarkWidthSettings();
-    this.initContainerWidthSettings();
-    this.initLayoutSettings();
-    this.initSearchSuggestionsSettings();
-    this.initShortcutsSettings();
-    this.initWheelSwitchingTab();
+    
+    // 只在相关元素存在时才调用各个初始化方法
+    if (this.enableQuickLinksCheckbox) {
+      this.initQuickLinksSettings();
+    }
+    
+    if (this.enableFloatingBallCheckbox) {
+      this.initFloatingBallSettings();
+    }
+    
+    if (this.openInNewTabCheckbox || this.sidepanelOpenInNewTabCheckbox || this.sidepanelOpenInSidepanelCheckbox) {
+      this.initLinkOpeningSettings();
+    }
+    
+    // 检查书签管理相关元素
+    const bookmarkCleanupButton = document.getElementById('open-bookmark-cleanup');
+    if (bookmarkCleanupButton) {
+      this.initBookmarkManagementTab();
+    }
+    
+    // 检查宽度设置相关元素
+    if (this.widthSlider && this.widthValue) {
+      this.initBookmarkWidthSettings();
+    }
+    
+    // 检查高度设置相关元素
+    const heightSlider = document.getElementById('height-slider');
+    const heightValue = document.getElementById('height-value');
+    if (heightSlider && heightValue) {
+      this.initCardHeightSettings();
+    }
+    
+    // 检查容器宽度设置相关元素
+    const containerWidthSlider = document.getElementById('container-width-slider');
+    if (containerWidthSlider) {
+      this.initContainerWidthSettings();
+    }
+    
+    // 检查布局设置相关元素
+    const showSearchBoxCheckbox = document.getElementById('show-search-box');
+    const showWelcomeMessageCheckbox = document.getElementById('show-welcome-message');
+    const showFooterCheckbox = document.getElementById('show-footer');
+    if (showSearchBoxCheckbox || showWelcomeMessageCheckbox || showFooterCheckbox) {
+      this.initLayoutSettings();
+    }
+    
+    // 检查搜索建议设置相关元素
+    if (this.showHistorySuggestionsCheckbox || this.showBookmarkSuggestionsCheckbox) {
+      this.initSearchSuggestionsSettings();
+    }
+    
+    // 检查滚轮切换设置相关元素
+    if (this.enableWheelSwitchingCheckbox) {
+      this.initWheelSwitchingTab();
+    }
+    
+    // 检查快捷键设置相关元素
+    const configureShortcuts = document.getElementById('configure-shortcuts');
+    if (configureShortcuts) {
+      this.initShortcutsSettings();
+    }
   }
 
   initEventListeners() {
@@ -108,6 +169,10 @@ class SettingsManager {
     
     // 阻止侧边栏内部点击事件冒泡到文档
     this.settingsSidebar.addEventListener('click', (e) => {
+      // 如果点击的是链接，不阻止事件冒泡
+      if (e.target.tagName === 'A' || e.target.closest('a')) {
+        return; // 允许链接点击事件正常传播
+      }
       e.stopPropagation();
     });
     
@@ -329,6 +394,15 @@ class SettingsManager {
   }
 
   initLinkOpeningSettings() {
+    // 检查元素是否存在
+    if (!this.openInNewTabCheckbox) {
+      console.log('openInNewTabCheckbox not found, skipping settings initialization');
+      return;
+    }
+    
+    // 检查侧边栏模式下的链接打开方式设置元素是否存在
+    const hasSidepanelSettings = this.sidepanelOpenInNewTabCheckbox && this.sidepanelOpenInSidepanelCheckbox;
+    
     // 加载链接打开方式设置
     chrome.storage.sync.get(['openInNewTab'], (result) => {
       this.openInNewTabCheckbox.checked = result.openInNewTab !== false;
@@ -338,6 +412,49 @@ class SettingsManager {
     this.openInNewTabCheckbox.addEventListener('change', () => {
       const isEnabled = this.openInNewTabCheckbox.checked;
       chrome.storage.sync.set({ openInNewTab: isEnabled });
+    });
+    
+    // 如果侧边栏模式下的链接打开方式设置元素不存在，则跳过
+    if (!hasSidepanelSettings) {
+      console.log('Sidepanel checkboxes not found, skipping sidepanel settings initialization');
+      return;
+    }
+    
+    // 加载侧边栏模式下的链接打开方式设置
+    chrome.storage.sync.get(['sidepanelOpenInNewTab', 'sidepanelOpenInSidepanel'], (result) => {
+      // 默认在新标签页中打开
+      this.sidepanelOpenInNewTabCheckbox.checked = result.sidepanelOpenInNewTab !== false;
+      this.sidepanelOpenInSidepanelCheckbox.checked = result.sidepanelOpenInSidepanel === true;
+      
+      // 确保两个选项是互斥的
+      if (this.sidepanelOpenInNewTabCheckbox.checked && this.sidepanelOpenInSidepanelCheckbox.checked) {
+        // 如果两个都被选中，优先使用在新标签页中打开
+        this.sidepanelOpenInSidepanelCheckbox.checked = false;
+        chrome.storage.sync.set({ sidepanelOpenInSidepanel: false });
+      }
+    });
+    
+    // 监听侧边栏模式下的链接打开方式设置变化
+    this.sidepanelOpenInNewTabCheckbox.addEventListener('change', () => {
+      const isEnabled = this.sidepanelOpenInNewTabCheckbox.checked;
+      chrome.storage.sync.set({ sidepanelOpenInNewTab: isEnabled });
+      
+      // 如果启用了在新标签页中打开，则禁用在侧边栏内打开
+      if (isEnabled && this.sidepanelOpenInSidepanelCheckbox.checked) {
+        this.sidepanelOpenInSidepanelCheckbox.checked = false;
+        chrome.storage.sync.set({ sidepanelOpenInSidepanel: false });
+      }
+    });
+    
+    this.sidepanelOpenInSidepanelCheckbox.addEventListener('change', () => {
+      const isEnabled = this.sidepanelOpenInSidepanelCheckbox.checked;
+      chrome.storage.sync.set({ sidepanelOpenInSidepanel: isEnabled });
+      
+      // 如果启用了在侧边栏内打开，则禁用在新标签页中打开
+      if (isEnabled && this.sidepanelOpenInNewTabCheckbox.checked) {
+        this.sidepanelOpenInNewTabCheckbox.checked = false;
+        chrome.storage.sync.set({ sidepanelOpenInNewTab: false });
+      }
     });
   }
 
@@ -391,20 +508,25 @@ class SettingsManager {
   }
 
   initBookmarkWidthSettings() {
+    // 获取元素引用
+    this.widthSlider = document.getElementById('width-slider');
+    this.widthValue = document.getElementById('width-value');
+    this.widthPreviewCount = document.getElementById('width-preview-count');
+    
+    if (!this.widthSlider || !this.widthValue) {
+      console.log('Width slider elements not found, skipping bookmark width settings initialization');
+      return;
+    }
+    
     // 从存储中获取保存的宽度值
     chrome.storage.sync.get(['bookmarkWidth'], (result) => {
-      const savedWidth = result.bookmarkWidth || 190;
+      const savedWidth = result.bookmarkWidth || 190; // 默认190px
       this.widthSlider.value = savedWidth;
       this.widthValue.textContent = savedWidth;
       this.updatePreviewCount(savedWidth);
       this.updateBookmarkWidth(savedWidth);
     });
-
-    // 监听滑块的鼠标按下事件
-    this.widthSlider.addEventListener('mousedown', () => {
-      // 不再调用showFloatingMode和显示全局滑块
-    });
-
+    
     // 监听滑块的变化
     this.widthSlider.addEventListener('input', (e) => {
       const width = e.target.value;
@@ -412,18 +534,73 @@ class SettingsManager {
       this.updatePreviewCount(width);
       this.updateBookmarkWidth(width);
     });
-
+      
     // 监听滑块的鼠标释放事件
     this.widthSlider.addEventListener('mouseup', () => {
       // 保存设置
       chrome.storage.sync.set({ bookmarkWidth: this.widthSlider.value });
     });
-
+        
     // 添加窗口大小改变的监听
     const debouncedUpdate = this.debounce(() => {
       this.updatePreviewCount(this.widthSlider.value);
     }, 250);
     window.addEventListener('resize', debouncedUpdate);
+  }
+  
+  // 新增书签卡片高度设置函数
+  initCardHeightSettings() {
+    // 获取滑块和显示元素
+    this.heightSlider = document.getElementById('height-slider');
+    this.heightValue = document.getElementById('height-value');
+    
+    if (!this.heightSlider || !this.heightValue) {
+      console.log('Height slider elements not found, skipping card height settings initialization');
+      return;
+    }
+    
+    // 从存储中获取保存的高度值
+    chrome.storage.sync.get('bookmarkCardHeight', (result) => {
+      const savedHeight = result.bookmarkCardHeight || 48; // 默认值为48px
+      
+      // 设置滑块和显示值
+      this.heightSlider.value = savedHeight;
+      this.heightValue.textContent = savedHeight;
+      
+      // 应用高度设置
+      this.updateCardHeight(savedHeight);
+    });
+    
+    // 监听滑块的变化
+    this.heightSlider.addEventListener('input', (e) => {
+      const height = e.target.value;
+      this.heightValue.textContent = height;
+      this.updateCardHeight(height);
+    });
+    
+    // 监听滑块的鼠标释放事件
+    this.heightSlider.addEventListener('mouseup', () => {
+      // 保存设置
+      chrome.storage.sync.set({ bookmarkCardHeight: this.heightSlider.value });
+    });
+  }
+  
+  // 更新书签卡片高度
+  updateCardHeight(height) {
+    // 创建或更新自定义样式
+    let styleElement = document.getElementById('custom-card-height');
+    if (!styleElement) {
+      styleElement = document.createElement('style');
+      styleElement.id = 'custom-card-height';
+      document.head.appendChild(styleElement);
+    }
+    
+    // 设置卡片高度
+    styleElement.textContent = `
+      .card {
+        height: ${height}px !important;
+      }
+    `;
   }
 
   updatePreviewCount(width) {
@@ -477,6 +654,11 @@ class SettingsManager {
     // 获取元素引用
     this.containerWidthSlider = document.getElementById('container-width-slider');
     this.containerWidthValue = document.getElementById('container-width-value');
+    
+    if (!this.containerWidthSlider || !this.containerWidthValue) {
+      console.log('Container width slider elements not found, skipping container width settings initialization');
+      return;
+    }
     
     // 从存储中获取保存的宽度值
     chrome.storage.sync.get(['bookmarkContainerWidth'], (result) => {
@@ -650,13 +832,19 @@ class SettingsManager {
   }
 
   initSearchSuggestionsSettings() {
+    // 获取元素引用
+    this.showHistorySuggestionsCheckbox = document.getElementById('show-history-suggestions');
+    this.showBookmarkSuggestionsCheckbox = document.getElementById('show-bookmark-suggestions');
+    this.openSearchInNewTabCheckbox = document.getElementById('open-search-in-new-tab');
+    
     // 加载搜索建议设置
     chrome.storage.sync.get(
-      ['showHistorySuggestions', 'showBookmarkSuggestions', 'showSearchBox'], 
+      ['showHistorySuggestions', 'showBookmarkSuggestions', 'showSearchBox', 'openSearchInNewTab'], 
       (result) => {
         // 如果设置不存在(undefined)或者没有明确设置为 false,则默认为 true
         this.showHistorySuggestionsCheckbox.checked = result.showHistorySuggestions !== false;
         this.showBookmarkSuggestionsCheckbox.checked = result.showBookmarkSuggestions !== false;
+        this.openSearchInNewTabCheckbox.checked = result.openSearchInNewTab !== false;
 
         // 初始化时如果是新用户(设置不存在),则保存默认值
         if (!('showHistorySuggestions' in result)) {
@@ -667,6 +855,9 @@ class SettingsManager {
         }
         if (!('showSearchBox' in result)) {
           chrome.storage.sync.set({ showSearchBox: false });
+        }
+        if (!('openSearchInNewTab' in result)) {
+          chrome.storage.sync.set({ openSearchInNewTab: true });
         }
       }
     );
@@ -680,6 +871,11 @@ class SettingsManager {
     this.showBookmarkSuggestionsCheckbox.addEventListener('change', () => {
       const isEnabled = this.showBookmarkSuggestionsCheckbox.checked;
       chrome.storage.sync.set({ showBookmarkSuggestions: isEnabled });
+    });
+    
+    this.openSearchInNewTabCheckbox.addEventListener('change', () => {
+      const isEnabled = this.openSearchInNewTabCheckbox.checked;
+      chrome.storage.sync.set({ openSearchInNewTab: isEnabled });
     });
   }
 

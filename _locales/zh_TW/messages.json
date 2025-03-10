@@ -496,8 +496,24 @@
         "description": "連結開啟設定標題"
     },
     "linkOpeningDescription": {
-        "message": "設定在主頁面點擊書籤和快速連結時的開啟方式。",
-        "description": "連結開啟設定描述"
+        "message": "設置在主頁面中點擊書籤和快捷鏈接時的打開方式。",
+        "description": "鏈接打開方式設置說明"
+    },
+    "sidePanelLinkOpeningTitle": {
+        "message": "側邊欄鏈接打開方式",
+        "description": "側邊欄鏈接打開方式設置標題"
+    },
+    "sidePanelLinkOpeningDescription": {
+        "message": "設置在側邊欄中點擊書籤和快速連結時的開啟方式",
+        "description": "側邊欄鏈接打開方式設置說明"
+    },
+    "sidePanelOpenInNewTab": {
+        "message": "在新標籤頁中打開",
+        "description": "在側邊欄中點擊鏈接時在新標籤頁中打開的選項"
+    },
+    "sidePanelOpenInSidepanel": {
+        "message": "在側邊欄中打開",
+        "description": "在側邊欄內部打開鏈接的選項"
     },
     "sidebarFeaturesFeature": {
         "message": "新增兩項功能：\n1. 快捷側邊欄：\n在任意網頁按下 Alt/Command + B，即可打開側邊欄，快速訪問書籤和搜尋功能。\n\n2. 連結開啟設定：\n在設定中可自訂書籤和快速連結的開啟方式，選擇是否在新分頁中開啟。",
@@ -638,6 +654,14 @@
     "previewText": {
         "message": "每行書籤按鈕數量：",
         "description": "書籤寬度預覽說明文字"
+    },
+    "bookmarkHeightTitle": {
+        "message": "書籤卡片高度",
+        "description": "書籤卡片高度設定標題"
+    },
+    "heightPreviewText": {
+        "message": "調整書籤卡片的高度",
+        "description": "書籤高度預覽說明文字"
     },
     "addToDefaultFolders": {
         "message": "固定到主頁"
@@ -840,5 +864,25 @@
     "feedbacks": {
         "message": "電郵",
         "description": "電郵連結文字"
+    },
+    "searchResultsOpeningTitle": {
+        "message": "搜尋結果開啟方式",
+        "description": "搜尋結果開啟方式設定標題"
+    },
+    "openSearchInNewTab": {
+        "message": "在新標籤頁中開啟搜尋結果",
+        "description": "在新標籤頁中開啟搜尋結果選項"
+    },
+    "searchSuggestionsFeature": {
+        "message": "1.245版本更新：\n1. 修復全部搜尋功能：現在使用Cmd/Ctrl+Enter搜尋時會包含預設搜尋引擎\n2. 新增搜尋結果開啟方式設定：可以選擇在新標籤頁或當前頁面開啟搜尋結果\n3. 新增書籤卡片高度自訂：可以根據個人喜好調整書籤卡片的高度\n4. 新增側邊欄鏈接開啟方式設定：可以選擇在側邊欄或新標籤頁中開啟鏈接\n5. 修復了多個UI介面問題，提升使用者體驗",
+        "description": "1.245版本更新內容的提示信息"
+    },
+    "bookmarkCardHeightTitle": {
+        "message": "書籤卡片高度",
+        "description": "書籤卡片高度設定標題"
+    },
+    "bookmarkCardHeightValue": {
+        "message": "$1 像素",
+        "description": "書籤卡片高度值"
     }
 }

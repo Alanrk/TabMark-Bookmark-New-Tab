@@ -427,6 +427,22 @@
         "message": "Définissez comment les favoris et les liens rapides s'ouvrent lorsqu'ils sont cliqués sur la page principale.",
         "description": "Description des paramètres d'ouverture des liens"
     },
+    "sidePanelLinkOpeningTitle": {
+        "message": "Ouverture des Liens dans le Panneau Latéral",
+        "description": "Titre des paramètres d'ouverture des liens dans le panneau latéral"
+    },
+    "sidePanelLinkOpeningDescription": {
+        "message": "Configurez comment les favoris et les liens rapides s'ouvrent lorsqu'ils sont cliqués dans le panneau latéral",
+        "description": "Description des paramètres d'ouverture des liens dans le panneau latéral"
+    },
+    "sidePanelOpenInNewTab": {
+        "message": "Ouvrir dans un nouvel onglet",
+        "description": "Option pour ouvrir les liens dans un nouvel onglet quand cliqués dans le panneau latéral"
+    },
+    "sidePanelOpenInSidepanel": {
+        "message": "Ouvrir dans le panneau latéral",
+        "description": "Option pour ouvrir les liens à l'intérieur du panneau latéral"
+    },
     "sidebarFeaturesFeature": {
         "message": "Deux nouvelles fonctionnalités ajoutées :\n1. Barre latérale rapide :\nAppuyez sur Alt/Command + B sur n'importe quelle page web pour ouvrir la barre latérale et accéder rapidement aux favoris et aux fonctions de recherche.\n\n2. Paramètres d'ouverture des liens :\nPersonnalisez la façon dont les favoris et les liens rapides s'ouvrent dans les paramètres, avec l'option de les ouvrir dans de nouveaux onglets.",
         "description": "Conseil unifié pour la recherche dans la barre latérale et les fonctions d'ouverture des liens"
@@ -508,12 +524,20 @@
         "description": "Description des paramètres de mise en page"
     },
     "bookmarkWidthTitle": {
-        "message": "Paramètres de largeur des favoris",
-        "description": "Titre des paramètres de largeur des favoris"
+        "message": "Réglage de la largeur des favoris",
+        "description": "Titre pour les réglages de largeur des favoris"
     },
     "previewText": {
-        "message": "Nombre de boutons de favoris par ligne :",
-        "description": "Texte expliquant l'aperçu de la largeur des favoris"
+        "message": "Favoris par ligne :",
+        "description": "Texte pour l'aperçu de la largeur des favoris"
+    },
+    "bookmarkHeightTitle": {
+        "message": "Hauteur des cartes de favoris",
+        "description": "Titre pour les réglages de hauteur des cartes de favoris"
+    },
+    "heightPreviewText": {
+        "message": "Ajuster la hauteur des cartes de favoris",
+        "description": "Texte pour l'aperçu de la hauteur des favoris"
     },
     "themeTitle": {
         "message": "Paramètres du thème",
@@ -698,5 +722,25 @@
     "feedbacks": {
         "message": "Feedback",
         "description": "Feedback link text"
+    },
+    "searchResultsOpeningTitle": {
+        "message": "Méthode d'Ouverture des Résultats de Recherche",
+        "description": "Titre pour les paramètres de méthode d'ouverture des résultats de recherche"
+    },
+    "openSearchInNewTab": {
+        "message": "Ouvrir les Résultats de Recherche dans un Nouvel Onglet",
+        "description": "Option pour ouvrir les résultats de recherche dans un nouvel onglet"
+    },
+    "searchSuggestionsFeature": {
+        "message": "Mise à jour de la version 1.245 :\n1. Correction de la fonction de recherche sur tous les moteurs : La recherche avec Cmd/Ctrl+Enter inclut maintenant le moteur de recherche par défaut\n2. Ajout de la configuration du mode d'ouverture des résultats de recherche : choisissez d'ouvrir les résultats dans un nouvel onglet ou sur la page actuelle\n3. Ajout de la personnalisation de la hauteur des cartes de favoris : ajustez la hauteur des cartes selon vos préférences\n4. Ajout d'une nouvelle configuration pour ouvrir les liens dans le panneau latéral : choisissez si les liens s'ouvrent dans le panneau latéral ou dans un nouvel onglet\n5. Correction de plusieurs problèmes d'interface pour une meilleure expérience utilisateur",
+        "description": "Informations sur les mises à jour de la version 1.245"
+    },
+    "bookmarkCardHeightTitle": {
+        "message": "Hauteur des Cartes de Favoris",
+        "description": "Titre pour les paramètres de hauteur des cartes de favoris"
+    },
+    "bookmarkCardHeightValue": {
+        "message": "$1 pixels",
+        "description": "Valeur pour la hauteur des cartes de favoris"
     }
 }

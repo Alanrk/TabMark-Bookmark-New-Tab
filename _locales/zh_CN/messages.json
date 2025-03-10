@@ -45,7 +45,7 @@
     },
     "openInNewTab": {
         "message": "在新标签页中打开",
-        "description": "在新标签页中打开链接的上下文菜单项"
+        "description": "在新标签页中打开链接的选项"
     },
     "openInNewWindow": {
         "message": "在新窗口中打开",
@@ -532,6 +532,22 @@
         "message": "在新标签页中打开",
         "description": "在新标签页中打开链接的选项"
     },
+    "sidePanelLinkOpeningTitle": {
+        "message": "侧边栏链接打开方式",
+        "description": "侧边栏链接打开方式设置标题"
+    },
+    "sidePanelLinkOpeningDescription": {
+        "message": "设置在侧边栏中点击书签和快捷链接时的打开方式",
+        "description": "侧边栏链接打开方式设置说明"
+    },
+    "sidePanelOpenInNewTab": {
+        "message": "在新标签页中打开",
+        "description": "在侧边栏中点击链接时在新标签页中打开的选项"
+    },
+    "sidePanelOpenInSidepanel": {
+        "message": "在侧边栏中打开",
+        "description": "在侧边栏内部打开链接的选项"
+    },
     "sidebarFeaturesFeature": {
         "message": "新增两项功能：\n1. 快捷侧边栏：\n在任意网页按下 Alt/Command + B，即可打开侧边栏，快速访问书签和搜索功能。\n\n2. 链接打开方式：\n在设置中可自定义书签和快捷链接的打开方式，选择是否在新标签页中打开。",
         "description": "侧边栏搜索和链接打开方式的统一提示信息"
@@ -555,6 +571,14 @@
     "previewText": {
         "message": "每行书签按钮数量：",
         "description": "书签宽度预览效果的说明文本"
+    },
+    "bookmarkHeightTitle": {
+        "message": "书签卡片高度",
+        "description": "书签卡片高度设置的标题"
+    },
+    "heightPreviewText": {
+        "message": "调整书签卡片的高度",
+        "description": "书签卡片高度设置的预览文本"
     },
     "addSearchEngine": {
         "message": "添加",
@@ -881,5 +905,25 @@
     "shortcutsFeature": {
         "message": "新增功能：\n1. 侧边栏快捷键自定义：现在您可以在Chrome扩展快捷键设置中自定义打开侧边栏的快捷键\n2. 在设置 > 快捷键中可以快速跳转到Chrome快捷键设置页面\n3. 双向控制：按下相同的快捷键可以打开或关闭侧边栏，更加便捷\n\n自定义标签页功能：\n1. 现在您可以自定义主页显示的内容，在设置中的「布局设置」选项卡下\n2. 可以选择隐藏或显示搜索框、欢迎语和页脚\n3. 可以自定义快捷访问链接的显示\n4. 调整书签容器宽度，获得最适合您的布局\n5. 在「搜索设置」中可以选择是否显示历史记录和书签建议\n6. 新增「赞赏」选项，如果您喜欢这个扩展，可以通过微信赞赏支持开发",
         "description": "快捷键自定义功能的提示信息"
+    },
+    "searchResultsOpeningTitle": {
+        "message": "搜索结果打开方式",
+        "description": "搜索结果打开方式设置标题"
+    },
+    "openSearchInNewTab": {
+        "message": "在新标签页中打开搜索结果",
+        "description": "在新标签页中打开搜索结果选项"
+    },
+    "searchSuggestionsFeature": {
+        "message": "1.245版本更新：\n1. 修复全部搜索功能：现在使用Cmd/Ctrl+Enter搜索时会包含默认搜索引擎\n2. 新增搜索结果打开方式设置：可以选择在新标签页或当前页面打开搜索结果\n3. 新增书签卡片高度自定义：可以根据个人喜好调整书签卡片的高度\n4. 新增侧边栏链接打开方式自定义，可选择在侧边栏中打开链接\n5. 修复了多个UI界面问题，提升用户体验",
+        "description": "1.245版本更新内容的提示信息"
+    },
+    "bookmarkCardHeightTitle": {
+        "message": "书签卡片高度",
+        "description": "书签卡片高度设置标题"
+    },
+    "bookmarkCardHeightValue": {
+        "message": "$1 像素",
+        "description": "书签卡片高度值"
     }
 }

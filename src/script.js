@@ -28,6 +28,180 @@ const STORAGE_WRITE_INTERVAL = 1000; // 1秒的节流间隔
 // 在文件顶部添加导入语句
 import { ICONS } from './icons.js';
 
+// 解决函数未定义错误，将这些函数提升到全局范围
+// 创建二维码函数
+function createQRCode(url, bookmarkName) {
+  // 创建一个模态来显示二维码
+  const modal = document.createElement('div');
+  modal.style.position = 'fixed';
+  modal.style.left = '0';
+  modal.style.top = '0';
+  modal.style.width = '100%';
+  modal.style.height = '100%';
+  modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+  modal.style.display = 'flex';
+  modal.style.justifyContent = 'center';
+  modal.style.alignItems = 'center';
+  modal.style.zIndex = '1000';
+
+  const qrContainer = document.createElement('div');
+  qrContainer.style.backgroundColor = 'white';
+  qrContainer.style.padding = '1.5rem 3rem';
+  qrContainer.style.width = '320px';
+  qrContainer.style.borderRadius = '10px';
+  qrContainer.style.display = 'flex';
+  qrContainer.style.flexDirection = 'column';
+  qrContainer.style.alignItems = 'center';
+  qrContainer.style.position = 'relative';
+
+  // 添加关闭按钮
+  const closeButton = document.createElement('span');
+  closeButton.textContent = '×';
+  closeButton.style.position = 'absolute';
+  closeButton.style.right = '10px';
+  closeButton.style.top = '10px';
+  closeButton.style.fontSize = '20px';
+  closeButton.style.cursor = 'pointer';
+  closeButton.onclick = () => document.body.removeChild(modal);
+  qrContainer.appendChild(closeButton);
+
+  // 添加标题
+  const title = document.createElement('h2');
+  title.textContent = getLocalizedMessage('scanQRCode');
+  title.style.marginBottom = '20px';
+  title.style.fontWeight = '600';
+  title.style.fontSize = '0.875rem';
+  qrContainer.appendChild(title);
+
+  // 创建 QR 码容器
+  const qrCodeElement = document.createElement('div');
+  qrContainer.appendChild(qrCodeElement);
+
+  // 添加 URL 显示
+  const urlDisplay = document.createElement('div');
+  urlDisplay.textContent = url;
+  urlDisplay.style.marginTop = '20px';
+  urlDisplay.style.wordBreak = 'break-all';
+  urlDisplay.style.maxWidth = '300px';
+  urlDisplay.style.textAlign = 'center';
+  qrContainer.appendChild(urlDisplay);
+
+  // 添加按钮容器
+  const buttonContainer = document.createElement('div');
+  buttonContainer.style.display = 'flex';
+  buttonContainer.style.justifyContent = 'space-between';
+  buttonContainer.style.width = '100%';
+  buttonContainer.style.marginTop = '20px';
+
+  // 添加复制按钮
+  const copyButton = document.createElement('button');
+  copyButton.textContent = getLocalizedMessage('copyLink');
+  copyButton.onclick = () => {
+    navigator.clipboard.writeText(url).then(() => {
+      copyButton.textContent = getLocalizedMessage('copied');
+      setTimeout(() => copyButton.textContent = getLocalizedMessage('copyLink'), 2000);
+    });
+  };
+
+  // 添加下载按钮
+  const downloadButton = document.createElement('button');
+  downloadButton.textContent = getLocalizedMessage('download');
+  downloadButton.onclick = () => {
+    // 给 QRCode 生成一些时间
+    setTimeout(() => {
+      const canvas = qrCodeElement.querySelector('canvas');
+      if (canvas) {
+        const link = document.createElement('a');
+        // 使用书签名称作为文件名，并添加 .png 扩展名
+        const fileName = `${bookmarkName.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_qrcode.png`;
+        link.download = fileName;
+        link.href = canvas.toDataURL('image/png');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }, 100); // 给予 100ms 的延迟，确保 QR 码已经生成
+  };
+
+  // 设置按钮样式和hover效果
+  [copyButton, downloadButton].forEach(button => {
+    button.style.padding = '5px 10px';
+    button.style.border = 'none';
+    button.style.borderRadius = '5px';
+    button.style.cursor = 'pointer';
+    button.style.backgroundColor = '#f0f0f0';
+    button.style.color = '#333';
+    button.style.transition = 'all 0.3s ease';
+
+    // 添加hover效果
+    button.addEventListener('mouseenter', () => {
+      button.style.backgroundColor = '#e0e0e0';
+      button.style.color = '#111827';
+    });
+    button.addEventListener('mouseleave', () => {
+      button.style.backgroundColor = '#f0f0f0';
+      button.style.color = '#717882';
+    });
+  });
+
+  buttonContainer.appendChild(copyButton);
+  buttonContainer.appendChild(downloadButton);
+  qrContainer.appendChild(buttonContainer);
+
+  modal.appendChild(qrContainer);
+  document.body.appendChild(modal);
+
+  // 使用 qrcode.js 库生成二维码
+  new QRCode(qrCodeElement, {
+    text: url,
+    width: 200,
+    height: 200
+  });
+
+  // 点击模态框外部关闭
+  modal.addEventListener('click', function (event) {
+    if (event.target === modal) {
+      document.body.removeChild(modal);
+    }
+  });
+}
+
+// 编辑书签对话框函数
+function openEditDialog(bookmark) {
+  const bookmarkId = bookmark.id;
+  const bookmarkTitle = bookmark.title;
+  const bookmarkUrl = bookmark.url;
+
+  document.getElementById('edit-name').value = bookmarkTitle;
+  document.getElementById('edit-url').value = bookmarkUrl;
+
+  const editDialog = document.getElementById('edit-dialog');
+  editDialog.style.display = 'block';
+
+  // 设置提交事件
+  document.getElementById('edit-form').onsubmit = function (event) {
+    event.preventDefault();
+    const newTitle = document.getElementById('edit-name').value;
+    const newUrl = document.getElementById('edit-url').value;
+    chrome.bookmarks.update(bookmarkId, { title: newTitle, url: newUrl }, function () {
+      editDialog.style.display = 'none';
+
+      // 更新特定的书签卡片
+      updateSpecificBookmarkCard(bookmarkId, newTitle, newUrl);
+    });
+  };
+
+  // 添加取消按钮的事件监听
+  document.querySelector('.cancel-button').addEventListener('click', function () {
+    editDialog.style.display = 'none';
+  });
+
+  // 添加关闭按钮的事件监听
+  document.querySelector('.close-button').addEventListener('click', function () {
+    editDialog.style.display = 'none';
+  });
+}
+
 function updateThemeIcon(isDark) {
   const themeToggleBtn = document.getElementById('theme-toggle-btn');
   if (!themeToggleBtn) return;
@@ -37,6 +211,26 @@ function updateThemeIcon(isDark) {
 import { replaceIconsWithSvg, getIconHtml } from './icons.js';
 
 document.addEventListener('DOMContentLoaded', function () {
+  // 应用保存的书签卡片高度设置
+  chrome.storage.sync.get('bookmarkCardHeight', (result) => {
+    if (result.bookmarkCardHeight) {
+      // 创建或更新自定义样式
+      let styleElement = document.getElementById('custom-card-height');
+      if (!styleElement) {
+        styleElement = document.createElement('style');
+        styleElement.id = 'custom-card-height';
+        document.head.appendChild(styleElement);
+      }
+      
+      // 设置卡片高度
+      styleElement.textContent = `
+        .card {
+          height: ${result.bookmarkCardHeight}px !important;
+        }
+      `;
+    }
+  });
+
   // 初始化手势导航，传入 updateBookmarksDisplay 函数
   initGestureNavigation(updateBookmarksDisplay);
    // 初始化功能提示
@@ -122,7 +316,14 @@ function createContextMenu() {
     { text: getLocalizedMessage('createQRCode'), icon: 'qr_code', action: () => currentBookmark && createQRCode(currentBookmark.url, currentBookmark.title) }
   ];
 
-  menuItems.forEach(item => {
+  menuItems.forEach((item, index) => {
+    // 在特定位置添加分隔线
+    if (index === 3 || index === 5) {
+      const divider = document.createElement('div');
+      divider.className = 'custom-context-menu-divider';
+      menu.appendChild(divider);
+    }
+    
     const menuItem = document.createElement('div');
     menuItem.className = 'custom-context-menu-item';
     
@@ -1679,6 +1880,7 @@ function createBookmarkCard(bookmark, index) {
 
   card.addEventListener('contextmenu', function(event) {
     event.preventDefault();
+    event.stopPropagation(); // 阻止事件冒泡，防止触发文档级的contextmenu事件监听器
     console.log('Bookmark context menu triggered:', bookmark);
     showContextMenu(event, bookmark, 'bookmark'); // 明确指定类型为 'bookmark'
   });
@@ -1739,13 +1941,83 @@ function createBookmarkCard(bookmark, index) {
       // 处理普通链接
       if (isSidePanel) {
         console.log('[Bookmark Click] Opening in Side Panel mode');
-        chrome.tabs.create({
-          url: bookmark.url,
-          active: true
-        }).then(tab => {
-          console.log('[Bookmark Click] Tab created successfully:', tab);
-        }).catch(error => {
-          console.error('[Bookmark Click] Failed to create tab:', error);
+        // 获取侧边栏模式下的链接打开方式设置
+        chrome.storage.sync.get(['sidepanelOpenInNewTab', 'sidepanelOpenInSidepanel'], (result) => {
+          // 默认在新标签页中打开
+          const openInNewTab = result.sidepanelOpenInNewTab !== false;
+          const openInSidepanel = result.sidepanelOpenInSidepanel === true;
+          
+          console.log('[Bookmark Click] Side Panel settings:', {
+            openInNewTab: openInNewTab,
+            openInSidepanel: openInSidepanel
+          });
+          
+          if (openInSidepanel) {
+            // 在侧边栏内打开链接
+            console.log('[Bookmark Click] Opening in Side Panel iframe');
+            // 使用 SidePanelManager 加载 URL
+            try {
+              // 检查 SidePanelManager 是否已定义
+              if (typeof SidePanelManager === 'undefined') {
+                // 如果未定义，则创建一个简单的加载函数
+                console.log('[Bookmark Click] SidePanelManager not defined, using fallback method');
+                const sidePanelContent = document.getElementById('side-panel-content');
+                const sidePanelIframe = document.getElementById('side-panel-iframe');
+                
+                if (sidePanelContent && sidePanelIframe) {
+                  sidePanelContent.style.display = 'block';
+                  sidePanelIframe.src = bookmark.url;
+                  
+                  // 添加返回按钮
+                  let backButton = document.querySelector('.back-to-links');
+                  if (!backButton) {
+                    backButton = document.createElement('div');
+                    backButton.className = 'back-to-links';
+                    backButton.innerHTML = '<span class="material-icons">arrow_back</span>';
+                    document.body.appendChild(backButton);
+                    
+                    // 添加点击事件
+                    backButton.addEventListener('click', () => {
+                      sidePanelContent.style.display = 'none';
+                      backButton.style.display = 'none';
+                    });
+                  }
+                  
+                  // 显示返回按钮
+                  backButton.style.display = 'flex';
+                } else {
+                  console.error('[Bookmark Click] Side panel elements not found, falling back to new tab');
+                  chrome.tabs.create({
+                    url: bookmark.url,
+                    active: true
+                  });
+                }
+              } else if (window.sidePanelManager) {
+                window.sidePanelManager.loadUrl(bookmark.url);
+              } else {
+                // 如果 SidePanelManager 已定义但实例不存在，创建一个新实例
+                window.sidePanelManager = new SidePanelManager();
+                window.sidePanelManager.loadUrl(bookmark.url);
+              }
+            } catch (error) {
+              console.error('[Bookmark Click] Error using SidePanelManager:', error);
+              // 出错时回退到在新标签页中打开
+              chrome.tabs.create({
+                url: bookmark.url,
+                active: true
+              });
+            }
+          } else if (openInNewTab) {
+            // 在新标签页中打开
+            chrome.tabs.create({
+              url: bookmark.url,
+              active: true
+            }).then(tab => {
+              console.log('[Bookmark Click] Tab created successfully:', tab);
+            }).catch(error => {
+              console.error('[Bookmark Click] Failed to create tab:', error);
+            });
+          }
         });
       } else {
         console.log('[Bookmark Click] Opening in Main Window mode');
@@ -1872,7 +2144,15 @@ const Utilities = (function() {
 
 // 修改 showContextMenu 函数
 function showContextMenu(event, item, type = 'bookmark') {
-  // 先创建上下文菜单
+  // 先关闭所有已存在的上下文菜单
+  const existingMenus = document.querySelectorAll('.custom-context-menu');
+  existingMenus.forEach(menu => {
+    if (menu !== contextMenu && menu.style.display !== 'none') {
+      menu.style.display = 'none';
+    }
+  });
+
+  // 如果上下文菜单不存在，则创建一个新的
   if (!contextMenu) {
     contextMenu = createContextMenu();
   }
@@ -3489,249 +3769,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   updateBookmarkCards();
 
-  function createContextMenu() {
+  // 注释掉这个重复的createContextMenu函数定义，使用全局已经定义的函数
+  /* function createContextMenu() {
     const menu = document.createElement('div');
     menu.className = 'custom-context-menu';
     document.body.appendChild(menu);
-
-    const menuItems = [
-      { text: getLocalizedMessage('openInNewTab'), icon: 'open_in_new', action: () => currentBookmark && window.open(currentBookmark.url, '_blank') },
-      { text: getLocalizedMessage('openInNewWindow'), icon: 'launch', action: () => currentBookmark && openInNewWindow(currentBookmark.url) },
-      { text: getLocalizedMessage('openInIncognito'), icon: 'visibility_off', action: () => currentBookmark && openInIncognito(currentBookmark.url) },
-      { text: getLocalizedMessage('editQuickLink'), icon: 'edit', action: () => currentBookmark && openEditDialog(currentBookmark) },
-      { 
-        text: getLocalizedMessage('deleteQuickLink'), 
-        icon: 'delete', 
-        action: () => {
-          console.log('Delete action triggered. Current item:', currentBookmark);
-          
-          if (!currentBookmark) {
-            console.error('No item selected for deletion');
-            return;
-          }
-
-          // 使用全局的 itemToDelete 变量，而不是创建局部变量
-          itemToDelete = {
-            type: currentBookmark.type || 'bookmark',  // 使用项目自带的类型或默认为 bookmark
-            data: {
-              id: currentBookmark.id,
-              title: currentBookmark.title,
-              url: currentBookmark.url
-            }
-          };
-          
-          console.log('Set itemToDelete:', itemToDelete);
-          
-          // 根据类型显示不同的确认消息
-          const message = itemToDelete.type === 'quickLink' 
-            ? chrome.i18n.getMessage("confirmDeleteQuickLink", [`<strong>${itemToDelete.data.title}</strong>`])
-            : chrome.i18n.getMessage("confirmDeleteBookmark", [`<strong>${itemToDelete.data.title}</strong>`]);
-          
-          showConfirmDialog(message, () => {
-            if (itemToDelete && itemToDelete.data) {
-              if (itemToDelete.type === 'quickLink') {
-                deleteQuickLink(itemToDelete.data);
-              } else {
-                deleteBookmark(itemToDelete.data.id, itemToDelete.data.title);
-              }
-            }
-          });
-        }
-      },
-      { text: getLocalizedMessage('copyLink'), icon: 'content_copy', action: () => currentBookmark && Utilities.copyBookmarkLink(currentBookmark) },
-      { text: getLocalizedMessage('createQRCode'), icon: 'qr_code', action: () => currentBookmark && createQRCode(currentBookmark.url, currentBookmark.title) }
-    ];
-
-    menuItems.forEach((item, index) => {
-      const menuItem = document.createElement('div');
-      menuItem.className = 'custom-context-menu-item';
-      
-      const icon = document.createElement('span');
-      icon.className = 'material-icons';
-      icon.innerHTML = ICONS[item.icon];
-      icon.style.marginRight = '8px';
-      icon.style.fontSize = '18px';
-      
-      const text = document.createElement('span');
-      text.textContent = item.text;
-
-      menuItem.appendChild(icon);
-      menuItem.appendChild(text);
-
-      menuItem.addEventListener('click', function() {
-        // 这里添加每个菜单项点击件理
-        item.action();
-        menu.style.display = 'none';
-      });
-
-      if (index === 3 || index === 5) {
-        const divider = document.createElement('div');
-        divider.className = 'custom-context-menu-divider';
-        menu.appendChild(divider);
-      }
-
-      menu.appendChild(menuItem);
-    });
-
-    return menu;
-  }
-
-  // 创建二维码的函数
-  function createQRCode(url, bookmarkName) {
-    // 创建一个模态来显维码
-    const modal = document.createElement('div');
-    modal.style.position = 'fixed';
-    modal.style.left = '0';
-    modal.style.top = '0';
-    modal.style.width = '100%';
-    modal.style.height = '100%';
-    modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
-    modal.style.display = 'flex';
-    modal.style.justifyContent = 'center';
-    modal.style.alignItems = 'center';
-    modal.style.zIndex = '1000';
-
-    const qrContainer = document.createElement('div');
-    qrContainer.style.backgroundColor = 'white';
-    qrContainer.style.padding = '1.5rem 3rem';
-    qrContainer.style.width = '320px';
-    qrContainer.style.borderRadius = '10px';
-    qrContainer.style.display = 'flex';
-    qrContainer.style.flexDirection = 'column';
-    qrContainer.style.alignItems = 'center';
-    qrContainer.style.position = 'relative';
-
-    // 添加关闭钮
-    const closeButton = document.createElement('span');
-    closeButton.textContent = '×';
-    closeButton.style.position = 'absolute';
-    closeButton.style.right = '10px';
-    closeButton.style.top = '10px';
-    closeButton.style.fontSize = '20px';
-    closeButton.style.cursor = 'pointer';
-    closeButton.onclick = () => document.body.removeChild(modal);
-    qrContainer.appendChild(closeButton);
-
-    // 加标
-    const title = document.createElement('h2');
-    title.textContent = getLocalizedMessage('scanQRCode');
-    title.style.marginBottom = '20px';
-    title.style.fontWeight = '600';
-    title.style.fontSize = '0.875rem';
-    qrContainer.appendChild(title);
-
-    // 创建 QR 码容
-    const qrCodeElement = document.createElement('div');
-    qrContainer.appendChild(qrCodeElement);
-
-    // 添 URL 显示
-    const urlDisplay = document.createElement('div');
-    urlDisplay.textContent = url;
-    urlDisplay.style.marginTop = '20px';
-    urlDisplay.style.wordBreak = 'break-all';
-    urlDisplay.style.maxWidth = '300px';
-    urlDisplay.style.textAlign = 'center';
-    qrContainer.appendChild(urlDisplay);
-
-    // 添按容器
-    const buttonContainer = document.createElement('div');
-    buttonContainer.style.display = 'flex';
-    buttonContainer.style.justifyContent = 'space-between';
-    buttonContainer.style.width = '100%';
-    buttonContainer.style.marginTop = '20px';
-
-    // 添加复制按钮
-    const copyButton = document.createElement('button');
-    copyButton.textContent = getLocalizedMessage('copyLink');
-    copyButton.onclick = () => {
-      navigator.clipboard.writeText(url).then(() => {
-        copyButton.textContent = getLocalizedMessage('copied');
-        setTimeout(() => copyButton.textContent = getLocalizedMessage('copyLink'), 2000);
-      });
-    };
-
-    // 添加下载按钮
-    const downloadButton = document.createElement('button');
-    downloadButton.textContent = getLocalizedMessage('download');
-    downloadButton.onclick = () => {
-      // 给 QRCode 生成一些时间
-      setTimeout(() => {
-        const canvas = qrCodeElement.querySelector('canvas');
-        if (canvas) {
-          const link = document.createElement('a');
-          // 使用书签名称作为文件名，并添加 .png 扩展名
-          const fileName = `${bookmarkName.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_qrcode.png`;
-          link.download = fileName;
-          link.href = canvas.toDataURL('image/png');
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }
-      }, 100); // 给予 100ms 的延迟，确保 QR 码已经生成
-    };
-
-    // 设置按钮样式和hover效果
-    [copyButton, downloadButton].forEach(button => {
-      button.style.padding = '5px 10px';
-      button.style.border = 'none';
-      button.style.borderRadius = '5px';
-      button.style.cursor = 'pointer';
-      button.style.backgroundColor = '#f0f0f0';
-      button.style.color = '#333';
-      button.style.transition = 'all 0.3s ease';
-
-      // 添加hover效果
-      button.addEventListener('mouseenter', () => {
-        button.style.backgroundColor = '#e0e0e0';
-        button.style.color = '#111827';
-      });
-      button.addEventListener('mouseleave', () => {
-        button.style.backgroundColor = '#f0f0f0';
-        button.style.color = '#717882';
-      });
-    });
-
-    buttonContainer.appendChild(copyButton);
-    buttonContainer.appendChild(downloadButton);
-    qrContainer.appendChild(buttonContainer);
-
-    modal.appendChild(qrContainer);
-    document.body.appendChild(modal);
-
-    // 使用 qrcode.js 库生成二维码
-    new QRCode(qrCodeElement, {
-      text: url,
-      width: 200,
-      height: 200
-    });
-
-    // 点击模态框外部关闭
-    modal.addEventListener('click', function (event) {
-      if (event.target === modal) {
-        document.body.removeChild(modal);
-      }
-    });
-  }
-
-  const contextMenu = createContextMenu();
-
-  document.addEventListener('contextmenu', function (event) {
-    const targetCard = event.target.closest('.bookmark-card');
-    if (targetCard) {
-      event.preventDefault();
-      // 确保在显示菜单前重置当前书签信息
-      currentBookmark = {
-        id: targetCard.dataset.id,
-        url: targetCard.href,
-        title: targetCard.querySelector('.card-title').textContent
-      };
-      contextMenu.style.top = `${event.clientY}px`;
-      contextMenu.style.left = `${event.clientX}px`;
-      contextMenu.style.display = 'block';
-    } else {
-      contextMenu.style.display = 'none';
-    }
-  });
+    // ... 其余函数内容 ...
+  } */
 
   document.addEventListener('click', function () {
     // 延迟处理点击事件，让菜单项的点击事件先执行
@@ -4488,10 +4532,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
-      // 打开搜索结果
-      console.log('[Search] Opening URL:', url);
-      window.open(url, '_blank');
-      hideSuggestions();
+      // 根据设置决定打开方式
+      chrome.storage.sync.get('openSearchInNewTab', (result) => {
+        const openInNewTab = result.openSearchInNewTab !== false; // 默认为 true
+        console.log('[Search] Opening URL:', url, 'in new tab:', openInNewTab);
+        
+        if (openInNewTab) {
+          window.open(url, '_blank');
+        } else {
+          window.location.href = url;
+        }
+        
+        hideSuggestions();
+      });
     });
 
     setTimeout(() => {
@@ -5609,7 +5662,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     li.addEventListener('click', async () => {
       if (suggestion.url) {
-        window.open(suggestion.url, '_blank');
+        // 根据设置决定打开方式
+        chrome.storage.sync.get('openSearchInNewTab', (result) => {
+          const openInNewTab = result.openSearchInNewTab !== false; // 默认为 true
+          
+          if (openInNewTab) {
+            window.open(suggestion.url, '_blank');
+          } else {
+            window.location.href = suggestion.url;
+          }
+        });
+        
         await saveUserBehavior(suggestion.url);
       } else {
         searchInput.value = suggestion.text;
@@ -5793,7 +5856,7 @@ document.addEventListener('DOMContentLoaded', function () {
           // 处理 Cmd/Ctrl + Enter
           const query = searchInput.value.trim();
           if (query) {
-            openAllSearchEnginesExceptCurrent(query);
+            openAllSearchEngines(query);
           }
         } else if (index !== -1) {
           e.stopPropagation(); // 阻止事件冒泡
@@ -5893,12 +5956,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   // 修改这个函数
-  function openAllSearchEnginesExceptCurrent(query) {
-    const currentEngine = SearchEngineManager.getDefaultEngine().name;
+  function openAllSearchEngines(query) {
     const enabledEngines = SearchEngineManager.getEnabledEngines();
 
     const urls = enabledEngines
-      .filter(engine => engine.name.toLowerCase() !== currentEngine.toLowerCase())
       .map(engine => getSearchUrl(engine.name, query));
 
     if (urls.length > 0) {
@@ -5914,7 +5975,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
     } else {
-      console.log('没有其他搜索引擎可以打开');
+      console.log('没有启用的搜索引擎');
     }
   }
 });

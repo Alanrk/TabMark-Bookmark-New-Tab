@@ -260,6 +260,20 @@
               </div>
             </div>
 
+            <!-- 新增书签卡片高度设置 -->
+            <h4 class="settings-section-title" data-i18n="bookmarkHeightTitle">书签卡片高度</h4>
+            <div id="card-height-settings">
+              <div class="slider-container" style="display: flex; align-items: center; gap: 10px;">
+                <input type="range" id="height-slider" min="36" max="80" step="4" value="48" style="flex: 1;">
+                <div class="value-display" style="white-space: nowrap;">
+                  <span id="height-value">48</span>px
+                </div>
+              </div>
+              <div class="preview-text" style="margin-top: 16px;">
+                <span data-i18n="heightPreviewText">调整书签卡片的高度</span>
+              </div>
+            </div>
+
             <!-- 新增书签容器宽度设置 -->
             <h4 class="settings-section-title" data-i18n="containerWidthTitle">书签容器宽度</h4>
             <div id="container-width-settings">
@@ -358,6 +372,17 @@
                 </label>
               </div>
             </div>
+            
+            <h4 class="settings-section-title" data-i18n="searchResultsOpeningTitle">搜索结果打开方式</h4>
+            <div class="search-opening-settings">
+              <div class="setting-option">
+                <label for="open-search-in-new-tab" class="switch-label" data-i18n="openSearchInNewTab">在新标签页中打开搜索结果</label>
+                <label class="switch">
+                  <input type="checkbox" id="open-search-in-new-tab" checked>
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
           </div>
           <div id="floating-ball-settings" class="settings-tab-content">
              <h3 class="settings-modal-subtitle" data-i18n="floatingBallSettingsTitle">悬浮球设置</h3>
@@ -389,6 +414,24 @@
               <label for="open-in-new-tab" class="switch-label" data-i18n="openInNewTab">在新标签页中打开</label>
               <label class="switch">
                 <input type="checkbox" id="open-in-new-tab">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            
+            <!-- 添加侧边栏模式下的链接打开方式选项 -->
+            <h4 class="settings-section-title" data-i18n="sidePanelLinkOpeningTitle">侧边栏模式</h4>
+            <p data-i18n="sidePanelLinkOpeningDescription">设置在侧边栏模式下点击书签时的打开方式。</p>
+            <div class="setting-option">
+              <label for="sidepanel-open-in-new-tab" class="switch-label" data-i18n="sidePanelOpenInNewTab">在新标签页中打开</label>
+              <label class="switch">
+                <input type="checkbox" id="sidepanel-open-in-new-tab" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="setting-option">
+              <label for="sidepanel-open-in-sidepanel" class="switch-label" data-i18n="sidePanelOpenInSidepanel">在侧边栏内打开</label>
+              <label class="switch">
+                <input type="checkbox" id="sidepanel-open-in-sidepanel">
                 <span class="slider round"></span>
               </label>
             </div>
@@ -443,9 +486,15 @@
                  <div class="donate-qrcode-container">
                    <img src="../images/wechat-donate.png" alt="WeChat Donate QR Code" class="donate-qrcode">
                    <p class="donate-qrcode-text" data-i18n="scanQRCodeToDonate">扫描二维码赞赏</p>
-                   <a href="https://cooing-loganberry-b74.notion.site/Tabmark-1af1ee1c3b3a80d7b268fda1c74f0404" target="_blank" class="donate-list-link" data-i18n="donateListLink">查看赞赏列表</a>
                  </div>
                </div>
+             </div>
+             
+             <!-- 赞赏列表链接 - 独立区域 -->
+             <div class="donate-list-container">
+               <a href="https://cooing-loganberry-b74.notion.site/Tabmark-1af1ee1c3b3a80d7b268fda1c74f0404" target="_blank" class="donate-list-button">
+                 <span data-i18n="donateListLink">查看赞赏列表</span>
+               </a>
              </div>
              
              <p class="donate-thank-you" data-i18n="thankYouForSupport">感谢您的支持！</p>

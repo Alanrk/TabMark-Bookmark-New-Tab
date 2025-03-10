@@ -671,7 +671,7 @@ main {
 /* 设置区域小标题样式 */
 .settings-section-title {
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     color: #1a202c;
     margin-bottom: 12px;
     margin-top: 12px;
@@ -1511,16 +1511,35 @@ body .default-folders-tabs.sidebar-expanded {
 .settings-sidebar {
   position: fixed;
   top: 0;
-  right: -500px; /* 初始位置在屏幕外 */
-  width: 500px;
+  right: -600px;
+  /* 增加初始位置宽度 */
+  width: 600px;
+  /* 增加到600px以适应长文本 */
+  max-width: 90%;
+  /* 确保在较小屏幕上不会太宽 */
   height: 100%;
   background-color: #ffffff;
-  box-shadow: -1px 0 5px rgba(0, 0, 0, 0.05); /* 减轻阴影 */
+  box-shadow: -1px 0 5px rgba(0, 0, 0, 0.05);
   z-index: 1003;
   overflow-y: auto;
-  transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* 调整为更慢的动画，使用缓动函数 */
+  transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* 添加平板设备的断点 */
+@media (max-width: 1024px) {
+  .settings-sidebar {
+    width: 80%;
+    max-width: 600px;
+    right: -80%;
+  }
 }
 
+/* 保持移动设备的设置 */
+@media (max-width: 768px) {
+  .settings-sidebar {
+    width: 100%;
+    right: -100%;
+  }
+}
 .settings-sidebar.open {
   right: 0;
 }
@@ -1673,11 +1692,25 @@ body .default-folders-tabs.sidebar-expanded {
   margin-top: 1rem;
 }
 #floating-width-settings {
-  background: #f8fafc;
+  margin-bottom: 24px;
+  padding: 16px;
+  background-color: #f9f9f9;
   border-radius: 8px;
-  padding: 1.25rem;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 新增书签卡片高度设置样式 */
+#card-height-settings {
+  margin-bottom: 24px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] #card-height-settings {
+  background-color: #2d2d2d;
+  color: #e5e7eb;
 }
 
 /* 暗色模式适配 */
@@ -1745,6 +1778,44 @@ body .default-folders-tabs.sidebar-expanded {
   color: #666;
 }
 
+.donate-list-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.donate-list-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #e8e8e8;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #374151;
+  transition: all 0.2s ease;
+  justify-content: center;
+  min-width: 140px;
+  font-size: 14px;
+}
+
+.donate-list-button:hover {
+  background-color: #e5e7eb;
+  color: #10b981;
+  transform: none;
+}
+
+[data-theme="dark"] .donate-list-button {
+  background-color: #2d2d2d;
+  color: #e5e7eb;
+  border: 1px solid #4b5563;
+}
+
+[data-theme="dark"] .donate-list-button:hover {
+  background-color: #404040;
+  color: #10b981;
+}
+
+/* 保留原有的donate-list-link样式用于兼容性 */
 .donate-list-link {
   display: block;
   margin-top: 10px;
@@ -1752,6 +1823,10 @@ body .default-folders-tabs.sidebar-expanded {
   color: #4285f4;
   text-decoration: none;
   font-size: 14px;
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 1005; /* 确保链接的z-index高于侧边栏 */
 }
 
 .donate-list-link:hover {
