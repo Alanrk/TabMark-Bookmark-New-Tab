@@ -291,10 +291,6 @@
         "message": "Solid Background",
         "description": "Title for solid background settings"
     },
-    "wallpaperTitle": {
-        "message": "Wallpaper",
-        "description": "Title for wallpaper settings"
-    },
     "uploadedWallpaperBadge": {
         "message": "Local",
         "description": "Badge text for user uploaded wallpaper"
@@ -867,5 +863,12 @@
     "sidePanelOpenInSidepanel": {
         "message": "Open in Side Panel",
         "description": "Option to open links within the side panel"
+    },
+    "bingWallpapersTitle": {
+        "message": "Bing Wallpapers"
+    },
+    "presetWallpaperTitle": {
+        "message": "Preset Wallpapers",
+        "description": "Title for preset wallpaper settings"
     }
 }

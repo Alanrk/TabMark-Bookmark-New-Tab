@@ -343,10 +343,6 @@
         "message": "単色背景",
         "description": "単色背景設定のタイトル"
     },
-    "wallpaperTitle": {
-        "message": "壁紙",
-        "description": "壁紙設定のタイトル"
-    },
     "uploadedWallpaperBadge": {
         "message": "ローカル",
         "description": "ユーザーがアップロードした壁紙のバッジテキスト"
@@ -840,5 +836,12 @@
     "bookmarkCardHeightValue": {
         "message": "$1 ピクセル",
         "description": "ブックマークカードの高さの値"
+    },
+    "bingWallpapersTitle": {
+        "message": "Bing壁紙"
+    },
+    "presetWallpaperTitle": {
+        "message": "プリセット壁紙",
+        "description": "プリセット壁紙設定のタイトル"
     }
 }

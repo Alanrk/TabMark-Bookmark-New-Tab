@@ -760,5 +760,13 @@
     "bookmarkCardHeightValue": {
         "message": "$1 píxeles",
         "description": "Valor para la altura de tarjeta de marcador"
+    },
+    "bingWallpapersTitle": {
+        "message": "Fondos de Bing",
+        "description": "Título para los fondos de pantalla de Bing"
+    },
+    "presetWallpaperTitle": {
+        "message": "Fondos predefinidos",
+        "description": "Título para los fondos de pantalla predefinidos"
     }
 }

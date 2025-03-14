@@ -351,10 +351,6 @@
         "message": "纯色背景",
         "description": "纯色背景设置标题"
     },
-    "wallpaperTitle": {
-        "message": "壁纸",
-        "description": "壁纸设置标题"
-    },
     "pleaseUploadImage": {
         "message": "请上传图片文件",
         "description": "提示用户上传图片文件"
@@ -925,5 +921,13 @@
     "bookmarkCardHeightValue": {
         "message": "$1 像素",
         "description": "书签卡片高度值"
+    },
+    "presetWallpaperTitle": {
+        "message": "预设壁纸",
+        "description": "预设壁纸设置标题"
+    },
+    "bingWallpapersTitle": {
+        "message": "必应壁纸",
+        "description": "必应壁纸标题"
     }
 }
