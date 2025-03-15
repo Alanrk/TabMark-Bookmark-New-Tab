@@ -343,10 +343,6 @@
         "message": "단색 배경",
         "description": "단색 배경 설정 제목"
     },
-    "wallpaperTitle": {
-        "message": "배경화면",
-        "description": "배경화면 설정 제목"
-    },
     "uploadedWallpaperBadge": {
         "message": "로컬",
         "description": "사용자가 업로드한 배경화면의 배지 텍스트"
@@ -840,5 +836,12 @@
     "bookmarkCardHeightValue": {
         "message": "$1 픽셀",
         "description": "북마크 카드 높이 값"
+    },
+    "bingWallpapersTitle": {
+        "message": "Bing 배경화면"
+    },
+    "presetWallpaperTitle": {
+        "message": "프리셋 배경화면",
+        "description": "프리셋 배경화면 설정 제목"
     }
 }

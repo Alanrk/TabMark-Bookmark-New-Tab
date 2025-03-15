@@ -888,5 +888,13 @@
     "bookmarkCardHeightValue": {
         "message": "$1 像素",
         "description": "書籤卡片高度值"
+    },
+    "bingWallpapersTitle": {
+        "message": "必應壁紙",
+        "description": "必應壁紙標題"
+    },
+    "presetWallpaperTitle": {
+        "message": "預設壁紙",
+        "description": "預設壁紙設定標題"
     }
 }

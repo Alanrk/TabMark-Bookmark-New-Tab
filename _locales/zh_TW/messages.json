@@ -339,10 +339,6 @@
         "message": "純色背景",
         "description": "純色背景設定標題"
     },
-    "wallpaperTitle": {
-        "message": "桌布",
-        "description": "桌布設定標題"
-    },
     "uploadedWallpaperBadge": {
         "message": "本機圖片",
         "description": "使用者上傳的桌布標識"
@@ -884,5 +880,12 @@
     "bookmarkCardHeightValue": {
         "message": "$1 像素",
         "description": "書籤卡片高度值"
+    },
+    "bingWallpapersTitle": {
+        "message": "必應壁紙"
+    },
+    "presetWallpaperTitle": {
+        "message": "預設桌布",
+        "description": "預設桌布設定標題"
     }
 }

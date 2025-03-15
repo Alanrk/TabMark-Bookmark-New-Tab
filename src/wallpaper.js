@@ -33,6 +33,10 @@ class WallpaperManager {
         // 初始化事件监听和其他设置
         this.initializeEventListeners();
         this.initialize();
+        
+        // 初始化必应壁纸
+        this.bingWallpapers = [];
+        this.initBingWallpapers();
     }
 
     // 新增方法：初始化预设壁纸列表
@@ -210,6 +214,10 @@ class WallpaperManager {
         
         // 清除所有壁纸选项的 active 状态
         document.querySelectorAll('.wallpaper-option').forEach(option => {
+            option.classList.remove('active');
+        });
+        // 清除所有必应壁纸选项的 active 状态
+        document.querySelectorAll('.bing-wallpaper-item').forEach(option => {
             option.classList.remove('active');
         });
     }
@@ -802,6 +810,98 @@ class WallpaperManager {
             URL.revokeObjectURL(img.src);
         };
         img.src = e.target.result;
+    }
+
+    // 初始化必应壁纸
+    async initBingWallpapers() {
+        try {
+            // 获取8天的必应壁纸
+            const wallpapers = await this.fetchBingWallpapers(4);
+            this.bingWallpapers = wallpapers;
+            
+            // 渲染壁纸
+            this.renderBingWallpapers();
+        } catch (error) {
+            console.error('Failed to initialize Bing wallpapers:', error);
+        }
+    }
+
+    // 获取必应壁纸
+    async fetchBingWallpapers(count = 4) {
+        try {
+            // 使用中国的必应 API，添加 UHD 参数获取高清壁纸
+            const response = await fetch(
+                `https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=${count}&mkt=zh-CN&uhd=1&uhdwidth=3840&uhdheight=2160`
+            );
+            const data = await response.json();
+            
+            if (!data?.images) {
+                console.error('No images data in response');
+                return [];
+            }
+
+            // 使用解构赋值和箭头函数简化代码
+            return data.images.map(({ url, title, copyright, startdate }) => ({
+                // 使用中国的必应域名
+                url: `https://cn.bing.com${url}`,
+                title: title || copyright?.split('(')[0]?.trim() || 'Bing Wallpaper',
+                copyright,
+                date: startdate
+            }));
+        } catch (error) {
+            console.error('Failed to fetch Bing wallpapers:', error);
+            return [];
+        }
+    }
+
+    // 渲染必应壁纸
+    renderBingWallpapers() {
+        const container = document.querySelector('.bing-wallpapers-grid');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        const fragment = document.createDocumentFragment();
+        this.bingWallpapers.forEach(wallpaper => 
+            fragment.appendChild(this.createBingWallpaperElement(wallpaper))
+        );
+        container.appendChild(fragment);
+    }
+
+    // 创建必应壁纸元素
+    createBingWallpaperElement(wallpaper) {
+        const { url, title, date } = wallpaper;
+        const element = document.createElement('div');
+        element.className = 'bing-wallpaper-item';
+        element.setAttribute('data-wallpaper-url', url);
+        element.title = title;
+        element.innerHTML = `
+            <div class="bing-wallpaper-thumbnail" style="background-image: url(${url})"></div>
+            <div class="bing-wallpaper-info">
+                <div class="bing-wallpaper-title">${title}</div>
+                <div class="bing-wallpaper-date">${this.formatDate(date)}</div>
+            </div>
+        `;
+
+        // 修改点击事件，使用 handleWallpaperOptionClick
+        element.addEventListener('click', () => {
+            this.handleWallpaperOptionClick(element);
+        });
+
+        return element;
+    }
+
+    // 格式化日期
+    formatDate(dateStr) {
+        try {
+            const year = dateStr.slice(0, 4);
+            const month = parseInt(dateStr.slice(4, 6));
+            const day = parseInt(dateStr.slice(6, 8));
+            const date = new Date(year, month - 1, day);
+            return `${month}月${day}日`;
+        } catch (error) {
+            console.error('Error formatting date:', error);
+            return dateStr;
+        }
     }
 }
 

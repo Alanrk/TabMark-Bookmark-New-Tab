@@ -788,5 +788,13 @@
     "bookmarkCardHeightValue": {
         "message": "$1 Pixel",
         "description": "Wert für die Lesezeichenkartenhöhe"
+    },
+    "bingWallpapersTitle": {
+        "message": "Bing Hintergrundbilder",
+        "description": "Titel für Bing Hintergrundbilder"
+    },
+    "presetWallpaperTitle": {
+        "message": "Voreingestellte Hintergrundbilder",
+        "description": "Titel für voreingestellte Hintergrundbilder"
     }
 }
