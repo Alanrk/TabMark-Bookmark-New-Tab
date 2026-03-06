@@ -1081,6 +1081,127 @@ input[type="range"]::-webkit-slider-thumb:hover {
   border-top-color: #10b981;
 }
 
+/* Quick Link Item 毛玻璃拟态效果 - 圆形透明 */
+.quick-link-item-container {
+    position: relative;
+    display: inline-block;
+    margin: 8px;
+    transition: transform 0.3s ease;
+}
+
+.quick-link-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* 圆形 */
+    background: rgba(255, 255, 255, 0.3); /* 增加透明度增强毛玻璃效果 */
+    box-shadow: -12px -12px 24px rgba(120, 120, 120, 0.8), /* 增强凸拟态：左上角深色阴影 */
+                12px 12px 24px rgba(255, 255, 255, 0.9), /* 增强凸拟态：右下角浅色高光 */
+                0 20px 50px rgba(0, 0, 0, 0.25), /* 增强外部阴影 */
+                inset 0 2px 8px rgba(255, 255, 255, 0.3); /* 添加内阴影增强立体感 */
+    backdrop-filter: blur(3px) saturate(200%) brightness(1.15); /* 增强毛玻璃效果 */
+    -webkit-backdrop-filter: blur(3px) saturate(200%) brightness(1.15);
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    border: 1.5px solid rgba(255, 255, 255, 0.6); /* 增强边框宽度和透明度 */
+}
+
+.quick-link-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+}
+
+.quick-link-item img {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    z-index: 2;
+    position: relative;
+    filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.5));
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.quick-link-item:hover {
+    transform: translateY(-6px) scale(1.08);
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: -15px -15px 30px rgba(120, 120, 120, 0.7),
+                15px 15px 30px rgba(255, 255, 255, 0.8),
+                0 25px 60px rgba(0, 0, 0, 0.3),
+                inset 0 4px 12px rgba(255, 255, 255, 0.4);
+    border: 1.5px solid rgba(255, 255, 255, 0.8);
+}
+
+.quick-link-item:hover::before {
+    opacity: 0.6;
+}
+
+.quick-link-item:hover img {
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6));
+}
+
+/* Quick Link Item 文字阴影效果 */
+.quick-link-item-container > span {
+    font-size: 12px;
+    font-family: "Arial Black", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 8px;
+    text-align: center;
+    max-width: 80px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    padding: 5px; /* 添加内边距确保文字完整显示 */
+    box-sizing: border-box; /* 确保内边距不影响宽度计算 */
+    color: #000000;
+    text-shadow: 0px 0px 6px #ffffff, 0px 0px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* 暗色模式下的 Quick Link Item 样式 - 圆形透明 */
+[data-theme="dark"] .quick-link-item {
+    background: rgba(0, 0, 0, 0.3); /* 增加透明度增强毛玻璃效果 */
+    box-shadow: -12px -12px 24px rgba(0, 0, 0, 0.9), /* 增强凸拟态：左上角深色阴影 */
+                12px 12px 24px rgba(80, 80, 80, 0.6), /* 增强凸拟态：右下角浅色高光 */
+                0 20px 50px rgba(0, 0, 0, 0.5), /* 增强外部阴影 */
+                inset 0 2px 8px rgba(255, 255, 255, 0.15); /* 添加内阴影增强立体感 */
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .quick-link-item::before {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+}
+
+[data-theme="dark"] .quick-link-item-container > span {
+    color: #ffffff;
+    text-shadow: 0px 0px 6px #000000, 0px 0px 4px rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] .quick-link-item:hover {
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: -15px -15px 30px rgba(0, 0, 0, 0.8),
+                15px 15px 30px rgba(100, 100, 100, 0.5),
+                0 25px 60px rgba(0, 0, 0, 0.6),
+                inset 0 4px 12px rgba(255, 255, 255, 0.25);
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+}
+
 /* 暗色模式下的复选框样式 */
 [data-theme="dark"] .custom-checkbox input:checked + .checkmark {
   background-color: #10b981;

@@ -95,8 +95,8 @@ const SearchEngineManager = {
         return engine;
       }
     }
-    console.log('[Search] Using fallback engine (Google)');
-    return ALL_ENGINES[0]; // 默认返回 Google
+    console.log('[Search] Using fallback engine (Bing)');
+    return ALL_ENGINES[1]; // 默认返回 Bing
   },
 
   // 设置默认搜索引擎

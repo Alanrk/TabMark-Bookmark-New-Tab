@@ -483,13 +483,7 @@ const ColorCache = {
 
 
 
-// 页面加载时更新图标
-document.addEventListener('DOMContentLoaded', () => {
-  const defaultEngine = SearchEngineManager.getDefaultEngine();
-  if (defaultEngine) {
-    updateSearchEngineIcon(defaultEngine);
-  }
-});
+
 
 // 同样，将这个函数也移到全作用域
 function setDefaultIcon(iconElement) {
@@ -993,19 +987,55 @@ document.addEventListener('DOMContentLoaded', function () {
   // 调用 updateBookmarkCards
   updateBookmarkCards();
   
-  updateSearchEngineIcon(defaultSearchEngine);
+  // 直接设置搜索引擎图标为Bing
+  function setBingIconDirectly() {
+    const searchEngineIcon = document.getElementById('search-engine-icon');
+    if (!searchEngineIcon) return;
+    
+    // 强制设置为Bing图标
+    searchEngineIcon.src = '../images/bing-logo.png';
+    searchEngineIcon.alt = '必应 Search';
+    
+    console.log('[Icon] Directly set icon to Bing');
+  }
 
+  // 确保搜索引擎图标正确初始化
+  function ensureSearchEngineIcon() {
+    const searchEngineIcon = document.getElementById('search-engine-icon');
+    if (!searchEngineIcon) return;
+    
+    // 如果图标仍然是默认的Google图标，强制更新为Bing
+    if (searchEngineIcon.src.includes('google-logo.svg') || 
+        searchEngineIcon.src.includes('placeholder-icon.svg')) {
+      updateSearchEngineIcon(defaultSearchEngine);
+      setBingIconDirectly();
+    }
+  }
+
+  updateSearchEngineIcon(defaultSearchEngine);
+  setBingIconDirectly();
+  
   if (searchEngineIcon.src === '') {      
     searchEngineIcon.src = '../images/placeholder-icon.svg';
   }
+  
+  // 多次确保图标正确更新
   setTimeout(() => {
     updateSearchEngineIcon(defaultSearchEngine);
+    setBingIconDirectly();
+    ensureSearchEngineIcon();
   }, 0);
+  
+  setTimeout(() => {
+    setBingIconDirectly();
+    ensureSearchEngineIcon();
+  }, 100);
+  
+  setTimeout(() => {
+    setBingIconDirectly();
+  }, 500);
 
-  // 修改 updateSearchEngineIcon 函数
-  function updateSearchEngineIcon(engineName) {
-    setSearchEngineIcon(engineName);
-  }
+
 
   // 更新侧边栏默认书签指示器和选中状态
   updateSidebarDefaultBookmarkIndicator();
@@ -1233,13 +1263,23 @@ function showErrorFeedback(element) {
 
 function openCategory(category) {
   if (category && category.classList.contains('folder-item')) {
+    // 清除所有选中状态
     document.querySelectorAll('#categories-list li').forEach(function (item) {
       item.classList.remove('bg-emerald-500');
     });
+    
+    // 设置当前选中状态
     category.classList.add('bg-emerald-500');
 
     if (category.dataset.id) {
-      updateBookmarksDisplay(category.dataset.id);
+      // 同步更新所有状态
+      updateBookmarksDisplay(category.dataset.id).then(() => {
+        // 确保面包屑导航正确显示当前文件夹路径
+        updateFolderName(category.dataset.id);
+        
+        // 保存最后访问的文件夹
+        chrome.storage.local.set({ lastViewedFolder: category.dataset.id });
+      });
     }
   }
 }
@@ -1563,6 +1603,8 @@ function updateBookmarksDisplay(parentId, movedItemId, newIndex) {
       // 如果有缓存且不是移动操作，直接使用缓存数据
       console.log('Using cached bookmarks for:', parentId);
       displayBookmarks({ id: parentId, children: cached.bookmarks });
+      // 确保面包屑导航也更新
+      updateFolderName(parentId);
       resolve();
       return;
     }
@@ -1711,7 +1753,10 @@ function navigateToPath(path) {
 
     function navigateRecursive(index) {
       if (index >= pathParts.length) {
+        // 成功到达目标路径，更新显示
         updateBookmarksDisplay(currentId);
+        updateFolderName(currentId);
+        selectSidebarFolder(currentId);
         return;
       }
 
@@ -1721,7 +1766,11 @@ function navigateToPath(path) {
           currentId = matchingChild.id;
           navigateRecursive(index + 1);
         } else {
+          // 找不到匹配的子文件夹，使用当前能到达的最深层级
+          console.warn('无法找到路径:', pathParts[index], '在层级', index);
           updateBookmarksDisplay(currentId);
+          updateFolderName(currentId);
+          selectSidebarFolder(currentId);
         }
       });
     }
@@ -3762,8 +3811,10 @@ document.addEventListener('DOMContentLoaded', function () {
   toggleSidebarButton.addEventListener('click', toggleSidebar);
 
   document.addEventListener('click', function (event) {
-    if (event.target.closest('#categories-list li')) {
-      updateBookmarkCards();
+    const categoryElement = event.target.closest('#categories-list li');
+    if (categoryElement) {
+      // 同步更新所有状态
+      openCategory(categoryElement);
     }
   });
 

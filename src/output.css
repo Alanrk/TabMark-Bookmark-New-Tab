@@ -1929,13 +1929,15 @@ svg.suggestion-icon {
 /* Quick links container */
 .quick-links-container {
   display: flex;
-  gap: 2px;
+  flex-wrap: wrap; /* 默认启用换行 */
   justify-content: center;
-  /* 改为居中对齐 */
+  align-items: center;
+  gap: 8px; /* 增加间距 */
   min-height: 80px;
-  overflow-x: hidden;
-  padding: 10px 0;
-  width: 800px;
+  padding: 10px 20px; /* 增加左右内边距，为阴影留出空间 */
+  max-width: 100%;
+  width: auto;
+  overflow-x: visible; /* 允许阴影溢出 */
 
 }
 
@@ -2219,6 +2221,15 @@ input:checked+.slider:before {
   background-color: #f8f9fa;
   border-radius: 8px;
   transition: background-color 0.2s;
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .setting-option {
+  background-color: #2d2d2d;
+}
+
+[data-theme="dark"] .setting-option:hover {
+  background-color: #363636;
 }
 
 .switch-label {
@@ -2547,8 +2558,9 @@ input:checked+.slider:before {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: 16px;
   z-index: 1000;
-  width: 580px;
+  width: 100%;
   margin-top: 8px;
+  box-sizing: border-box;
 }
 /* 选项容器 */
 .search-engine-options-container {
@@ -2572,11 +2584,13 @@ input:checked+.slider:before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  /*gap: 6px;*/
 }
 /* 选项图标样式 */
 .search-engine-option-icon {
-  height: 18px;
+  height: 30px;
+  width: 30px;
+  object-fit: contain;
   margin-bottom: 4px;
 }
 /* 标签样式 */
@@ -2586,11 +2600,11 @@ input:checked+.slider:before {
 }
 /* 移动端适配 */
 @media (max-width: 480px) {
-  .search-engine-dropdown {
+  /*.search-engine-dropdown {
     width: calc(100vw - 32px);
     left: 16px;
     right: 16px;
-  }
+  }*/
 
   .search-engine-options-container {
     grid-template-columns: repeat(3, 1fr);
@@ -3105,18 +3119,21 @@ input:checked+.slider:before {
     }
   }
 
-/* Quick links 响应式处理 */
-@media (max-width: 840px) {
+/* Quick links 响应式优化 */
+@media (min-width: 1024px) {
   .quick-links-container {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
+    gap: 12px; /* 大屏幕上增加间距 */
+  }
+}
+
+@media (max-width: 768px) {
+  .quick-links-container {
+    gap: 6px;
   }
 
   .quick-link-item-container {
-    /* 保持原有宽度，但允许换行显示 */
-    min-width: 80px;
-    margin: 4px;
+    min-width: 75px;
+    margin: 3px;
   }
 }
 
@@ -3126,38 +3143,40 @@ input:checked+.slider:before {
   }
 
   .quick-link-item-container {
-    /* 在更小的屏幕上稍微缩小尺寸 */
-    width: 70px;
-    min-width: 70px;
+    width: 65px;
+    min-width: 65px;
     margin: 2px;
   }
 
   .quick-link-item {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
   }
 
   .quick-link-item-container span {
-    font-size: 11px;
+    font-size: 10px;
   }
 }
+
 @media (max-width: 368px) {
   .quick-links-container {
-    gap: 4px;
+    gap: 3px;
   }
 
   .quick-link-item-container {
-    /* 在更小的屏幕上稍微缩小尺寸 */
-    width: 50px;
-    min-width: 50px;
-    margin: 2px;
+    width: 55px;
+    min-width: 55px;
+    margin: 1px;
   }
 
   .quick-link-item {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 
+  .quick-link-item-container span {
+    font-size: 9px;
+  }
 }
     @media (max-width: 368px) {
       #welcome-message {
@@ -3369,7 +3388,7 @@ input:checked+.slider:before {
 }
 
 .add-icon {
-  font-size: 24px;
+  font-size: 30px;
   margin-bottom: 4px;
 }
 
